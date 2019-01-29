@@ -17,7 +17,6 @@ Storing the source of these documents as text/markdown lets us render it in othe
 Having the text in source control aids the curation goal via the well established practise of PRs and associated reviews.
 
 ### Public repo
-
 One question we might ask is whether or not this repo should be public? My inclination is to say yes and use it as a way of demonstrating to customers and potential hires what to expect from working with or for Truss.
 
 ## Contents
