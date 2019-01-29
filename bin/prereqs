@@ -1,0 +1,25 @@
+#! /bin/bash
+
+set -eu -o pipefail
+
+prereqs_found=true
+
+function has() {
+    local tool=$1
+    local tool_install_direction=$2
+    if [[ ! -z $(type -p "${tool}") ]]; then
+        echo "${tool} installed."
+    else
+        echo "WARNING: ${tool} not found, install via: ${tool_install_direction}"
+        prereqs_found=false
+    fi
+}
+
+has pre-commit "brew install pre-commit"
+
+if [[ $prereqs_found == "true" ]]; then
+    echo "OK: all prereqs found"
+else
+    echo "ERROR: some prereqs missing, please install them"
+    exit 1
+fi
