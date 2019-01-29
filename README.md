@@ -2,7 +2,7 @@
 
 ## Overview
 
-The beginnings of an engineering playbook for Truss. If it reaches a critical mass it should get moved to its own repo. 
+The beginnings of an engineering playbook for Truss.
 
 ### Purpose
 
