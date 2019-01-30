@@ -3,6 +3,7 @@
 This is documentation of a decision on the eApp project as to why cypress was not chosen for this project. Though typically Truss would recommend [cypress](cypress.md)
 
 ## Why selenium and nightwatch
+
 ### Requirements
 
 1. Automated tests we can run
