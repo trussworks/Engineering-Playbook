@@ -1,20 +1,10 @@
 # Engineering Playbook
 
-## Overview
+## Purpose
 
-The beginnings of an engineering playbook for Truss.
+Within Truss we have much experience of and opinions regarding engineering tools, processes, and practices. The problems and choices that we encounter in our day-to-day practice are rarely new. Having a straightforward way of applying the things we collectively know to the problems we face would be a source of great efficiency for us.
 
-### Purpose
-
-Within the company we have a bunch of experience of and opinions about engineering tools, processes and practices. The problems and choices that we encounter in our day-to-day practice are rarely completely new. Having a straightforward way of applying the things we collectively know to the problems we collectively face would be a source of great efficiency for us.
-
-This collection of documents is intended to be that way; simple, searchable documents with each one containing the essence of Truss opinions on a particular topic. Whilst any Trussel is, and should feel, free to edit these documents there is some expectation that these are curated/blessed by the broad engineering community at Truss. To that end, proposed changes should be submitted via a PR and we hope SMEs will be identified to act as curators for particular areas of knowledge.
-
-### "Why this format. Wouldn't a Wiki/Google Docs/Web Pages/... be better?"
-
-Storing the source of these documents as text/markdown lets us render it in other forms, e.g. Web Pages, easily enough.
-
-Having the text in source control aids the curation goal via the well established practise of PRs and associated reviews.
+This collection of documents is intended to be simple and searchable, each one containing the essence of Truss opinions on a particular topic. Whilst any Trussel is free to edit these documents, there is some expectation that these are to be curated by the broad engineering community at Truss. To that end, proposed changes should be submitted via a PR and  SMEs will be identified to act as curators for particular areas of knowledge.
 
 ### Public repo
 
