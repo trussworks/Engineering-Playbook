@@ -6,6 +6,7 @@ The kind of iterative development we do consists of a number of repeated cycles 
 
 TBD Talk about cycle length, priorities for cycle & tooling
 
+<!---
 ## Contents
 
 * [Sprint Planning](./planning.md)
@@ -13,3 +14,4 @@ TBD Talk about cycle length, priorities for cycle & tooling
 * [Demo](./demo.md)
 * [Retrospective](./retro.md)
 * [Tooling/Tracker](./tracker.md)
+--->
