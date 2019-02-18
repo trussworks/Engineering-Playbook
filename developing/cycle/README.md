@@ -1,18 +1,23 @@
 # [Tools and Practice](../README.md) / Development Cycle
 
 ## Overview
+At Truss, we practice agile with a small "a". This means getting back to the basics of what it means to [develop software with agility](https://pragdave.me/blog/2014/03/04/time-to-kill-agile.html):
 
-The kind of iterative development we do consists of a number of repeated cycles (Sprints) during which a number of development stories are planned and executed. At the end of each cycle the work is reviewed against the intentions for the week and alongside the then current priorities.
+> * Find out where you are
+> * Take a small step towards your goal
+> * Adjust your understanding based on what you learned
+> * Repeat
 
-TBD Talk about cycle length, priorities for cycle & tooling
+In order to implement these principles, we do a few things:
+* Planning and executing tasks in repeated cycles, called Sprints
+* At the end of each cycle, we review our work and whether or we accomplished what we set out to do.
+
+## Contents
+* [Pivotal Tracker](./tracker.md)
 
 <!---
-## Contents
-
 * [Sprint Planning](./planning.md)
 * [Standup](./standup.md)
 * [Demo](./demo.md)
 * [Retrospective](./retro.md)
-* [Tooling/Tracker](./tracker.md)
-
 --->
