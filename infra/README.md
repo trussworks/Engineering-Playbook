@@ -4,6 +4,14 @@
 
 Infrastructure/Deployment is rilly rilly important - much too important for humans to do. If at all possible - automate it
 
-## Contents
+## Immutable infrastructure techniques
+- Packer
+- Containers (Docker)
+- Functions as a Service (Lambda, etc)
+- Terraform
 
-Please add some content - its rilly rilly important
+## Infrastructure as code techniques
+- Terraform
+- CloudFormation
+- Concourse-CI
+- Circle-CI
