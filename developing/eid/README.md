@@ -6,8 +6,30 @@ We don't care which editor/IDE/debugger that you use - it's your workflow. That 
 
 In this section you will find overviews of the range of tools to use and suggestions on how best to configure each tool for the situations we most often use them.
 
-## Contents
+## Editors
 
-List of editors that Truss engineers use:
+List of editors that Truss engineers use (sorted alphabetically):
 
-- TBA
+* Atom
+* Sublime Text
+* vi
+* VS Code
+* WebStorm
+
+### Plugin suggestions
+
+#### Sublime Text
+* PackageControl
+* EditorConfig
+* JsPrettier (you will need to configure it to auto-format on save)
+* Babel (for JSX syntax--though looking for better option)
+* Git
+
+#### vi
+* [vim-prettier](github.com:prettier/vim-prettier)
+* [vim-javascript](pangloss/vim-javascript.git)
+* [editorconfig](editorconfig/editorconfig-vim.git)
+
+#### VS Code
+* Prettier
+* Path Intellisence
