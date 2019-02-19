@@ -6,22 +6,57 @@
 
 Naming instances in a shared name space, such as AWS is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
 
-As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with.
+Things are further complicated in AWS because some names, e.g. S3 buckets, must be globally unique across the whole of AWS' customer base, some scoped within an account but across all AWS regions, e.g. IAM resources, and others are scoped to the local AWS region.
 
-However, for our own work and for projects where we are setting the standard tend to use the following:
+As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following:
 
-## Resources
+## AWS Wide resources, e.g. Buckets
 
-*${project.prefix}-${name}-${environment}*, e.g. `new_system-web_server-dev` for a web server in the dev environment for the new_system project
+*${account.alias}-${application.name}[-${environment}][-${region}]* - these names are pre-fixed with a consistent account/usage prefix as they are globally scoped withing aws
 
-* *$project.prefix* is a prefix, unique to the project, which is used to distinguish between ressources based which project they belong to
-* *$name* is the name of the resource within the environment. It is typically descriptive of the role the resource plays within the overall architecture of the project
-* *$environment* is used to identify different versions of the environment that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+* *$account.alias* - is a prefix for the account, e.g. "truss", "client-name"
+* *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
+* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+* *$region* - when an app can or will be distributed across AWS regions with distinct ionstances in each region, this postfix distinguishes between them
 
-## Policies
+e.g.
 
-Policies are named for the resource to which they will be applied with -policy tagged on the end, i.e.
+* truss-aws-logs-us-east-1
 
-*${project.prefix}-${name}-${environment}-policy*, e.g. `new_system-database-prod-policy` policy detailing access to the database in the production environment of the new_system project
+## IAM Resources
 
-????
+IAM resource names are globally visible within an account, e.g. for roles:
+
+*${service/realm}[-${role}]-${project/application}-${environment}* - is the general form
+
+* *$service/realm* - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
+* *$role* - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
+* *$project/application* - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
+* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+
+e.g.
+
+* lambda-rds-snapshot-cleaner-app-experimental
+* ecs-task-role-app-client-tls-experimental
+
+### Policies
+
+Where the details of an IAM role are in an associated policy  (usually the case) they are named after the associated role, but with `-policy` appended, e.g.
+
+* lambda-rds-snapshot-cleaner-app-experimental-policy
+* ecs-task-role-app-client-tls-experimental-policy
+
+## Other Resources
+
+Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
+
+*${purpose}[-${application}]-${environment}* - is the general form
+
+* *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+* *$application* - if needed, disambiguates between a simillar purpose across applications, e.g. "webapp" vs "honeycomb"
+* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+
+e.g.
+
+* slack-pivotal-tracker-bot-test
+* rds-log-cleaner-webapp-prod
