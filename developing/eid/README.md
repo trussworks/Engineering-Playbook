@@ -12,7 +12,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 
 * Atom
 * Sublime Text
-* vi
+* vi(m)
 * VS Code
 * WebStorm
 
@@ -25,7 +25,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 * Babel (for JSX syntax--though looking for better option)
 * Git
 
-#### vi
+#### vi(m)
 * [vim-prettier](github.com:prettier/vim-prettier)
 * [vim-javascript](pangloss/vim-javascript.git)
 * [editorconfig](editorconfig/editorconfig-vim.git)
