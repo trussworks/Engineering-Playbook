@@ -161,18 +161,20 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
 2. Specify a target, our Lambda function.
     ```
     resource "aws_cloudwatch_event_target" "run_test_lambda_every_hour" {
-      rule = '${aws_cloudwatch_event_rule.every_hour.name}'
+      rule = "${aws_cloudwatch_event_rule.every_hour.name}"
       target_id = "test_lambda"
       arn = "${aws_lambda_function.test_lambda.arn}"
     }
     ```
 3. Make sure CloudWatch has permission to invoke the Lambda function.
     ```
-    statement_id = "AllowExecutionFromCloudWatch"
-    action = "lambda:InvokeFunction"
-    function_name = "${aws_lambda_function.test_lambda.function_name}"
-    principal = "events.amazonaws.com"
-    source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
+    resource "aws_lambda_permission" "allow_cloudwatch_to_call_test_lambda" {
+      statement_id = "AllowExecutionFromCloudWatch"
+      action = "lambda:InvokeFunction"
+      function_name = "${aws_lambda_function.test_lambda.function_name}"
+      principal = "events.amazonaws.com"
+      source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
+    }
     ```
 4. Run our Terraform commands form the command line: `terraform plan` and `terraform apply`.
 
