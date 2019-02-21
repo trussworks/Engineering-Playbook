@@ -1,4 +1,4 @@
-# Deploying your first AWS Lambda Function with Go and Terraform
+# [Getting Started](./README.md) / Deploying your first AWS Lambda Function with Go and Terraform
 
 ## Intro
 This tutorial focuses on deploying a "Hello, World" Go program as a Lambda function using Terraform. The first section will cover creating the program in Go and the second section will cover writing the Terraform script that will deploy the program into AWS. As a bonus, we'll cover how you can configure AWS CloudWatch to invoke your Lambda function on a recurring schedule.
@@ -151,29 +151,29 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 Let's say you want your shiny new Lambda function to run every day. Maybe every hour! To do this, you will need to use another AWS service called [CloudWatch](https://aws.amazon.com/cloudwatch/). Let's open our `main.tf` up again and add a few things:
 
 1. Add a CloudWatch rule that specifies how often the event will trigger. [This article](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html) has more info on how to use the `schedule_expression` value.
-```
-resource "aws_cloudwatch_event_rule" "every_hour" {
-  name = "every-hour"
-  description = "Fires every hour"
-  schedule_expression = "rate(1 hour)"
-}
-```
+    ```
+    resource "aws_cloudwatch_event_rule" "every_hour" {
+      name = "every-hour"
+      description = "Fires every hour"
+      schedule_expression = "rate(1 hour)"
+    }
+    ```
 2. Specify a target, our Lambda function.
-```
-resource "aws_cloudwatch_event_target" "run_test_lambda_every_hour" {
-  rule = '${aws_cloudwatch_event_rule.every_hour.name}'
-  target_id = "test_lambda"
-  arn = "${aws_lambda_function.test_lambda.arn}"
-}
-```
+    ```
+    resource "aws_cloudwatch_event_target" "run_test_lambda_every_hour" {
+      rule = '${aws_cloudwatch_event_rule.every_hour.name}'
+      target_id = "test_lambda"
+      arn = "${aws_lambda_function.test_lambda.arn}"
+    }
+    ```
 3. Make sure CloudWatch has permission to invoke the Lambda function.
-```
-statement_id = "AllowExecutionFromCloudWatch"
-action = "lambda:InvokeFunction"
-function_name = "${aws_lambda_function.test_lambda.function_name}"
-principal = "events.amazonaws.com"
-source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
-```
+    ```
+    statement_id = "AllowExecutionFromCloudWatch"
+    action = "lambda:InvokeFunction"
+    function_name = "${aws_lambda_function.test_lambda.function_name}"
+    principal = "events.amazonaws.com"
+    source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
+    ```
 4. Run our Terraform commands form the command line: `terraform plan` and `terraform apply`.
 
 5. Your function will now run every hour!
