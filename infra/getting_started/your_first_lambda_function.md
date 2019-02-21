@@ -4,7 +4,7 @@
 This tutorial focuses on deploying a "Hello, World" Go program as a Lambda function using Terraform. The first section will cover creating the program in Go and the second section will cover writing the Terraform script that will deploy the program into AWS. As a bonus, we'll cover how you can configure AWS CloudWatch to invoke your Lambda function on a recurring schedule.
 
 ## Assumptions
-* You're at least on macOS Mojave.
+* You're at least on macOS Mojave 10.14
 * You have the following installed on your machine:
   * Terraform
   * AWS CLI
@@ -181,7 +181,7 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
 5. Your function will now run every hour!
 
 ## Cleaning up
-We've been hard at work setting up our Lambda function, but let's face it; we probably won't be relying on it as part of our production infrastructure. This is a good opportunity to learn about taking down infrastructure with Terraform. __Make sure you are inside the correct directory when running the following commands!__ 
+We've been hard at work setting up our Lambda function, but let's face it &mdash; we probably won't be relying on it as part of our production infrastructure. This is a good opportunity to learn about taking down infrastructure with Terraform. __Make sure you are inside the correct directory when running the following commands!__ 
 
 1. Run `terraform plan -destroy`, to generate a plan for destroying the infrastructure you have created. You'll see a list of all the resources you created in your `main.tf` file.
 2. If everything in the list looks good, you can run `terraform apply`'s destructive counterpart, `terraform destroy`. It's like our Lambda function was never even there!
