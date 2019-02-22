@@ -83,7 +83,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
     resource "aws_lambda_function" "hello_world_test" {
         filename = "main.zip"
         function_name = "hello-world-test"
-        role             = "${aws_iam_role.lambda-hello-world-test.arn}"
+        role             = "${aws_iam_role.lambda_hello_world_test_policy.arn}"
         handler          = "main"
         source_code_hash = "${base64sha256(file("main.zip"))}"
         runtime          = "go1.x"
@@ -109,20 +109,20 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
         name = "lambda-hello-world-test-policy"
 
         assume_role_policy = <<EOF
-        {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-            "Action": "sts:AssumeRole",
-            "Principal": {
-                "Service": "lambda.amazonaws.com"
-            },
-            "Effect": "Allow",
-            "Sid": ""
-            }
+      {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+          "Action": "sts:AssumeRole",
+          "Principal": {
+              "Service": "lambda.amazonaws.com"
+          },
+          "Effect": "Allow",
+          "Sid": ""
+          }
         ]
-        }
-    EOF
+      }
+        EOF
     }
     ```
 
@@ -158,7 +158,8 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 2. Once you confirm your function is within that list, invoke your function!
 
    ```shell
-   aws lambda invoke --function-name=lambda-hello-world-test output.txt
+   aws lambda invoke --function-name=hello-world-test output.txt
+   cat ouput.txt # "Hello, world!"
    ```
 
 3. Congrats, you deployed your first Lambda function with Terraform!!!
@@ -181,7 +182,7 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
 
     ```terraform
     resource "aws_cloudwatch_event_target" "cloudwatch_event_target_hello_world_lambda_test" {
-      rule = "${aws_cloudwatch_event_rule.every_hour.name}"
+      rule = "${aws_cloudwatch_event_rule.run_hello_world_lambda_every_hour_test.name}"
       target_id = "hello-world-test"
       arn = "${aws_lambda_function.hello_world_test.arn}"
     }
@@ -195,11 +196,11 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
       action = "lambda:InvokeFunction"
       function_name = "${aws_lambda_function.hello_world_test.function_name}"
       principal = "events.amazonaws.com"
-      source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
+      source_arn = "${aws_cloudwatch_event_rule.run_hello_world_lambda_every_hour_test.arn}"
     }
     ```
 
-4. Run our Terraform commands form the command line: `terraform plan` and `terraform apply`.
+4. Run our Terraform commands from the command line: `terraform plan` and `terraform apply`.
 
 5. Your function will now run every hour!
 
