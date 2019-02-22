@@ -1,9 +1,11 @@
 # [Getting Started](./README.md) / Deploying your first AWS Lambda Function with Go and Terraform
 
 ## Intro
+
 This tutorial focuses on deploying a "Hello, World" Go program as a Lambda function using Terraform. The first section will cover creating the program in Go and the second section will cover writing the Terraform script that will deploy the program into AWS. As a bonus, we'll cover how you can configure AWS CloudWatch to invoke your Lambda function on a recurring schedule.
 
 ## Assumptions
+
 * You're at least on macOS Mojave 10.14
 * You have the following installed on your machine:
   * Terraform
@@ -14,6 +16,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 * You know some Terraform basics like "plan" and "apply".
 
 ## Creating the Go program
+
 1. First things first, open up that command line.
 2. Create a directory wherever you desire and name it `hello-lambda`.
 3. Set your current directory to `hello-lambda`.
@@ -45,18 +48,20 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 
     Let's dissect this program for a second.
 
-    As you can see, we imported the AWS library we installed. We then utilize it to call `lambda.Start()`. This takes a handler function, effectively calling it, and passes Lambda requests through it. 
+    As you can see, we imported the AWS library we installed. We then utilize it to call `lambda.Start()`. This takes a handler function that will be called when a request comes in. 
 
     The handler in this case is our function `hello`. This handler is relatively simple. It doesn't take any internal Lambda requests and just returns the classic "Hello, world!".
 
 7. All that's left is to transform our Go program into something Lambda can actually run. We can accomplish this by creating a binary and storing it in a `.zip` file.
 
     ```
-    GOOS=linux GOARCH=amd64 go build -o main main.go
+    env GOOS=linux GOARCH=amd64 go build -o main main.go
     zip main.zip main
     ```
+    You'll notice that we are setting some environment variables using `usr/bin/env` before calling `go build`. This is because when we normally run `go build`, Go assumes that an executable will be built for the architecture that the program what written on. In this case, we want it to run on Linux and an amd64 architecure, so we set the Go "OS" (GOOS) and the Go "Architecture" (GOARCH). Using the `-o` flag allows us to specify the name and location of the executable produced by `go build`.
 
 ## Deploying with Terraform
+
 1. In the `hello-lambda` directory, create a new file called `main.tf`.
 2. Open that new file up in your favorite text editor or IDE.
 3. Before we create our Lambda function, we need to tell Terraform the basics such as that we'll be deploying to AWS and what region we'll be deploying this function to.
@@ -71,13 +76,13 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
     }
     ```
 
-4. Let's create that Lambda function. Add the following lines to the file.
+4. Let's create that Lambda function. Add the following lines to the file. Click [here](../aws/naming.md) for more on how we name our AWS resources.
 
     ```
-    resource "aws_lambda_function" "test_lambda" {
+    resource "aws_lambda_function" "hello_world_test" {
         filename = "main.zip"
-        function_name = "test_lambda"
-        role             = "${aws_iam_role.iam_for_lambda_tf.arn}"
+        function_name = "hello-world-test"
+        role             = "${aws_iam_role.lambda-hello-world-test.arn}"
         handler          = "main"
         source_code_hash = "${base64sha256(file("main.zip"))}"
         runtime          = "go1.x"
@@ -98,8 +103,8 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 
 5. What's left to do finish `main.tf` is creating that IAM role.
     ```
-    resource "aws_iam_role" "iam_for_lambda_tf" {
-        name = "iam_for_lambda_tf"
+    resource "aws_iam_role" "lambda_hello_world_test_policy" {
+        name = "lambda-hello-world-test-policy"
 
         assume_role_policy = <<EOF
         {
@@ -130,48 +135,50 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
     ```
     terraform plan
     ```
-9. Provided there's nothing unsurprising in the plan, it's time to deploy your function!
+9. Once you've read over the plan, it's time to deploy your function!
     ```
     terraform apply
     ```
 
 ## Invoking your Lambda function
+
 1. To first check if you deployed successfully, let's print out a list of the existing Lambda functions.
     ```
-    aws lambda list-functions
+    aws lambda list-functions --region=us-west-2
     ```
 2. Once you confirm your function is within that list, invoke your function!
    ```
-   aws lambda invoke --function-name=test_lambda output.txt
+   aws lambda invoke --function-name=lambda-hello-world-test output.txt
    ```
 
 3. Congrats, you deployed your first Lambda function with Terraform!!!
 
 ## Bonus: Set up a recurring schedule for your Lambda Function
+
 Let's say you want your shiny new Lambda function to run every day. Maybe every hour! To do this, you will need to use another AWS service called [CloudWatch](https://aws.amazon.com/cloudwatch/). Let's open our `main.tf` up again and add a few things:
 
 1. Add a CloudWatch rule that specifies how often the event will trigger. [This article](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html) has more info on how to use the `schedule_expression` value.
     ```
-    resource "aws_cloudwatch_event_rule" "every_hour" {
-      name = "every-hour"
-      description = "Fires every hour"
+    resource "aws_cloudwatch_event_rule" "run_hello_world_lambda_every_hour_test" {
+      name = "run-hello-world-lambda-every-hour-test"
+      description = "Fires the hello world lambda every hour"
       schedule_expression = "rate(1 hour)"
     }
     ```
 2. Specify a target, our Lambda function.
     ```
-    resource "aws_cloudwatch_event_target" "run_test_lambda_every_hour" {
+    resource "aws_cloudwatch_event_target" "cloudwatch_event_target_hello_world_lambda_test" {
       rule = "${aws_cloudwatch_event_rule.every_hour.name}"
-      target_id = "test_lambda"
-      arn = "${aws_lambda_function.test_lambda.arn}"
+      target_id = "hello-world-test"
+      arn = "${aws_lambda_function.hello_world_test.arn}"
     }
     ```
 3. Make sure CloudWatch has permission to invoke the Lambda function.
     ```
-    resource "aws_lambda_permission" "allow_cloudwatch_to_call_test_lambda" {
+    resource "aws_lambda_permission" "permit_hello_world_lambda_execution_from_cloudwatch_test" {
       statement_id = "AllowExecutionFromCloudWatch"
       action = "lambda:InvokeFunction"
-      function_name = "${aws_lambda_function.test_lambda.function_name}"
+      function_name = "${aws_lambda_function.hello_world_test.function_name}"
       principal = "events.amazonaws.com"
       source_arn = "${aws_cloudwatch_event_rule.every_hour.arn}"
     }
@@ -181,6 +188,7 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
 5. Your function will now run every hour!
 
 ## Cleaning up
+
 We've been hard at work setting up our Lambda function, but let's face it &mdash; we probably won't be relying on it as part of our production infrastructure. This is a good opportunity to learn about taking down infrastructure with Terraform. __Make sure you are inside the correct directory when running the following commands!__ 
 
 1. Run `terraform plan -destroy`, to generate a plan for destroying the infrastructure you have created. You'll see a list of all the resources you created in your `main.tf` file.

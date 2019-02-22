@@ -4,7 +4,7 @@
 
 Infrastructure/Deployment is rilly rilly important - much too important for humans to do. If at all possible - automate it.
 
-Click [here](./getting_started) to get started with AWS and Terraform.
+Click [here](./getting_started/README.md) to get started with AWS and Terraform.
 
 ## Immutable infrastructure techniques
 
