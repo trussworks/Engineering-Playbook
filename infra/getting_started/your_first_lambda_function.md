@@ -96,7 +96,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 
     `role` is the IAM role attached to this function. We will be creating this in the next step.
 
-    `handler` is the entrypoint into the function. In this particular case, it's the `main.go` file in `.zip`.
+    `handler` is the entrypoint into the function. In this particular case, it's the `main` executable produced by `go build`.
 
     `runtime` specifies what language this function will be running in.
 
