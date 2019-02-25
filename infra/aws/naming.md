@@ -1,6 +1,6 @@
 # [aws](./README.md) / Naming
 
-*Naming* is one of the [hard problems in computing](https://martinfowler.com/bliki/TwoHardThings.html). This page contains patterns for naming things (resourcesw, roles, policies etc) in AWS.
+*Naming* is one of the [hard problems in computing](https://martinfowler.com/bliki/TwoHardThings.html). This page contains patterns for naming things (resources, roles, policies, etc.) in AWS.
 
 ## Context
 
@@ -17,7 +17,7 @@ As with all naming schemes (and other stylistic things such as casing and commen
 * *$account.alias* - is a prefix for the account, e.g. "truss", "client-name"
 * *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
 * *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
-* *$region* - when an app can or will be distributed across AWS regions with distinct ionstances in each region, this postfix distinguishes between them
+* *$region* - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
 
 e.g.
 
@@ -41,7 +41,7 @@ e.g.
 
 ### Policies
 
-Where the details of an IAM role are in an associated policy  (usually the case) they are named after the associated role, but with `-policy` appended, e.g.
+Where the details of an IAM role are in an associated policy (usually the case) they are named after the associated role, but with `-policy` appended, e.g.
 
 * lambda-rds-snapshot-cleaner-app-experimental-policy
 * ecs-task-role-app-client-tls-experimental-policy
@@ -53,7 +53,7 @@ Where the name is scoped by the resource type and the region, e.g. lambda functi
 *${purpose}[-${application}]-${environment}* - is the general form
 
 * *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
-* *$application* - if needed, disambiguates between a simillar purpose across applications, e.g. "webapp" vs "honeycomb"
+* *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 * *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
