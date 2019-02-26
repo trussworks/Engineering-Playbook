@@ -6,6 +6,8 @@ Infrastructure/Deployment is rilly rilly important - much too important for huma
 
 Click [here](./getting_started/README.md) to get started with AWS and Terraform.
 
+To see examples of Truss' common infrastructure patterns, click [here](https://github.com/trussworks/truss-infra).
+
 ## Immutable infrastructure techniques
 
 - Packer
