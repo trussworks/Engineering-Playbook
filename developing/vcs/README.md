@@ -7,12 +7,20 @@ Source control has less to do with the vcs system you use and more to do with th
 ## Tools
 
 ### Git
+
 > [Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
 ### pre-commit
+
 > A framework for managing and maintaining multi-language pre-commit hooks.
 
 We use [pre-commit](https://pre-commit.com/) at Truss to easily add git hooks to our Git repos. This allows us to automate things like checking for merge conflicts or mistakenly adding secret keys in our code. See [this example](https://github.com/trussworks/circleci-docker-primary/blob/master/.pre-commit-config.yaml) pre-commit config file from one of our projects.
+
+### pre-reqs
+
+> A tool to check your project prerequisites so your engineers don't have to.
+
+We use [pre-reqs](https://github.com/trussworks/prereqs) to bootstrap system pre-requisites that are required to run the code we push to Github.
 
 <!---
 ## Contents
