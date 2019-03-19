@@ -63,8 +63,8 @@ Various resources on React, Redux, etc, for a variety of learning styles.
   * Make the thing in your component clickable, even if it just does `alert(‘hey there!’)`
   * Add [React Router](https://github.com/ReactTraining/react-router) to your project.
   * Make a new component like the first one, and add routes so that they display depending on the URL. E.g:
-    * `http://milmovelocal:3000/component1` shows the first one on the page;
-    * `http://milmovelocal:3000/component2` shows the second one.
+    * `http://localhost:3000/component1` shows the first one on the page;
+    * `http://localhost:3000/component2` shows the second one.
   * Add [Redux](https://redux.js.org/) to your project.
     * This is a rather big step. You’ll need to have some sort of state, so make a login button and “logged in” will be the state you are going to keep track of.
     * When the user is logged in, there should be a “log out” button shown.
