@@ -11,3 +11,4 @@ Suggested browsers to use for development and testing:
 * Latest iOS Safari
 * Latest Chrome
 * Internet Explorer 11
+* Edge
