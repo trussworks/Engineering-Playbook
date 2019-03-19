@@ -21,7 +21,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 ## Language Resources
 
 ### Go
-If you are new to Go, you should work your way through all of these resources (in this order, ideally):
+If you are new to Go, these are resources that can help you get started:
 
 1. [A Tour of Go](https://tour.golang.org) (in-browser interactive language tutorial)
 1. [How to Write Go Code](https://golang.org/doc/code.html) (info about the Go environment, testing, etc.)
