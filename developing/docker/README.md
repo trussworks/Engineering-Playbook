@@ -35,7 +35,7 @@ to utilize it.  The `Reset` bomb should do it.
 ### Configuration of Disk Image
 
 If you've been running Docker for Mac for some time, make sure you are
-using the `raw` disk image format and now `qcow2`.  Open Docker for
+using the `raw` disk image format and not `qcow2`.  Open Docker for
 Mac preferences and select `Disk`.  Make sure the image ends with
 `Docker.raw`.
 
