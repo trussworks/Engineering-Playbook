@@ -9,7 +9,9 @@ development as in CI and production.
 
 ## Installation
 
-Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/).
+You should install via homebrew
+
+     brew cask install docker
 
 ### Configuration of Shared Folders
 
