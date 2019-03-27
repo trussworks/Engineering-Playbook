@@ -77,13 +77,13 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
     }
     ```
 
-4. Let's create that Lambda function. Add the following lines to the file. Click [here](../aws/naming.md) for more on how we name our AWS resources.
+4. Let's create that Lambda function. Add the following lines to the file. Click [here](../aws/naming.md) for more on how we name our AWS resources. Do a quick find & replace to update `<INSERT YOUR ALIAS HERE>` with your AWS IAM alias.
 
     ```terraform
-    resource "aws_lambda_function" "hello_world_test" {
+    resource "aws_lambda_function" "hello_world_test_<INSERT YOUR ALIAS HERE>" {
         filename = "main.zip"
         function_name = "hello-world-test"
-        role             = "${aws_iam_role.lambda_hello_world_test_policy.arn}"
+        role             = "${aws_iam_role.lambda_hello_world_test_policy_<INSERT YOUR ALIAS HERE>.arn}"
         handler          = "main"
         source_code_hash = "${base64sha256(file("main.zip"))}"
         runtime          = "go1.x"
@@ -105,8 +105,8 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 5. What's left to do finish `main.tf` is creating that IAM role.
 
     ```terraform
-    resource "aws_iam_role" "lambda_hello_world_test_policy" {
-        name = "lambda-hello-world-test-policy"
+    resource "aws_iam_role" "lambda_hello_world_test_policy_<INSERT YOUR ALIAS HERE>" {
+        name = "lambda-hello-world-test-policy-<INSERT YOUR ALIAS HERE>"
 
         assume_role_policy = <<EOF
       {
