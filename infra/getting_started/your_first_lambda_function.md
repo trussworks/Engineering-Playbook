@@ -159,7 +159,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 
    ```shell
    aws lambda invoke --function-name=hello-world-test output.txt
-   cat ouput.txt # "Hello, world!"
+   cat output.txt # "Hello, world!"
    ```
 
 3. Congrats, you deployed your first Lambda function with Terraform!!!
