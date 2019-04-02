@@ -56,7 +56,7 @@ Important JS patterns and features to understand:
 * Template Literals
   * [Template Literals](https://css-tricks.com/template-literals/)
 
-### Python versioning
+### Python versioning and management
 We usually recommend [Pipenv](https://hub.docker.com/r/kennethreitz/pipenv/) in combination with Docker.
 
 If for any reason a project is not using Pipenv+Docker to manage Python, then the overriding recommendation must be that *EVERY engineer on that project* ensure that they are using the **exact** same Python install/version and management strategy (be it virtualenv, pyenv, etc) as each other or else it will be a major pain point in debugging issues.
