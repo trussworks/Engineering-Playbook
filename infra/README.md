@@ -33,4 +33,4 @@ Infrastructure and deployment is really important, and at all opportunities we s
 
 ## Resources
 - [Examples of common infrastructure patterns at Truss 🔒](https://github.com/trussworks/truss-infra)
-- [Terraform layout example 🔒](./getting_started/your_first_lambda_function.md): a basic approach Truss takes towards Terraform layout.
+- [Terraform layout example 🔒](https://github.com/trussworks/terraform-layout-example): a basic approach Truss takes towards Terraform layout.
