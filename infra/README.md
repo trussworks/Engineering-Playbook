@@ -1,23 +1,26 @@
-# [Engineering Playbook](../README.md) / Infrastructure/Deployment
+# [Engineering Playbook](../README.md) / Infrastructure and Deployment
 
 ## Overview
 
-Infrastructure/Deployment is rilly rilly important - much too important for humans to do. If at all possible - automate it.
+Infrastructure and deployment is really important, and at all opportunities we should try to automate it.
 
-Click [here](./getting_started/README.md) to get started with AWS and Terraform.
-
-To see examples of Truss' common infrastructure patterns, click [here](https://github.com/trussworks/truss-infra).
+## Getting Started
+- [Setting up your AWS account 🔒](https://github.com/trussworks/truss-infra#making-changes-to-aws)
+    - You will need to pair with someone that has access to AWS already to run the Terraform commands in the instructions.
+- [Your first Lambda Function 🔒](./getting_started/your_first_lambda_function.md)
+    - After you have AWS access you can deploy your first AWS Lambda Function with Go and Terraform.
 
 ## Immutable infrastructure techniques
 
 - Packer
 - Containers (Docker)
 - Functions as a Service (Lambda, etc)
-- [Terraform](./tf/README.md) How we use Terraform to make infrastructure manageagble and repeatable.
+- [Terraform](./tf/README.md)
+
 
 ## Infrastructure as code techniques
 
-- [Terraform](./tf/README.md) How we use Terraform to make infrastructure manageagble and repeatable.
+- [Terraform](./tf/README.md)
 - CloudFormation
 - Concourse-CI
 - Circle-CI
@@ -27,3 +30,7 @@ To see examples of Truss' common infrastructure patterns, click [here](https://g
 - [AWS](./aws/README.md)
 - GCP
 - Azure
+
+## Resources
+- [Examples of common infrastructure patterns at Truss 🔒](https://github.com/trussworks/truss-infra)
+- [Terraform layout example 🔒](https://github.com/trussworks/terraform-layout-example): a basic approach Truss takes towards Terraform layout.
