@@ -27,3 +27,8 @@ To see examples of Truss' common infrastructure patterns, click [here](https://g
 - [AWS](./aws/README.md)
 - GCP
 - Azure
+
+## Resources
+- [Examples of common infrastructure patterns at Truss 🔒](https://github.com/trussworks/truss-infra)
+- [Terraform layout example 🔒](https://github.com/trussworks/terraform-layout-example): a basic approach Truss takes towards Terraform layout.
+
