@@ -8,7 +8,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Languages Trussels are proficient in
 
-- [Go] (./GO.md) 
+- Go
 - JavaScript (including TypeScript/FlowScript)
 - Swift
 - Rust
@@ -31,6 +31,8 @@ If you are new to Go, these are resources that can help you get started:
 
 Additional resources:
 
+* [Go Pointer Primer](https://github.com/trussworks/go-pointer-primer)
+* [Go by Example](https://gobyexample.com)
 * [GoDoc](https://godoc.org/) (where you can read the docs for nearly any Go package)
 * Check out the [Go wiki](https://github.com/golang/go/wiki/Learn)
 * Advanced Testing with Go [Video](https://www.youtube.com/watch?v=yszygk1cpEc) and [Article](https://about.sourcegraph.com/go/advanced-testing-in-go) (great overview of useful techniques, useful for all Go programmers)
