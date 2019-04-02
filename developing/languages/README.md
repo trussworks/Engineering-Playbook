@@ -55,3 +55,9 @@ Important JS patterns and features to understand:
   * [How Three Dots Changed JavaScript](https://dmitripavlutin.com/how-three-dots-changed-javascript/)
 * Template Literals
   * [Template Literals](https://css-tricks.com/template-literals/)
+
+### Python versioning
+We usually recommend [Pipenv](https://hub.docker.com/r/kennethreitz/pipenv/) in combination with Docker.
+
+If for any reason a project is not using Pipenv+Docker to manage Python, then the overriding recommendation must be that *EVERY engineer on that project* ensure that they are using the **exact** same Python install/version and management strategy (be it virtualenv, pyenv, etc) as each other or else it will be a major pain point in debugging issues.
+
