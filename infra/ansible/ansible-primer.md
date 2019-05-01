@@ -15,7 +15,8 @@ idea where to find more detailed resources.
 When working with Ansible, you’ll probably want to set up a virtual environment so that you can install ansible and any
 other Python modules necessary without contaminating your system Python installation. If you’ve never done this before,
 this tutorial should help: https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/. If you're an
-experienced Python programmer and want to use `pipenv` or another alternative, that's perfectly fine too.
+experienced Python programmer and want to use `pipenv` or another alternative, that's perfectly fine too. It is
+recommended that you use Python 3 as your Python binary.
 
 Activate your virtualenv and run: `pip install ansible`
 
