@@ -2,7 +2,7 @@
 
 ## Overview
 
-Go aka Golang is a programming language designed by folks at Google. 
+Go aka Golang is a programming language designed by folks at Google.
 
 ## Resources
 
