@@ -123,3 +123,7 @@ _From the [direnv wiki](https://github.com/direnv/direnv/wiki/Docker-Machine):_
 #### direnv and python
 
 If using `pipenv`, add `layout_pipenv` to the `.envrc` and the virtualenv will be loaded automatically when you enter the project directory.
+
+### Other examples
+
+Trussels have thoroughly exploited `direnv` on the [TransCom/mymove](https://github.com/transcom/mymove/blob/master/.envrc) GitHub repository.
