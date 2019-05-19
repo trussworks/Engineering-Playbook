@@ -70,8 +70,8 @@ export GIT_COMITTER_EMAIL="ryan@truss.works"
 _From the [direnv wiki](https://github.com/direnv/direnv/wiki/golang):_
 
 > If you're using [the gb build tool](http://getgb.io/) for Go projects, you may find this layout useful for helping many `GOPATH`-dependent ecosystem tools work seamlessly in your projects:
-> 
-> ```sh
+>
+> ```
 > # Usage: layout golang
 > #
 > # Sets up environment for a Go project using the alternative gb build tool. Also
@@ -82,16 +82,16 @@ _From the [direnv wiki](https://github.com/direnv/direnv/wiki/golang):_
 > # http://getgb.io/
 > # https://golang.github.io/dep/
 > #
-> 
+>
 > layout_golang() {
 >   export GOPATH="$PWD/vendor:$PWD"
 >   PATH_add "$PWD/vendor/bin"
 >   PATH_add bin
 > }
 > ```
-> 
+>
 > Add this to your `~/.direnvrc` and then use `layout golang` in your project `.envrc`s. With this loaded, the support for many tools like `gocode`, `oracle`, `godoc`, etc. in editor plugins like vim-go and GoSublime will usually "just work". This layout may also be completely applicable if you are using the Go 1.5 "vendor experiment" with the official `go` tool on your project.
-> 
+>
 > See [this pull request](https://github.com/direnv/direnv/pull/188) for some background discussion.
 
 #### direnv and Docker Machine
@@ -99,25 +99,27 @@ _From the [direnv wiki](https://github.com/direnv/direnv/wiki/golang):_
 _From the [direnv wiki](https://github.com/direnv/direnv/wiki/Docker-Machine):_
 
 > When using Docker Machine on OS X, there's an incantation that needs to be run in every shell where you want to run Docker. Direnv can help mitigate that annoyance:
-> 
+>
 > Add to `~/.direnvrc`
+>
 > ```
 > use_docker-machine(){
 >   local env=${1:-default}
 >   echo Docker machine: $env
 >   local machine_cmd=$(docker-machine env --shell bash $env)
-> 
+>
 >   eval $(docker-machine env --shell bash $env)
 > }
 > ```
-> 
+>
 > Any project that's using docker, add to `.envrc`:
+>
 > ```
 > use docker-machine
 > ```
-> 
+>
 > One nice feature to this is that you can have different Docker machine VMs per project, if needed by saying `use docker-machine special`, for instance.
-> 
+>
 > Note that when using this pattern, when docker-machine warns you to `eval (docker-machine env)`, you'll want instead to `direnv reload`.
 
 #### direnv and python
