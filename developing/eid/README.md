@@ -26,9 +26,16 @@ List of editors that Truss engineers use (sorted alphabetically):
 * Git
 
 #### vi(m)
+[VimAwesome.com](https://vimawesome.com/) provides a list of vim plugins sorted by how many GitHub dotfiles repositories have integrated the plugin.
+
+* [vim-plug](github.com:junegunn/vim-plug) - Minimalist plugin manager
 * [vim-prettier](github.com:prettier/vim-prettier)
 * [vim-javascript](pangloss/vim-javascript.git)
+* [vim-go](github:fatih/vim-go) - golang development plugin for vim
 * [editorconfig](editorconfig/editorconfig-vim.git)
+* [Recover](github.com:chrisbra/Recover.vim) - Displays a diff before recovering a swap file
+* [vim-ale](github.com:w0rp/ale) - Asynchronous code linter
+* [vim-fugitive](github.com:tpope/vim-fugitive) - A Git wrapper so awesome, it should be illegal
 
 #### VS Code
 * Prettier
