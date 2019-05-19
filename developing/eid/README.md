@@ -19,6 +19,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 ### Plugin suggestions
 
 #### Sublime Text
+
 * PackageControl
 * EditorConfig
 * JsPrettier (you will need to configure it to auto-format on save)
@@ -26,6 +27,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 * Git
 
 #### vi(m)
+
 [VimAwesome.com](https://vimawesome.com/) provides a list of vim plugins sorted by how many GitHub dotfiles repositories have integrated the plugin.
 
 * [vim-plug](github.com:junegunn/vim-plug) - Minimalist plugin manager
@@ -38,5 +40,6 @@ List of editors that Truss engineers use (sorted alphabetically):
 * [vim-fugitive](github.com:tpope/vim-fugitive) - A Git wrapper so awesome, it should be illegal
 
 #### VS Code
+
 * Prettier
 * Path Intellisence
