@@ -12,6 +12,7 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 
 * [Editors, IDEs and Debuggers](./eid/README.md)
 * [Docker](./docker/README.md)
+* [direnv](./direnv/README.md)
 * [Programming Languages](./languages/README.md)
 * [Development Cycle](./cycle/README.md) aka Sprint
 * [Source Control](./vcs/README.md)
