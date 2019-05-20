@@ -19,6 +19,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 ### Plugin suggestions
 
 #### Sublime Text
+
 * PackageControl
 * EditorConfig
 * JsPrettier (you will need to configure it to auto-format on save)
@@ -26,10 +27,12 @@ List of editors that Truss engineers use (sorted alphabetically):
 * Git
 
 #### vi(m)
+
 * [vim-prettier](github.com:prettier/vim-prettier)
 * [vim-javascript](pangloss/vim-javascript.git)
 * [editorconfig](editorconfig/editorconfig-vim.git)
 
 #### VS Code
+
 * Prettier
 * Path Intellisence
