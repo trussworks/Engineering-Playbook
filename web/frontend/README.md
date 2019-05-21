@@ -1,51 +1,62 @@
 # [Engineering Playbook](../../README.md) / [Web Development](../README.md) / Front End Guide
 
 ## Overview
+
 These are recommendations for front end development.
 
 ### Frameworks
+
 We typically choose React as our front end framework of choice.
 
 ### Testing
 
 #### Test Runners and Libraries (for React)
-- Jest
- - If you use create-react-app, this is included.
- - Provides snapshot and DOM testing.
-- Enzyme
- - Allows you to assert and manipulate rendered components with jQuery-like selectors.
+
+* Jest
+  * If you use create-react-app, this is included.
+  * Provides snapshot and DOM testing.
+* Enzyme
+  * Allows you to assert and manipulate rendered components with jQuery-like selectors.
 
 #### Writing Tests
-- Each React component should have a test.
- - At minimum, does the component render?
- - Container components have logic in them, and that logic should be tested.
+
+* Each React component should have a test.
+  * At minimum, does the component render?
+  * Container components have logic in them, and that logic should be tested.
 
 #### Browser Testing
-- We use [Cypress](https://www.cypress.io) for most browser testing with both Chrome and headless Chrome.
+
+* We use [Cypress](https://www.cypress.io) for most browser testing with both Chrome and headless Chrome.
 
 ### Browser Extensions
+
 The following extensions can be installed to assist with debugging React and Redux applications:
 
 * [React Developer Tools](https://github.com/facebook/react-devtools#installation)
 * [Redux DevTools Extension](http://extension.remotedev.io/#redux-devtools-extension)
 
 ### Style and Formatting
+
 We generally adhere to the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript), unless they conflict with project specific Prettier or lint rules.
 
 #### Auto-formatting
-- [Prettier](https://prettier.io) is recommended.
- - [Prettier editor integration](https://prettier.io/docs/en/editors.html) to make it easy to format and autosave.
- - Prefer single quotes for non-JSX code (CLI: `--single-quote` API: `singleQuote: true`)
- - Prefer trailing commas for cleaner PRs and error reduction (CLI: `--trailing-comma true` API: `trailingComma: true`)
- - A `.prettierrc` will be in the project for custom settings.
+
+* [Prettier](https://prettier.io) is recommended.
+  * [Prettier editor integration](https://prettier.io/docs/en/editors.html) to make it easy to format and autosave.
+  * Prefer single quotes for non-JSX code (CLI: `--single-quote` API: `singleQuote: true`)
+  * Prefer trailing commas for cleaner PRs and error reduction (CLI: `--trailing-comma true` API: `trailingComma: true`)
+  * A `.prettierrc` will be in the project for custom settings.
 
 #### Linting
-- [ESLint](https://eslint.org).
+
+* [ESLint](https://eslint.org).
 
 ### CSS
+
 Follow the BEM (Block, Element, Modifier) methodology. Also helpful to follow is the [U.S. Web Design System](https://designsystem.digital.gov/components/).
 
 ### Additional Resources
+
 Various resources on React, Redux, etc, for a variety of learning styles.
 
 * _Read_: [React Tutorial](https://reactjs.org/tutorial/tutorial.html) - Official tutorial from React. I (Alexi) personally found this cumbersome. If you stick with it you’ll learn the basics.

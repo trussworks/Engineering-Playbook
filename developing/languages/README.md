@@ -8,19 +8,20 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Languages Trussels are proficient in
 
-- [Go] (./GO.md) 
-- JavaScript (including TypeScript/FlowScript)
-- Swift
-- Rust
-- Kotlin
-- Ruby
-- Python
-- Java
-- C/C++
+* [Go] (./GO.md)
+* JavaScript (including TypeScript/FlowScript)
+* Swift
+* Rust
+* Kotlin
+* Ruby
+* Python
+* Java
+* C/C++
 
 ## Language Resources
 
 ### Go
+
 If you are new to Go, these are resources that can help you get started:
 
 1. [A Tour of Go](https://tour.golang.org) (in-browser interactive language tutorial)
@@ -38,6 +39,7 @@ Additional resources:
 * _Article_: [Copying data from S3 to EBS 30x faster using Golang](https://medium.com/@venks.sa/copying-data-from-s3-to-ebs-30x-faster-using-go-e2cdb1093284)
 
 ### JavaScript
+
 Important JS patterns and features to understand:
 
 * Destructuring Assignment
