@@ -36,7 +36,7 @@ direnv: export +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER -PS2
 
 Your local environment variables should be updated now. Any time the `.envrc` file is changed, you will need to re-approve the file, but it will load automatically otherwise.
 
-### git committer email
+### Usage example: Changing the git committer email
 
 Some Trussels develop on projects where they must use a client email address. `direnv` can automate the process of changing the email address displayed in your git commits appropriately. For example, consider the following directory structure:
 
