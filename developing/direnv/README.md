@@ -126,6 +126,21 @@ _From the [direnv wiki](https://github.com/direnv/direnv/wiki/Docker-Machine):_
 
 If using `pipenv`, add `layout_pipenv` to the `.envrc` and the virtualenv will be loaded automatically when you enter the project directory.
 
+### Storing secrets with direnv
+
+Sometimes, we want to put the `.envrc` in source control but also use direnv to store secrets that should not be source controlled. With this bit of code, we can separate local secrets into `.envrc.local`:
+
+```
+$ cat << EOF >> .envrc
+if [[ -s .envrc.local ]] ; then
+  source_env .envrc.local
+fi
+EOF
+$ echo ".envrc.local" >> .gitignore
+```
+
+Commands in `.envrc.local` will be loaded by direnv, but ignored by git.
+
 ### Other examples
 
 Trussels have thoroughly exploited `direnv` on the [TransCom/mymove](https://github.com/transcom/mymove/blob/master/.envrc) GitHub repository.
