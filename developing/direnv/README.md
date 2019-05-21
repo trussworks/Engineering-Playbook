@@ -10,7 +10,7 @@ Via homebrew:
 
      brew install direnv
 
-## Usage
+## Getting started
 
 Create an `.envrc` file in a directory with some environment variables your project needs:
 
