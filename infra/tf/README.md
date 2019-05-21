@@ -9,7 +9,6 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * Something about Truss Terraform Modules
 * How to layout/structure a Terraform Project
 
-
 ### Starting a module experiment
 
 ...
@@ -19,9 +18,9 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 When you're ready to turn the prototype module into a published one, there's a few things you'll need to do if you haven't already:
 
 1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/truss-infra/blob/master/modules/github-truss-repository/main.tf) managed by our GitHub repo management module.
-2. 🔒 Add a subscription to your repo in our [#infra-feed]() channel:
-   - `/github subscribe trussworks/your-repo-here`
-   - `/github unsubscribe trussworks/your-repo-here statuses commits deployments public releases`
+2. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
+   * `/github subscribe trussworks/your-repo-here`
+   * `/github unsubscribe trussworks/your-repo-here statuses commits deployments public releases`
 3. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
 
 ### Publishing a release
