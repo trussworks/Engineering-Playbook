@@ -17,7 +17,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 
 When you're ready to turn the prototype module into a published one, there's a few things you'll need to do if you haven't already:
 
-1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/truss-infra/blob/master/modules/github-truss-repository/main.tf) managed by our GitHub repo management module.
+1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/truss-infra/blob/master/truss/github/main.tf) managed by our GitHub repo management module.
 2. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
    * `/github subscribe trussworks/your-repo-here`
    * `/github unsubscribe trussworks/your-repo-here statuses commits deployments public releases`
@@ -29,7 +29,8 @@ To publish a release from a terraform module that's already connected to the [te
 
 1. From the releases tab, click the "Draft a release" button.
 2. Add a meaningful description.
-3. Click the "Publish release" button.
+3. Increment the package version per [semantic versioning](https://semver.org/) guidelines.
+4. Click the "Publish release" button.
 
 You don't need to add any binary files. GitHub will do this automatically for you.
 
