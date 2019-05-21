@@ -29,7 +29,7 @@ using the `overlay2` storage driver.
 
     $ docker info |grep Storage
     Storage Driver: overlay2
-    
+
 If you don't see overlay2, upgrading to the latest version will add
 that support, but you would need to recreate all of your docker data
 to utilize it.  The `Reset` bomb should do it.
@@ -78,7 +78,7 @@ To get a `top` like report of what your containers are doing
 To see where all your disk space is going:
 
     docker system df
-   
+
 To remove stopped containers, dangling images, the build cache and
 unused networks:
 
@@ -87,4 +87,3 @@ unused networks:
 See [the docker system prune
 documentation](https://docs.docker.com/engine/reference/commandline/system_prune/)
 for more options like pruning volumes
-
