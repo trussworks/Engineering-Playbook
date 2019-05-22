@@ -8,7 +8,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Languages Trussels are proficient in
 
-* [Go] (./GO.md)
+* [Go](./GO.md)
 * JavaScript (including TypeScript/FlowScript)
 * Swift
 * Rust
