@@ -64,6 +64,6 @@ Our current recommendation is to use `brew` in order to keep Python up to date. 
 brew install python
 ```
 
-If you then need also need a local Python development environment, we would suggest using `pipenv` in order to manage that.
+If you also need a local Python development environment, we would suggest using `pipenv` in order to manage that.
 
 * [Pipenv Installation and Usage Guide](https://docs.pipenv.org/en/latest/install/)
