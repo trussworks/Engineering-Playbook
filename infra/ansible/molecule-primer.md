@@ -6,19 +6,21 @@ experiences and resources you can use when adding testing to your own Ansible ro
 ## Molecule Documentation and Articles
 
 These resources will likely come in handy when trying to get Molecule up and running for yourself:
-* Molecule Official Docs: https://molecule.readthedocs.io/en/latest/
+
+* Molecule Official Docs: <https://molecule.readthedocs.io/en/latest/>
 * Testing Your Ansible Roles with Molecule (Jeff Geerling):
-  https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule
+  <https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule>
 * Test-driven Infrastructure Development with Ansible and Molecule (Jonas Hecht):
-  https://blog.codecentric.de/en/2018/12/test-driven-infrastructure-ansible-molecule/
+  <https://blog.codecentric.de/en/2018/12/test-driven-infrastructure-ansible-molecule/>
 * Continuous Cloud Infrastructure With Ansible, Molecule, and TravisCI on AWS (Jonas Hecht):
-  https://blog.codecentric.de/en/2019/01/ansible-molecule-travisci-aws/
+  <https://blog.codecentric.de/en/2019/01/ansible-molecule-travisci-aws/>
 
 ## Setup
 
 You will want to use some sort of virtual environment for Molecule; hopefully you're already doing this with Ansible
 anyway. Using Python 3 as the Python binary is also highly recommended. In addition to what you need for ansible, you
 will need these Python modules as well:
+
 * molecule
 * molecule[docker] - For testing with docker containers (the default)
 * molecule[ec2] - For testing on ec2 instances
@@ -44,7 +46,7 @@ for instance, and one with EC2). These commands both take a number of command li
 you’ll probably use is `--driver-name`: This tells molecule which driver to use for the scenario it is creating; by
 default this is docker, but this is where you would put ec2 or vagrant or whatever else if you wanted to test it another
 way. See the Molecule docs here for more information:
-https://molecule.readthedocs.io/en/latest/configuration.html#driver.
+<https://molecule.readthedocs.io/en/latest/configuration.html#driver>.
 
 ## Configuration
 
@@ -54,7 +56,7 @@ specify the different components you want to use like driver, linter, verifier, 
 specify the AMI, instance type, and subnet. The Molecule driver docs above have more details on what can be set here.
 
 Of special note is that for systemd-based docker images, you will need to use a few extra configuration options; the
-bottom of the docker driver docs (https://molecule.readthedocs.io/en/latest/configuration.html#docker) has more details.
+bottom of the docker driver docs (<https://molecule.readthedocs.io/en/latest/configuration.html#docker>) has more details.
 Since most modern Linux distributions use systemd, you’ll probably need to use this.
 
 If you have other Ansible roles your role is dependent on, be sure to specify this in the `meta/main.yml` file in your
@@ -75,7 +77,7 @@ If this works, you know that at least the Molecule parts are working right.
 ### Testing in EC2
 
 With EC2, there a couple of other steps you’ll need to take. First, you’ll have to define an EC2_REGION environment
-variable like so (this is due to the error described here: https://github.com/ansible/molecule/issues/1570):
+variable like so (this is due to the error described here: <https://github.com/ansible/molecule/issues/1570>):
 
 > `export EC2_REGION=”us-west-2”`
 
@@ -115,7 +117,7 @@ instances so I could poke around in them when something wasn’t working.
 By default, Molecule is not testing anything other than the accuracy of your Ansible code -- is it written right and
 does it run without generating errors. This doesn’t tell you if it’s actually doing what you want it to, though. For
 that, you’ll need to write additional tests. By default, these use Test-Infra
-(https://testinfra.readthedocs.io/en/latest/); you’ll put these in the `molecule/scenario_name/tests` directory. You
+(<https://testinfra.readthedocs.io/en/latest/>); you’ll put these in the `molecule/scenario_name/tests` directory. You
 should see a `test_default.py` file there already; this test is an example that just makes sure the `/etc/hosts` file
 and root user exist, which is a bare minimum for things to actually work.
 
@@ -125,4 +127,3 @@ want to.
 
 Molecule does support other verifiers such as Goss and Inspec; see the Molecule docs for more information if you’d like
 to use these.
-

@@ -3,18 +3,18 @@
 ## Context
 
 Ansible is a Python-based configuration management tool owned and supported by Red Hat; while it is essentially a
-remote-execution tool originally designed to orchestrate a wider environment, it can also be used as a provisioning tool 
+remote-execution tool originally designed to orchestrate a wider environment, it can also be used as a provisioning tool
 with things like Packer, which is where you are most likely to see it in a Truss environment.
 
 This primer is not intended to replace the official documentation for Ansible, which can be found at
-https://docs.ansible.com/ansible/latest/index.html. It is only intended to provide a high-level overview and give you an 
-idea where to find more detailed resources.
+<https://docs.ansible.com/ansible/latest/index.html>. It is only intended to provide a high-level overview and give you
+an idea where to find more detailed resources.
 
 ## Setting Up Your Environment
 
 When working with Ansible, you’ll probably want to set up a virtual environment so that you can install ansible and any
 other Python modules necessary without contaminating your system Python installation. If you’ve never done this before,
-this tutorial should help: https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/. If you're an
+this tutorial should help: <https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/>. If you're an
 experienced Python programmer and want to use `pipenv` or another alternative, that's perfectly fine too. It is
 recommended that you use Python 3 as your Python binary.
 
