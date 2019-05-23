@@ -56,10 +56,10 @@ Important JS patterns and features to understand:
 * Template Literals
   * [Template Literals](https://css-tricks.com/template-literals/)
 
-
 ### Python
 
 Our current recommendation is to use `brew` in order to keep Python up to date. Install the latest version like so:
+
 ```
 brew install python
 ```
