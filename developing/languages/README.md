@@ -8,7 +8,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Languages Trussels are proficient in
 
-* [Go] (./GO.md)
+* [Go](./GO.md)
 * JavaScript (including TypeScript/FlowScript)
 * Swift
 * Rust
@@ -17,6 +17,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 * Python
 * Java
 * C/C++
+* [bash](./BASH.md)
 
 ## Language Resources
 
@@ -55,3 +56,15 @@ Important JS patterns and features to understand:
   * [How Three Dots Changed JavaScript](https://dmitripavlutin.com/how-three-dots-changed-javascript/)
 * Template Literals
   * [Template Literals](https://css-tricks.com/template-literals/)
+
+### Python
+
+Our current recommendation is to use `brew` in order to keep Python up to date. Install the latest version like so:
+
+```
+brew install python
+```
+
+If you also need a local Python development environment, we would suggest using `pipenv` in order to manage that.
+
+* [Pipenv Installation and Usage Guide](https://docs.pipenv.org/en/latest/install/)
