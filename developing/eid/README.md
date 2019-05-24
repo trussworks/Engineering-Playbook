@@ -16,9 +16,11 @@ List of editors that Truss engineers use (sorted alphabetically):
 * VS Code
 * WebStorm
 
-### Plugin suggestions
+### Resources
 
 #### Sublime Text
+
+##### Plugins
 
 * PackageControl
 * EditorConfig
@@ -28,7 +30,9 @@ List of editors that Truss engineers use (sorted alphabetically):
 
 #### vi(m)
 
-[VimAwesome.com](https://vimawesome.com/) provides a list of vim plugins sorted by how many GitHub dotfiles repositories have integrated the plugin.
+* [VimAwesome.com](https://vimawesome.com/) provides a list of vim plugins sorted by how many GitHub dotfiles repositories have integrated the plugin.
+
+##### Plugins
 
 * [vim-ale](github.com:w0rp/ale) - Asynchronous code linter
 * [editorconfig](editorconfig/editorconfig-vim.git)
@@ -40,6 +44,8 @@ List of editors that Truss engineers use (sorted alphabetically):
 * [Recover](github.com:chrisbra/Recover.vim) - Displays a diff before recovering a swap file
 
 #### VS Code
+
+##### Plugins
 
 * Prettier
 * Path Intellisence
