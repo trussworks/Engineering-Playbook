@@ -31,6 +31,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 #### vi(m)
 
 * [VimAwesome.com](https://vimawesome.com/) provides a list of vim plugins sorted by how many GitHub dotfiles repositories have integrated the plugin.
+* [VimCasts](https://vimcasts.org) short, bite-sized lessons on vim
 
 ##### Plugins
 
