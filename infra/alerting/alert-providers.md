@@ -74,7 +74,8 @@ the features we're looking for. Where capabilities vary more based on a
 lower or higher tier, notes have been made in the table with the price of
 the option per user per month.
 
-|| Feature/Objective || [OpsGenie Standard ($19)](https://www.opsgenie.com/pricing) || [PagerDuty Platform Business ($39)](https://www.pagerduty.com/pricing/) || [VictorOps Growth ($29)](https://victorops.com/pricing) ||
+| Feature/Objective | [OpsGenie Standard ($19)](https://www.opsgenie.com/pricing) | [PagerDuty Platform Business ($39)](https://www.pagerduty.com/pricing/) | [VictorOps Growth ($29)](https://victorops.com/pricing) |
+|-----|-----|-----|-----|
 | SLA | [99.9% of alerts within 5m](https://www.opsgenie.com/tos/sla) | [99.9% of alerts within 5m](https://www.pagerduty.com/pricing/) | (Couldn't find this on their website?) |
 | Notification Amounts | Unlimited (users x 100 domestically at $9) | Unlimited Globally (Domestically at $29) | Unlimited |
 | Notification Types | Email/Push/SMS/Voice | Email/Push/SMS/Voice | Email/Push/SMS/Voice |
