@@ -87,3 +87,26 @@ unused networks:
 See [the docker system prune
 documentation](https://docs.docker.com/engine/reference/commandline/system_prune/)
 for more options like pruning volumes
+
+## Docker Configuration
+
+You can configure all sorts of defaults in the [docker
+config.json](https://docs.docker.com/engine/reference/commandline/cli/#configuration-files).
+
+### Keybindings
+
+If you dislike the default detach keybindings of `CTRL-p CTRL-q`, you
+can override it in `config.json` with something like:
+
+    {
+      "detachKeys": "ctrl-@,ctrl-["
+    }
+
+### Credentials Store
+
+You can store docker credentials in an [external credentials
+store](https://docs.docker.com/engine/reference/commandline/login/#credentials-store).
+
+On macOS, the keychain will be used by default, but if you need/want
+to store shared credentials, [pass](https://www.passwordstore.org/)
+can be used.
