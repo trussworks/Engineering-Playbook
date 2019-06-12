@@ -9,7 +9,7 @@ Best practices tl;dr:
   * For complicated tasks, a more modern language like Go or Python may be more reliable and easy to maintain.
 * Use [shellcheck](https://shellcheck.net)
 * Don't copy & paste code from Google or StackExchange unless you fully understand it
-* Keep your bash version up to date with your package manager (e.g. `brew install bash` and routinely running `bash upgrade`), or stick to whatever version your team has agreed to standardize on (e.g. `brew pin bash`). However, be aware that behavior of bash code can vary slightly between different versions of the interpreter.
+* Keep your bash version up to date with your package manager (e.g. `brew install bash` and routinely running `brew upgrade`), or stick to whatever version your team has agreed to standardize on (e.g. `brew pin bash`). However, be aware that behavior of bash code can vary slightly between different versions of the interpreter.
 
 ## Debugging
 
