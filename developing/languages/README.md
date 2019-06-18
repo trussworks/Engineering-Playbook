@@ -17,6 +17,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 * Python
 * Java
 * C/C++
+* [bash](./BASH.md)
 
 ## Language Resources
 
