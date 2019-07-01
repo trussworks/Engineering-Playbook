@@ -1,6 +1,12 @@
 repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.2.3
+    hooks:
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: trailing-whitespace
+
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.13.0
+    rev: v0.17.0
     hooks:
       - id: markdownlint
-        entry: markdownlint --ignore .github/*.md
