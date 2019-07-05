@@ -27,7 +27,7 @@ Some examples where they are appropriate include:
 
 * building the foundation for a new application.
 * designing a set of APIs with no existing pattern.
-* implementating a new authorization pattern throughout a codebase.
+* implementing a new authorization pattern throughout a codebase.
 
 Designs may vary significantly based on the problem domain,
 but the [provided template](./design-document-template.md)
@@ -52,7 +52,7 @@ Try to keep these broad guidelines in mind while you work:
   and ultimately levels up people and teams.
   * Find common language.
   Domain specific language may be necessary,
-  but when possibile provide clarification
+  but when possible provide clarification
   or use common terms.
 
 Note that design documents are not a substitute for early design discussions.
@@ -69,8 +69,8 @@ and should be consulted for implementation.
 However, a design doc can be helpful with starting that process.
 It can help to:
 
-* identify epics among the [proposed solution](./template.md#proposed-solution).
-* break out small pieces of work from the [implementation section](./template.md#implementation).
+* identify epics among the [proposed solution](./design-document-template.md#proposed-solution).
+* break out small pieces of work from the [implementation section](./design-document-template.md#implementation).
 * prioritize identified unknowns early on, clarifying long term work.
 
 Note that design documents are not a go-ahead for implementation,
@@ -78,7 +78,7 @@ nor are they a substitute for agile workflow.
 Priorities may change based on resources, roadmaps, or unknown constraints.
 The initial design may be used as a measure for completion,
 but maintain an agile approach,
-readress tradeoffs,
+readdress tradeoffs,
 and be adaptable to changes during the implementation phase.
 
 ## Resources
