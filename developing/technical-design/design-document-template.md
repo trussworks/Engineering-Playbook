@@ -50,7 +50,9 @@ write an overview of what this solution's implementation would look like.
 * What is the tech stack involved?
 * Will additional infrastructure be needed to achieve this?
 * How will you test this?
-* Trade-offs
+
+## Trade-offs
+
 * This section should go over other possible solutions,
   and why you chose yours over them.
 * Was there a build vs. buy solution?
