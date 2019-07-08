@@ -47,6 +47,7 @@ Try to keep these broad guidelines in mind while you work:
   * Emphasize main points,
   but provide resources for less experienced team members
   or people removed from the subject area.
+  Rely heavily on links to external documentation.
   * Consider enabling less experienced Engineers to lead design with guidance.
   Learning technical design can be a great avenue for career growth,
   and ultimately levels up people and teams.
