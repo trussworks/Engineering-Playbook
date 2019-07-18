@@ -184,7 +184,7 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
     resource "aws_cloudwatch_event_target" "cloudwatch_event_target_hello_world_lambda_test" {
       rule = "${aws_cloudwatch_event_rule.run_hello_world_lambda_every_hour_test.name}"
       target_id = "hello-world-test"
-      arn = "${aws_lambda_function.hello_world_test.arn}"
+      arn = "${aws_lambda_function.hello_world_test_<INSERT YOUR ALIAS HERE>.arn}"
     }
     ```
 
@@ -194,7 +194,7 @@ Let's say you want your shiny new Lambda function to run every day. Maybe every 
     resource "aws_lambda_permission" "permit_hello_world_lambda_execution_from_cloudwatch_test" {
       statement_id = "AllowExecutionFromCloudWatch"
       action = "lambda:InvokeFunction"
-      function_name = "${aws_lambda_function.hello_world_test.function_name}"
+      function_name = "${aws_lambda_function.hello_world_test_<INSERT YOUR ALIAS HERE>.function_name}"
       principal = "events.amazonaws.com"
       source_arn = "${aws_cloudwatch_event_rule.run_hello_world_lambda_every_hour_test.arn}"
     }
