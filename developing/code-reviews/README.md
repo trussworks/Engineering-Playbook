@@ -8,8 +8,8 @@ We recognize code reviews can be a vulnerable exercise and should be approached 
 
 ## Contents
 
-[Guide to Great Code Reviews](./great-code-reviews.md)
-[Best Practices for Submitting a Pull Request](./pull-request-best-practices.md)
+* [Guide to Great Code Reviews](./great-code-reviews.md)
+* [Best Practices for Submitting a Pull Request](./pull-request-best-practices.md)
 
 ## Resources
 
