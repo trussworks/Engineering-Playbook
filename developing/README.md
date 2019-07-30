@@ -18,3 +18,4 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 * [Source Control](./vcs/README.md)
 * [Defects/Bugs](./bugs/README.md)
 * [Technical Design](./technical-design/README.md)
+* [Code Reviews](./code-reviews/README.md)
