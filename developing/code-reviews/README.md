@@ -15,4 +15,4 @@ We recognize code reviews can be a vulnerable exercise and should be approached 
 
 * [11 Proven Practices for Peer Review | IBM](https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/)
 * [Of Tracked Changes and Diffs | Truss Blog](https://truss.works/blog/2018/1/5/of-tracked-changes-and-diffs-moving-from-editorial-to-engineering)
-* [Pairing Guide](https://docs.google.com/document/d/1BlsUdxFjyXBKv8sP5k_dq16gpWW-dUJsSl-3oKDrCnc/edit)
+* [Pairing Guide](https://docs.google.com/document/d/1BlsUdxFjyXBKv8sP5k_dq16gpWW-dUJsSl-3oKDrCnc/edit) 🔒
