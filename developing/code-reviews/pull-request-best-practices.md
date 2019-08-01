@@ -17,6 +17,7 @@ Prior to submitting a PR, review your code for the following characteristics:
 3. Is the code **CORRECT**?
    - Does the code work as intended?
    - Does the logic make sense and solve the intended problem?
+   - Have you provided instructions for reviewers to setup and verify the solution works?
 
 4. Have you identified and accounted for **BUGS** and **EDGE CASES**?
 
