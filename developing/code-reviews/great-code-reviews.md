@@ -34,7 +34,7 @@ Complete the code review soon after it was requested. Under 15 minutes is fantas
 
 As a general comment on style, everything goes faster if pull requests are of a reasonable size. If the reviewer can grok your changes in under 5 minutes, you're golden. Sometimes a larger commit is necessary, and that's fine.
 
-However commits that take longer than 10-15 minutes to review should be questioned, or framed in a way that helps the reviewer understand why the commit must be so large. Larger commits slow project velocity, due to this code review friction, and are to be avoided if possible.
+However commits that take longer than 10-15 minutes to review should be questioned, or framed in a way that helps the reviewer understand why the commit must be so large. Larger commits slow project velocity due to this code review friction, and are to be avoided if possible.
 
 IBM did some nifty research in this area to [see how code review size affects code quality](http://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/). Notably, review of one’s own code prior to submission was shown to positively affect code quality as well.
 
