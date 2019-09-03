@@ -58,3 +58,70 @@ Once you've done that, you should be able to run the bootstrap script as
 described in the README.
 
 ## Terraforming the org-root Account
+
+Once Terraform is bootstrapped in the org-root account, you will need to
+create an `admin_global` directory in the account directory of the infra
+repo. Your first step should be setting up the `providers.tf` and
+`terraform.tf` files; see the examples in the `terraform-layout-example`
+repo linked above. You may also want a `terraform.tfvars` to at least
+define the region you'll be using for global resources, if nothing else.
+
+### Create org-root Admin Users
+
+Once those are set up, you can begin the rest of the work. Your first
+action should be to create administrative IAM users that will *only* be
+used to manage the master account and bootstrap the subordinate accounts.
+These should not be used for anything else. Suffix the user name with
+".org-root" to make it clear what these are for. They will be the only
+accounts that can manage the master account.
+
+Example Terraform code (suggest using a `users.tf` file):
+
+```hcl
+resource "aws_iam_group" "admins" {
+  name = "admins"
+}
+
+resource "aws_iam_group_policy_attachment" "admins" {
+  group      = aws_iam_group.admins.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+resource "aws_iam_user" "myuser_org-root" {
+  name = "myuser.org-root"
+  tags = {
+    Automation = "Terraform"
+  }
+}
+
+resource "aws_iam_group_membership" "admins" {
+  name = "admins"
+
+  users = [
+    aws_iam_user.myuser_org-root.name,
+  ]
+
+  group = aws_iam_group.admins.name
+}
+```
+
+Once you have applied the Terraform and have the users created, issue
+security keys for this user and add them to aws-vault; change your
+profile for this account to use these new credentials and delete the
+root credentials from both your aws-vault and the org-root account. You
+should not use the root account anymore unless there is some kind of
+emergency.
+
+### Create AWS Organization
+
+Now we can begin creating the AWS Organization itself. There are a
+number of standard components that we'll want to create using Terraform:
+
+* the AWS organization itself
+* the initial OU which contains everything except the `suspended` OU
+* a `suspended` OU which will contain accounts quarantined due to
+  security concerns
+* a policy which denies use of all AWS resources we can tie to the
+  `suspended` OU (which will override the default FullAWSAccess policy)
+* an `id` account (`spacecats-id` in our example) which will contain
+  all of the IAM users we'll be using to interact with this organization
