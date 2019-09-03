@@ -36,13 +36,15 @@ you are expected to fulfill.
 * When you are paged, you are expected to respond to the alert within
   five minutes. This means that you have *acknowledged* the alert and are
   looking into the issue. Acknowledging the alert prevents it from
-  automatically escalating (see Escalation and Notification Policies for
+  automatically escalating (see [Escalation and Notification
+  Policies](./README.md#escalation-and-notification-policies) for
   more information) and communicates that you are working on the issue.
   Do not forget to do this before you start working; there's nothing
   worse than getting a page as a secondary at an odd hour only to find
   that someone else is already taking care of the problem. While this five
   minute window may seem tight, alerts should be well-tuned so that you
-  are not paged for things which are not urgent (see Project Expectations).
+  are not paged for things which are not urgent (see [Project
+  Expectations](./README.md#project-expectations)).
 * The response time expectation does mean that your flexibility to take
   care of things away from internet access will be curtailed while on-call,
   but we want to reduce that burden as much as possible. If you need to
@@ -84,7 +86,8 @@ that determines who is on-call at any one time.
   secondary responder, and a tertiary "backstop", usually a lead, as the
   final link in the chain. During the shift, the primary is expected to
   respond to all alerts; the secondary and tertiary are there if for some
-  reason they are unable to respond (see Escalation Policies to see how
+  reason they are unable to respond (see [Escalation and Notification
+  Policies](./README.md#escalation-and-notification-policies) to see how
   this is accomplished).
 * The secondary and tertiary also exist as additional resources for the
   primary to call in as first points of contact for assistance if they
