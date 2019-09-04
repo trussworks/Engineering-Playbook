@@ -17,66 +17,6 @@ recommendations can be adapted for them. You can read more about various
 alerting providers in the [Alert Providers](../../infra/alerting/alert-providers.md)
 guide.
 
-## On-Call Responsibilities
-
-If you are the engineer on-call, you have a number of responsibilities
-you are expected to fulfill.
-
-* Prior to going on-call, you should make sure that you have access to
-  any resources necessary to diagnose and correct issues -- this means
-  AWS or GitHub, documentation, or any other tools. Your project should
-  have an on-call checklist to make it easy for you to be confident you
-  have this covered.
-* If you know you will be away for an extended period during an on-call
-  shift, it is *your* responsibility to find someone to cover your shift.
-  If you are unable to, talk to your lead and see if they can help.  If
-  you will be gone for more than a day or two, it may be easiest to swap
-  the entire shift with someone. PagerDuty allows you to schedule these
-  with [overrides](https://community.pagerduty.com/t/creating-a-schedule-override/850).
-* When you are paged, you are expected to respond to the alert within
-  five minutes. This means that you have *acknowledged* the alert and are
-  looking into the issue. Acknowledging the alert prevents it from
-  automatically escalating (see [Escalation and Notification
-  Policies](./README.md#escalation-and-notification-policies) for
-  more information) and communicates that you are working on the issue.
-  Do not forget to do this before you start working; there's nothing
-  worse than getting a page as a secondary at an odd hour only to find
-  that someone else is already taking care of the problem. While this five
-  minute window may seem tight, alerts should be well-tuned so that you
-  are not paged for things which are not urgent (see [Project
-  Expectations](./README.md#project-expectations)).
-* The response time expectation does mean that your flexibility to take
-  care of things away from internet access will be curtailed while on-call,
-  but we want to reduce that burden as much as possible. If you need to
-  run a quick errand, or if an emergency comes up, or you will be in
-  transit for an extended period, you should notify your secondary (or
-  your primary, if you are the secondary) and make sure they will be able
-  to cover for you while you are away.
-* Despite the expectation you will be the first responder as the person
-  on-call, *this does not mean you are expected to go it alone*. If you
-  get an alert, and you can't figure out what is going on within 15
-  minutes and you believe the impact is such that it needs to be addressed
-  immediately, you should feel free to page your secondary for assistance.
-  If you are still stick (or you *were* the secondary), you should feel
-  free to call upon your lead or a known subject matter expert (SME).
-* If you are *not* on-call, you should refrain from responding to alerts
-  even if you see them in Slack or elsewhere. By doing so, you can reduce
-  your own interrupts. However, if you believe you might be responsible,
-  or know the on-call person is dealing with another higher-priority issue
-  and want to assist, *let the on-call engineer know* and then make sure
-  you take ownership of the alert in PagerDuty. Remember that they likely
-  already got the alert notification and make sure they have acknowledged
-  that you will be taking care of the alert before taking action, so that
-  you are not working at cross-purposes.
-* You should make sure that you are keeping a persistent record of alerts
-  and/or incidents each day. This can be as simple as a Google Doc filled
-  out at the end of the day, but it should record at least the time of the
-  alert, the alert that fired, and what was done to address the alert (even
-  if that is "the alert went away on its own"). This serves as a way to
-  pass knowledge onto the other on-call engineers or the next shift, and
-  allows us to look at the previous week or month for alerts that are
-  particularly troublesome.
-
 ## On-Call Rotations
 
 An on-call rotation consists of a pool of engineers who share a schedule
@@ -118,6 +58,66 @@ that determines who is on-call at any one time.
   engineers are recommended to have PagerDuty notify them 24 hours before
   going on call so they are aware of their impending shift.
 
+## On-Call Responsibilities
+
+If you are the engineer on-call, you have a number of responsibilities
+you are expected to fulfill.
+
+* Prior to going on-call, you should make sure that you have access to
+  any resources necessary to diagnose and correct issues -- this means
+  AWS or GitHub, documentation, or any other tools. Your project should
+  have an on-call checklist to make it easy for you to be confident you
+  have this covered.
+* If you know you will be away for an extended period during an on-call
+  shift, it is *your* responsibility to find someone to cover your shift.
+  If you are unable to, talk to your lead and see if they can help.  If
+  you will be gone for more than a day or two, it may be easiest to swap
+  the entire shift with someone. PagerDuty allows you to schedule these
+  with [overrides](https://community.pagerduty.com/t/creating-a-schedule-override/850).
+* When you are paged, you are expected to respond to the alert within
+  five minutes. This means that you have *acknowledged* the alert and are
+  looking into the issue. Acknowledging the alert prevents it from
+  automatically escalating (see [Escalation and Notification
+  Policies](./README.md#escalation-and-notification-policies) for
+  more information) and communicates that you are working on the issue.
+  Do not forget to do this before you start working; there's nothing
+  worse than getting a page as a secondary at an odd hour only to find
+  that someone else is already taking care of the problem. While this five
+  minute window may seem tight, alerts should be well-tuned so that you
+  are not paged for things which are not urgent (see [Project
+  Expectations](./README.md#project-expectations)).
+* The response time expectation does mean that your flexibility to take
+  care of things away from internet access will be curtailed while on-call,
+  but we want to reduce that burden as much as possible. If you need to
+  run a quick errand, or if an emergency comes up, or you will be in
+  transit for an extended period, you should notify your secondary (or
+  your primary, if you are the secondary) and make sure they will be able
+  to cover for you while you are away.
+* Despite the expectation you will be the first responder as the person
+  on-call, *this does not mean you are expected to go it alone*. If you
+  get an alert, and you can't figure out what is going on within 15
+  minutes and you believe the impact is such that it needs to be addressed
+  immediately, you should feel free to page your secondary for assistance.
+  If you are still stuck (or you *were* the secondary), you should feel
+  free to call upon your lead or a known subject matter expert (SME).
+* If you are *not* on-call, you should refrain from responding to alerts
+  even if you see them in Slack or elsewhere. By doing so, you can reduce
+  your own interrupts. However, if you believe you might be responsible,
+  or know the on-call person is dealing with another higher-priority issue
+  and want to assist, *let the on-call engineer know* and then make sure
+  you take ownership of the alert in PagerDuty. Remember that they likely
+  already got the alert notification and make sure they have acknowledged
+  that you will be taking care of the alert before taking action, so that
+  you are not working at cross-purposes.
+* You should make sure that you are keeping a persistent record of alerts
+  and/or incidents each day. This can be as simple as a Google Doc filled
+  out at the end of the day, but it should record at least the time of the
+  alert, the alert that fired, and what was done to address the alert (even
+  if that is "the alert went away on its own"). This serves as a way to
+  pass knowledge onto the other on-call engineers or the next shift, and
+  allows us to look at the previous week or month for alerts that are
+  particularly troublesome.
+
 ## Escalation and Notification Policies
 
 In PagerDuty terms, an escalation policy determines how an alert will
@@ -133,8 +133,9 @@ be notified if they receive an alert.
 * Engineers should have notification policies set to ensure that they
   will be notified within the expect five minute response window. This
   should use multiple notification methods to make sure things don't fall
-  through the cracks. Keep in mind that an acknowledgement will break the
-  notification chain. An example might be:
+  through the cracks; at least one method should notify you immediately
+  that the alert has fired. Keep in mind that an acknowledgement will break
+  the notification chain. An example might be:
   * Immediately after the alert, notify me by push notification and email.
   * 1 minute later, notify via SMS (in case data coverage is bad).
   * 5 minutes after the alert, notify via voice call.
