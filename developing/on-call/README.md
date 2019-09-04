@@ -108,7 +108,7 @@ you are expected to fulfill.
   you take ownership of the alert in PagerDuty. Remember that they likely
   already got the alert notification and make sure they have acknowledged
   that you will be taking care of the alert before taking action, so that
-  you are not working at cross-purposes.
+  you are not working at cross-purposes or duplicating work.
 * You should make sure that you are keeping a persistent record of alerts
   and/or incidents each day. This can be as simple as a Google Doc filled
   out at the end of the day, but it should record at least the time of the
