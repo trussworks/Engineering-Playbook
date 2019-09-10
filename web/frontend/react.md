@@ -25,12 +25,18 @@ Style Guides:
 - [Example 1](https://github.com/airbnb/javascript)
 - [Example 2](https://github.com/airbnb/javascript/tree/master/react)
 
+[The ReactJS Controller View Pattern](http://blog.andrewray.me/the-reactjs-controller-view-pattern/)
+
 ## Tutorials
 
+[React.js Tutorial Pt 1: A Comprehensive Guide to Building Apps with React.js](http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
 [Tyler McGinnis](https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
 [Sitepoint](http://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js/)
 [The Superhero battler app](http://blog.krawaller.se/posts/a-react-redux-example-app/)
 [Teropa](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
+[React Tutorial Using the MERN Stack](https://hashnode.com/post/react-tutorial-using-mern-stack-ciiyus9m700qqge53mer0isxz)
+[Full Stack Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
+[React & Flux](http://survivejs.com/webpack_react/react_and_flux/)
 
 Resources for above tutorials:
 
