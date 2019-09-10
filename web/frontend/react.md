@@ -96,9 +96,8 @@ A little on [React’s test utilities](https://facebook.github.io/react/docs/tes
 - Lets you simulate clicks, enter and submit text in an input field, find components that have particular class names, tags,  types,
 - Shallow rendering lets you render components one level deep without worrying about child components.
 
-## Jasmine
+## [Jasmine](http://jasmine.github.io/)
 
-[Official site](http://jasmine.github.io/)
 [Jasmine Testing](http://revelry.co/react-testing-with-jasmine/)
 
 - Seems to be the most widely used, certainly a standard in front-end testing
@@ -110,9 +109,8 @@ A little on [React’s test utilities](https://facebook.github.io/react/docs/tes
 
 Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [React Using Jasmine and Webpack](https://egghead.io/lessons/react-unit-testing-a-react-component-using-jasmine-and-webpack)
 
-## Karma
+## [Karma](http://karma-runner.github.io/0.13/index.html)
 
-[Official site](http://karma-runner.github.io/0.13/index.html)
 [Karma Testing](https://www.toptal.com/react/how-react-components-make-ui-testing-easy)
 
 - **Test runner** (uses multiple external testing frameworks)
@@ -124,21 +122,18 @@ Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [
 - Emulates multiple browsers
 - Integrates with a number of CIs and other JS frameworks
 
-## Enzyme
+## [Enzyme](https://github.com/airbnb/enzyme)
 
-[Official site](https://github.com/airbnb/enzyme)
 [Documentation](https://github.com/airbnb/enzyme/blob/master/docs/guides/react-native.md)
-[With Jasmine](https://github.com/blainekasten/jasmine-enzyme)
 
+- [Use with Jasmine](https://github.com/blainekasten/jasmine-enzyme)
 - Made for React
 - Works with Karma and other test runners
 - Shallow and full DOM rendering
 - Uses the same modules (`<TodoList />`, etc.) involved in rendering to run the tests, no translation or alteration needed
 - Could be a good addition to Jasmine if we elect to use Karma
 
-## Jest
-
-[Official site](https://facebook.github.io/jest/)
+## [Jest](https://facebook.github.io/jest/)
 
 - Facebook’s own testing suite
 - Facebook would like you to use it
@@ -146,9 +141,7 @@ Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [
 - Doesn’t support running in multiple browsers
 - Good reasons why not [here:](https://www.toptal.com/react/how-react-components-make-ui-testing-easy)
 
-## Mocha
-
-[Official site](http://mochajs.org)
+## [Mocha](http://mochajs.org)
 
 - Test framework running on Node.js and in the browser
 - Asynchronous testing
@@ -157,9 +150,8 @@ Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [
 before() and after() hooks reminiscent of setup and teardown in Xcode
 - Nyan reporter (yep)
 
-## Chutzpah
+## [Chutzpah](http://mmanela.github.io/chutzpah/)
 
-[Official site](http://mmanela.github.io/chutzpah/)
 [Documentation](https://github.com/mmanela/chutzpah/wiki)
 
 - Test runner which enables you to run unit tests using QUnit, Jasmine, Mocha, CoffeeScript and TypeScript
