@@ -21,8 +21,9 @@ Module Bundler: [Webpack](https://webpack.github.io/)
 [Babel Loader](https://github.com/babel/babel-loader)
 
 Style Guides:
-[Example 1](https://github.com/airbnb/javascript)
-[Example 2](https://github.com/airbnb/javascript/tree/master/react)
+
+- [Example 1](https://github.com/airbnb/javascript)
+- [Example 2](https://github.com/airbnb/javascript/tree/master/react)
 
 ## Tutorials
 
