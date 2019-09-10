@@ -1,6 +1,4 @@
-## Overview
-
-Building a React App from Scratch
+# Building a React App from Scratch
 
 ## Tools
 
@@ -65,13 +63,13 @@ Other good articles
 Breanne’s recommendation, after research
 Either Jasmine on its own, or Karma. Here’s why: 
 
-# Jasmine alone
+### Jasmine alone
 - Jasmine is an incredibly common standard, and we’d gain a lot by learning to use it
 - Flexible; works directly with a number of JS libraries and with others with a little adaptation work
 - Lovely, clear, and abundant documentation
 - Getting help, either online or within Truss, would probably be fairly straightforward
 
-# Karma, integrating Jasmine and possibly other test frameworks
+### Karma, integrating Jasmine and possibly other test frameworks
 - Allows us to learn to use three different testing frameworks (Jasmine, Mocha, and QUnit), with the option of writing an adapter for any other framework we’d like
 - Tests on multiple browsers and devices
 - Lets you use React import syntax
