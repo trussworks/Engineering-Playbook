@@ -112,9 +112,9 @@ Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: (
 (https://www.toptal.com/react/how-react-components-make-ui-testing-easy)  
 (http://karma-runner.github.io/0.13/index.html) 
 
-- Test runner (uses multiple external testing frameworks)
+- **Test runner** (uses multiple external testing frameworks)
 - Describe your tests with Jasmine, Mocha, QUnit, or write a simple adapter for any framework
-- Uses the same modules (<TodoList />, etc.) involved in rendering to run the tests, no translation or alteration needed
+- Uses the same modules (`<TodoList />`, etc.) involved in rendering to run the tests, no translation or alteration needed
 - Run from the command line
 - Test your code on real browsers and real devices such as phones, tablets or on a headless PhantomJS instance.
 - Most tests render, find a specific node, and test the contents
