@@ -1,5 +1,7 @@
 # Building a React App from Scratch
 
+**This is a WIP: Updated Recommendations Coming Soon!**
+
 ## Tools
 
 View Layer: [React](https://facebook.github.io/react/)
