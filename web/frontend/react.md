@@ -13,7 +13,7 @@ Web Framework: [Express](http://expressjs.com/)
 Linter: [ESLint](https://github.com/eslint/eslint)
 
 React Source Code Examples:
-(https://react.rocks/tag/Bootstrap)
+- (https://react.rocks/tag/Bootstrap)
 
 Module Bundler: [Webpack](https://webpack.github.io/)
 [ESLint Loader](https://github.com/MoOx/eslint-loader)
@@ -31,19 +31,19 @@ Style Guides:
 (http://blog.krawaller.se/posts/a-react-redux-example-app/)
 (http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 
-Resources for tutorials:
-JSX
-(https://facebook.github.io/react/docs/jsx-in-depth.html)
-(https://facebook.github.io/react/docs/jsx-gotchas.html) 
-(https://jsx.github.io/)
+Resources for above tutorials:
+- JSX
+  - (https://facebook.github.io/react/docs/jsx-in-depth.html)
+  - (https://facebook.github.io/react/docs/jsx-gotchas.html) 
+  - (https://jsx.github.io/)
 
-Virtual DOM
-(http://jbi.sh/what-is-virtual-dom/) 
-(https://facebook.github.io/react/docs/glossary.html)
+- Virtual DOM
+  - (http://jbi.sh/what-is-virtual-dom/) 
+  - (https://facebook.github.io/react/docs/glossary.html)
 
-React Router
-(https://github.com/reactjs/react-router)
-(https://www.themarketingtechnologist.co/react-router-an-introduction/)
+- React Router
+  - (https://github.com/reactjs/react-router)
+  - (https://www.themarketingtechnologist.co/react-router-an-introduction/)
 
 Key Javascript Concepts
 [Scope & Context](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
