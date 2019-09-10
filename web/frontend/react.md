@@ -26,7 +26,7 @@ Style Guides:
 
 ## Tutorials
 
-(tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
+(https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
 (http://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js/)
 (http://blog.krawaller.se/posts/a-react-redux-example-app/)
 (http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
