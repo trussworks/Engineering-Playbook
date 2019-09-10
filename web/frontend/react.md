@@ -89,8 +89,8 @@ A little on React’s test utilities
 - Seems to be the most widely used, certainly a standard in front-end testing
 - Readable, easy-to-interpret function names
 - Does not have instructions or helper code specifically for React/Redux, but does for many other JS libraries. The other instructions may be enough, but we might end up doing more tailoring to work with it than we would with, say, Karma. 
-- However: (http://revelry.co/react-testing-with-jasmine/react-addons-test-utils)
-- And this repo lets you use Jasmine with the more typical React syntax for creating components: (https://github.com/tommyh/jasmine-react) 
+  - However: (http://revelry.co/react-testing-with-jasmine/react-addons-test-utils)
+  - And this repo lets you use Jasmine with the more typical React syntax for creating components: (https://github.com/tommyh/jasmine-react) 
 -Seems to be a pretty standard tool, so we might benefit from using it in learning a more transferrable skill
 
 Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: (https://egghead.io/lessons/react-unit-testing-a-react-component-using-jasmine-and-webpack)
