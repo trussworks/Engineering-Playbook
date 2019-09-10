@@ -10,6 +10,7 @@ Best practices tl;dr:
 * Use [shellcheck](https://shellcheck.net)
 * Don't copy & paste code from Google or StackExchange unless you fully understand it
 * Keep your bash version up to date with your package manager (e.g. `brew install bash` and routinely running `brew upgrade`), or stick to whatever version your team has agreed to standardize on (e.g. `brew pin bash`). However, be aware that behavior of bash code can vary slightly between different versions of the interpreter.
+* Consolidate your bash profiles into a single `~/.bashrc` file to streamline machine instructions affecting your `PATH` environment variables.
 
 ## Debugging
 
@@ -37,6 +38,17 @@ Shell programming is deceptively perilous (see [Bash Pitfalls](https://mywiki.wo
 * [Don't](https://mywiki.wooledge.org/DontReadLinesWithFor) iterate through lines in a stream with `for`.
 * Prefer `[[` to `[`: `[[` is a bash extension that is a strict upgrade over `[`.
 
+## PATH
+
+* `PATH` is a shortcut to a certain location on your machine, which you can view by typing `echo $PATH` in the terminal. To oversimplify, a `PATH` is an environment variable which consists of a list of directories. Adding a `PATH` to your `bash` profile will give your machine direct instructions on where to look for a certain program.
+* One of several files can affect how your machine searches for a given `PATH`, listed in the order a Mac searches for them:
+
+  * `~/.bashrc` (read on every new shell, so looked at far more often)
+  * `~/.bash_profile` (read only on login)
+  * `~/.profile`
+
+* If you have multiple files affecting your `PATH`, consider consolidating them into one `/.bashrc` and deleting the others. Next, organize each `PATH` directory in your `~/.bashrc` from most-used to least-used to maximize readability.
+
 ## Resources
 
 * The bash man page: `man bash`
@@ -45,3 +57,5 @@ Shell programming is deceptively perilous (see [Bash Pitfalls](https://mywiki.wo
 * [Bash FAQ](http://mywiki.wooledge.org/BashFAQ)
 * [Bash Pitfalls](https://mywiki.wooledge.org/BashPitfalls)
 * [Bash-Hackers Wiki](http://wiki.bash-hackers.org/)
+* [Path Variables](https://truss.works/blog/2016/2/26/engineer-how-to-access-and-edit-your-path-system-variable)
+* [CLI Navigation Shortcuts](https://www.gnu.org/software/bash/manual/bash.html#Introduction-and-Notation)
