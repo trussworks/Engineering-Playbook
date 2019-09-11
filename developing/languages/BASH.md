@@ -47,7 +47,7 @@ Shell programming is deceptively perilous (see [Bash Pitfalls](https://mywiki.wo
   * `~/.bash_profile` (read only on login)
   * `~/.profile`
 
-* If you have multiple files affecting your `PATH`, consider consolidating them into one `/.bashrc` and deleting the others. Next, organize each `PATH` directory in your `~/.bashrc` from most-used to least-used to maximize readability.
+* If you have multiple files affecting your `PATH`, consider consolidating them into one `/.bashrc` and deleting the others. Next, organize each `PATH` directory in your `~/.bashrc` from most-used to least-used to maximize efficiency.
 
 ## Resources
 
