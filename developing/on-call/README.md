@@ -17,6 +17,19 @@ recommendations can be adapted for them. You can read more about various
 alerting providers in the [Alert Providers](../../infra/alerting/alert-providers.md)
 guide.
 
+## Definition of Terms
+
+* **Notification**: A notification is message generated, usually by an
+  automated system, which is intended to make people *actively* aware
+  of something (as opposed to a simple log message, is which is merely
+  meant to record activity for later analysis if necessary). This is
+  generally some change in system state -- a deploy has begun or
+  completed, a region has been removed from receiving traffic, etc.
+* **Alert**: An alert is a type of notification which demands *an
+  immediate, active response*. These are generally more targeted, going
+  to a smaller subset of on-call engineers, and are usually delivered
+  via a method that requires acknowledgement.
+
 ## On-Call Rotations
 
 An on-call rotation consists of a pool of engineers who share a schedule
@@ -139,6 +152,11 @@ be notified if they receive an alert.
   * Immediately after the alert, notify me by push notification and email.
   * 1 minute later, notify via SMS (in case data coverage is bad).
   * 5 minutes after the alert, notify via voice call.
+  These timings are an example, and should be used as a starting point;
+  they assume a service which requires high availability. The expectation
+  for your service may be different -- making a decision around your
+  response expectations should be a combined effort between product,
+  engineering, and the customer.
 * Your on-call rotation should have an escalation policy that escalates
   from the primary to secondary after no more than 10 minutes, and from
   secondary to tertiary after no more than an additional 10 minutes.
@@ -159,7 +177,7 @@ ensure that on-call is not an undue burden.
   day*, and even that is bordering on excessive, especially if these are
   off-hours. Optimally, this should be no more than 2-3 alerts *per shift*.
   If the on-call burden for that rotation is higher than that, there
-  should be an understanding across engineering and product that engineering
+  should be an understanding across engineering and product that project
   time needs to be devoted to reducing the on-call burden. This could mean
   relaxing SLOs or tuning alert thresholds, but it may also mean a deeper
   investigation, bug fixing, or code and/or infra improvements to prevent
