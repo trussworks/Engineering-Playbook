@@ -99,7 +99,7 @@ you are expected to fulfill.
   minutes and you believe the impact is such that it needs to be addressed
   immediately, you should feel free to page your secondary for assistance.
   If you are still stuck (or you *were* the secondary), you should feel
-  free to call upon your lead or a known subject matter expert (SME).
+  free to call upon the tertiary or a known subject matter expert (SME).
 * If you are *not* on-call, you should refrain from responding to alerts
   even if you see them in Slack or elsewhere. By doing so, you can reduce
   your own interrupts. However, if you believe you might be responsible,
@@ -131,7 +131,7 @@ be notified if they receive an alert.
   will also allow engineers to acknowledge or resolve alerts from Slack
   if they so choose.
 * Engineers should have notification policies set to ensure that they
-  will be notified within the expect five minute response window. This
+  will be notified within the expected five minute response window. This
   should use multiple notification methods to make sure things don't fall
   through the cracks; at least one method should notify you immediately
   that the alert has fired. Keep in mind that an acknowledgement will break
