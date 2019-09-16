@@ -48,6 +48,30 @@ provides some specifics to web development.
   If you find that an unexported function is complex and needs testing,
   it might mean it needs to be refactored as it's exported function elsewhere.
 
+## Packages
+
+### Prefer Standard Libraries
+
+In general,
+when selecting new packages,
+highly consider standard libraries over third party dependencies.
+One of the strengths of Go
+is its core packages,
+such as http, json, and sql.
+These libraries also use vocabulary and patterns
+easily accessible via popular public Go resources,
+which are often translatable to modern programming approaches
+in their respective areas.
+This creates an easier bridge
+for Engineers new to Go
+or domain areas (such as relational databases)
+to adjust and onboard.
+
+Since the third party ecosystem is still new,
+many packages tend to be immature with little community support,
+follow opinionated patterns inconsistent with Go idioms,
+or lack long term support.
+
 ## Time
 
 ### Clock Dependency
