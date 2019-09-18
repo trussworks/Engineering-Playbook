@@ -82,11 +82,12 @@ If the integration tests become complex,
 it's a good indicator that the application logic for that handler
 is due for a refactor.
 
-Unit testing handlers often involves mocking service layers.
+Unit testing handlers often involves mocking
+[service layers](#services).
 From there,
 they will answer the question of:
-given a set of service layer responses,
-what response does the handler return.
+"given a set of service layer responses,
+what response does the handler return?"
 This verifies the response/request responsibilities of the handler,
 and can be used to test edge cases with little test performance impact.
 
@@ -233,7 +234,7 @@ Note that in many cases when writing Go code,
 we'd set parameters like these as unexported
 to avoid invalid state changes,
 however this isn't possible due to required exposure
-by DB/JSON packages that will use the models.
+by DB/JSON packages that will use the model's public fields.
 
 We've continued to separate any DB concerns
 to outside the model.
@@ -359,7 +360,7 @@ Our handler may look something like this:
 ```go
 package handlers
 
-type CalculateCutenessScore func(dogID uuid.UUID) (int, error)
+type CalculateCutenessScore = func(dogID uuid.UUID) (int, error)
 
 type getCutenessScoreHandler struct {
     calculateCutenessScore CalculateCutenessScore
@@ -428,7 +429,9 @@ to the `services` package.
 It returns a function that can calculate cuteness for a given dog ID.
 The dependencies, like the `Database` connector,
 are passed into the function generator and hidden from the return value.
-Notice how this piece is independent of the definition in the handler.
+
+Notice how this definition is independent of the definition in the handler
+(in a different package).
 The handler only needs to know what is required to return a score,
 it does *not* need to know how.
 Developing the implementation independently
@@ -442,8 +445,8 @@ it's segmented to the service function/package.
 Likewise, if we want to use a new DB connector,
 the dependency for the service will change,
 but the handler will be agnostic to that difference.
-Also, if we reuse the calculator elsewhere,
-it will not have to be updated sparsely across the handlers codebase.
+If we reuse the calculator elsewhere,
+changes will not have to be updated sparsely across the handlers codebase.
 
 #### Testing Services
 

@@ -57,7 +57,10 @@ when selecting new packages,
 highly consider standard libraries over third party dependencies.
 One of the strengths of Go
 is its core packages,
-such as http, json, and sql.
+such as
+[http](https://golang.org/pkg/net/http/),
+[json](https://golang.org/pkg/encoding/json/),
+and [sql](https://golang.org/pkg/database/sql/).
 These libraries also use vocabulary and patterns
 easily accessible via popular public Go resources,
 which are often translatable to modern programming approaches
@@ -71,6 +74,8 @@ Since the third party ecosystem is still new,
 many packages tend to be immature with little community support,
 follow opinionated patterns inconsistent with Go idioms,
 or lack long term support.
+Be aware that choosing a new package
+is likely to involve contributing to its upkeep.
 
 ## Time
 
