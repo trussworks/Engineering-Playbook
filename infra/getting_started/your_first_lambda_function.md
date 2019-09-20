@@ -8,7 +8,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
 
 * You're at least on macOS Mojave 10.14
 * You have the following installed on your machine:
-  * Terraform
+  * Terraform 0.12
   * AWS CLI
   * Go
 * You have an AWS account.
@@ -85,7 +85,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
         function_name = "hello-world-test"
         role             = "${aws_iam_role.lambda_hello_world_test_policy_<INSERT YOUR ALIAS HERE>.arn}"
         handler          = "main"
-        source_code_hash = "${base64sha256(file("main.zip"))}"
+        source_code_hash = "${filebase64sha256("main.zip")}"
         runtime          = "go1.x"
     }
     ```
@@ -109,7 +109,7 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
         name = "lambda-hello-world-test-policy-<INSERT YOUR ALIAS HERE>"
 
         assume_role_policy = <<EOF
-      {
+    {
       "Version": "2012-10-17",
       "Statement": [
           {
@@ -121,8 +121,8 @@ This tutorial focuses on deploying a "Hello, World" Go program as a Lambda funct
           "Sid": ""
           }
         ]
-      }
-        EOF
+    }
+    EOF
     }
     ```
 
