@@ -13,7 +13,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 * Swift
 * Rust
 * Kotlin
-* Ruby
+* [Ruby](./ruby/README.md)
 * Python
 * Java
 * C/C++
