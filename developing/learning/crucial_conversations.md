@@ -1,4 +1,4 @@
-# [Books](./README.md) / "Crucial Conversations"
+# [Learning Resources](./README.md) / "Crucial Conversations"
 
 _Crucial Conversations_ "gives you the tools to prepare for high-stakes conversations, transform anger and hurt feelings into powerful dialogue, and make it safe to talk about almost anything".
 

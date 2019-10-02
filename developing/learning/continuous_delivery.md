@@ -1,4 +1,4 @@
-# [Books](./README.md) / "Continuous Delivery"
+# [Learning Resources](./README.md) / "Continuous Delivery"
 
 _Continuous Delivery_ is yet another text that was very influential at the beginning of the DevOps movement, and continues to be a rich resource for modern software delivery.
 
