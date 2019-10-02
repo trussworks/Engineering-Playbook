@@ -21,4 +21,4 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 * [Code Reviews](./code-reviews/README.md)
 * [On-Call Best Practices](./on-call/README.md)
 * [Slack Best Practices](./slack/README.md)
-* [Books](./books/README.md)
+* [Learning Resources](./learning/README.md)
