@@ -15,10 +15,10 @@ Being part of the Engineering Playbook, these suggestions may skew towards more 
 Reminder: Trussels can use their [monthly employee effectiveness budget](https://docs.google.com/document/d/1hvie-sPwZgOw8U7W2qmCk6dzWf7TYX28_CRfFCWL_FI/edit) to get learning materials.
 
 In addition to hard-copy books, there are several options for accessing digital books, audiobooks, videos, courses, etc.:
+
 * [O'Reilly Online Learning](https://www.oreilly.com/online-learning/individuals.html) (fka Safari Books Online)
 * [Scribd](https://www.scribd.com/)
 * [Audible](https://www.audible.com/)
-
 
 ## Contents
 
