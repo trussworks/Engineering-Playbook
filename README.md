@@ -23,6 +23,5 @@ One question we might ask is whether or not this repo should be public? My incli
 ### Install Dependencies(Mac OS)
 
     brew update
-    brew install npm pre-commit
-    npm install -g markdownlint-cli
+    brew install pre-commit
     pre-commit install
