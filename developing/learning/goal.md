@@ -1,6 +1,6 @@
 # [Learning Resources](./README.md) / "The Goal"
 
-_The Goal_ is has been an influential business book since the 1980's, looking at the delivery of value via the "Theory of Constraints". This view has also been useful in conceptualizing how value is delivered in software.
+_The Goal_ has been an influential business book since the 1980's, looking at the delivery of value via the "Theory of Constraints". This view has also been useful in conceptualizing how value is delivered in software.
 
 There are several versions available, one of the most interesting is done as a "Business Graphic Novel".
 
