@@ -71,11 +71,20 @@ or domain areas (such as relational databases)
 to adjust and onboard.
 
 Since the third party ecosystem is still new,
-many packages tend to be immature with little community support,
+packages may have little community support,
 follow opinionated patterns inconsistent with Go idioms,
 or lack long term support.
-Be aware that choosing a new package
-is likely to involve contributing to its upkeep.
+When choosing a third party package,
+carefully weigh the cost adoption and support contributions.
+Document the decision
+and any shortcomings of a comparable standard library
+along with a rollback plan.
+
+### Third Party Packages
+
+Some examples of third party packages we've found to be helpful and stable are:
+
+* [sqlx](https://github.com/jmoiron/sqlx) for SQL querying and struct marshalling
 
 ## Time
 
