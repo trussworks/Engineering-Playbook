@@ -265,6 +265,10 @@ func DeactiveOwner(owner Owner) error {
 
 Separating the database concerns from the model
 allows us to interact with them separate of the data structure concerns.
+Since models have to be passed via `struct` to marshall their fields
+and are commonly used across codebase layers,
+adding too many methods and dependencies
+can cause excessive package imports across the codebase.
 For example,
 if we wanted to use a locking feature specific to Postgres
 or our database connector library,
