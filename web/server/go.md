@@ -54,7 +54,7 @@ type getDogHandler struct {
 func (h *getDogHandler) handleGetDog(w http.ResponseWriter, r *http.Request) {
     // the only work here is getting params
     // the marshalling likely would be delegated to a middleware in production
-    p := dogGetParams(w)
+    p := dogGetParams(r)
 
     // offload querying to a service `fetchDog`
     dog, err := h.fetchDog(p.DogID)
@@ -370,7 +370,7 @@ type getCutenessScoreHandler struct {
 
 func (h *getCutenessScoreHandler) handleGetCutenessScore(w http.ResponseWriter, r *http.Request) {
     // like above we've deferred marshalling for this example
-    p := dogGetParams(w)
+    p := dogGetParams(r)
 
     // offload calculation to service function
     score, err := h.calculateCutenessScore(p.DogID)
