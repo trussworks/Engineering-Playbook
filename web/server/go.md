@@ -433,6 +433,10 @@ to the `services` package.
 It returns a function that can calculate cuteness for a given dog ID.
 The dependencies, like the `Database` connector,
 are passed into the function generator and hidden from the return value.
+This return function, along with its dependencies,
+is created when the server is configured.
+The constructor will be called once,
+whereas the returned function will be called per request.
 
 Notice how this definition is independent of the definition in the handler
 (in a different package).
@@ -451,6 +455,13 @@ the dependency for the service will change,
 but the handler will be agnostic to that difference.
 If we reuse the calculator elsewhere,
 changes will not have to be updated sparsely across the handlers codebase.
+
+Be careful when defining pointers or values in the service functions.
+Pointers in a closure can create concurrency concerns between handlers
+or any multi-threaded code within them.
+On the flip side,
+using values could create excessive memory usage
+if a service function is called repetitively.
 
 #### Testing Services
 
