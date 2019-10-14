@@ -21,6 +21,9 @@ provides some specifics to web development.
 * Advanced Testing with Go
   [Video](https://www.youtube.com/watch?v=yszygk1cpEc)
   and [Article](https://about.sourcegraph.com/go/advanced-testing-in-go) (great overview of useful techniques, useful for all Go programmers)
+* [Go Proverbs](https://go-proverbs.github.io/)
+* [Line of Sight Go](https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88)
+* [Go for Industrial Programming](https://peter.bourgon.org/go-for-industrial-programming/)
 
 ### Tours/Lessons
 
@@ -33,9 +36,11 @@ provides some specifics to web development.
 
 ### General
 
-* Use table-driven tests where appropriate.
+* Use [table-driven tests](https://dave.cheney.net/2019/05/07/prefer-table-driven-tests) where appropriate.
 * Make judicious use of helper functions so that the intent of a test is not lost in a sea of error checking and boilerplate.
-  Use [`t.Helper()`](https://golang.org/pkg/testing/#T.Helper) in your test helper functions to keep stack traces clean.
+* Comments delineating the [3](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80) or [4](https://thoughtbot.com/blog/four-phase-test) phases of your tests can help with comprehension.
+* Use [`t.Helper()`](https://golang.org/pkg/testing/#T.Helper) in your test helper functions to keep stack traces clean.
+* Use [`t.Parallel()`](https://rakyll.org/parallelize-test-tables/) to speed up tests.
 
 ### Coverage
 
