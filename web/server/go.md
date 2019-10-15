@@ -91,6 +91,12 @@ what response does the handler return?"
 This verifies the response/request responsibilities of the handler,
 and can be used to test edge cases with little test performance impact.
 
+#### Composing Handlers
+
+Handlers, and middlewares more generally, can greatly benefit from being written as ["adapters"](https://medium.com/@matryer/the-http-handler-wrapper-technique-in-golang-updated-bc7fbcffa702). You can then compose very complex flows out of many smaller parts, which is really just another expression of the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy).
+
+When building adapters, please ensure the signature of the returned type is `http.Handler`, even if the underlying implementation is an `http.HandlerFunc`... All `http.HandlerFunc`s are `http.Handler`s, but not all `http.Handler`s are `http.HandlerFunc`s.
+
 ### Models
 
 Put simply, models describe data.
@@ -511,3 +517,5 @@ or should be used throughout all of them.
 ### Resources
 
 * [GopherCon 2019: Mat Ryer - How I Write HTTP Web Services after Eight Years](https://www.youtube.com/watch?v=rWBSMsLG8po&feature=youtu.be)
+* [Loggers are dependencies](https://peter.bourgon.org/go-best-practices-2016/#top-tip-10)
+* [Context as first argument](https://blog.golang.org/context)
