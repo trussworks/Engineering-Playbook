@@ -91,6 +91,10 @@ Some examples of third party packages we've found to be helpful and stable are:
 
 * [sqlx](https://github.com/jmoiron/sqlx) for SQL querying and struct marshalling
 
+If you're exploring a new package,
+[Awesome Go](https://awesome-go.com/)
+is a good place to start.
+
 ## Time
 
 ### Clock Dependency
