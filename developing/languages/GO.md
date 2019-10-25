@@ -89,7 +89,13 @@ along with a rollback plan.
 
 Some examples of third party packages we've found to be helpful and stable are:
 
-* [sqlx](https://github.com/jmoiron/sqlx) for SQL querying and struct marshalling
+* [sqlx](https://github.com/jmoiron/sqlx)
+  for SQL querying and struct marshalling.
+* [cobra/pflag/viper](https://github.com/spf13/cobra)
+  for writing command line utilities.
+* [testify](https://github.com/stretchr/testify)
+  for some testing helpers,
+  especially its `suite` package
 
 If you're exploring a new package,
 [Awesome Go](https://awesome-go.com/)
