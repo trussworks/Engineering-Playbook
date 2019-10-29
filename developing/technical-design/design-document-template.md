@@ -1,8 +1,8 @@
 # Title
 
-Contributors:
-Proposal Date:
-Feedback Accepted Until:
+* Contributors:
+* Proposal Date:
+* Feedback Accepted Until:
 
 ## Overview
 
