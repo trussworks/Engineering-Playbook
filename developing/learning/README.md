@@ -27,3 +27,4 @@ In addition to hard-copy books, there are several options for accessing digital 
 * [The Goal](./goal.md)
 * [Radical Candor](./radical_candor.md)
 * [Release It!](./release_it.md)
+* [The Effective Engineer](./the_effective_engineer.md)
