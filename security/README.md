@@ -6,4 +6,4 @@ Security is hard and easy to get wrong. Do not, under any circumstances: a) writ
 
 ## Contents
 
-Please add some
+[Yubikey Configuration Guide](./yubikey-configuration.md)
