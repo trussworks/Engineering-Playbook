@@ -146,6 +146,8 @@ The default state shows **Sign Encrypt** active.
 
 Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
+![Sign Select Authenticate](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-select-authenticate.png "default state")
+
 * Hit `Q` to finish.
 * Specify the size of the key that you want to generate. Do one of the following:
   * For a YubiKey 4 series, enter 2048 and press Enter
