@@ -79,20 +79,20 @@ The YubiKey ships with a default User PIN of `123456` and a default Admin PIN of
 
 The User PIN is the PIN that will be used on a daily basis when signing commits or authenticating. The Admin PIN is used to make changes to the YubiKey itself, such as when enabling or disabling touch-mode.
 
-1. Insert your YubiKey into the USB port.
-2. Enter the command: `gpg --card-edit`
-3. Enter the command: `admin`
-4. Enter the command: `passwd`
-5. To change the Admin PIN enter: `3`
-6. Enter the default PIN of `12345678`
-7. Enter your new 8 digit Admin PIN, add it to 1Password, and confirm it.
-8. To change the User PIN enter: `1`
-9. Enter the default PIN of `123456`
-10. Enter your new 6 digit User PIN, add it to 1Password, and confirm it.
-11. Enter the command: `q`
-12. Enter the command: `name`
-13. Enter your surname and given name (these should match the name provided when you generate your certificate)
-14. Enter the command `q` to exit the admin menu
+* Insert your YubiKey into the USB port.
+* Enter the command: `gpg --card-edit`
+* Enter the command: `admin`
+* Enter the command: `passwd`
+* To change the Admin PIN enter: `3`
+* Enter the default PIN of `12345678`
+* Enter your new 8 digit Admin PIN, add it to 1Password, and confirm it.
+* To change the User PIN enter: `1`
+* Enter the default PIN of `123456`
+* Enter your new 6 digit User PIN, add it to 1Password, and confirm it.
+* Enter the command: `q`
+* Enter the command: `name`
+* Enter your surname and given name (these should match the name provided when you generate your certificate)
+* Enter the command `q` to exit the admin menu
 
 If at any point you make a mistake and need to reset your YubiKey PIN(s), you can do so with the command: `ykman openpgp reset`
 
@@ -102,19 +102,17 @@ If at any point you make a mistake and need to reset your YubiKey PIN(s), you ca
 
 This will generate the secret key.
 
-1. Enter the GPG command: `gpg --expert --full-gen-key`
-2. When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter
-3. Specify the size of key you want to generate. This key size will also apply to subkey size. Do one of the following:
-
-* For a YubiKey 4 series, enter 2048 and press Enter
-* For a YubiKey 5 series, enter 4096 and press Enter
-
-4. Specify an indefinite expiration date of the key by pressing press Enter. Verify the expiration date when prompted
-5. Now you will enter your user information. Enter your Real Name and press Enter. Be sure to enter both your first and last name
-6. Enter your `@truss.works` Email Address and press Enter. If you do not perform commits with your @truss.works email address, we’ll add your GitHub email address to the key in a later step.
-7. If desired, enter a Comment about this key (e.g., “work”), and press Enter. (To leave the comment blank, just press Enter)
-8. Review the information you entered, make any changes if necessary. If all information is correct, enter O (for Okay) and press Enter
-9. A dialog box is displayed so you can enter the passphrase for your key. While the key is being generated, move your mouse around or type on the keyboard to gain enough entropy. When the key has been generated, you will see several messages displayed. Make a note of the key ID, that is displayed in the message such as `gpg: key 1234ABC marked as ultimately trusted`. The key ID in this case is 1234ABC and you will need this key ID to perform other operations.
+* Enter the GPG command: `gpg --expert --full-gen-key`
+* When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter
+* Specify the size of key you want to generate. This key size will also apply to subkey size. Do one of the following:
+  * For a YubiKey 4 series, enter 2048 and press Enter
+  * For a YubiKey 5 series, enter 4096 and press Enter
+* Specify an indefinite expiration date of the key by pressing press Enter. Verify the expiration date when prompted
+* Now you will enter your user information. Enter your Real Name and press Enter. Be sure to enter both your first and last name
+* Enter your `@truss.works` Email Address and press Enter. If you do not perform commits with your @truss.works email address, we’ll add your GitHub email address to the key in a later step.
+* If desired, enter a Comment about this key (e.g., “work”), and press Enter. (To leave the comment blank, just press Enter)
+* Review the information you entered, make any changes if necessary. If all information is correct, enter O (for Okay) and press Enter
+* A dialog box is displayed so you can enter the passphrase for your key. While the key is being generated, move your mouse around or type on the keyboard to gain enough entropy. When the key has been generated, you will see several messages displayed. Make a note of the key ID, that is displayed in the message such as `gpg: key 1234ABC marked as ultimately trusted`. The key ID in this case is 1234ABC and you will need this key ID to perform other operations.
 
 If at any point you forget the key ID, enter `gpg --list-signatures` to display it.
 
@@ -124,52 +122,43 @@ It’s time to add the subkeys. Some of these may already be created. You can ch
 
 This will be used for git commit and tag signing.
 
-1. Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
-2. Enter the command: `addkey`
-3. You are prompted to specify the type of key. Enter 4 for RSA (sign only)
-4. Specify the size of the key that you want to generate. Do one of the following:
-
-* For a YubiKey 4 series, enter 2048 and press Enter
-* For a YubiKey 5 series, enter 4096 and press Enter
-
-5. Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
-
-6. When prompted to save your changes, enter y (yes)
-
-* If prompted to replace the existing key, select no.
-
-7. Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
+* Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* Enter the command: `addkey`
+* You are prompted to specify the type of key. Enter 4 for RSA (sign only)
+* Specify the size of the key that you want to generate. Do one of the following:
+  * For a YubiKey 4 series, enter 2048 and press Enter
+  * For a YubiKey 5 series, enter 4096 and press Enter
+* Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
+* When prompted to save your changes, enter y (yes)
+  * If prompted to replace the existing key, select no.
+* Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
 
 ### Add an (A) authentication subkey
 
 This subkey will be used to pull private git repos via SSH and may be used to authenticate to any SSH host.
 
-1. Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
-2. Enter the command: `addkey`
-3. You are prompted to specify the type of key. Enter 8 for RSA
-4. To add an authentication key, toggle all options until Authenticate is the only selection, and then Q if you are finished.
+* Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* Enter the command: `addkey`
+* You are prompted to specify the type of key. Enter 8 for RSA
+* To add an authentication key, toggle all options until Authenticate is the only selection, and then Q if you are finished.
 
 This is interface has a unique design where you need to toggle things on and off to get the desired result.
 The default state shows **Sign Encrypt** active.
 
 Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
-5. Hit `Q` to finish.
-6. Specify the size of the key that you want to generate. Do one of the following:
-
-* For a YubiKey 4 series, enter 2048 and press Enter
-* For a YubiKey 5 series, enter 4096 and press Enter
-
-7. Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
-8. When prompted to save your changes, enter y (yes)
-
-* If prompted to replace the existing key, select no.
-
-9. Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
+* Hit `Q` to finish.
+* Specify the size of the key that you want to generate. Do one of the following:
+  * For a YubiKey 4 series, enter 2048 and press Enter
+  * For a YubiKey 5 series, enter 4096 and press Enter
+* Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
+* When prompted to save your changes, enter y (yes)
+  * If prompted to replace the existing key, select no.
+* Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
 
 ## Check Your Keys
 
-1. After adding the subkeys, enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* After adding the subkeys, enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
 
 The optimal output should look similar to this, showing an individual subkey for **E (Encrypt)**, **A (Authenticate)**, and **S (Sign)** in the YubiKey keychain.
 
@@ -183,21 +172,21 @@ These steps are optional and will help to configure a new YubiKey should yours b
 
 This will create a backup of the secret key and subkeys.
 
-1. Insert the YubiKey into the USB port
-2. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC >> /path/to/secret.key` (where 1234ABC is the key ID of your key)
-3. Enter the GPG command: `gpg --export-secret-subkeys >> /path/to/secret.sub.key --armor 1234ABC` (where 1234ABC is the key ID of your key)
-4. Store these files in 1Password and delete them from your system.
+* Insert the YubiKey into the USB port
+* Enter the GPG command: `gpg --export-secret-key --armor 1234ABC >> /path/to/secret.key` (where 1234ABC is the key ID of your key)
+* Enter the GPG command: `gpg --export-secret-subkeys >> /path/to/secret.sub.key --armor 1234ABC` (where 1234ABC is the key ID of your key)
+* Store these files in 1Password and delete them from your system.
 
 ### Create a revocation certificate (optional)
 
 This will allow you to revoke the key should your secret key becomes lost or compromised. This step is not required in our current use case because we’re not uploading our certificates to a public keyserver. This may be required for future use at some point, so we’ll leave this in place for the time being.
 
-1. Enter the command: `gpg --gen-revoke 1234ABC > 1234ABC-revoke-cert.asc` (where 1234ABC is the key ID of your key)
-2. Enter the command: `Y`
-3. Select a reason for revocation. The reason really doesn’t matter for our use case. I usually select 3 = Key is no longer used
-4. Enter an optional description, or hit enter to continue. This field is not important.
-5. Enter the command: `Y`
-6. Store this file in 1Password and delete it from your system.
+* Enter the command: `gpg --gen-revoke 1234ABC > 1234ABC-revoke-cert.asc` (where 1234ABC is the key ID of your key)
+* Enter the command: `Y`
+* Select a reason for revocation. The reason really doesn’t matter for our use case. I usually select 3 = Key is no longer used
+* Enter an optional description, or hit enter to continue. This field is not important.
+* Enter the command: `Y`
+* Store this file in 1Password and delete it from your system.
 
 ## Configuring the YubiKey
 
@@ -205,89 +194,87 @@ This will allow you to revoke the key should your secret key becomes lost or com
 
 This will _destructively_ move the secret key as well as the three subkeys to the YubiKey from the local keystore, via the `keytocard` command. In this case, _destructively_ is a good thing because it will require the YubiKey to be inserted to perform any of these functions.
 
-1. Insert the YubiKey into the USB port
-2. Enter the GPG command: `gpg --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
-3. Enter the command: `toggle` to switch to the public key listing (there will be no visible output)
-4. Enter the command: `key 1` (to select subkey 1)
+* Insert the YubiKey into the USB port
+* Enter the GPG command: `gpg --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* Enter the command: `toggle` to switch to the public key listing (there will be no visible output)
+* Enter the command: `key 1` (to select subkey 1)
 
-* The interface is not intuitive here. Typing key 1 will select the first subkey (ssb). An * next to the key will indicate that it has been selected:
+ The interface is not intuitive here. Typing key 1 will select the first subkey (ssb). An * next to the key will indicate that it has been selected:
 
-5. Enter the command: `keytocard`
-6. When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
-7. Enter the command: `key 1` (to deselect subkey 1)
-8. Enter the command: `key 2` (to select subkey 2)
-9. Enter the command: `keytocard`
-10. When prompted where to store the key, select 1. This will move the _signing_ subkey to the YubiKey
-11. Enter the command: `key 2` (to deselect subkey 2)
-12. Enter the command: `key 3` (to select subkey 3)
-13. Enter the command: `keytocard`
-14. When prompted where to store the key, select 3. This will move the _authentication_ subkey to the YubiKey
-15. Enter the command: `save` to save the configuration and exit to the CLI.
+* Enter the command: `keytocard`
+* When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
+* Enter the command: `key 1` (to deselect subkey 1)
+* Enter the command: `key 2` (to select subkey 2)
+* Enter the command: `keytocard`
+* When prompted where to store the key, select 1. This will move the _signing_ subkey to the YubiKey
+* Enter the command: `key 2` (to deselect subkey 2)
+* Enter the command: `key 3` (to select subkey 3)
+* Enter the command: `keytocard`
+* When prompted where to store the key, select 3. This will move the _authentication_ subkey to the YubiKey
+* Enter the command: `save` to save the configuration and exit to the CLI.
 
 ## Adding Additional Email Addresses
 
-1. Insert the YubiKey into the USB port
-2. Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
-3. Enter the command: `adduid`
-4. Enter your Name
-5. Enter the Additional Email Address
-6. Enter a comment if desired
-7. Enter (`O`)kay
-8. Enter your PIN if prompted
-9. Enter the command: `quit`
-10. When prompted to save your changes, enter y (yes). You have now saved the additional email address to your YubiKey
+* Insert the YubiKey into the USB port
+* Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* Enter the command: `adduid`
+* Enter your Name
+* Enter the Additional Email Address
+* Enter a comment if desired
+* Enter (`O`)kay
+* Enter your PIN if prompted
+* Enter the command: `quit`
+* When prompted to save your changes, enter y (yes). You have now saved the additional email address to your YubiKey
 
 ## Configuring SSH
 
-1. Insert the YubiKey into the USB port
-2. Configure your environment
-3. Enter the GPG command: `gpg --export-ssh-key 1234ABC` (where 1234ABC is the key ID of your key)
-4. This will return a string that begins with: ssh-rsa and ends with openpgp:0x1234ABC
-5. To use this key to push to GitHub, copy this key into your GitHub account. If you need to use it to SSH directly into a host, you will need to add it to an authorized-keys file.
-6. Verify the SSH key with the command: ssh-add -L
-7. This should verify that the SSH key is available on your yubikey. If the string ends in `cardno:000YXXXXXXXX`, then it is on the YubiKey.
-8. Restart the SSH services if necessary with the following commands: source ~/.bash_profile or  source ~/.bashrc
-9. When connecting via SSH, you should be prompted for your YubiKey User PIN
-
-* On first use, it may also prompt for the YubiKey passphrase.
+* Insert the YubiKey into the USB port
+* Configure your environment
+* Enter the GPG command: `gpg --export-ssh-key 1234ABC` (where 1234ABC is the key ID of your key)
+* This will return a string that begins with: ssh-rsa and ends with openpgp:0x1234ABC
+* To use this key to push to GitHub, copy this key into your GitHub account. If you need to use it to SSH directly into a host, you will need to add it to an authorized-keys file.
+* Verify the SSH key with the command: ssh-add -L
+* This should verify that the SSH key is available on your yubikey. If the string ends in `cardno:000YXXXXXXXX`, then it is on the YubiKey.
+* Restart the SSH services if necessary with the following commands: source ~/.bash_profile or  source ~/.bashrc
+* When connecting via SSH, you should be prompted for your YubiKey User PIN
+  * On first use, it may also prompt for the YubiKey passphrase.
 
 ## Configuring git commit Signing
 
-1. Insert the YubiKey into the USB port
-2. Enter the GPG command: `gpg --export --armor 1234ABC` (where 1234ABC is the key ID of your secret key)
-3. This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
+* Insert the YubiKey into the USB port
+* Enter the GPG command: `gpg --export --armor 1234ABC` (where 1234ABC is the key ID of your secret key)
+* This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
 
 `-----BEGIN PGP PUBLIC KEY BLOCK-----`
 
 `-----END PGP PUBLIC KEY BLOCK-----`
 
-1. Add this key into GitHub
-2. Add the key into your git config with the following command: `git config --global user.signingkey 1234ABC` (where 1234ABC is the key ID of your key)
-3. Add your name to your git config with the following command: `git config --global user.name “your name”` (this should match the name provided when you generate your certificate)
-4. Add your email to your git config with the following command: `git config --global user.email youremail@truss.works` (this should match the email that you push commits with)
-5. Configure Git client to always sign commits: `git config --global commit.gpgsign true`
+* Add this key into GitHub
+* Add the key into your git config with the following command: `git config --global user.signingkey 1234ABC` (where 1234ABC is the key ID of your key)
+* Add your name to your git config with the following command: `git config --global user.name “your name”` (this should match the name provided when you generate your certificate)
+* Add your email to your git config with the following command: `git config --global user.email youremail@truss.works` (this should match the email that you push commits with)
+* Configure Git client to always sign commits: `git config --global commit.gpgsign true`
 
 ## Configuring Github
 
 _This step is not sequential and is linked in previous steps. If you’ve reached this point in the document, you should have already completed this._
 
-1. Sign into the GitHub web interface
-2. Click on the user icon in the upper right hand corner and select settings
-3. Select SSH and PGP Keys
-4. Add an SSH Key and enter the value generated in Configuring SSH
-5. Add a new GPG Key and enter the value generated in Configuring git signing
+* Sign into the GitHub web interface
+* Click on the user icon in the upper right hand corner and select settings
+* Select SSH and PGP Keys
+* Add an SSH Key and enter the value generated in Configuring SSH
+* Add a new GPG Key and enter the value generated in Configuring git signing
 
 ### Using Github Desktop
 
-1. echo no-tty >> ~/.gnupg/gpg.conf
-2. Specify GPG path for clients: `git config --global gpg.program /usr/local/bin/gpg`
+* echo no-tty >> ~/.gnupg/gpg.conf
+* Specify GPG path for clients: `git config --global gpg.program /usr/local/bin/gpg`
 
 ## Using The YubiKey
 
 ### Signing git commits
 
-1. Insert the YubiKey into the USB port
-
+* Insert the YubiKey into the USB port
 * To manually sign a git commit (commits should already be signed automatically if you've enabled it in your git config):
 
 `$ git commit -a -S -m 'Fixed a small undocumented procedure that made foo crash'`
@@ -296,8 +283,8 @@ _This step is not sequential and is linked in previous steps. If you’ve reache
 
 `$ git tag foo-1.0 -s -m 'Release 1.0 of foo'`
 
-2. When signing, you should be prompted to enter your YubiKey User PIN
-3. If you’ve enabled touch mode, touch the YubiKey to complete the operation
+* When signing, you should be prompted to enter your YubiKey User PIN
+* If you’ve enabled touch mode, touch the YubiKey to complete the operation
 
 ### Enabling touch-only mode (optional)
 
@@ -305,9 +292,9 @@ It is possible that your YubiKey could be activated by malware on your machine, 
 
 If enabling touch-only mode, it is recommended to perform this step after you’ve confirmed that everything else is working.
 
-1. Enter the command: `ykman openpgp set-touch aut on`
-2. Enter: `yes`
-3. Enter the 8 digit Admin PIN to confirm the setting change
+* Enter the command: `ykman openpgp set-touch aut on`
+* Enter: `yes`
+* Enter the 8 digit Admin PIN to confirm the setting change
 
 NOTE: When touch mode is enabled, operations will appear to stall. This is the only prompt that you will receive to touch your YubiKey. Failure to touch the YubiKey for authentication will result in failure of the operation. You can also disable touch-only mode with the following command: `ykman openpgp set-touch aut off`
 
@@ -317,9 +304,9 @@ Disabling the OTP is possible using the Yubikey Manager, and does not affect any
 
 A side effect of the YubiKey is the Yubisneeze. The YubiKey will generate and paste a password to your screen nearly every time that you touch it.
 
-1. Insert the YubiKey into the USB port
-2. Enter the command: `ykman config usb --disable otp`
-3. Enter the command: `Y` to confirm
+* Insert the YubiKey into the USB port
+* Enter the command: `ykman config usb --disable otp`
+* Enter the command: `Y` to confirm
 
 To re-enable otp, use the command: `ykman config usb --enable otp`
 
@@ -333,8 +320,8 @@ Gitkraken directly [supports](https://support.gitkraken.com/git-workflows-and-ex
 
 _The YubiKey is not detected when signing a commit or pulling a private repo via SSH._
 
-1. Ensure that the environment has been configured correctly
-2. Run `source ~/.bashrc` or `source ~./zshrc`
+* Ensure that the environment has been configured correctly
+* Run `source ~/.bashrc` or `source ~./zshrc`
 
 _The YubiKey appears to hang when performing operations and then the operations time out._
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
