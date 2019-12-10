@@ -49,12 +49,12 @@ If xcode is not up to date, you will be prompted to install it with: `xcode-sele
 
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
-```#Enable SSH Key on Yubikey Device
-killall gpg-agent
-killall ssh-agent
-eval $( gpg-agent --daemon --enable-ssh-support )```
+    #Enable SSH Key on Yubikey Device
+    killall gpg-agent
+    killall ssh-agent
+    eval $( gpg-agent --daemon --enable-ssh-support )
 
-`export GPG_TTY=$(tty)`
+    export GPG_TTY=$(tty)
 
 In the future, if you receive the message `No matching processes belonging to you were found` after running `source ~/.bashrc`, this is not necessarily an error message. It may just mean you’re not currently running the processes associated with this change.
 
