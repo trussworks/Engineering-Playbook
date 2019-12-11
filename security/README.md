@@ -7,4 +7,5 @@ Security is hard and easy to get wrong. Do not, under any circumstances: a) writ
 ## Contents
 
 [YubiKey Configuration Guide](./yubikey-configuration.md)
+
 [YubiKey for Single Sign-On](./yubikey-sso.md)
