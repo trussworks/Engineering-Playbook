@@ -245,6 +245,7 @@ _The interface is not intuitive here. Typing `key 1` will select the first subke
 * This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
 
     -----BEGIN PGP PUBLIC KEY BLOCK-----
+
     -----END PGP PUBLIC KEY BLOCK-----
 
 * Add this key into GitHub
