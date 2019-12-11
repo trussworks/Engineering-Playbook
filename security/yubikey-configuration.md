@@ -12,7 +12,7 @@ PIN codes and passphrases may be cached for a short duration at any point during
 
 ## Purchasing and Distribution
 
-It is currently recommended that distributed Trussels purchase their YubiKey directly from either Amazon or Yubico. The SF office may opt to purchase some YubiKeys in bulk for local Trussels, but this has not been decided yet. Bulk purchasing of YubiKeys yields a savings of $2.40 per $60 YubiKey.
+It is currently recommended that distributed Trussels purchase their YubiKey directly from either Amazon or [Yubico](https://www.yubico.com/store/). The SF office may opt to purchase some YubiKeys in bulk for local Trussels, but this has not been decided yet. Bulk purchasing of YubiKeys yields a savings of $2.40 per $60 YubiKey.
 
 If ordering a Yubikey for a project, check with your project on how to categorize the expense in Expensify. Otherwise, use the `Computer Equipment` category.
 
@@ -60,15 +60,9 @@ In the future, if you receive the message `No matching processes belonging to yo
 
 ## Verifying Your YubiKey
 
-To verify a YubiKey is genuine, open a browser with U2F support to <https://www.yubico.com/genuine/>. (Chrome, FireFox and Safari work). Insert a Yubico device, and select Verify Device to begin the process. Touch the YubiKey when prompted, and if asked, allow it to see the make and model of the device. If you see Verification complete, the device is authentic.
+To verify a YubiKey is genuine, open a [browser with U2F support](https://support.yubico.com/support/solutions/articles/15000009591-how-to-confirm-your-yubico-device-is-genuine-with-u2f) to <https://www.yubico.com/genuine/>. (Chrome, FireFox and Safari work). Insert a Yubico device, and select Verify Device to begin the process. Touch the YubiKey when prompted, and if asked, allow it to see the make and model of the device. If you see Verification complete, the device is authentic.
 
-This website verifies the YubiKey's device attestation certificates signed by a set of Yubico CAs, and helps mitigate supply chain attacks.
-
-## Integrating With Your GSuite Account
-
-Truss GSuite administrators are required to enable security keys on their accounts. Configurations require modern versions of Safari, Chrome or Firefox. You can follow [Google’s instructions](https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DDesktop&hl=en) on getting it setup.
-
-Non-admin Gsuite accounts are not currently required to use security keys for 2fa, but folks are starting to adopt Yubikeys as many of the usability/compatibility issues have been resolved.
+This website verifies the YubiKey's device attestation certificates signed by a set of Yubico CAs, and helps mitigate [supply chain attacks](https://media.defcon.org/DEF%20CON%2025/DEF%20CON%2025%20presentations/DEF%20CON%2025%20-%20r00killah-and-securelyfitz-Secure-Tokin-and-Doobiekeys.pdf).
 
 ## Setting the Yubikey User and Admin PIN codes
 
@@ -146,7 +140,7 @@ The default state shows **Sign Encrypt** active.
 
 Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
-![Sign Select Authenticate](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-select-authenticate.png "default state")
+![Sign Select Authenticate](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-select-authenticate.png "authenticate")
 
 * Hit `Q` to finish.
 * Specify the size of the key that you want to generate. Do one of the following:
@@ -163,7 +157,9 @@ Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable 
 
 The optimal output should look similar to this, showing an individual subkey for **E (Encrypt)**, **A (Authenticate)**, and **S (Sign)** in the YubiKey keychain.
 
-Note that if you have not imported the keys to your Yubikey yet then your output will not include those card-no details.
+![Check Your Keys](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-check-keys.png "keycheck")
+
+_Note that if you have not imported the keys to your Yubikey yet then your output will not include those card-no details._
 
 ## Creating Backups
 
@@ -200,7 +196,9 @@ This will _destructively_ move the secret key as well as the three subkeys to th
 * Enter the command: `toggle` to switch to the public key listing (there will be no visible output)
 * Enter the command: `key 1` (to select subkey 1)
 
- The interface is not intuitive here. Typing key 1 will select the first subkey (ssb). An * next to the key will indicate that it has been selected:
+_The interface is not intuitive here. Typing `key 1` will select the first subkey (ssb). An * next to the key will indicate that it has been selected:_
+
+![Check Key Import](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-key-import.png "checkimport")
 
 * Enter the command: `keytocard`
 * When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
@@ -233,7 +231,7 @@ This will _destructively_ move the secret key as well as the three subkeys to th
 * Configure your environment
 * Enter the GPG command: `gpg --export-ssh-key 1234ABC` (where 1234ABC is the key ID of your key)
 * This will return a string that begins with: ssh-rsa and ends with openpgp:0x1234ABC
-* To use this key to push to GitHub, copy this key into your GitHub account. If you need to use it to SSH directly into a host, you will need to add it to an authorized-keys file.
+* To use this key to push to GitHub, copy this key into your [GitHub account](https://github.com/settings/keys). If you need to use it to SSH directly into a host, you will need to add it to an authorized-keys file.
 * Verify the SSH key with the command: ssh-add -L
 * This should verify that the SSH key is available on your yubikey. If the string ends in `cardno:000YXXXXXXXX`, then it is on the YubiKey.
 * Restart the SSH services if necessary with the following commands: source ~/.bash_profile or  source ~/.bashrc
@@ -327,3 +325,5 @@ _The YubiKey is not detected when signing a commit or pulling a private repo via
 _The YubiKey appears to hang when performing operations and then the operations time out._
 
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
+
+![OTP Error](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-otp-error.png "otperror")
