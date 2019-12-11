@@ -244,9 +244,8 @@ _The interface is not intuitive here. Typing `key 1` will select the first subke
 * Enter the GPG command: `gpg --export --armor 1234ABC` (where 1234ABC is the key ID of your secret key)
 * This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
 
-`-----BEGIN PGP PUBLIC KEY BLOCK-----`
-
-`-----END PGP PUBLIC KEY BLOCK-----`
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+    -----END PGP PUBLIC KEY BLOCK-----
 
 * Add this key into GitHub
 * Add the key into your git config with the following command: `git config --global user.signingkey 1234ABC` (where 1234ABC is the key ID of your key)
