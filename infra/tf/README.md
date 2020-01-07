@@ -9,6 +9,14 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * Something about Truss Terraform Modules
 * How to layout/structure a Terraform Project
 
+### Semantic Versioning
+
+* When publishing a module for the first time, if you're uncertain what version to use, use `v1.0.0`
+* Any changes to a module that don't result in a resource being recreated, increment the _patch_ version per [semantic versioning](https://semver.org/) guidelines.
+* Any changes to a module that results in a resource being recreated, increment the _minor_ version per [semantic versioning](https://semver.org/) guidelines.
+* Any changes that results in a user having to update the module, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
+* Upgrading a module from <0.12 to 0.12, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
+
 ### Starting a module experiment
 
 ...
