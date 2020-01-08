@@ -59,3 +59,14 @@ Shell programming is deceptively perilous (see [Bash Pitfalls](https://mywiki.wo
 * [Bash-Hackers Wiki](http://wiki.bash-hackers.org/)
 * [Path Variables](https://truss.works/blog/2016/2/26/engineer-how-to-access-and-edit-your-path-system-variable)
 * [CLI Navigation Shortcuts](https://www.gnu.org/software/bash/manual/bash.html#Introduction-and-Notation)
+
+### Notes
+
+The Bash CLI navigation shortcuts resource linked above refers to a keyboard
+shortcut for moving the cursor from word to word: `meta key + f or b` (under
+section `8.2.2 Readline Movement Commands`). This shortcut does not work out of
+the box on a Mac. In the macOS Terminal app and iTerm2, the default keyboard
+shortcut for moving from word to word is `option + left or right arrow`. If you
+want to use `option + f or b`, there is a checkbox in Terminal app to
+`Use Option as Meta key` under `Preferences -> Profiles -> Keyboard`. In iTerm2,
+you can change key mappings under `Preferences -> Profiles -> Keys`.
