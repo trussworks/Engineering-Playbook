@@ -10,6 +10,7 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 
 ## Contents
 
+* [Command Line Tools](./command-line-tools/README.md)
 * [Editors, IDEs and Debuggers](./eid/README.md)
 * [Docker](./docker/README.md)
 * [direnv](./direnv/README.md)
