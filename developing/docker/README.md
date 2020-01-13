@@ -1,6 +1,6 @@
 # [Tools and Practice](../README.md) / Docker
 
-<!-- vim-markdown-toc GFM -->
+<!-- toc -->
 
 * [Overview](#overview)
 * [Installation](#installation)
@@ -17,7 +17,9 @@
   * [Credentials Store](#credentials-store)
 * [Additional Resources](#additional-resources)
 
-<!-- vim-markdown-toc -->
+Regenerate with "pre-commit run -a markdown-toc"
+
+<!-- tocstop -->
 
 ## Overview
 
