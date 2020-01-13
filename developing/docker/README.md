@@ -1,5 +1,26 @@
 # [Tools and Practice](../README.md) / Docker
 
+<!-- toc -->
+
+* [Overview](#overview)
+* [Installation](#installation)
+  * [Configuration of Shared Folders](#configuration-of-shared-folders)
+  * [Configuration of Storage Driver](#configuration-of-storage-driver)
+  * [Configuration of Disk Image](#configuration-of-disk-image)
+  * [Configuration of Resources](#configuration-of-resources)
+* [Volume Mount Performance](#volume-mount-performance)
+* [Inspecting the Docker Virtual Machine](#inspecting-the-docker-virtual-machine)
+* [Inspecting Container Resources](#inspecting-container-resources)
+* [Cleaning Up](#cleaning-up)
+* [Docker Configuration](#docker-configuration)
+  * [Keybindings](#keybindings)
+  * [Credentials Store](#credentials-store)
+* [Additional Resources](#additional-resources)
+
+Regenerate with "pre-commit run -a markdown-toc"
+
+<!-- tocstop -->
+
 ## Overview
 
 Docker is useful because it allows you to both package and run
@@ -110,3 +131,11 @@ store](https://docs.docker.com/engine/reference/commandline/login/#credentials-s
 On macOS, the keychain will be used by default, but if you need/want
 to store shared credentials, [pass](https://www.passwordstore.org/)
 can be used.
+
+## Additional Resources
+
+If you would like to dig deeper into how Docker works, how it isolates code from the host machine, and related ramifications a good place to start are the articles listed below.
+
+* [Official Docker Getiting Started Guide](https://docs.docker.com/get-started/)
+* [Linux Journal Weekend Reading Containers](https://www.linuxjournal.com/content/weekend-reading-containers)
+  * Particularly the articles _Everything You Need to Know about Linux Containers Part I and II_
