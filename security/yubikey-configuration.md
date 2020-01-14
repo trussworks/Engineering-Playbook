@@ -136,11 +136,11 @@ This subkey will be used to pull private git repos via SSH and may be used to au
 This is interface has a unique design where you need to toggle things on and off to get the desired result.
 The default state shows **Sign Encrypt** active.
 
-![Sign Encrypt Default State](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/Yubikey-Sign-Encrypt.png "default state")
+![Sign Encrypt Default State](images/Yubikey-Sign-Encrypt.png "default state")
 
 Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
-![Sign Select Authenticate](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-select-authenticate.png "authenticate")
+![Sign Select Authenticate](images/yubikey-select-authenticate.png "authenticate")
 
 * Hit `Q` to finish.
 * Specify the size of the key that you want to generate. Do one of the following:
@@ -157,7 +157,7 @@ Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable 
 
 The optimal output should look similar to this, showing an individual subkey for **E (Encrypt)**, **A (Authenticate)**, and **S (Sign)** in the YubiKey keychain.
 
-![Check Your Keys](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-check-keys.png "keycheck")
+![Check Your Keys](images/yubikey-check-keys.png "keycheck")
 
 _Note that if you have not imported the keys to your Yubikey yet then your output will not include those card-no details._
 
@@ -198,7 +198,7 @@ This will _destructively_ move the secret key as well as the three subkeys to th
 
 _The interface is not intuitive here. Typing `key 1` will select the first subkey (ssb). An * next to the key will indicate that it has been selected:_
 
-![Check Key Import](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-key-import.png "checkimport")
+![Check Key Import](images/yubikey-key-import.png "checkimport")
 
 * Enter the command: `keytocard`
 * When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
@@ -326,4 +326,4 @@ _The YubiKey appears to hang when performing operations and then the operations 
 
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
 
-![OTP Error](https://github.com/trussworks/Engineering-Playbook/blob/yubikey-guide/security/images/yubikey-otp-error.png "otperror")
+![OTP Error](images/yubikey-otp-error.png "otperror")
