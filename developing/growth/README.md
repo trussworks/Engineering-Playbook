@@ -21,3 +21,8 @@ To ensure that growth happens, the time should be built into the
 estimate for a ticket. From time to time, it will be appropriate to
 restrict exploration and "just get the ticket done", but that should
 happen infrequently.
+
+If someone is interested in a topic that is not related to their
+client work, a separate plan will need to be made.  That might involve
+changing client teams, changing client projects, or joining Truss
+Reserve.
