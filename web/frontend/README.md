@@ -8,6 +8,13 @@ These are recommendations for front end development.
 
 We typically choose React as our front end framework of choice.
 
+### Languages
+
+We are cautiously optimistic about recommending
+[TypeScript](https://www.typescriptlang.org/) after using it on
+multiple projects.  We have compiled some [TypeScript
+Resources](./typescript.md).
+
 ### Testing
 
 #### Test Runners and Libraries (for React)
