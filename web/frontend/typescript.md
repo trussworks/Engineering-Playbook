@@ -1,4 +1,4 @@
-# [Engineering Playbook] / Web Development / [Frontend Guide](./README.md) / TypeScript Resources
+# Engineering Playbook / Web Development / [Frontend Guide](./README.md) / TypeScript Resources
 
 This is a list of resources helpful when learning TypeScript. This
 guide assumes a working knowledge of Javascript and is mainly intended
