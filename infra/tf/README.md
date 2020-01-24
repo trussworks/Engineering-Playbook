@@ -6,8 +6,11 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 
 ## Contents
 
-* Something about Truss Terraform Modules
-* How to layout/structure a Terraform Project
+* [Semantic Versioning](#semantic-versioning)
+* [Going public](#going-public)
+* [Publishing a release](#publishing-a-release)
+* [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-Terraform)
+* [How to layout/structure a Terraform Project](How-to-layout/structure-a-Terraform-Project)
 
 ### Semantic Versioning
 
@@ -65,3 +68,7 @@ In order to preserve the ability to release updates for previous Terraform versi
 
 [publish-release]: ./publish-release.png "Screenshot of a published release"
 [draft-release]: ./draft-release.png "Screenshot of a release draft"
+
+### How to layout/structure a Terraform Project
+
+Refer to the Truss [Terraform Layout Example](https://github.com/trussworks/terraform-layout-example).
