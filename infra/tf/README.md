@@ -9,8 +9,8 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * [Semantic Versioning](#semantic-versioning)
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
-* [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-Terraform)
-* [How to layout/structure a Terraform Project](How-to-layout/structure-a-Terraform-Project)
+* [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
+* [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
 
 ### Semantic Versioning
 
