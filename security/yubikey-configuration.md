@@ -56,7 +56,22 @@ Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
     export GPG_TTY=$(tty)
 
-In the future, if you receive the message `No matching processes belonging to you were found` after running `source ~/.bashrc`, this is not necessarily an error message. It may just mean you’re not currently running the processes associated with this change.
+In the future, if you receive the message `No matching processes
+belonging to you were found` after running `source ~/.bashrc`, this is
+not necessarily an error message. It may just mean you’re not
+currently running the processes associated with this change.
+
+### Using pinentry
+
+Instead of prompting you in a terminal, you can have gpg-agent use an
+external program.  This might be useful if you want to use your editor
+for commits.
+
+    brew install pinentry-mac
+    echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
+        ~/.gnupg/gpg-agent.conf
+    killall gpg-agent
+    gpg-agent --daemon
 
 ## Verifying Your YubiKey
 
