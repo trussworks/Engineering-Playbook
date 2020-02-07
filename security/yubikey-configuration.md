@@ -73,6 +73,8 @@ for commits.
     killall gpg-agent
     gpg-agent --daemon
 
+If you use this, you do not need to set `GPG_TTY`.
+
 ## Verifying Your YubiKey
 
 To verify a YubiKey is genuine, open a [browser with U2F support](https://support.yubico.com/support/solutions/articles/15000009591-how-to-confirm-your-yubico-device-is-genuine-with-u2f) to <https://www.yubico.com/genuine/>. (Chrome, FireFox and Safari work). Insert a Yubico device, and select Verify Device to begin the process. Touch the YubiKey when prompted, and if asked, allow it to see the make and model of the device. If you see Verification complete, the device is authentic.
