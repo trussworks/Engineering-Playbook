@@ -8,3 +8,4 @@ Python is an interpreted, high-level, general-purpose programming language. Crea
 
 * [Installation](./installation.md)
 * [Linters and Checkers](./linters_and_checkers.md)
+* [Project Layout](./project_layout.md)
