@@ -33,7 +33,8 @@ bare containers.
 If you need to get a certificate and cannot use a service like ACM or
 Let's Encrypt, you can get one via [SSLMate](https://sslmate.com/); they
 offer a command line client that makes it relatively easy to get new
-certificates or update old ones. Their documentation is
+certificates or update old ones, autorenewal, and a reasonable price for
+one-off certificates. Their documentation is
 [here](https://sslmate.com/help/) but the general process is this:
 
 * Register a new account with SSLMate; save the username and password
