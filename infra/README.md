@@ -31,6 +31,10 @@ Infrastructure and deployment is really important, and at all opportunities we s
 - GCP
 - Azure
 
+## Other Topics
+
+- [SSL Certificates](./certs/README.md)
+
 ## Resources
 
 - [Examples of common infrastructure patterns at Truss 🔒](https://github.com/trussworks/truss-infra)
