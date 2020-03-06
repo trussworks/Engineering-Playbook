@@ -24,7 +24,7 @@ security and compliance standards needed to meet federal guidelines like
   arn:aws:iam::123456789000:user/testuser
   ```
 
-  a GovCloud arn will look like this:
+  a GovCloud ARN will look like this:
 
   ```text
   arn:aws-us-gov:iam::123456789000:user/testuser
@@ -69,7 +69,7 @@ to all GovCloud accounts.
 ### Creating Additional GovCloud Accounts
 
 To add more accounts to your GovCloud organization, you *cannot* simply
-use the Terraform `aws_organizations_account" resource. Using credentials
+use the Terraform `aws_organizations_account` resource. Using credentials
 for the master account in your commercial AWS Organization, use the
 following AWS CLI command. This will create two accounts; a dummy account
 in the commercial AWS Organization and a new corresponding GovCloud
