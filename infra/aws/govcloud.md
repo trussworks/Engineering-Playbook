@@ -57,8 +57,9 @@ Agreement; once you do so, you will get an email with instructions on how
 to log in to your GovCloud account.
 
 Once you create the account, you can create a temporary IAM user with full
-credentials you can use to bootstrap Terraform in the account as you would
-in commercial AWS.
+credentials you can use to [bootstrap
+Terraform](https://github.com/trussworks/terraform-aws-bootstrap) in the
+account as you would in commercial AWS.
 
 Once you have bootstrapped Terraform, you can create the GovCloud
 organization the same way you would in commercial; however, you cannot
@@ -130,6 +131,21 @@ in the new account from an account with sufficient privileges in the
 *GovCloud* organization master account. *Note that this is the case even
 though at this point the GovCloud organization does not show up if you
 look at the organization membership in the console.*
+
+To do this, add a new profile to your `.aws/config`; this assumes we
+already have a working profile for the organization master account,
+called `spacecats-govcloud-org-root`. The new profile for your
+`spacecats-govcloud-id` account should look like this:
+
+```text
+[profile spacecats-govcloud-id]
+source_profile=spacecats-govcloud-org-root
+role_arn=arn:aws-us-gov:iam::000987654321:role/OrganizationAccountAccessRole
+region=us-gov-west-1
+output=json
+# If you have MFA turned on, you will also need to add the mfa_serial line
+# from the source_profile.
+```
 
 ### Adding Your New GovCloud Account to Your GovCloud Organization
 
