@@ -181,8 +181,9 @@ $ aws organizations accept-handshake \
 ```
 
 The account will now be in your GovCloud organization. You will want to
-import this account into your Terraform state for the GovCloud
-organization master account like so:
+[import this account](https://www.terraform.io/docs/providers/aws/r/organizations_account.html#import)
+into your Terraform state for the GovCloud organization master account
+like so:
 
 ```hcl
 resource "aws_organizations_account" "spacecats_govcloud_id" {
