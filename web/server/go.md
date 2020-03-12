@@ -1,13 +1,13 @@
 # Web Applications in Go
 
-This section is meant to contain of some of the lessons
+This section is meant to contain some of the lessons
 Truss has had with building web applications in Go.
 It borrows from the format of [Effective Go](https://golang.org/doc/effective_go.html)
 along with some lightweight "starter templates",
 to provide some basic standards and patterns we follow.
 Code samples are not meant to be "copy and paste" ready,
-but instead provide fundamental principles
-that can be incorporated into many applications, frameworks, and packages.
+but provide fundamental principles
+that can be incorporated into various applications, frameworks, and packages.
 
 We attempt to use plain Go code when possible,
 but package code may be incorporated or pseudocoded
@@ -19,9 +19,9 @@ Defining application layers is crucial
 to a maintainable API or web service.
 Picking responsibilities and contracts across layers
 can define how an application grows
-and how fast code iterations in a mature codebase will take.
+and how long code iterations in a mature codebase will take.
 In Go,
-these layers will likely take form as packages.
+these layers will likely take the form of packages.
 There is no one-size-fits-all approach to defining the contract of these packages,
 but we'll attempt to define some common patterns and inform future approaches.
 
