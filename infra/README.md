@@ -6,7 +6,7 @@ Infrastructure and deployment is really important, and at all opportunities we s
 
 ## Getting Started
 
-- [Setting up your AWS account 🔒](https://github.com/trussworks/truss-infra#making-changes-to-aws)
+- [Setting up your AWS account 🔒](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md)
   - You will need to pair with someone that has access to AWS already to run the Terraform commands in the instructions.
 - [Your first Lambda Function 🔒](./getting_started/your_first_lambda_function.md)
   - After you have AWS access you can deploy your first AWS Lambda Function with Go and Terraform.
