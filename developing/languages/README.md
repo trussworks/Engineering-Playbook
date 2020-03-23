@@ -56,3 +56,5 @@ Important JS patterns and features to understand:
   * [How Three Dots Changed JavaScript](https://dmitripavlutin.com/how-three-dots-changed-javascript/)
 * Template Literals
   * [Template Literals](https://css-tricks.com/template-literals/)
+* React and Typescript
+  * [Truss resources for React, Typescript, and front end tooling](https://github.com/trussworks/Engineering-Playbook/tree/master/web/frontend)
