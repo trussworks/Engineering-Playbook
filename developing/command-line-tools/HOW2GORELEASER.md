@@ -2,16 +2,11 @@
 
 ## Overview
 
-"Internal tools" may be a misnomer. These are tools that we build
-for ourselves that could be useful to others.
-Philosophically, we believe these tools should be open sourced
-and maintained so please consider this before deciding to write
-a new tool. Someone else may have already written something that
-does what you want and may need minor changes. Consider giving
-back to that community.
+This is a biased document for how to build and release tools written in go.
 
-Generally we are building cli tools in golang so we'll assume that
-you are using golang in the following instructions.
+If someone else has already written a tool and open sourced it use it and contribute to it.
+
+Feel free to update and make changes!
 
 ## Split a tool out from an existing project
 
@@ -89,8 +84,6 @@ When you feel good about it, add `go.mod` and `go.sum` to your git index with a 
 
 ## Add pre-commit hooks
 
-See example `.pre-commit-config.yaml` and `.markdownlintrc`.
-
 Write a `.pre-commit-config.yaml` file and add it to git with a commit.
 Then install the hooks and run the hooks against all files for the first time.
 
@@ -101,12 +94,66 @@ pre-commit run --all-files
 
 Fix any issues you find and commit your changes to your repo.
 
+### Example .pre-commit-config.yaml and .markdownlintrc
+
+The following example `.pre-commit-config.yaml` does some nice things for a basic go project.
+
+```yml
+repos:
+  - repo: git://github.com/golangci/golangci-lint
+    rev: v1.21.0
+    hooks:
+      - id: golangci-lint
+
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: pretty-format-json
+        args:
+          - --autofix
+      - id: trailing-whitespace
+
+  - repo: git://github.com/igorshubovych/markdownlint-cli
+    rev: v0.21.0
+    hooks:
+      - id: markdownlint
+```
+
+This example `.markdownlintrc` will work with the above `.pre-commit-config.yaml` example.
+This ignores some stylistic but annoying triggers.
+
+```json
+{
+  "default": true,
+  "first-header-h1": false,
+  "first-line-h1": false,
+  "line_length": false,
+  "no-multiple-blanks": false,
+  "fenced-code-language": false
+}
+```
+
 ## Create Docker configuration
 
-Suggested but optional.
-See example.
+Suggested but optional. This is just another distribution method.
 
-WRITE EXAMPLE
+Create a `Dockerfile` at the root of your repo and commit it to git.
+
+### Example Dockerfile
+
+This example is a very basic Dockerfile that works with goreleaser with a tool/binary name of `binaryname`.
+
+Goreleaser will use the binary it determines is correct to copy into the container.
+
+```docker
+FROM alpine:3
+COPY binaryname /bin/binaryname
+ENTRYPOINT [ "binaryname" ]
+```
 
 ## Create a Docker repo
 
@@ -125,9 +172,67 @@ Use the bot user credentials (username and a deploy key) for configuring CircleC
 
 ## Create goreleaser configuration
 
-TODO: ADD TEMPLATE EXAMPLE
+Create a `.goreleaser.yml` file and commit it.
 
-Update description and homepage
+### Example .goreleaser.yml
+
+This has some decent build defaults. This will get dependencies from go.mod then build for both OSX and Linux.
+Goreleaser will also update the release in GitHub with the artifacts it builds.
+It will also push to a brew tap. Build a Docker container but skip shipping to it.
+
+Note: I had to add `GO111MODULE=on` and `CGO_ENABLED=0` lines so the linux binary would work in Docker.
+
+If you don't need to build a Docker container, just remove the docker stanza.
+
+```yml
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod download
+builds:
+- env:
+    - CGO_ENABLED=0
+  goos:
+    - darwin
+    - linux
+  goarch:
+    - amd64
+  main: main.go
+brews:
+  - description: "WRITE A DESCRIPTION"
+    github:
+      owner: trussworks
+      name: homebrew-tap
+    homepage: "HOMEPAGE URL GOES HERE"
+    commit_author:
+      name: trussworks-infra
+      email: infra+github@truss.works
+dockers:
+  -
+    binaries:
+      - <BINARYNAME>
+    image_templates:
+      - "OWNER/NEWREPO:{{ .Tag }}"
+    skip_push: true
+archives:
+- replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    386: i386
+    amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+```
 
 ### Test goreleaser locally
 
@@ -142,6 +247,7 @@ This will create all of your binaries in the `dist` folder in your repo.
 ## Hook up CI
 
 Write a CircleCi config file and commit it to your repo.
+You will need to do some manual configuration in CircleCi to get this working.
 
 ### CircleCi config.yml example
 
@@ -222,8 +328,6 @@ workflows:
             tags:
               only: /^v.*/
 ```
-
-Push everything to your repo on GitHub.
 
 ### Run a release from GitHub
 
