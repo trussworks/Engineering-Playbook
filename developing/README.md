@@ -24,3 +24,4 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 * [Slack Best Practices](./slack/README.md)
 * [Growth on Client](./growth/README.md)
 * [Learning Resources](./learning/README.md)
+* [Building and Releasing Go CLI tools with goreleaser](./command-line-tools/HOW2GORELEASER.md)
