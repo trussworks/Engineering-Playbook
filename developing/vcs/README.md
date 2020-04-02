@@ -63,8 +63,8 @@ There are several well-established branching strategies and workflows out there.
 
 Each project will have its own requirements, and sometimes even individual
 projects might need different approaches, but generally Truss recommends the
-"GitHub Flow", for its lightweight process and ease of use with
-[CI/CD](../cicd/README.md).
+["GitHub Flow"](https://guides.github.com/introduction/flow/), for its lightweight
+process and ease of use with [CI/CD](../cicd/README.md).
 
 However, the "Git Flow" process is useful in
 scenarios where you have a slower release process, e.g. for mobile apps that
