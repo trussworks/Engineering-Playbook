@@ -56,6 +56,20 @@ branch, which could result in mistakes when conflicts are present.
 
 ## Git workflow
 
+### Branching Strategy
+
+There are several well-established branching strategies and workflows out there.
+[This article](https://web.archive.org/web/20191115042322/https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf) covers four leading types.
+
+Each project will have its own requirements, and sometimes even individual
+projects might need different approaches, but generally Truss recommends the
+"GitHub Flow", for its lightweight process and ease of use with
+[CI/CD](../cicd/README.md).
+
+However, the "Git Flow" process is useful in
+scenarios where you have a slower release process, e.g. for mobile apps that
+have a App Store as part of its critical release path.
+
 ### Fork vs clone
 
 If it's a repo you have write and push access to, clone it. Otherwise, fork it.
