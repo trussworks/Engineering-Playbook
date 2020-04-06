@@ -17,6 +17,7 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 * [Programming Languages](./languages/README.md)
 * [Development Cycle](./cycle/README.md) aka Sprint
 * [Source Control](./vcs/README.md)
+* [CI/CD](./cicd/README.md)
 * [Defects/Bugs](./bugs/README.md)
 * [Technical Design](./technical-design/README.md)
 * [Code Reviews](./code-reviews/README.md)
