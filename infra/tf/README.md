@@ -72,3 +72,7 @@ In order to preserve the ability to release updates for previous Terraform versi
 ### How to layout/structure a Terraform Project
 
 Refer to the Truss [Terraform Layout Example](https://github.com/trussworks/terraform-layout-example).
+
+### How to test your Terraform code
+
+Refer to the Truss [Terratest Guide](terratest.md).
