@@ -16,15 +16,19 @@ Reminder: Trussels can use their [monthly employee effectiveness budget](https:/
 
 In addition to hard-copy books, there are several options for accessing digital books, audiobooks, videos, courses, etc.:
 
-* [O'Reilly Online Learning](https://www.oreilly.com/online-learning/individuals.html) (fka Safari Books Online)
-* [Scribd](https://www.scribd.com/)
-* [Audible](https://www.audible.com/)
+- [O'Reilly Online Learning](https://www.oreilly.com/online-learning/individuals.html) (fka Safari Books Online)
+- [Scribd](https://www.scribd.com/)
+- [Audible](https://www.audible.com/)
 
 ## Contents
 
-* [Continuous Delivery](./continuous_delivery.md)
-* [Crucial Conversations](./crucial_conversations.md)
-* [The Goal](./goal.md)
-* [Radical Candor](./radical_candor.md)
-* [Release It!](./release_it.md)
-* [The Effective Engineer](./the_effective_engineer.md)
+- [Continuous Delivery](./continuous_delivery.md)
+- [Crucial Conversations](./crucial_conversations.md)
+- [The Goal](./goal.md)
+- [Radical Candor](./radical_candor.md)
+- [Release It!](./release_it.md)
+- [The Effective Engineer](./the_effective_engineer.md)
+
+## Online Courses
+
+- [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
