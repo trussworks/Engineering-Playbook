@@ -6,11 +6,53 @@ It executes the defined Terraform and then validates things you're asserting.
 
 ## Basic Terratest example fo a module
 
-TODO: How to write a simple terratest for an existing module. We've got some basics in the terraform-template-module repo
+The most basic Terratest test you can write brings up an example in your `examples` directory and will then just tear it down without testing anything but that it runs.
+We've got some basics in the [terraform-template-module repo](https://github.com/trussworks/terraform-module-template) so you can see it all in context.
 
-You'll write an example in the `examples` directory
+Write an example in the `examples` directory that includes the module(s) and configuration that you're testing. In the `tests` directory create a file named `terraform_aws<NAME_OF_MODULE>_test.go`. Basic test is as follows:
 
-The most basic example just spins up the defined `example` and tears it down.
+```go
+package test
+
+import (
+    "fmt"
+    "strings"
+    "testing"
+
+    "github.com/gruntwork-io/terratest/modules/random"
+    "github.com/gruntwork-io/terratest/modules/terraform"
+    test_structure "github.com/gruntwork-io/terratest/modules/test-structure"
+)
+
+func TestTerraformAwsEcrRepo(t *testing.T) {
+    t.Parallel()
+
+    tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/simple")
+
+    testName := fmt.Sprintf("terratest-%s", strings.ToLower(random.UniqueId()))
+    awsRegion := "us-west-2"
+
+    terraformOptions := &terraform.Options{
+        // The path to where our Terraform code is located
+        TerraformDir: tempTestFolder,
+
+        // Variables to pass to our Terraform code using -var options
+        Vars: map[string]interface{}{
+            "test_name": testName,
+        },
+
+        // Environment variables to set when running Terraform
+        EnvVars: map[string]string{
+            "AWS_DEFAULT_REGION": awsRegion,
+        },
+    }
+
+    defer terraform.Destroy(t, terraformOptions)
+    terraform.InitAndApply(t, terraformOptions)
+
+}
+
+```
 
 ### Other Examples
 
@@ -78,9 +120,18 @@ These keys are rotated weekly.
 
 ### Update the Key rotator configuration
 
-We have (will) have automation in place that updates the rotated keys weekly so you'll need to add this repo to that configuration if it is running Terratests on ci.
+We have automation in place that updates the rotated keys weekly so you'll need to add this repo to that configuration if it is running Terratests on ci.
 
-TODO: How to update this. Needs the rotator automation work done.
+Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/trussworks/legendary-waddle-dev) to include a sink to your new repo. A sink stanza looks like this:
+
+```yaml
+      - kind: CircleCI
+        key_to_name:
+          accessKeyId: AWS_ACCESS_KEY_ID
+          secretAccessKey: AWS_SECRET_ACCESS_KEY
+        account: trussworks
+        repo: <REPO NAME>
+```
 
 ## Documentation Links
 
