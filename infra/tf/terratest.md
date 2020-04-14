@@ -116,7 +116,7 @@ These tests are running as the `circleci` user account configured in the `trussw
 
 To add the access keys go to the project settings page `https://circleci.com/gh/trussworks/<PROJECT NAME>/edit#env-vars`.
 Set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to the current values.
-These keys are rotated weekly.
+These keys are rotated daily.
 
 ### Update the Key rotator configuration
 
