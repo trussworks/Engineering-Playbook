@@ -60,7 +60,7 @@ func TestTerraformAwsEcrRepo(t *testing.T) {
 * [terrraform-aws-ecs-service](https://github.com/trussworks/terraform-aws-ecs-service)
 * [terraform-aws-logs](https://github.com/trussworks/terraform-aws-logs/)
 
-## Run "locally"
+## Run manually
 
 To run these tests "locally" against the `trussworks-ci` AWS account you'll need AWS access in our AWS organization. You'll need help from someone in #infrasec and follow the [setup instructions](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md#setup-new-iam-user).
 
