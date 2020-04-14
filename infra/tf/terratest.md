@@ -6,7 +6,7 @@ It executes the defined Terraform and then validates things you're asserting.
 
 ## Basic Terratest example fo a module
 
-The most basic Terratest test you can write brings up an example in your `examples` directory and will then just tear it down without testing anything but that it runs.
+The most basic Terratest test you can write brings up an example in your `examples` directory, tears it down, and will only test that it runs.
 We've got some basics in the [terraform-template-module repo](https://github.com/trussworks/terraform-module-template) so you can see it all in context.
 
 Write an example in the `examples` directory that includes the module(s) and configuration that you're testing. In the `tests` directory create a file named `terraform_aws<NAME_OF_MODULE>_test.go`. Basic test is as follows:
@@ -62,7 +62,7 @@ func TestTerraformAwsEcrRepo(t *testing.T) {
 
 ## Run manually
 
-To run these tests "locally" against the `trussworks-ci` AWS account you'll need AWS access in our AWS organization. You'll need help from someone in #infrasec and follow the [setup instructions](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md#setup-new-iam-user).
+To run these tests manually against the `trussworks-ci` AWS account you'll need AWS access in our AWS organization. You'll need help from someone in #infrasec and must follow the [setup instructions](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md#setup-new-iam-user).
 
 You'll also need to install `aws-vault` and ensure your `./aws/config` file is setup correctly.
 
@@ -72,9 +72,9 @@ In most of our modules, there is a `makefile` that defines `test` so you'll run 
 AWS_VAULT_KEYCHAIN_NAME=login aws-vault exec trussworks-ci -- make test
 ```
 
-## Configure CircleCI to run the tests
+## Configure CircleCi to run the tests automatically
 
-How to configure circleci to run the tests automatically
+### Configure CircleCi Job
 
 Add a job to the `.circleci/config` file in the repository:
 
@@ -108,7 +108,7 @@ terratest:
           - "~/go/pkg/mod"
 ```
 
-You'll either add this job to an existing `workflow` definition to be run on every commit/push etc.
+You'll either create a new workflow or add this job to an existing `workflow` definition to be run on every commit/push etc.
 
 ### Configure AWS Keys for the CircleCI project
 
