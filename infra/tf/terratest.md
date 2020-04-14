@@ -4,7 +4,7 @@ Terratest is a Go framework that is used to test Terraform infrastructure code.
 
 It executes the defined Terraform and then validates things you're asserting.
 
-## Basic Terratest example fo a module
+## Basic Terratest example of a module
 
 The most basic Terratest test you can write brings up an example in your `examples` directory, tears it down, and will only test that it runs.
 We've got some basics in the [terraform-template-module repo](https://github.com/trussworks/terraform-module-template) so you can see it all in context.
