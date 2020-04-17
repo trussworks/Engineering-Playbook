@@ -43,6 +43,9 @@ security and compliance standards needed to meet federal guidelines like
 * Cloudtrail is automatically added to all accounts in GovCloud by default.
   This means that you will have to handle things differently when trying to
   configure an organization's Cloudtrail.
+* It is not possible to enable CloudWatch Container Insights for an ECS cluster. Therefore, in `aws_ecs_cluster` Terraform resources, you cannot include a `setting` configuration block with `containerInsights`.
+* For Amazon RDS, GovCloud does not support `backup` or `read replica` events. Therefore event notifications and subscriptions are impossible for those events.
+* As of 04/20, the most up-to-date CA cert identifier for RDS instances that is viable in GovCloud is `rds-ca-2017` rather than `rds-ca-2019`.
 
 ## Setting Up a GovCloud Organization
 
