@@ -395,12 +395,11 @@ organization in the first place.
 For most things, creating a separate resource for each account is likely
 the better play -- for things like S3 buckets, having two S3 buckets with
 half as much stuff as a single larger S3 bucket ends up essentially being
-the same cost. Even for things where the added cost is marginal, like
-having multiple ECR repositories, the added peace of mind keeping your
-prod ECR separate from your sandbox ECR is well worth it. In addition,
-separating resources like this makes it easy to spin up a complete new
-environment by simply stamping a new self-contained copy of all the
-necessary resources.
+the same cost. Even for things where the added cost is marginal, like VPCs
+or ECS services, the added peace of mind of splitting these services is
+usually worth it. In addition, separating resources like this makes it
+easy to spin up a complete new environment by simply stamping a new
+self-contained copy of all the necessary resources.
 
 If you must have some shared resources, these should be served from an
 account that is separate from the others -- the `infra` account is a
