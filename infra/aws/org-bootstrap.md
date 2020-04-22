@@ -82,30 +82,33 @@ accounts that can manage the master account.
 Example Terraform code (suggest using a `users.tf` file):
 
 ```hcl
-resource "aws_iam_group" "admins" {
-  name = "admins"
+locals {
+  admin_users = [
+    "myuser.org-root",
+  ]
 }
 
-resource "aws_iam_group_policy_attachment" "admins" {
-  group      = aws_iam_group.admins.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
+resource "aws_iam_user" "admins" {
+  for_each      = toset(local.admin_users)
+  name          = each.value
+  force_destroy = true
 
-resource "aws_iam_user" "myuser_org-root" {
-  name = "myuser.org-root"
   tags = {
     Automation = "Terraform"
   }
 }
 
-resource "aws_iam_group_membership" "admins" {
-  name = "admins"
+module "admins_group" {
+  source  = "trussworks/iam-user-group/aws"
+  version = "1.0.2"
 
-  users = [
-    aws_iam_user.myuser_org-root.name,
-  ]
+  user_list  = local.admin_users
+  group_name = "admins"
+}
 
-  group = aws_iam_group.admins.name
+resource "aws_iam_group_policy_attachment" "admins" {
+  group      = aws_iam_group.admins.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 ```
 
@@ -261,10 +264,16 @@ data "aws_caller_identity" "current" {}
 
 locals {
   spacecats_infra_account_id = <spacecats-infra account number>
+  infra_users = [
+    "myuser",
+  ]
 }
 
-resource "aws_iam_user" "myuser" {
-  name = "myuser"
+resource "aws_iam_user" "infra_users" {
+  for_each      = toset(local.infra_users)
+  name          = each.value
+  force_destroy = true
+
   tags = {
     Automation = "Terraform"
   }
@@ -285,7 +294,7 @@ module "infra_group" {
   source  = "trussworks/iam-user-group/aws"
   version = "1.0.2"
 
-  user_list     = ["myuser"]
+  user_list     = local.infra_users
   allowed_roles = [module.infra_group_role.arn]
   group_name    = "infra"
 }
@@ -363,6 +372,12 @@ automation).
 You should also set up some basic AWS services for the organization. Both
 Cloudtrail and GuardDuty can be set up at the organization level in the
 `org-root` account, and Config should be set up in each account.
+
+Finally, you should review the [Truss `org-scp` module
+README](https://github.com/trussworks/terraform-aws-org-scp) and consider
+implementing some of the standard SCPs to parts of your organization,
+such as denying root account access and preventing accounts from removing
+themselves from the organization.
 
 ### Shared Resources
 
