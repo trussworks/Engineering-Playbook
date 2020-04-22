@@ -13,6 +13,10 @@ standard part of any AWS deployment.
 
 As Truss has begun adopting AWS Organizations for most of our new
 projects, we have developed a number of patterns for organizations.
+For a more thorough description of the process of bootstrapping a
+new AWS Organization, see the [Bootstrapping an AWS
+Organization](./org-bootstrap.md) document, but below is a brief
+description of the patterns we've adopted.
 
 ### The Organization Root Account
 
@@ -23,7 +27,7 @@ projects, we have developed a number of patterns for organizations.
   resources. We call this the "org-root" account and name it like
   `spacecats-org-root`. *This account should not be used for anything
   else -- no application should use resources from this account.*
-* There should be as few users with IAM access to the `-org-root`
+* There should be as few users with IAM access to the `org-root`
   account as possible; generally only infrastructure engineers and
   an "owner" from the client. Their IAM users in this account should
   be suffixed with `.org-root` in order to distinguish them from
@@ -42,21 +46,7 @@ projects, we have developed a number of patterns for organizations.
   Terraform resource. Once they are created, you can access them using
   IAM users in this account by assuming the
   [`OrganizationAccountAccessRole`](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
-  in the subsidiary accounts. You can do this by adding a profile that
-  looks like the following for the subsidiary account in your
-  `~/.aws/config`. Assume 12345678900 is the account number for our
-  new account:
-
-  ```text
-  [profile spacecats-new-account]
-  source_profile=spacecats-org-root
-  role_arn=arn:aws:iam::123456789000:role/OrganizationAccountAccessRole
-  region=us-west-1
-  output=json
-  # if you have MFA turned on, you will also need to add the mfa_serial
-  # line from the source_profile.
-  ```
-
+  in the subsidiary accounts.
 * You can create a `billing` role in this account that can be assumed by
   product or delivery managers (with their accounts in the ID account)
   to give them access to billing information *without* giving them access
@@ -72,7 +62,7 @@ projects, we have developed a number of patterns for organizations.
   See the [terraform-aws-iam-cross-acct-src](https://github.com/trussworks/terraform-aws-iam-cross-acct-src)
   and [terraform-aws-iam-cross-acct-dest](https://github.com/trussworks/terraform-aws-iam-cross-acct-dest)
   modules for the way we do this.
-* Like the `-org-root` account, other than the IAM users and groups, we
+* Like the `org-root` account, other than the IAM users and groups, we
   should avoid putting any other resources in this account.
 
 ### The Infra Account
@@ -98,7 +88,7 @@ projects, we have developed a number of patterns for organizations.
   account makes perfect sense; on others, we might only want production
   to be in a separate account.
 
-## Best practices
+## Best Practices
 
 These are the best practices gleaned from online resources and our
 experiences on various projects.
