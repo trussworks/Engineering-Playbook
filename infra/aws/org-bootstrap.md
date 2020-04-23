@@ -143,7 +143,7 @@ resource "aws_iam_role_policy_attachment" "admin_administrator_access" {
 Once you have applied the Terraform and have the users created, issue
 security keys for this user and add them to aws-vault; change your
 profile for this account to use these new credentials and delete the
-root credentials from both your aws-vault and the `org-root` account. You
+temporary user from your aws-vault and the `org-root` account. You
 should not use the root account anymore unless there is some kind of
 emergency.
 
