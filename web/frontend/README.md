@@ -71,12 +71,7 @@ Once you have done this, you may want to enforce it by configuring the `engines`
 }
 ```
 
-You might want to create team recommendations for how your team manages their local version of node.js. For instance, you could recommend they use [nodenv](https://github.com/nodenv/nodenv) or [nvm](https://github.com/nvm-sh/nvm) and provide configuration to keep it on the release path you want. Some of our projects are using [homebrew](https://brew.sh/) to manage all tooling. If that is true for you and you don't want to use `nodenv` (`nvm` isn't supported if it is installed with `brew`), you will want the team to install and pin the specific version:
-
-```
-brew install node@12
-brew pin node@12
-```
+You might want to create team recommendations for how your team manages their local version of node.js. For instance, you could recommend they use [nodenv](https://github.com/nodenv/nodenv) or [nvm](https://github.com/nvm-sh/nvm) and provide configuration to keep it on the release path you want.
 
 ### CSS
 
