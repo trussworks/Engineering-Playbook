@@ -58,6 +58,24 @@ We generally adhere to the [Airbnb JavaScript Style Guide](https://github.com/ai
 
 * [ESLint](https://eslint.org).
 
+#### Selecting a release of Node.js
+When starting a new project, you will want to select an Active LTS release of Node.js and make plans to move to the next LTS release after it becomes active and before the selected release goes out of maintenance. You could choose a "current" release but there is a good chance that the libraries you want to use have not been tested until it becomes active. Odd-numbered releases are short-lived, so only choose one intentionally. (For instance, if some library you want to use doesn't work in an LTS release.) Please refer to this [release schedule](https://nodejs.org/en/about/releases/) to make your selection. 
+
+Once you have done this, you may want to enforce it by configuring the `engines` your projects package.json. For instance, if you have selected 12.x 
+```
+# package.json
+"engines": {
+  "node": "^12"
+}
+```
+
+If your team is managing tooliing with brew, you will want them to install and pin the specific version;
+```
+brew install node@12
+brew pin node@12
+```
+(Note that nvm isn't supported if it is installed with brew.)
+
 ### CSS
 
 Follow the BEM (Block, Element, Modifier) methodology. Also helpful to follow is the [U.S. Web Design System](https://designsystem.digital.gov/components/).
