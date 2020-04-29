@@ -210,6 +210,6 @@ You've tested and proven your orb is functional. Congrats, we can publish your o
 circleci orb publish promote sandbox/hello-world@dev:first major
 ```
 
-Following [symver guidelines](https://semver.org/), we're incrementing this as a `major` segment as this will be the first time our fully functioning orb will be published.
+Following [semver guidelines](https://semver.org/), we're incrementing this as a `major` segment as this will be the first time our fully functioning orb will be published.
 
 Your orb is officially in the CircleCI orb registry and ready for production!
