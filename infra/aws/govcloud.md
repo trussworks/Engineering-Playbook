@@ -151,10 +151,7 @@ output=json
 # from the source_profile.
 ```
 
-Once you've added IAM users in the `-id` account, you can change this
-profile to not use the OrganizationAccountAccessRole anymore; as with
-commercial AWS accounts, you should use resources from the organization
-master account as sparingly as possible.
+Once you've added IAM users in the `-id` account later on, you can change this profile to not use the OrganizationAccountAccessRole anymore; as with commercial AWS accounts, you should use resources from the organization master account as sparingly as possible.
 
 ### Adding Your New GovCloud Account to Your GovCloud Organization
 
