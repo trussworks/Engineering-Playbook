@@ -38,9 +38,7 @@ Note: We tried [mergify](https://mergify.io/) and found that it could not work a
 
 We suggest using [Auto-approve action](https://github.com/hmarr/auto-approve-action) in a file `.github/workflows/auto-approve.yml`.
 
-In the GitHub UI for the project, you'll need to configure `Settings > Secrets` a Github API token as `GH_TOKEN` for this configuration.
-Note: `GITHUB_TOKEN` was not allowed to be configured directly.
-We created a token in the shared bot user account.
+You do not need to set the `GITHUB_TOKEN` as Github's bot should be able to run this for you.
 
 Example configuration from [Terraform AWS Alb Web Containers](https://github.com/trussworks/terraform-aws-alb-web-containers):
 
@@ -57,5 +55,5 @@ jobs:
     - uses: hmarr/auto-approve-action@v2.0.0
       if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
       with:
-        github-token: "${{ secrets.GH_TOKEN }}"
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
