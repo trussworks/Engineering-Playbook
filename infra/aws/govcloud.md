@@ -46,6 +46,7 @@ security and compliance standards needed to meet federal guidelines like
 * It is not possible to enable CloudWatch Container Insights for an ECS cluster. Therefore, in `aws_ecs_cluster` Terraform resources, you cannot include a `setting` configuration block with `containerInsights`.
 * For Amazon RDS, GovCloud does not support `backup` or `read replica` events. Therefore event notifications and subscriptions are impossible for those events.
 * As of 04/20, the most up-to-date CA cert identifier for RDS instances that is viable in GovCloud is `rds-ca-2017` rather than `rds-ca-2019`.
+* Because GovCloud doesn't have a root account in the traditional sense (it's tied to a commerical root account), you cannot set `check_root_account_mfa_enabled` to true in Truss' [AWS Config](https://registry.terraform.io/modules/trussworks/config/aws) module.
 
 ## Setting Up a GovCloud Organization
 
@@ -150,10 +151,7 @@ output=json
 # from the source_profile.
 ```
 
-Once you've added IAM users in the `-id` account, you can change this
-profile to not use the OrganizationAccountAccessRole anymore; as with
-commercial AWS accounts, you should use resources from the organization
-master account as sparingly as possible.
+Once you've added IAM users in the `-id` account later on, you can change this profile to not use the OrganizationAccountAccessRole anymore; as with commercial AWS accounts, you should use resources from the organization master account as sparingly as possible.
 
 ### Adding Your New GovCloud Account to Your GovCloud Organization
 
