@@ -57,6 +57,14 @@ some guidelines when tearing down Terraform namespaces:
   from the console or using the CLI) and then close it from the My
   Account panel.
 
+## SSL Certificates
+
+For most projects, we'll hopefully be able to use AWS ACM certificates,
+and those will get torn down with our Terraform teardown above. However,
+if we've bought additional SSL certificates through another vendor, such
+as SSLMate, we should revoke those certificates and close that account
+as well.
+
 ## CircleCI
 
 Assuming you've used CircleCI for your CI/CD pipeline on the project,
