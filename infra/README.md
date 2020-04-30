@@ -35,6 +35,7 @@ Infrastructure and deployment is really important, and at all opportunities we s
 ## Other Topics
 
 - [SSL Certificates](./certs/README.md)
+- [Project Teardown Guide](./teardown.md)
 
 ## Resources
 
