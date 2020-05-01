@@ -106,6 +106,8 @@ terratest:
         key: go-mod-sources-v1-{{ checksum "go.sum" }}
         paths:
           - "~/go/pkg/mod"
+    - store_test_results:
+          path: /tmp/test-results/gotest
 ```
 
 You'll either create a new workflow or add this job to an existing `workflow` definition to be run on every commit/push etc.
