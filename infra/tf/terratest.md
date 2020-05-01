@@ -143,7 +143,7 @@ In order to access the test metadata we stored in the [`store_test_results`](htt
 
 Since CircleCI only reads metadata in xml format, first we need to convert our `go test output` into a file CircleCI can read. We'll use package [`go-junit-report`](https://github.com/jstemmer/go-junit-report). Add a bash script like so, following the [usage directions](https://github.com/jstemmer/go-junit-report/blob/master/README.md):
 
-```
+```bash
 #!/usr/bin/env bash
 
 set -eu -o pipefail
@@ -166,13 +166,24 @@ Save this script with filename `make-test`, make it executable using `chmod +x m
 
 Now we need to update our `.circleci/config` by adding two steps - one to `go get` the package and another to access our shiny new executable:
 
-```
+```yaml
     - run:
         name: Adding go binaries to $PATH
         command: |
           echo 'export PATH=${PATH}:~/go/bin' >> $BASH_ENV
           source $BASH_ENV
     - run: go get github.com/jstemmer/go-junit-report
+```
+
+Finally we add calls in our Makefile (remembering to clean out the bin!) like so:
+
+```
+.PHONY: test
+test: bin/make-test
+
+.PHONY: clean
+clean:
+  rm -rf bin
 ```
 
 ## Documentation Links
