@@ -82,6 +82,8 @@ Add a job to the `.circleci/config` file in the repository:
 terratest:
   docker:
     - image: *circleci_docker_primary
+      environment:
+        - TEST_RESULTS: /tmp/test-results
   steps:
     - checkout
     - restore_cache:
