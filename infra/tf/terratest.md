@@ -133,6 +133,10 @@ Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/truss
         repo: <REPO NAME>
 ```
 
+### Access test metadata stored in CircleCI
+
+In order to access the test metadata we stored in the `store_test_results` key seen in the `.circleci/config` example above, we'll need to make a few tweaks. This will allow us to pinpoint intermittent failures caused by flaky tests, for example.
+
 ## Documentation Links
 
 * [Terratest repo](https://github.com/gruntwork-io/terratest)
