@@ -137,7 +137,7 @@ Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/truss
 
 ### Access test metadata stored in CircleCI
 
-In order to access the test metadata we stored in the [`store_test_results`](https://circleci.com/docs/2.0/collect-test-data/) key seen in the `.circleci/config` example above, we'll need to make a few tweaks. This will allow us to pinpoint intermittent failures caused by flaky tests, for example.
+In order to access the test metadata we stored in the [`store_test_results`](https://circleci.com/docs/2.0/collect-test-data/) key of our `.circleci/config`, we'll need to make a few tweaks. This will allow us luxuries such as pinpointing flaky tests that cause intermittent failures.
 
 ## Documentation Links
 
