@@ -186,11 +186,15 @@ Skipping to publishing also validates the yaml
 circleci orb publish orb.yml trussworks/<orb name>@dev:first
 ```
 
+You'll notice we used `first` as part of the version name of this orb since this will be the first version of this orb. The best practices guide on orbs in this [link](https://circleci.com/docs/2.0/orbs-best-practices/#versioning) says to use semver. This is pure guesswork since CircleCI is lacking in documentation behind the _why_ but I suspect the development orb's version tag stated should match the major version it will publish as when the orb has its semantic release. ie. `first` -> `1.x.x`, `second` -> `2.x.x`, and so on.
+
+As for `@dev`, this is derived from the [original documentation](https://circleci.com/docs/2.0/orb-author/) on how to author and publish orbs. Again I haven't found anything yet on why use this particular naming convention or even if the naming matters at all. There's some examples that use `@volatile` instead but, as said, I don't know the importance or the difference between the two.
+
 ### Testing
 
 We have a dev version to test.
 
-There's several approaches for testing. The least complicated way would be to test within the orb's repository itself. Another would be to test in another repository.
+There's [several approaches for testing](https://circleci.com/docs/2.0/testing-orbs/). The least complicated way would be to test within the orb's repository itself. Another would be to test in another repository.
 
 We had to go down the latter route with [orb-ecr-image-scan-findings](https://github.com/trussworks/orb-ecr-image-scan-findings/blob/master/orb.yml) as the orb's use was to scan images that were built within a GitHub repository. We used [trussworks-atlantis-ecs-image](https://github.com/trussworks/trussworks-atlantis-ecs-image/pull/3) to test the orb.
 
@@ -205,5 +209,7 @@ You've tested and proven your orb is functional. Congrats, we can publish your o
 ```sh
 circleci orb publish promote sandbox/hello-world@dev:first major
 ```
+
+Following [semver guidelines](https://semver.org/), we're incrementing this as a `major` segment as this will be the first time our fully functioning orb will be published.
 
 Your orb is officially in the CircleCI orb registry and ready for production!
