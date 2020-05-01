@@ -186,7 +186,7 @@ Skipping to publishing also validates the yaml
 circleci orb publish orb.yml trussworks/<orb name>@dev:first
 ```
 
-You'll notice we used `first` as part of the version name of this orb since this will be the first version of this orb. The best practices guide on orbs in [link](https://circleci.com/docs/2.0/orbs-best-practices/#versioning) says to use semver. This is pure guesswork since CircleCI is lacking in documentation behind the _why_ but I suspect the development orb's version tag stated should match the major version it will publish as when the orb has its semantic release. ie. `first` -> `1.x.x`, `second` -> `2.x.x`, and so on.
+You'll notice we used `first` as part of the version name of this orb since this will be the first version of this orb. The best practices guide on orbs in this [link](https://circleci.com/docs/2.0/orbs-best-practices/#versioning) says to use semver. This is pure guesswork since CircleCI is lacking in documentation behind the _why_ but I suspect the development orb's version tag stated should match the major version it will publish as when the orb has its semantic release. ie. `first` -> `1.x.x`, `second` -> `2.x.x`, and so on.
 
 As for `@dev`, this is derived from the [original documentation](https://circleci.com/docs/2.0/orb-author/) on how to author and publish orbs. Again I haven't found anything yet on why use this particular naming convention or even if the naming matters at all. There's some examples that use `@volatile` instead but, as said, I don't know the importance or the difference between the two.
 
