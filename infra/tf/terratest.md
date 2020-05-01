@@ -184,6 +184,10 @@ Finally we update our `.circleci/config` by adding two steps - one to `go get` t
     - run: go get github.com/jstemmer/go-junit-report
 ```
 
+Now we should be able to see both the tests and artifacts tabs in our CircleCI pipeline:
+
+![CircleCI Tabs](images/circleci_tabs.png "CircleCI Tabs")
+
 ## Documentation Links
 
 * [Terratest repo](https://github.com/gruntwork-io/terratest)
