@@ -139,7 +139,41 @@ Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/truss
 
 ### Access test metadata stored in CircleCI
 
-In order to access the test metadata we stored in the [`store_test_results`](https://circleci.com/docs/2.0/collect-test-data/) key of our `.circleci/config`, we'll need to make a few tweaks. This will allow us luxuries such as pinpointing flaky tests that cause intermittent failures.
+In order to access the test metadata we stored in the [`store_test_results`](https://circleci.com/docs/2.0/collect-test-data/) key of our `.circleci/config` test environment, we'll need to make a few tweaks. This will allow us luxuries such as pinpointing flaky tests that cause intermittent failures.
+
+Since CircleCI only reads metadata in xml format, first we need to convert our `go test output` into a file CircleCI can read. We'll use package [`go-junit-report`](https://github.com/jstemmer/go-junit-report). Add a bash script like so, following the [usage directions](https://github.com/jstemmer/go-junit-report/blob/master/README.md):
+
+```
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+go_test_output="/tmp/go-test.out"
+
+go test -short -count 1 -v -timeout 90m github.com/trussworks/terraform-aws-logs/test/... | tee "${go_test_output}"
+
+# Check if we are running tests inside of CircleCI by checking for a $CIRCLECI
+# environment variable. The dash after $CIRCLECI substitutes a null value if
+# CIRCLECI is unset. This prevents unbound variable errors
+if [[ -n ${CIRCLECI-} ]]; then
+    mkdir -p "${TEST_RESULTS}"/gotest
+    go-junit-report < "${go_test_output}" \
+                    > "${TEST_RESULTS}/gotest/go-test-report.xml"
+fi
+```
+
+Save this script with filename `make-test`, make it executable using `chmod +x make-test`, and then add a reference in our Makefile.
+
+Now we need to update our `.circleci/config` by adding two steps - one to `go get` the package and another to access our shiny new executable:
+
+```
+    - run:
+        name: Adding go binaries to $PATH
+        command: |
+          echo 'export PATH=${PATH}:~/go/bin' >> $BASH_ENV
+          source $BASH_ENV
+    - run: go get github.com/jstemmer/go-junit-report
+```
 
 ## Documentation Links
 
