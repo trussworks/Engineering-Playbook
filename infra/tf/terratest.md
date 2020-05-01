@@ -162,20 +162,7 @@ if [[ -n ${CIRCLECI-} ]]; then
 fi
 ```
 
-Save this script with filename `make-test`, make it executable using `chmod +x make-test`, and then add a reference in our Makefile.
-
-Now we need to update our `.circleci/config` by adding two steps - one to `go get` the package and another to access our shiny new executable:
-
-```yaml
-    - run:
-        name: Adding go binaries to $PATH
-        command: |
-          echo 'export PATH=${PATH}:~/go/bin' >> $BASH_ENV
-          source $BASH_ENV
-    - run: go get github.com/jstemmer/go-junit-report
-```
-
-Finally we add calls in our Makefile (remembering to clean out the bin!) like so:
+Save this script with a filename like `make-test` and make it executable using `chmod +x make-test`. Now we'll add a call to the executable in our Makefile (remembering to clean out the bin!) like so:
 
 ```
 .PHONY: test
@@ -184,6 +171,17 @@ test: bin/make-test
 .PHONY: clean
 clean:
   rm -rf bin
+```
+
+Finally we update our `.circleci/config` by adding two steps - one to `go get` the package and another to access our shiny new executable:
+
+```yaml
+    - run:
+        name: Adding go binaries to $PATH
+        command: |
+          echo 'export PATH=${PATH}:~/go/bin' >> $BASH_ENV
+          source $BASH_ENV
+    - run: go get github.com/jstemmer/go-junit-report
 ```
 
 ## Documentation Links
