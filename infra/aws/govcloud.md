@@ -40,13 +40,28 @@ security and compliance standards needed to meet federal guidelines like
   and the AWS [Region
   Table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
   for more information.
-* Cloudtrail is automatically added to all accounts in GovCloud by default.
-  This means that you will have to handle things differently when trying to
-  configure an organization's Cloudtrail.
-* It is not possible to enable CloudWatch Container Insights for an ECS cluster. Therefore, in `aws_ecs_cluster` Terraform resources, you cannot include a `setting` configuration block with `containerInsights`.
-* For Amazon RDS, GovCloud does not support `backup` or `read replica` events. Therefore event notifications and subscriptions are impossible for those events.
-* As of 04/20, the most up-to-date CA cert identifier for RDS instances that is viable in GovCloud is `rds-ca-2017` rather than `rds-ca-2019`.
-* Because GovCloud doesn't have a root account in the traditional sense (it's tied to a commerical root account), you cannot set `check_root_account_mfa_enabled` to true in Truss' [AWS Config](https://registry.terraform.io/modules/trussworks/config/aws) module.
+* Organization CloudTrails are not available in GovCloud. This means you
+  cannot add `cloudtrail.amazonaws.com` as a service principal in your
+  organization Terraform code.
+* Your first GovCloud account will have a randomly-named S3 bucket called
+  something like "cloudtrail-123456789abcedf", and all additional GovCloud
+  accounts you create via the method described in this document will have
+  a randomly-named CloudTrail and matching S3 bucket automatically created.
+  We recommend replacing these resources with your own CloudTrail pointing
+  to the AWS service logs bucket you create in the account.
+* It is not possible to enable CloudWatch Container Insights for an ECS
+  cluster. Therefore, in `aws_ecs_cluster` Terraform resources, you cannot
+  include a `setting` configuration block with `containerInsights`.
+* For Amazon RDS, GovCloud does not support `backup` or `read replica`
+  events. Therefore event notifications and subscriptions are impossible
+  for those events.
+* As of 04/20, the most up-to-date CA cert identifier for RDS instances
+  that is viable in GovCloud is `rds-ca-2017` rather than `rds-ca-2019`.
+* Because GovCloud doesn't have a root account in the traditional sense
+  (it's tied to a commerical root account), you cannot set
+  `check_root_account_mfa_enabled` to true in Truss' [AWS
+  Config](https://registry.terraform.io/modules/trussworks/config/aws)
+  module.
 
 ## Setting Up a GovCloud Organization
 
@@ -68,8 +83,8 @@ account as you would in commercial AWS.
 Once you have bootstrapped Terraform, you can create the GovCloud
 organization the same way you would in commercial; however, you cannot
 add `cloudtrail.amazonaws.com` as a service access principal in your
-organization definition due to the way Cloudtrail is automatically added
-to all GovCloud accounts.
+organization definition because organization CloudTrails are not available
+in GovCloud.
 
 ### Creating Additional GovCloud Accounts
 
