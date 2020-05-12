@@ -24,9 +24,10 @@ security and compliance standards needed to meet federal guidelines like
   a very short period (as is common in some of our commercial AWS
   environments) can lock you out of the `Administrator` user; since we
   can get console access via role assumption, we recommend not having the
-  password expiration on GovCloud accounts and instead treating this
-  user as you would the `root` user in commercial AWS (ie, do not use it
-  for anything other than bootstrapping or "break glass" cases).
+  password expiration on in at least the GovCloud org-root account and
+  instead treating this user as you would the `root` user in commercial
+  AWS (ie, do not use it for anything other than bootstrapping or
+  "break glass" cases).
 * GovCloud resources use a different AWS partition; this is the second
   part of an ARN. So while an ARN for a commercial resource might look
   like this:
