@@ -74,6 +74,10 @@ security and compliance standards needed to meet federal guidelines like
   `check_root_account_mfa_enabled` to true in Truss' [AWS
   Config](https://registry.terraform.io/modules/trussworks/config/aws)
   module.
+* While Route53 is available in GovCloud, it is *only* available for
+  private DNS, which limits its utility somewhat. You will need to create
+  public DNS entries for your GovCloud environments in your commercial
+  AWS environment.
 
 ## Setting Up a GovCloud Organization
 
