@@ -35,9 +35,11 @@ Save the login and password to the 1Password vault you set up for this
 project previously, and then be sure to add MFA to the root account using
 the same 1Password entry. *This is imperative for security purposes.*
 
-In order for the billing group users (created in the id account) to be 
-able to access billing information in this account, see
-[Activating access to the Billing and Cost Management console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate). This needs to be done as the root user, so now is a good time.
+In order for the billing group users (created in the id account) to be
+able to access billing information in this account, see [Activating
+access to the Billing and Cost Management
+console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate).
+This needs to be done as the root user, so now is a good time.
 
 ## Bootstrap Terraform for org-root Account
 
