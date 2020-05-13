@@ -63,9 +63,8 @@ description of the patterns we've adopted.
   billing data without having to give them direct access to the `org-root`
   account. *This cannot be changed once the account is created, so be sure
   to do it now.*
-* To access other accounts, users will use access keys in this account,
-  then assume a role in another account that allows access from this one.
-  See the [terraform-aws-iam-cross-acct-src](https://github.com/trussworks/terraform-aws-iam-cross-acct-src)
+* To access other accounts, users will use MISTY TODO: [their own ids? - get exact wording](link).
+  See the [terraform-layout-example](https://github.com/trussworks/terraform-layout-example)
   and [terraform-aws-iam-cross-acct-dest](https://github.com/trussworks/terraform-aws-iam-cross-acct-dest)
   modules for the way we do this.
 * Like the `org-root` account, other than the IAM users and groups, we
