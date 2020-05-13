@@ -16,6 +16,18 @@ security and compliance standards needed to meet federal guidelines like
   way. This means that you cannot assume roles between the two or tie
   a commercial resource to a GovCloud resource unless using some publicly
   addressable method.
+* GovCloud accounts do not have a `root` user; they have an automatically
+  created IAM user named `Administrator` with full administrative
+  privileges. For most purposes, you can think of this as operating the
+  same way as the `root` user; however, it is still subject to restrictions
+  you place on all IAM users. This means setting password expiration to
+  a very short period (as is common in some of our commercial AWS
+  environments) can lock you out of the `Administrator` user; since we
+  can get console access via role assumption, we recommend not having the
+  password expiration on in at least the GovCloud org-root account and
+  instead treating this user as you would the `root` user in commercial
+  AWS (ie, do not use it for anything other than bootstrapping or
+  "break glass" cases).
 * GovCloud resources use a different AWS partition; this is the second
   part of an ARN. So while an ARN for a commercial resource might look
   like this:
@@ -62,6 +74,10 @@ security and compliance standards needed to meet federal guidelines like
   `check_root_account_mfa_enabled` to true in Truss' [AWS
   Config](https://registry.terraform.io/modules/trussworks/config/aws)
   module.
+* While Route53 is available in GovCloud, it is *only* available for
+  private DNS, which limits its utility somewhat. You will need to create
+  public DNS entries for your GovCloud environments in your commercial
+  AWS environment.
 
 ## Setting Up a GovCloud Organization
 
