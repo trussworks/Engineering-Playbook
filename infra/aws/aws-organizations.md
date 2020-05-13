@@ -57,6 +57,12 @@ description of the patterns we've adopted.
 * The second account you create should be the ID account. This account
   will be used to define the IAM users and groups that people will use
   on a day-to-day basis. We name this like `spacecats-id`.
+* When creating this account, be sure to set the `iam_user_access_to_billing`
+  parameter for the account to `ALLOW` (all other accounts should have
+  this set to `DENY`). Doing by doing this, we can allow users to see the
+  billing data without having to give them direct access to the `org-root`
+  account. *This cannot be changed once the account is created, so be sure
+  to do it now.*
 * To access other accounts, users will use access keys in this account,
   then assume a role in another account that allows access from this one.
   See the [terraform-aws-iam-cross-acct-src](https://github.com/trussworks/terraform-aws-iam-cross-acct-src)
