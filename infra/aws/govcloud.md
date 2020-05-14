@@ -23,8 +23,8 @@ security and compliance standards needed to meet federal guidelines like
   you place on all IAM users. This means setting password expiration to
   a very short period (as is common in some of our commercial AWS
   environments) can lock you out of the `Administrator` user; since we
-  can get console access via role assumption, we recommend not having the
-  password expiration on in at least the GovCloud org-root account and
+  can get console access via role assumption, we recommend setting the
+  password expiration on the GovCloud org-root account to six months and
   instead treating this user as you would the `root` user in commercial
   AWS (ie, do not use it for anything other than bootstrapping or
   "break glass" cases).

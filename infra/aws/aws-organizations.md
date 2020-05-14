@@ -51,6 +51,9 @@ description of the patterns we've adopted.
   product or delivery managers (with their accounts in the ID account)
   to give them access to billing information *without* giving them access
   to this account directly.
+* The `root` password for this account should be reset each time an admin
+  leaves the project or at least once every six months, just to ensure
+  that it is not leaked.
 
 ### The ID Account
 
