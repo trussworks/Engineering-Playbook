@@ -64,7 +64,7 @@ description of the patterns we've adopted.
   account. *This cannot be changed once the account is created, so be sure
   to do it now.*
 * To access other accounts, we assign group policies which allow direct role assumption.
-  See the [terraform-aws-iam-cross-acct-dest](https://github.com/trussworks/terraform-aws-iam-cross-acct-dest) modules for the way we do this. See [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for an example of how this is done.
+  We use [`iam-user-group`](https://registry.terraform.io/modules/trussworks/iam-user-group/aws/1.0.2) and [`iam-cross-acct-dest`](https://registry.terraform.io/modules/trussworks/iam-cross-acct-dest/aws) modules to do this; see [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for how we use them.
 * Like the `org-root` account, other than the IAM users and groups, we
   should avoid putting any other resources in this account.
 

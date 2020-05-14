@@ -286,7 +286,7 @@ you can use the profile pattern described in the next section.
 Follow the same steps you took to bootstrap the `org-root` account to
 bootstrap your `id` account. Once you've done that, you can set up the
 users and groups that team members will use to access all other AWS
-resources. Truss uses [`terraform-aws-iam-user-group`](https://github.com/trussworks/terraform-aws-iam-user-group) and [`iam-cross-acct-dest`](https://registry.terraform.io/modules/trussworks/iam-cross-acct-dest/aws) modules to do this; see [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for how this is done.
+resources. Truss uses [`iam-user-group`](https://registry.terraform.io/modules/trussworks/iam-user-group/aws/1.0.2) and [`iam-cross-acct-dest`](https://registry.terraform.io/modules/trussworks/iam-cross-acct-dest/aws) modules to do this; see [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for how we use them.
 
 In order to do this, in your `id` account, define your users and then
 use the module like so:
