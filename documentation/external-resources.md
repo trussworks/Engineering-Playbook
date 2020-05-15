@@ -9,6 +9,7 @@ especially interested in this topic.
 * [10 Tips For Making Your Documentation Crystal Clear](https://opensource.com/life/16/11/tips-for-clear-documentation), Ben Cotton
 * [A Primer on Documentation Content Strategy](https://increment.com/documentation/primer-on-documentation-content-strategy/), Stephanie Blotner
 * [What to Write](https://jacobian.org/writing/what-to-write/) and [Technical Style](https://jacobian.org/writing/technical-style/), Jacob Kaplan-Moss
+* [Yelp Production Engineering Documentation Style Guide](https://engineeringblog.yelp.com/2018/10/yelp-production-engineering-documentation-style-guide.html), Chastity Blackwell
 
 ## Talks
 
