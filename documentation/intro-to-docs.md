@@ -22,24 +22,24 @@ essentially docs that don't exist. If we want to encourage people to
 write good docs, we need to make sure we can model good behavior. Some
 specific tips for accomplishing this goal:
 
-* *Establish strong norms (if not hard and fast rules) about where
-  documentation belongs, preferably in no more than two places* (eg, a
+* **Establish strong norms (if not hard and fast rules) about where
+  documentation belongs, preferably in no more than two places** (eg, a
   Git repo for technical docs and a Google Drive for design docs). If
   people have to look in too many places to find what they are looking
   for, they will eventually just give up (and it makes it more likely
   you'll have many different inconsistent documents for the same thing).
-* *Make it easy to find documents in those repos without needing to play
-  a guessing game with keywords* (especially since a search for something
+* **Make it easy to find documents in those repos without needing to play
+  a guessing game with keywords** (especially since a search for something
   like "terraform" or "docker" is probably going to give you too many
   results to be useful). Provide good tables of contents (they should
   not be too long) and put related documents close to each other
   topologically.
-* *Give documents descriptive, non-generic titles.* Giving a document a
+* **Give documents descriptive, non-generic titles.** Giving a document a
   title like "Docker" or "Alerts" becomes increasingly troublesome the
   larger your project gets -- if you're using Docker for three different
   applications and local development, what does the "Docker" document
   refer to?
-* *Keep in mind the specific restrictions of your repositories.* If you
+* **Keep in mind the specific restrictions of your repositories.** If you
   are using a wiki with a table of contents in the left margin that only
   shows ~20 characters, keep your titles as close to that limit as
   possible. If you are using a Git repo, make sure the filenames for your
