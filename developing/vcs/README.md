@@ -44,6 +44,8 @@ by turning on the following settings at a minimum:
   * Require status checks to pass before merging
   * Include administrators
 
+* Due to the problematic history with the word "master", it is becoming more and more prevalent to use a different name (e.g. "main") [for the default branch](https://help.github.com/en/github/administering-a-repository/setting-the-default-branch).
+
 ## PR size
 
 Pull requests should be small and focused enough to be reviewable in under 15,
