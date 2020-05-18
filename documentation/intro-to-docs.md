@@ -89,10 +89,10 @@ be people on-call, it may be stakeholders in the C-suite, but whoever they
 are, you intend for *someone* to be reading this at some point in the
 future.
 
-If you are keeping this audience in mind throughout the process of writing
+If you aren't keeping this audience in mind throughout the process of writing
 your docs, then you are going to miss the mark. Writing a document intended
 for new engineers and assuming a ton of knowledge will severely limit its
-utility. Similarly, writing something for intended for project leads and
+utility. Similarly, writing something intended for project leads and
 spending pages defining common terms they're already familiar with will
 probably cause them to lose patience and start to skim things over.
 
@@ -102,7 +102,7 @@ Often we'll be tempted to add lots of screenshots, diagrams, or other
 graphics to documentation to try and make things more clear. A well-placed
 graphic can help -- but too many will make the upkeep of your documentation
 too difficult. It is *much* more difficult to edit a graphic (and videos
-even more so) than to edit text, so use them only when they worth the
+even more so) than to edit text, so use them only when they're worth the
 added cost in maintainability.
 
 In addition, adding lots of graphics will make it harder to read the
