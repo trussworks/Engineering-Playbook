@@ -37,6 +37,10 @@ to add new resources if you find something particularly interesting.
   This 2012 blog post from John Allspaw provides a short description of
   why the idea of a "root cause" is a fundamentally flawed idea, and why
   *learning* must be the driving force behind incident analysis, not fixing.
+* [Etsy Debriefing Facilitation Guide](https://github.com/etsy/DebriefingFacilitationGuide)
+  This is the incident retrospective guide used by Etsy and open-sourced
+  in 2016; it's an excellent resource for conducting your own debriefings
+  and the basis for a lot of similar guides throughout the industry.
 * [The Infinite Hows](https://www.oreilly.com/radar/the-infinite-hows/)
   This article by John Allspaw talks about the issues with the
   commonly used "Five Whys" system of incident analysis, and does an
