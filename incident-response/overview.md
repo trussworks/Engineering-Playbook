@@ -168,11 +168,11 @@ minute loop that looks something like this:
 * Team members go back and take their appropriate actions, and start
   the loop over again in 15-20 minutes.
 
-In general, you do not want to repeat this loop in less than 15 minutes,
-otherwise your team members will be too busy checking in to actually do
-what they need to. Repeating less often means that the situation can
-change too much between check-ins, which is bad for the incident
-commander's situational awareness.
+In general, you do not want to repeat this loop in more often than once
+every 15 minutes, otherwise your team members will be too busy checking
+in to actually do what they need to. Repeating less often means that the
+situation can change too much between check-ins, which is bad for the
+incident commander's situational awareness.
 
 If the incident is resolved, it's usually a good idea to wait an
 additional 15 minutes before you disband the response team, just to
