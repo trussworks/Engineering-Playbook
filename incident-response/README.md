@@ -12,4 +12,6 @@ with the post-incident retrospective (aka postmortem) process.
 
 * [On-Call Best Practices](./on-call.md)
 * [Incident Response Overview](./overview.md)
+* [Security Incident Response](./security-incidents.md)
+* [Incident Analysis and Retrospectives](./analysis.md)
 * [External-Resources](./external-resources.md)
