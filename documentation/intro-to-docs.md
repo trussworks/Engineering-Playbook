@@ -109,7 +109,8 @@ In addition, adding lots of graphics will make it harder to read the
 text. If people cannot follow from one paragraph to the next (seeing them
 both on the screen at the same time), this is especially difficult. If
 you need to use large graphics, use thumbnails and link to the larger
-version to prevent them from being too distracting.
+version to prevent them from being too distracting. Graphics can also
+make your docs less accessible, so captions and alt text are important.
 
 ### Keep individual documents short -- but not too short
 
@@ -151,3 +152,18 @@ before it gets a thorough review either. Some tips for reviewing docs:
 * If you're the writer, have the reviewer tell you what they took away
   from the document -- is it what you wanted them to know? Did they come
   away with a good mental model of the system you described?
+
+### Miscellaneous
+
+A few other short pieces of advice you may find useful:
+
+* If you use graphics, write the caption first, then make sure that the
+  graphic represents what you want to convey.
+* Lists and tables can be a good way to present information people need
+  in a hurry -- they are easier to digest than paragraphs of text (but
+  may not be best for nuanced information).
+* Use active voice instead of passive voice whenever possible ("do this
+  thing" not "this thing must be done").
+* Put conditionals *before* imperatives to prevent people from doing
+  something without realizing when they shouldn't ("If not Y, do X", not
+  "do X if not Y").
