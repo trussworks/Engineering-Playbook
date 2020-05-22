@@ -47,16 +47,20 @@ If xcode is not up to date, you will be prompted to install it with: `xcode-sele
 
 ## Configuring Your Environment
 
+You need gpg-agent running at login, which needs a launchd configuration to work. Homebrew gpg doesn't ship with a
+launchd configuration to work with so as an alternative you can modify your `~/.bashrc` to get around this.
+
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
     #Enable SSH Key on Yubikey Device
-    killall gpg-agent
-    killall ssh-agent
+    killall gpg-agent > /dev/null 2>&1
+    killall ssh-agent > /dev/null 2>&1
     eval $( gpg-agent --daemon --enable-ssh-support )
 
+    # GPG_TTY is not needed if using pinentry from the instructions below
     export GPG_TTY=$(tty)
 
-In the future, if you receive the message `No matching processes
+If you leave out `> /dev/null 2>&1` then you may receive the message `No matching processes
 belonging to you were found` after running `source ~/.bashrc`, this is
 not necessarily an error message. It may just mean you’re not
 currently running the processes associated with this change.
@@ -71,9 +75,9 @@ for commits.
     echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
         ~/.gnupg/gpg-agent.conf
     gpgconf --kill gpg-agent
-    gpg-agent --daemon
+    gpg-agent --daemon --enable-ssh-support
 
-If you use this, you do not need to set `GPG_TTY`.
+If you use this, you do not need to set `GPG_TTY` in your `~/.bashrc`.
 
 ## Verifying Your YubiKey
 
