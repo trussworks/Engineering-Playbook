@@ -54,6 +54,11 @@ to add new resources if you find something particularly interesting.
   and how what actually happened often gets oversimplified in a desire
   to make incidents fit in standardized boxes. If you watch nothing else
   about incident analysis, watch this.
+* [Who Destroyed Three Mile Island?](https://www.youtube.com/watch?v=1xQeXOz0Ncs)
+  This talk by Nickolas Means at LeadDev Austin 2018 talks about the 1979
+  Three Mile Island disaster and is an excellent walkthrough of the
+  difference between first stories and second stories, and the dangers of
+  hindsight and outcome bias.
 
 ### Books
 
