@@ -57,7 +57,7 @@ easily and find the information they are looking for.
 Consider breaking your documentation into a set of distinct categories,
 and make sure the type of document is very clear in the title (so you
 could title the document "Runbook: Spacecats DB Alerts," for instance).
-Use an ADR to define what these types are -- such as:
+Use an [ADR](./adr.md) to define what these types are -- such as:
 
 * *How-tos* are step-by-step guides to common procedures intended for
   execution under normal operation. A reader should be able to execute
