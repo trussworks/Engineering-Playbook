@@ -15,4 +15,4 @@ with the post-incident retrospective (aka postmortem) process.
 * [Security Incident Response](./security-incidents.md)
 * [Incident Analysis and Retrospectives](./analysis.md)
 * [Incident Retrospective Template](./retro-template.md)
-* [External-Resources](./external-resources.md)
+* [External Resources](./external-resources.md)
