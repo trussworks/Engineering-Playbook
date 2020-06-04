@@ -10,51 +10,13 @@ Feel free to update and make changes!
 
 ## Split a tool out from an existing project
 
-Follow these steps if this is a tool you developed in another repository and you need to preserve git history.
-You can skip this if you are creating a completely new tool.
+If you are splitting a tool from an existing project, you can follow the
+instructions in [here](../vcs/git-repos.md#splitting-out-code-to-a-new-repository).
 
-In your terminal clone a copy of the original repo into a new folder:
-
-```sh
-git clone git@github.com:OWNER/REPONAME.git NEWREPO
-```
-
-In that new repo folder remove the origin:
-
-```sh
-git remote rm origin
-```
-
-Filter out commits that change the specified directory:
-
-```sh
-git filter-branch --prune-empty --subdirectory-filter DIRNAME master
-```
-
-Create a new repo either in the GitHub UI or directly in [Infra Management Repo](https://github.com/trussworks/legendary-waddle/tree/master/trussworks-prod/github-global).
-
-Note: This repo should be public and properly licensed. You can use a Github license template for MIT or BSD-3.
-
-If you are making a repo in the Trussworks GitHub org, please add the repo to our [Infra Management Repo](https://github.com/trussworks/legendary-waddle/tree/master/trussworks-prod/github-global).
-If you need help please reach out to the #infrasec Slack channel.
-
-Add the new repo as upstream:
-
-```sh
-git remote add origin https://github.com/OWNER/NEWREPO.git
-```
-
-Push history:
-
-```sh
-git push origin .
-```
-
-### References
-
-* [GitHub's documentation](https://help.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
-* [Chris Gilmer’s full instructions](
-https://github.com/chrisgilmerproj/silliness#how-to-break-out-projects)
+If you are adding your tool to the Trussworks GitHub org, please add the repo to
+our [Infra Management
+Repo](https://github.com/trussworks/legendary-waddle/tree/master/trussworks-prod/github-global).
+If you need help, please reach out to the #infrasec Slack channel.
 
 ## Get the project building binaries
 
