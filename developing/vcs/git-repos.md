@@ -31,9 +31,14 @@ Git to use it:
 
 * Delete local and remote feature branches after merging. This allows us to
 reuse branch names, and makes it easier for you to differentiate between
-your branches that are done and those that are still being worked on. Deleting
-merged branches on GitHub should be automated with [Probot]. Locally, you can
-add an alias to your `~/.gitconfig` file. Example:
+your branches that are done and those that are still being worked on. To turn
+this on in GitHub, check the "Automatically delete head branches" box under
+the "Merge button" heading in the Options settings for your repo. If you're
+maintaining the repo with our
+[terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
+module, it will turn this on automatically.
+
+Locally, you can add an alias to your `~/.gitconfig` file. Example:
 
   ```
   [alias]
@@ -42,11 +47,6 @@ add an alias to your `~/.gitconfig` file. Example:
 
   Then instead of doing the typical `git checkout master && git pull`, you would
   only run `git fresh`.
-
-  If you're maintaining the repo with our [terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
-  module, it will turn this on automatically.
-
-[Probot]: https://probot.github.io/apps/delete-merged-branch/
 
 ## GitHub Repo Settings
 
