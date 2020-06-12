@@ -1,4 +1,4 @@
-# [alerting](./README.md) / Alert Providers
+# [InfraSec](./README.md) / Alert Providers
 
 In general, we will be using a third party provider to take alerts from
 the systems which are doing the monitoring -- whether that's AWS

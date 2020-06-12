@@ -1,4 +1,4 @@
-# [Infra](./README.md) / Project Teardown Guide
+# [InfraSec](./README.md) / Project Teardown Guide
 
 When a project reaches the end of its lifetime and the client doesn't
 want to continue it, we need to teardown all the infrastructure we've

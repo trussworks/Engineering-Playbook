@@ -1,4 +1,4 @@
-# YubiKey Configuration Guide
+# [InfraSec](../README.md) / YubiKey Configuration Guide
 
 ## Introduction
 

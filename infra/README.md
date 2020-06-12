@@ -1,30 +1,31 @@
-# [Engineering Playbook](../README.md) / Infrastructure and Deployment
+# [Engineering Playbook](../README.md) / InfraSec
 
 ## Overview
 
-Infrastructure and deployment is really important, and at all opportunities we should try to automate it.
+Infrastructure and security engineering (infrasec) is the practice of
+building secure, robust systems that are foundational to having reliable
+applications and services. While infrastructure as code is a core area
+for this practice, it also involves system design, [incident
+response](../incident-response/README.md), and a number of other fields.
 
-## Getting Started
+## The InfraSec Practice
 
-- [Setting up your AWS account 🔒](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md)
-  - You will need to pair with someone that has access to AWS already to run the Terraform commands in the instructions.
-- [Your first Lambda Function 🔒](./getting_started/your_first_lambda_function.md)
-  - After you have AWS access you can deploy your first AWS Lambda Function with Go and Terraform.
+- [InfraSec Practice Charter](./charter.md)
 
-## Immutable infrastructure techniques
+## Infrastructure As Code
 
+- [Ansible](./ansible/README.md)
+- AWS CloudFormation
+- Circle-CI
+  - [CircleCI Patterns (in Tools and Practice)](../developing/cicd/circleci-patterns.md)
+  - [Orbs](./circleci/orbs.md)
 - Packer
+- [Terraform](./tf/README.md)
+
+## Immutable Infrastructure
+
 - Containers (Docker)
 - Functions as a Service (Lambda, etc)
-- [Terraform](./tf/README.md)
-
-## Infrastructure as code techniques
-
-- [Terraform](./tf/README.md)
-- CloudFormation
-- Concourse-CI
-- Circle-CI
-  - [Orbs](./circleci/orbs.md)
 
 ## Cloud Providers
 
@@ -32,12 +33,28 @@ Infrastructure and deployment is really important, and at all opportunities we s
 - GCP
 - Azure
 
+## Tutorials
+
+### AWS
+
+- [Setting Up Your AWS User](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/setup-new-user.md)
+  How to set up your AWS user in the Truss internal infrastructure. You
+  will need the assistance of someone with administrative privileges in
+  our AWS organization to help you.
+- [Your First Lambda Function](./tutorials/your_first_lambda_function.md)
+  A guide to deploying your first AWS Lambda Function with Go and Terraform.
+
+### Security
+
+- [One-Time Passwords](./tutorials/one-time-passwords.md)
+  How to set up one-time passwords for GitHub with 1Password.
+- [YubiKey Configuration Guide](./tutorials/yubikey-configuration.md)
+  How to get and configure a YubiKey for use in commit signing.
+- [YubiKey SSO](./tutorials/yubikey-sso.md)
+  How to configure a Google Account to use YubiKey (for GSuite admins).
+
 ## Other Topics
 
-- [SSL Certificates](./certs/README.md)
+- [Alert Providers](./alert-providers.md)
 - [Project Teardown Guide](./teardown.md)
-
-## Resources
-
-- [Examples of common infrastructure patterns at Truss 🔒](https://github.com/trussworks/truss-infra)
-- [Terraform layout example 🔒](https://github.com/trussworks/terraform-layout-example): a basic approach Truss takes towards Terraform layout.
+- [SSL Certificates](./certs/README.md)

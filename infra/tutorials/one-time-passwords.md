@@ -1,4 +1,4 @@
-# [Security](../README.md) / One-Time Passwords
+# [InfraSec](../README.md) / One-Time Passwords
 
 ## Introduction
 
