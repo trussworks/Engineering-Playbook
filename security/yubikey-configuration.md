@@ -180,15 +180,14 @@ The optimal output should look similar to this, showing an individual subkey for
 
 If you add one too many keys, you can delete them.
 
-* Enter the GPG command: 'gpg --expert --edit-key 1234ABC' (where 1234ABC is the key ID of your key)
-* find the strings that look  like 'RSA4096/456ABC'
-* enter the command: 'key 456ABC'
-* after pressing enter an _asterisk_ will appear next to that key
-* enter the command: 'delkey'
-* it will then ask if you want to delete the key. Select yes
-* enter your passphrase
-* verify the key is deleted
-* repeat if multiple keys need to be deleted
+* Enter the GPG command: `gpg --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+* Enter `key 1` (This will select the first key but you can select any key)
+* After pressing enter an _asterisk_ will appear next to that key
+* Enter the command: `delkey`
+* It will then ask if you want to delete the key. Select yes
+* Enter your passphrase
+* Verify the key is deleted
+* Repeat if multiple keys need to be deleted
 
 _Note that if you have not imported the keys to your Yubikey yet then your output will not include those card-no details._
 
