@@ -10,7 +10,9 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
 * [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
+* [Terraform state mv](#terraform-state-mv)
 * [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
+* [How to test your Terraform code](#how-to-test-your-terraform-code)
 
 ### Semantic Versioning
 
@@ -69,6 +71,10 @@ In order to preserve the ability to release updates for previous Terraform versi
 
 [publish-release]: ./publish-release.png "Screenshot of a published release"
 [draft-release]: ./draft-release.png "Screenshot of a release draft"
+
+### Terraform state mv
+
+Refer to the Truss [`terraform state mv` info sheet](terraform-state-mv.md).
 
 ### How to layout/structure a Terraform Project
 
