@@ -1,4 +1,4 @@
-# [Getting Started](./README.md) / Deploying your first AWS Lambda Function with Go and Terraform
+# [InfraSec](../README.md) / Deploying your first AWS Lambda Function with Go and Terraform
 
 ## Intro
 

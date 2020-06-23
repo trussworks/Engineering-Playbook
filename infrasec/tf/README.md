@@ -1,4 +1,4 @@
-# [infra](../README.md) / Terraform
+# [InfraSec](../README.md) / Terraform
 
 ## Overview
 

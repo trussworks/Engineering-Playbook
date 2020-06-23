@@ -1,4 +1,4 @@
-# [infra](../README.md) / Amazon Web Services (AWS)
+# [InfraSec](../README.md) / Amazon Web Services (AWS)
 
 ## Overview
 

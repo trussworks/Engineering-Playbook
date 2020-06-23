@@ -1,4 +1,4 @@
-# [Infra](../README.md) / SSL Certificates
+# [InfraSec](./README.md) / SSL Certificates
 
 ## Overview
 

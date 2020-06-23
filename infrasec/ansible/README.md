@@ -1,4 +1,4 @@
-# [infra](../README.md) / Ansible
+# [InfraSec](../README.md) / Ansible
 
 ## Overview
 
