@@ -59,6 +59,8 @@ Fix any issues you find and commit your changes to your repo.
 ### Example .pre-commit-config.yaml and .markdownlintrc
 
 The following example `.pre-commit-config.yaml` does some nice things for a basic go project.
+Ensure you're using the latest versions of these tools by running `pre-commit autoupdate` and
+checking in changes to source control.
 
 ```yml
 repos:
@@ -83,6 +85,15 @@ repos:
     rev: v0.21.0
     hooks:
       - id: markdownlint
+
+  - repo: local
+    hooks:
+      - id: goreleaser-check
+        name: Validate goreleaser config yaml
+        entry: goreleaser check
+        language: system
+        files: '.goreleaser.yml'
+        pass_filenames: false
 ```
 
 This example `.markdownlintrc` will work with the above `.pre-commit-config.yaml` example.
