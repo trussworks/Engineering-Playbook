@@ -13,3 +13,4 @@ This section should have some notes about why we like AWS as our default choice 
 * Environments throughout the product deployment cycle (notes about Dev, Test, Staging and Production)
 * [Resource Naming](./naming.md)
 * [Working in GovCloud](./govcloud.md)
+* [GuardDuty in Organizations](./guardduty.md)
