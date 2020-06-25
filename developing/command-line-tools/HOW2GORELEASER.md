@@ -226,34 +226,56 @@ changelog:
     - '^test:'
 ```
 
+### Test goreleaser locally
+
 Validate your file with the command:
 
 ```sh
 goreleaser check
 ```
 
-### Test goreleaser locally
+Then try to build from this configuration using:
 
-In your terminal from the root of your repo, run goreleaser without releasing with:
+```sh
+goreleaser build --snapshot --rm-dist
+```
+
+Now you should have build artifacts in the `dist/` directory in your repository. This is a good time to ensure
+that `dist/` is in your `.gitignore` file.
+
+In your terminal from the root of your repo, try runing goreleaser without releasing with:
 
 ```sh
 goreleaser --snapshot --skip-publish --rm-dist
 ```
 
-This will create all of your binaries in the `dist` folder in your repo.
+This goes beyond the build process and tests out the parts of the releaser related to pushing artifacts.
 
-## Hook up CI
+## Set up CircleCI
 
-Write a CircleCi config file and commit it to your repo.
+First log into CircleCI and go to the [Projects Dashboard](https://app.circleci.com/projects/project-dashboard/github/trussworks).
+From this page you can find your repository and either select "Set Up Project" or "Follow Project".
+
+The next step is to write a CircleCi config file and commit it to your repo.
 You will need to do some manual configuration in CircleCi to get this working.
+
+### Project Environment Variables
+
+Configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCi UI.
+
+`GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub. It is also
+used to update the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) with the new artifact
+locations and checksums. In the `infra+github@truss.works` 1Password you will find an API Key named
+`personal access token for releases` which can be used for this value.
+
+`DOCKER_USER` and `DOCKER_PASS` are configured from the `trussworksbot` in 1Password. Use the API Key you configured
+in an earlier step to fill out these values. This is how CircleCI will push to Docker Hub.
+
+These values are configured at the URL [https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables](https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables). Replace `NEWREPO` with the name of your github repo.
 
 ### CircleCi config.yml example
 
 Add the contents of this code block to .circleci/config.yml in your repo after setting your repo up with CircleCI.
-
-Also configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCi UI.
-
-`GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub.
 
 This configuration creates two CircleCI workflows `validate` and `release`.
 
