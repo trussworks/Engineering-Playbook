@@ -8,6 +8,16 @@ If someone else has already written a tool and open sourced it use it and contri
 
 Feel free to update and make changes!
 
+## Install GoReleaser
+
+To install GoReleaser visit the [installation instructions](https://goreleaser.com/install/). It can be installed
+with brew if you use:
+
+```sh
+brew install goreleaser/tap/goreleaser
+brew install goreleaser
+```
+
 ## Split a tool out from an existing project
 
 If you are splitting a tool from an existing project, you can follow the
