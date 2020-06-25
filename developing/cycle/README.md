@@ -17,12 +17,3 @@ In order to implement these principles, we do a few things:
 ## Contents
 
 * [Pivotal Tracker](./tracker.md)
-
-<!---
-
-* [Sprint Planning](./planning.md)
-* [Standup](./standup.md)
-* [Demo](./demo.md)
-* [Retrospective](./retro.md)
-
---->
