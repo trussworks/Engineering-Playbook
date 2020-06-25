@@ -216,6 +216,12 @@ changelog:
     - '^test:'
 ```
 
+Validate your file with the command:
+
+```sh
+goreleaser check
+```
+
 ### Test goreleaser locally
 
 In your terminal from the root of your repo, run goreleaser without releasing with:
