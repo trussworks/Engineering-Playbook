@@ -182,11 +182,11 @@ builds:
     - amd64
   main: main.go
 brews:
-  - description: "WRITE A DESCRIPTION"
+  - description: "USE THE DESCRIPTION FROM THE GITHUB REPO"
     github:
       owner: trussworks
       name: homebrew-tap
-    homepage: "HOMEPAGE URL GOES HERE"
+    homepage: "https://github.com/trussworks/NEWREPO"
     commit_author:
       name: trussworks-infra
       email: infra+github@truss.works
@@ -198,14 +198,14 @@ dockers:
       - "OWNER/NEWREPO:{{ .Tag }}"
     skip_push: true
 archives:
-- replacements:
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-    386: i386
-    amd64: x86_64
+  -
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
 checksum:
   name_template: 'checksums.txt'
+  algorithm: sha256
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
