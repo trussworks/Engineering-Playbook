@@ -256,12 +256,12 @@ This goes beyond the build process and tests out the parts of the releaser relat
 First log into CircleCI and go to the [Projects Dashboard](https://app.circleci.com/projects/project-dashboard/github/trussworks).
 From this page you can find your repository and either select "Set Up Project" or "Follow Project".
 
-The next step is to write a CircleCi config file and commit it to your repo.
-You will need to do some manual configuration in CircleCi to get this working.
+The next step is to write a CircleCI config file and commit it to your repo.
+You will need to do some manual configuration in CircleCI to get this working.
 
 ### Project Environment Variables
 
-Configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCi UI.
+Configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCI UI.
 
 `GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub. It is also
 used to update the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) with the new artifact
@@ -273,7 +273,7 @@ in an earlier step to fill out these values. This is how CircleCI will push to D
 
 These values are configured at the URL [https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables](https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables). Replace `NEWREPO` with the name of your github repo.
 
-### CircleCi config.yml example
+### CircleCI config.yml example
 
 Add the contents of this code block to .circleci/config.yml in your repo after setting your repo up with CircleCI.
 
@@ -349,13 +349,22 @@ workflows:
 
 ### Run a release from GitHub
 
-Cut a release from `master` with a tag using semantic versioning in the style of `v0.0.0` using the GitHub UI.
+Cut a release from `master` with a tag using semantic versioning in the style of `v0.0.0` using:
 
-This will create a tag and CircleCi will automatically run the `release` workflow.
+```sh
+git tag v0.0.0
+git push --tags
+```
 
-## Verify you can install from your configured Homebrew Tap
+This will create a tag and CircleCI will automatically run the `release` workflow. This will work even on
+a branch, meaning you can test the release process before merging this code into the mainline branch.
 
-We'll assume you're using the Trussworks Homebrew tap.
+## Verify the release
+
+### Verify you can install from your configured Homebrew Tap
+
+First see if your tool appears in the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) repo.
+There should be a Ruby file with your tool's name. If it is there then proceed to install it.
 
 Install the Trussworks tap to homebrew and then install the tool you built.
 
@@ -364,7 +373,27 @@ brew tap trussworks/tap
 brew install tool-name
 ```
 
+Test your tool by using the help command:
+
+```sh
+tool-name -h
+tool-name version
+```
+
+Verify the version matches the release version.
+
 Be sure you updated the `README.md` in the new tool repo to have installation instructions.
+
+### Verify you can install from docker hub
+
+You will want to verify that your docker image was pushed to Docker Hub. Try pulling the image and running from
+the container:
+
+```sh
+docker pull trussworks/tool-name:v0.0.0
+docker run -it trussworks/tool-name:v0.0.0 --help
+docker run -it trussworks/tool-name:v0.0.0 version
+```
 
 ## Broadcast this to others
 
