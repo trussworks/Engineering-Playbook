@@ -322,14 +322,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Run goreleaser
-          command: goreleaser --debug
+      - run: goreleaser
       - run:
           name: Login to Docker Hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
-          name: Check Docker container
+          name: Test that Docker container works
           command: docker run -it OWNER/NEWREPO:<< pipeline.git.tag >> --help
       - run:
           name: Docker push
@@ -346,7 +344,7 @@ workflows:
             branches:
               ignore: /^.*/
             tags:
-              only: /^v.*/
+              only: /^v[0-9]+(\.[0-9]+)*(-.*)*/
 ```
 
 ### Run a release from GitHub
