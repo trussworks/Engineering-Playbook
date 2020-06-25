@@ -134,11 +134,23 @@ You'll need to be sure to enable automation to push into whatever you use.
 
 We don't use the trussworks Docker Hub org very much so you'll need to reach out to the #infrasec Slack channel to find someone to help you.
 
-Create a new Docker Hub repo following the same naming convention of the repo like `trussworks/NEWREPO`.
+Log into [Docker Hub](https://hub.docker.com/) with your personal account. If you don't have an account then make one
+and then have someone on InfraSec add you to the Trussworks organization.
 
-Configure the bot user to read/write to that repo.
+[Create a new Docker Hub repo](https://hub.docker.com/repository/create) following the same naming convention of the
+repo like `trussworks/NEWREPO`. You should be able to select `trussworks` from a drop down on the form. Then set
+the name to the same name as your tool or github repository name. The repository should be `Public` and not `Private`
+if it is an open-source tool.
 
-Use the bot user credentials (username and a deploy key) for configuring CircleCI.
+After creating the repo configure the permissions to allow the `bots` user group to have `Read & Write`
+access to that repo.
+
+### Get an API key for pushing the docker image
+
+Use the `trussworksbot` user credentials in 1Password to log into [Docker Hub](https://hub.docker.com/) (you may have
+to log out of your personal user session).  In the [Security Settings](https://hub.docker.com/settings/security)
+for `trussworksbot` create a "New Access Token" named for the repository you just created. Save this access key to
+the `trussworksbot` 1Password as you will need it later for configuring CircleCI.
 
 ## Create goreleaser configuration
 
