@@ -86,14 +86,11 @@ repos:
     hooks:
       - id: markdownlint
 
-  - repo: local
+  - repo: git://github.com/trussworks/pre-commit-hooks
+    rev: v0.0.4
     hooks:
+      - id: circleci-validate
       - id: goreleaser-check
-        name: Validate goreleaser config yaml
-        entry: goreleaser check
-        language: system
-        files: '.goreleaser.yml'
-        pass_filenames: false
 ```
 
 This example `.markdownlintrc` will work with the above `.pre-commit-config.yaml` example.
