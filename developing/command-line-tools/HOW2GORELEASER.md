@@ -8,6 +8,16 @@ If someone else has already written a tool and open sourced it use it and contri
 
 Feel free to update and make changes!
 
+## Install GoReleaser
+
+To install GoReleaser visit the [installation instructions](https://goreleaser.com/install/). It can be installed
+with brew if you use:
+
+```sh
+brew install goreleaser/tap/goreleaser
+brew install goreleaser
+```
+
 ## Split a tool out from an existing project
 
 If you are splitting a tool from an existing project, you can follow the
@@ -59,6 +69,8 @@ Fix any issues you find and commit your changes to your repo.
 ### Example .pre-commit-config.yaml and .markdownlintrc
 
 The following example `.pre-commit-config.yaml` does some nice things for a basic go project.
+Ensure you're using the latest versions of these tools by running `pre-commit autoupdate` and
+checking in changes to source control.
 
 ```yml
 repos:
@@ -83,6 +95,12 @@ repos:
     rev: v0.21.0
     hooks:
       - id: markdownlint
+
+  - repo: git://github.com/trussworks/pre-commit-hooks
+    rev: v0.0.4
+    hooks:
+      - id: circleci-validate
+      - id: goreleaser-check
 ```
 
 This example `.markdownlintrc` will work with the above `.pre-commit-config.yaml` example.
@@ -126,11 +144,23 @@ You'll need to be sure to enable automation to push into whatever you use.
 
 We don't use the trussworks Docker Hub org very much so you'll need to reach out to the #infrasec Slack channel to find someone to help you.
 
-Create a new Docker Hub repo following the same naming convention of the repo like `trussworks/NEWREPO`.
+Log into [Docker Hub](https://hub.docker.com/) with your personal account. If you don't have an account then make one
+and then have someone on InfraSec add you to the Trussworks organization.
 
-Configure the bot user to read/write to that repo.
+[Create a new Docker Hub repo](https://hub.docker.com/repository/create) following the same naming convention of the
+repo like `trussworks/NEWREPO`. You should be able to select `trussworks` from a drop down on the form. Then set
+the name to the same name as your tool or github repository name. The repository should be `Public` and not `Private`
+if it is an open-source tool.
 
-Use the bot user credentials (username and a deploy key) for configuring CircleCI.
+After creating the repo configure the permissions to allow the `bots` user group to have `Read & Write`
+access to that repo.
+
+### Get an API key for pushing the docker image
+
+Use the `trussworksbot` user credentials in 1Password to log into [Docker Hub](https://hub.docker.com/) (you may have
+to log out of your personal user session).  In the [Security Settings](https://hub.docker.com/settings/security)
+for `trussworksbot` create a "New Access Token" named for the repository you just created. Save this access key to
+the `trussworksbot` 1Password as you will need it later for configuring CircleCI.
 
 ## Create goreleaser configuration
 
@@ -162,11 +192,11 @@ builds:
     - amd64
   main: main.go
 brews:
-  - description: "WRITE A DESCRIPTION"
+  - description: "USE THE DESCRIPTION FROM THE GITHUB REPO"
     github:
       owner: trussworks
       name: homebrew-tap
-    homepage: "HOMEPAGE URL GOES HERE"
+    homepage: "https://github.com/trussworks/NEWREPO"
     commit_author:
       name: trussworks-infra
       email: infra+github@truss.works
@@ -178,14 +208,14 @@ dockers:
       - "OWNER/NEWREPO:{{ .Tag }}"
     skip_push: true
 archives:
-- replacements:
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-    386: i386
-    amd64: x86_64
+  -
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
 checksum:
   name_template: 'checksums.txt'
+  algorithm: sha256
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
@@ -198,26 +228,54 @@ changelog:
 
 ### Test goreleaser locally
 
-In your terminal from the root of your repo, run goreleaser without releasing with:
+Validate your file with the command:
+
+```sh
+goreleaser check
+```
+
+Then try to build from this configuration using:
+
+```sh
+goreleaser build --snapshot --rm-dist
+```
+
+Now you should have build artifacts in the `dist/` directory in your repository. This is a good time to ensure
+that `dist/` is in your `.gitignore` file.
+
+In your terminal from the root of your repo, try runing goreleaser without releasing with:
 
 ```sh
 goreleaser --snapshot --skip-publish --rm-dist
 ```
 
-This will create all of your binaries in the `dist` folder in your repo.
+This goes beyond the build process and tests out the parts of the releaser related to pushing artifacts.
 
-## Hook up CI
+## Set up CircleCI
 
-Write a CircleCi config file and commit it to your repo.
-You will need to do some manual configuration in CircleCi to get this working.
+First log into CircleCI and go to the [Projects Dashboard](https://app.circleci.com/projects/project-dashboard/github/trussworks).
+From this page you can find your repository and either select "Set Up Project" or "Follow Project".
 
-### CircleCi config.yml example
+The next step is to write a CircleCI config file and commit it to your repo.
+You will need to do some manual configuration in CircleCI to get this working.
+
+### Project Environment Variables
+
+Configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCI UI.
+
+`GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub. It is also
+used to update the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) with the new artifact
+locations and checksums. In the `infra+github@truss.works` 1Password you will find an API Key named
+`personal access token for releases` which can be used for this value.
+
+`DOCKER_USER` and `DOCKER_PASS` are configured from the `trussworksbot` in 1Password. Use the API Key you configured
+in an earlier step to fill out these values. This is how CircleCI will push to Docker Hub.
+
+These values are configured at the URL [https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables](https://app.circleci.com/settings/project/github/trussworks/NEWREPO/environment-variables). Replace `NEWREPO` with the name of your github repo.
+
+### CircleCI config.yml example
 
 Add the contents of this code block to .circleci/config.yml in your repo after setting your repo up with CircleCI.
-
-Also configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment variables from the CircleCi UI.
-
-`GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub.
 
 This configuration creates two CircleCI workflows `validate` and `release`.
 
@@ -264,14 +322,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Run goreleaser
-          command: goreleaser --debug
+      - run: goreleaser
       - run:
           name: Login to Docker Hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
-          name: Check Docker container
+          name: Test that Docker container works
           command: docker run -it OWNER/NEWREPO:<< pipeline.git.tag >> --help
       - run:
           name: Docker push
@@ -288,18 +344,27 @@ workflows:
             branches:
               ignore: /^.*/
             tags:
-              only: /^v.*/
+              only: /^v[0-9]+(\.[0-9]+)*(-.*)*/
 ```
 
 ### Run a release from GitHub
 
-Cut a release from `master` with a tag using semantic versioning in the style of `v0.0.0` using the GitHub UI.
+Cut a release from `master` with a tag using semantic versioning in the style of `v0.0.0` using:
 
-This will create a tag and CircleCi will automatically run the `release` workflow.
+```sh
+git tag v0.0.0
+git push --tags
+```
 
-## Verify you can install from your configured Homebrew Tap
+This will create a tag and CircleCI will automatically run the `release` workflow. This will work even on
+a branch, meaning you can test the release process before merging this code into the mainline branch.
 
-We'll assume you're using the Trussworks Homebrew tap.
+## Verify the release
+
+### Verify you can install from your configured Homebrew Tap
+
+First see if your tool appears in the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) repo.
+There should be a Ruby file with your tool's name. If it is there then proceed to install it.
 
 Install the Trussworks tap to homebrew and then install the tool you built.
 
@@ -308,7 +373,27 @@ brew tap trussworks/tap
 brew install tool-name
 ```
 
+Test your tool by using the help command:
+
+```sh
+tool-name -h
+tool-name version
+```
+
+Verify the version matches the release version.
+
 Be sure you updated the `README.md` in the new tool repo to have installation instructions.
+
+### Verify you can install from docker hub
+
+You will want to verify that your docker image was pushed to Docker Hub. Try pulling the image and running from
+the container:
+
+```sh
+docker pull trussworks/tool-name:v0.0.0
+docker run -it trussworks/tool-name:v0.0.0 --help
+docker run -it trussworks/tool-name:v0.0.0 version
+```
 
 ## Broadcast this to others
 
