@@ -40,7 +40,7 @@ description of the patterns we've adopted.
 * Create a `suspended` OU for the organization in this account which
   you can place accounts into if you think they have been compromised
   or are exhibiting strange behavior. It can also be used for dummy
-  accounts for [GovCloud](./govcloud.md) deployments.
+  accounts for [GovCloud](./govcloud/README.md) deployments.
 * To bootstrap other accounts, you can define them here with the
   [`aws_organizations_account`](https://www.terraform.io/docs/providers/aws/r/organizations_account.html)
   Terraform resource. Once they are created, you can access them using
