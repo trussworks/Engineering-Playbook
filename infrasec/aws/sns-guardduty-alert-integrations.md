@@ -19,15 +19,15 @@ We do not suggest setting this up in your `org-root` account, as that should not
 The way GuardDuty fits into the org structure will likely look something like the structure below. Remember, though, you do not have to include any terraform resources for GuardDuty in member accounts.
 
 ```text
-├──orgname-org-root
+├──project-org-root
 │   ├── admin-global
 │   │   └── GuardDuty member account
 │   └── bootstrap
-└── orgname-id
+└── project-id
 │   ├── admin-global
 │   │   └── GuardDuty member account
 │   └── bootstrap
-└── orgname-infrasec
+└── project-infrasec
 │   ├── admin-global
 │   │   └── GuardDuty Administrative account
 │   └── bootstrap
@@ -341,4 +341,4 @@ When an alert occurs and you are notified via PagerDuty or Slack, you'll have to
 
 1. Immediately Acknowledge the finding, which you can do via the PagerDuty app, website, or Slack integration.
 1. Once you've found a resolution for the incident, you should Resolve it (which again you can do via app, site, or on Slack).
-1. Archive the relevant GuardDuty finding using the AWS Console. Because you've set your `infrasec` as the administrative account for GuardDuty, all  findings for member accounts "roll up" there. Depending on whether the alerts are in the GovCloud or Commercial space, that will be either the `transcom-com-infrasec` or `transcom-gov-infrasec` account. Make sure you are in the correct region (either `us-west-2` or `us-east-1`, depending on where the alert fired). Confirm the alert you are archiving fired in the account you expected by checking the `Account ID` column in the Findings table.
+1. Archive the relevant GuardDuty finding using the AWS Console. Because you've set your `infrasec` as the administrative account for GuardDuty, all  findings for member accounts "roll up" there. Depending on whether the alerts are in the GovCloud or Commercial space, that will be either the `project-com-infrasec` or `project-gov-infrasec` account. Make sure you are in the correct region (either `us-west-2` or `us-east-1`, depending on where the alert fired). Confirm the alert you are archiving fired in the account you expected by checking the `Account ID` column in the Findings table.
