@@ -208,9 +208,9 @@ Using PagerDuty with AWS Organizations allows us to set organization-wide servic
 
 ## PagerDuty Integration
 
-Once you have created those resources, you can create PagerDuty services for each unit you want alerts on. We decided to split by team--so there is an app service and an infra service. You should keep the `pagerduty_service_integration` resources in the same place as you put the the PagerDuty team services.
+Once you have created those resources, you can create PagerDuty services for each unit you want alerts on. We decided to split by team--so there is a service for the app team and one for the infra team. Note, you do not need a service for each AWS account! You should keep the `pagerduty_service_integration` resources in the same place as you put the the PagerDuty team services.
 
-Create a `pagerduty_service_integration` for each of the AWS services you'd like to get PagerDuty alerts on. In this case, we have set up integrations for CloudWatch and of course, GuardDuty. Once you have created those integrations, you should create `aws_sns_topic_subscription` linking the subscription endpoint to the service integration you just set up. This will read something like `"https://events.pagerduty.com/integration/${pagerduty_service_integration.guardduty.integration_key}/enqueue"`.
+Create a `pagerduty_service_integration` for each of the AWS services you'd like to get PagerDuty alerts on. In this case, we have set up integrations for CloudWatch and of course, GuardDuty. Once you have created those integrations, you should create `aws_sns_topic_subscription` linking the subscription endpoint to the service integration you just set up. This will read something like `"https://events.pagerduty.com/integration/${pagerduty_service_integration.guardduty.integration_key}/enqueue"`. It is likely you will only have these in the AWS account where you expect alerts to go off--i.e. your GuardDuty designated admin account and any account that has separate CloudWatch alerts.
 
 ### Integration
 
@@ -241,7 +241,7 @@ resource "aws_sns_topic_subscription" "team_notification_region" {
 
 ## PagerDuty Slack Integration
 
-You may also want PagerDuty to integrate with Slack, in order to create alerts from PagerDuty incidents on Slack and allow users to Acknowledge and Resolve incidents from Slack itself. To do that, you will have to create a `pagerduty_extension` resource, which includes a configuration template (known as an `extension_schema`) designating the channels where you want alerts to fire and which service they are coming from (in this example, which team). More information about the [Slack extension here](https://support.pagerduty.com/docs/slack-integration-guide).
+You may also want PagerDuty to integrate with Slack, in order to create alerts from PagerDuty incidents on Slack and allow users to Acknowledge and Resolve incidents from Slack itself. To do that, you will have to create a `pagerduty_extension` resource, which includes a configuration template (known as an `extension_schema`) designating the channels where you want alerts to fire and which service they are coming from (in this example, which team). More information about the [Slack extension here](https://support.pagerduty.com/docs/slack-integration-guide). You will most likely only create one extension per service, so we recommend putting them wherever the service is created.
 
 ### Extension
 
@@ -276,14 +276,12 @@ resource "pagerduty_extension" "slack-v2-team-account" {
 {
   "access_token": "${access_token}",
   "bot": {
-    "bot_user_id": "UQ18832DD"
+    "bot_user_id": "BOT_USER_ID"
   },
   "enterprise_id": null,
   "incoming_webhook": {
     "channel": "CHANNEL_NAME",
-    "channel_id": "CHANNEL_ID",
-    "configuration_url": "https://MYWORKSPACE.slack.com/services/SERVICE_ID",
-    "url": "https://hooks.slack.com/services/TEAM_ID/SERVICE_ID/HOOK_ID"
+    "channel_id": "CHANNEL_ID"
   },
   "notify_types": {
     "acknowledge": true,
@@ -294,7 +292,7 @@ resource "pagerduty_extension" "slack-v2-team-account" {
     "trigger": true
   },
   "ok": true,
-  "referer": "https://project.pagerduty.com/services/SERVICE_ID/integrations",
+  "referer": "https://movemil.pagerduty.com/extensions",
   "scope": "identify,bot,commands,incoming-webhook,channels:read,groups:read,im:read,team:read,users:read,users:read.email,channels:write,chat:write:user,chat:write:bot,groups:write",
   "team_id": "PG_TEAM_ID",
   "team_name": "TEAM_NAME",
@@ -305,6 +303,8 @@ resource "pagerduty_extension" "slack-v2-team-account" {
   "user_id": "USER_ID"
 }
 ```
+
+You're not quite done yet. Although you've specified channel and permissions, PagerDuty does not actually authorize the link between the extension and Slack until you manually create it. Sign into PagerDuty and [visit the extensions page](https://movemil.pagerduty.com/extensions). Locate your new extension in the Service Extensions table and click on the gear button on the bottom right of the far-right Details cell for your extension. Select either the Re-authorize or the Edit option (they do the same thing) from the drop-down. Scroll down and select the same channel you specified in the extension schema under `Where should PagerDuty post?` then click "Allow". You should see a notification appear in the channel you've selected in Slack that says "[your name] added an integration to this channel: PagerDuty".
 
 ## GuardDuty Tie-In
 
