@@ -172,13 +172,13 @@ This has some decent build defaults. This will get dependencies from go.mod then
 Goreleaser will also update the release in GitHub with the artifacts it builds.
 It will also push to a brew tap. Build a Docker container but skip shipping to it.
 
-Note: I had to add `GO111MODULE=on` and `CGO_ENABLED=0` lines so the linux binary would work in Docker.
+Note: I had to add `CGO_ENABLED=0` so the linux binary would work in Docker.
 
 If you don't need to build a Docker container, just remove the docker stanza.
 
 ```yml
 env:
-  - GO111MODULE=on
+  - GO111MODULE=auto
 before:
   hooks:
     - go mod download
