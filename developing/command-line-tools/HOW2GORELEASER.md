@@ -349,7 +349,7 @@ workflows:
 
 ### Run a release from GitHub
 
-Cut a release from `master` with a tag using semantic versioning in the style of `v0.0.0` using:
+Cut a release from `main` with a tag using semantic versioning in the style of `v0.0.0` using:
 
 ```sh
 git tag v0.0.0

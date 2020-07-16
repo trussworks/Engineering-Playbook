@@ -2,7 +2,7 @@
 
 ## Overview
 
-Ansible is a configuration management tool that usually operates in a "masterless" fashion, using remote execution via
+Ansible is a configuration management tool that usually operates in a "headless" fashion, using remote execution via
 ssh to implement configuration changes. It is also not common for it to be used as a provisioner in Packer, a tool we
 use for building images for deployment in AWS and elsewhere.
 

@@ -80,10 +80,10 @@ repo linked above.
 
 Once those are set up, you can begin the rest of the work. Your first
 action should be to create administrative IAM users that will *only* be
-used to manage the master account and bootstrap the subordinate accounts.
+used to manage the main account and bootstrap the subordinate accounts.
 These should not be used for anything else. Suffix the user name with
 `.org-root` to make it clear what these are for. They will be the only
-accounts that can manage the master account.
+accounts that can manage the main account.
 
 Example Terraform code (suggest using a `users.tf` file):
 

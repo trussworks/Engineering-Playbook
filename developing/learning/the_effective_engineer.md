@@ -1,7 +1,7 @@
 # [Learning Resources](./README.md) / "The Effective Engineer"
 
 Edmond Lau's _The Effective Engineer_ is an excellent book that covers many
-aspects of engineering. The master package ($249), available on Edmond's site, is
+aspects of engineering. The main package ($249), available on Edmond's site, is
 worth it for additional material and videos.
 
 ## Recommended by

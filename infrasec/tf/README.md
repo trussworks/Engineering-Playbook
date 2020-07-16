@@ -64,9 +64,9 @@ You don't need to add any binary files. GitHub will do this automatically for yo
 In order to preserve the ability to release updates for previous Terraform versions, when you update a module to support a new version, you should cut a separate branch we can use to publish updates for the old version. Follow this procedure:
 
 1. Compose your PR for the module updating it to the new version of Terraform and get it approved.
-1. *Before you merge*, create a branch off the *current* master named after the previous Terraform version (for instance, if the old version is 0.11, create a `terraform011` branch) and push it to origin.
-1. Add a note to the README in your PR that describes which major version of the module supports which version of Terraform and which branch to submit a PR to for each (e.g., "For Terraform 0.12, pin the module version to `~> 2.0`. Submit pull requests to the `master` branch. For Terraform 0.11, pin the module version to `~> 1.0`. Submit pull requests to the `terraform011` branch.")
-1. Merge your changes in to the module's master branch.
+1. *Before you merge*, create a branch off the *current* default branch named after the previous Terraform version (for instance, if the old version is 0.11, create a `terraform011` branch) and push it to origin.
+1. Add a note to the README in your PR that describes which major version of the module supports which version of Terraform and which branch to submit a PR to for each (e.g., "For Terraform 0.12, pin the module version to `~> 2.0`. Submit pull requests to the default branch. For Terraform 0.11, pin the module version to `~> 1.0`. Submit pull requests to the `terraform011` branch.")
+1. Merge your changes in to the module's default branch.
 1. Cut a new release as described above. Increment the *major* version of the module as you described in the README.
 
 [publish-release]: ./publish-release.png "Screenshot of a published release"

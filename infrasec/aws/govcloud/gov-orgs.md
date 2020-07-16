@@ -8,7 +8,7 @@ getting an organization and its accounts set up properly.
 ## Create Your GovCloud Organization Master Account
 
 To set up a new GovCloud AWS Organization, you must log in as root to the
-master account of your commercial AWS Organization. Then go to the "My
+main account of your commercial AWS Organization. Then go to the "My
 Account" screen with the pulldown in the upper right of the AWS dashboard,
 and scroll down; there will be a "Sign up for AWS GovCloud" button. When
 you click that, you will need to accept an appendix to the AWS Customer
@@ -30,7 +30,7 @@ in GovCloud.
 
 To add more accounts to your GovCloud organization, you *cannot* simply
 use the Terraform `aws_organizations_account` resource. Using credentials
-for the master account in your commercial AWS Organization, use the
+for the main account in your commercial AWS Organization, use the
 following AWS CLI command. This will create two accounts; a dummy account
 in the commercial AWS Organization and a new corresponding GovCloud
 account, both with the same account alias.
@@ -87,12 +87,12 @@ account.
 
 Now that you have that, you can assume the `OrganizationAccountAccessRole`
 in the new account from an account with sufficient privileges in the
-*GovCloud* organization master account. *Note that this is the case even
+*GovCloud* organization main account. *Note that this is the case even
 though at this point the GovCloud organization does not show up if you
 look at the organization membership in the console.*
 
 To do this, add a new profile to your `.aws/config`; this assumes we
-already have a working profile for the organization master account,
+already have a working profile for the organization main account,
 called `spacecats-govcloud-org-root`. The new profile for your
 `spacecats-govcloud-id` account should look like this:
 
@@ -106,13 +106,13 @@ output=json
 # from the source_profile.
 ```
 
-Once you've added IAM users in the `-id` account later on, you can change this profile to not use the OrganizationAccountAccessRole anymore; as with commercial AWS accounts, you should use resources from the organization master account as sparingly as possible.
+Once you've added IAM users in the `-id` account later on, you can change this profile to not use the OrganizationAccountAccessRole anymore; as with commercial AWS accounts, you should use resources from the organization main account as sparingly as possible.
 
 ## Adding Your New GovCloud Account to Your GovCloud Organization
 
 To add the account you just created to your GovCloud organization, run
 this command with your appropriate credentials from the GovCloud
-organization's master account.
+organization's main account.
 
 ```console
 $ aws organizations invite-account-to-organization \
@@ -138,7 +138,7 @@ $ aws organizations accept-handshake \
 
 The account will now be in your GovCloud organization. You will want to
 [import this account](https://www.terraform.io/docs/providers/aws/r/organizations_account.html#import)
-into your Terraform state for the GovCloud organization master account
+into your Terraform state for the GovCloud organization main account
 like so:
 
 ```hcl
