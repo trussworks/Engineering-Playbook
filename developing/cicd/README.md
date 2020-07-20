@@ -104,7 +104,7 @@ In the context of a CI pipeline:
 
 **Tests should run fast.** "Fast" is poorly defined here.
 Generally speaking, you want tests to be fast so merging code changes is fast.
-A developer shouldn't think they can start on a new piece of work in the hour or two to push a change t hrough CI and context switch.
+A developer shouldn't think they can start on a new piece of work in the hour or two to push a change through CI and context switch.
 
 **Tests should fail fast.** Similar to the previous point, "fast" is relative but in CI you will want to give the waiting devloper signal on whether their work can be merged or requires changes as quick as possible.
 
@@ -136,12 +136,19 @@ For clarity, at Truss we'll refer to them as follows:
 
 ### Continuous Integration
 
-`Continuous Integration` is when developers merge changes into mainline as often as possible.
-Automated build and test steps validate changes and are incorporated into review before merging to mainline.
+`Continuous Integration` is when you validate on every push to mainline.
+This helps folks find failures in the code before it reaches mainline.
+Ideally, automated build and test steps validate changes and stop any new changes to mainline.
+Mainline must always be in a good state to deploy from.
 
-This helps mitigate risks from long lived branches but you have automated tests and a developer workflow that allows for frequent merges.
+This may manifest as a process where developers merge changes into mainline as often as possible.
+Small incremental changes to code and small discrete tests make changes easier to understand and facilitate freqent merges in CI.
+This practice helps mitigate risks from long lived branches and helps validate small changes in quick succession.
 
-Small incremental changes to code and small discrete tests facilitate freqent merges in CI.
+That being said, in practice we see longer lived branches for features or versions.
+These branches need to be kept up to date with mainline with frequent merges or rebases from mainline.
+
+The point of either of those practices is to minimize drift between your working branch and mainline so validation in CI or manually is easier.
 
 ### Continuous Delivery
 
@@ -152,16 +159,16 @@ You want the software built to be deployable at any given point in time.
 
 Delivery may mean different things depending on your workflow.
 It may mean that you have built your artifacts and validated them and delivered them to a centralized repository.
-For example, Docker containers might go to DockerHUB or ECR.
+For example, Docker containers might go to Docker Hub or Amazon Elastic Container Registry (ECR).
 Might mean that the code has been deployed to a staging environment.
 All of these could be "delivered" depending on the project's workflow.
 
 ### Continous Deployment
 
-`Continuous Delivery` can be described as a further extension of `Continuous Delivery`.
-In addition to automated build, test, and delivery production deployment is also automated.
+`Continuous Deployment` can be described as a further extension of `Continuous Delivery`.
+In addition to automated build, test, and delivery, production deployment is also automated.
 
-Generally speaking, you will want to have some good logging and monitoring instrumentation so that you can automate rolling back or forward when something goes wrong.
+This is an advanced state that requires excellent, trustworthy, automated tests and monitoring. The complexity of continuous deployment system is correlated with the complexity of the delivery pipeline. It's much easier to have continous deployment of a single container image than a full-feature web application.
 
 ## Contents
 
@@ -175,6 +182,7 @@ Generally speaking, you will want to have some good logging and monitoring instr
 * [Atlassian's Basic Primer on CI/CD](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment)
 * [Google SRE book: Ch 8 Release Enginering](https://landing.google.com/sre/sre-book/chapters/release-engineering/)
 * [12 Factor app: Build/Release/Run](https://12factor.net/build-release-run)
+* [7 Pipeline Design Patterns for Continuous Delivery from Singlestone](https://www.singlestoneconsulting.com/blog/7-pipeline-design-patterns-for-continuous-delivery/)
 
 some OG references
 
