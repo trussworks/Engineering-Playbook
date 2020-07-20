@@ -53,6 +53,8 @@ Alternatively use this alias:
 alias git_init='git init && git checkout -b main'
 ```
 
+Don't forget to source your changes to your shell. For bash you can run: `source ~/.bash_profile`.
+
 Which gives you the ability to run either `git main` or `git_init` to start a new repo with `main` as the default
 branch.
 
