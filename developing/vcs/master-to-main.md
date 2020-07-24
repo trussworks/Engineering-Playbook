@@ -25,7 +25,7 @@ git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
 git fetch --all --prune
 ```
 
-Test that the `master` branch has been removed by running this command and getting an error:
+Test that the `master` branch has been removed by running this command and getting a shell error (exit code not `0`):
 
 ```sh
 git checkout master
