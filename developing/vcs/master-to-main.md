@@ -80,9 +80,8 @@ changes are needed for the terraform registry.
 
 ## IDE Changes
 
-### GoLand
-
-Appears that no changes are required. Consider adding `main` to the set of protected branches.
+Any ID that handles git integrations should be able to handle this change. Consider adding `main` to the set of protected
+branches if your editor allows for that.
 
 ## References
 
