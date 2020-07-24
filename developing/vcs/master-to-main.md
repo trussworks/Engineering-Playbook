@@ -3,6 +3,20 @@
 These instructions will help moving repos from using the default branch name `master` and modify it to be
 `main`.
 
+<!-- toc -->
+
+* [Instructions to change default branch name](#instructions-to-change-default-branch-name)
+* [Future proofing](#future-proofing)
+* [Github](#github)
+* [CircleCI Changes](#circleci-changes)
+* [Terraform Registry](#terraform-registry)
+* [IDE Changes](#ide-changes)
+* [References](#references)
+
+Regenerate with "pre-commit run -a markdown-toc"
+
+<!-- tocstop -->
+
 ## Instructions to change default branch name
 
 To update the branch name use the npm tool [lgarron/main-branch](https://github.com/lgarron/main-branch):
@@ -70,8 +84,8 @@ should be required.
 
 When things don't work there are steps to re-sync the project that should be used as a last resort:
 
-- [VCP Default Branch Isn't Reflected on CircleCI](https://support.circleci.com/hc/en-us/articles/360040969693-VCS-Default-Branch-Isn-t-Reflected-on-CircleCI)
-- [CircleCI Doesn't Notice when github default branch is updated](https://discuss.circleci.com/t/circleci-doesnt-notice-when-github-default-branch-is-updated/10469/6)
+* [VCP Default Branch Isn't Reflected on CircleCI](https://support.circleci.com/hc/en-us/articles/360040969693-VCS-Default-Branch-Isn-t-Reflected-on-CircleCI)
+* [CircleCI Doesn't Notice when github default branch is updated](https://discuss.circleci.com/t/circleci-doesnt-notice-when-github-default-branch-is-updated/10469/6)
 
 ## Terraform Registry
 
@@ -87,4 +101,4 @@ branches if your editor allows for that.
 
 References:
 
-- [Git Renaming the master branch](https://dev.to/rhymu8354/git-renaming-the-master-branch-137b)
+* [Git Renaming the master branch](https://dev.to/rhymu8354/git-renaming-the-master-branch-137b)
