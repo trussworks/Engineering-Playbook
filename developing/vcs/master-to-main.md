@@ -5,6 +5,7 @@ These instructions will help moving repos from using the default branch name `ma
 
 <!-- toc -->
 
+* [Prereqs](#prereqs)
 * [Instructions to change default branch name](#instructions-to-change-default-branch-name)
 * [Future proofing](#future-proofing)
 * [Github](#github)
@@ -16,6 +17,12 @@ These instructions will help moving repos from using the default branch name `ma
 Regenerate with "pre-commit run -a markdown-toc"
 
 <!-- tocstop -->
+
+## Prereqs
+
+First, ensure that the version of `git` that you have installed is at least v2.28.0. This is important to ensure
+you have access to the [init.DefaultBranch](https://github.blog/2020-07-27-highlights-from-git-2-28/#introducing-init-defaultbranch)
+setting in the git config file.
 
 ## Instructions to change default branch name
 
@@ -47,7 +54,21 @@ git checkout master
 
 ## Future proofing
 
-Until the `git` tool is modified you'll have to be careful to not creat new repos with `master` as the default
+If you're using `git` v2.28.0 or later you should be able to configure git globally to ensure `main` is now
+your default branch permanently.
+
+```sh
+git config --global init.defaultBranch main
+```
+
+Now in your `~/.gitconfig` file you'll see this addition:
+
+```ini
+[init]
+    defaultBranch = main
+```
+
+For older versions of the `git` tool you'll have to be careful to not creat new repos with `master` as the default
 branch. First make a new git alias:
 
 ```sh
