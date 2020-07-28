@@ -86,7 +86,7 @@ However, how much has changed is opaque to your users and it is difficult to det
 
 These are other versioning strategies we've seen. We do not recommend them.
 
-* _Feature branch related names._ These should be short lived and not maintained for more than a week at a time. Most users will not find these useful.
+* _Feature branch related names._ These should be short lived and maintained for no more than a few days. Most users will not find these useful.
 * _Build id related names._ These are opaque to a user and harder to dig up history on when debugging.
 * _Build date related names._ These are also opaque to a user and difficult to dig up history on when debugging. You at least get a sense of when these changes went in but are hard to tie to a commit in mainline.
 
@@ -142,7 +142,7 @@ Ideally, automated build and test steps validate changes and stop any new change
 Mainline must always be in a good state to deploy from.
 
 This may manifest as a process where developers merge changes into mainline as often as possible.
-Small incremental changes to code and small discrete tests make changes easier to understand and facilitate freqent merges in CI.
+Small incremental changes to code and small discrete tests make changes easier to understand and facilitate frequent merges in CI.
 This practice helps mitigate risks from long lived branches and helps validate small changes in quick succession.
 
 That being said, in practice we see longer lived branches for features or versions.
@@ -168,7 +168,7 @@ All of these could be "delivered" depending on the project's workflow.
 `Continuous Deployment` can be described as a further extension of `Continuous Delivery`.
 In addition to automated build, test, and delivery, production deployment is also automated.
 
-This is an advanced state that requires excellent, trustworthy, automated tests and monitoring. The complexity of continuous deployment system is correlated with the complexity of the delivery pipeline. It's much easier to have continous deployment of a single container image than a full-feature web application.
+This is an advanced state that requires excellent, trustworthy, automated tests and monitoring. The complexity of continuous deployment system is correlated with the complexity of the delivery pipeline. It's much easier to have continous deployment of a single container image than a full-featured web application.
 
 ## Contents
 
