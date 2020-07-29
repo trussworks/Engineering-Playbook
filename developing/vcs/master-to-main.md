@@ -69,7 +69,7 @@ Now in your `~/.gitconfig` file you'll see this addition:
     defaultBranch = main
 ```
 
-For older versions of the `git` tool you'll have to be careful to not creat new repos with `master` as the default
+For older versions of the `git` tool you'll have to be careful to not create new repos with `master` as the default
 branch. First make a new git alias:
 
 ```sh
