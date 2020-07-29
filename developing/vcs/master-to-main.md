@@ -12,6 +12,7 @@ These instructions will help moving repos from using the default branch name `ma
 * [CircleCI Changes](#circleci-changes)
 * [Terraform Registry](#terraform-registry)
 * [IDE Changes](#ide-changes)
+* [Tooling Changes](#tooling-changes)
 * [References](#references)
 
 Regenerate with "pre-commit run -a markdown-toc"
@@ -117,6 +118,13 @@ changes are needed for the terraform registry.
 
 Any ID that handles git integrations should be able to handle this change. Consider adding `main` to the set of protected
 branches if your editor allows for that.
+
+## Tooling Changes
+
+As a quick reference for some tools that need to be updated here is a non-exhaustive list:
+
+* [DangerJS](https://danger.systems/js/) should be updated to at least `v10.3.0` (see the [PR](https://github.com/danger/danger-js/issues/1057))
+* [git](https://git-scm.com/) should be updated to at least `v2.28.0` (see the [Release Notes](https://github.blog/2020-07-27-highlights-from-git-2-28/#introducing-init-defaultbranch))
 
 ## References
 
