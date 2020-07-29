@@ -18,6 +18,7 @@ The following are objects associated with VPCs that can be configured.
 
 A subnet is a logical subdivision of an IP network.
 Generally, you will create a pair of public and private subnets in each availability zone for the region.
+A good default CIDR range for each subnet is either a `/22` or `/24`.
 
 Creating additional subnets will create additional complexity in route tables.
 If your project requires you to isolate resources from one another, use Security groups.
