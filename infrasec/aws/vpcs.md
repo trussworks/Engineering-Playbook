@@ -43,11 +43,15 @@ Because you can define security group access using security group names, we find
 
 ### Gateways
 
-For all public subnets in a VPC, use a singlle internet gateway for default routes.
-This means they can route to the public internet.
+Use an Internet Gateway for public subnets.
+These allow traffic in and out of the VPC to the public internet.
+For all public subnets in a VPC, use a single internet gateway for default routes.
 
-For each private subnet, create a NAT gateway with an EIP.
-You do not need a NAT instance.
+Use a NAT Gateway for private subnetes.
+These only allow traffic out of the VPC to the public internet.
+For each private subnet, create a NAT gateway.
+Based on Terraform documentation, a NAT gateway will be provisioned with an EIP.
+Note, you do not need a NAT instance.
 
 ### VPC endpoints
 
@@ -67,14 +71,20 @@ The full list of supported endpoints is [here](https://docs.aws.amazon.com/vpc/l
 ### Flow logs
 
 VPC Flow logs allow you to monitor all network traffic in your VPC.
+
 Unless you have a plan to ingest, manage, view, and monitor network flow logs we do not recommend you turn these on.
+
+Note: AWS GuardDuty relies on VPC flow logs to bee able to detect certain network events.
+We haven't definitively determined if AWS implicitly finds these events or if you need to be sure to also enable VPC flow logs.
+We will update guidance once we know.
 
 ## Default VPC configuration
 
 Every AWS account comes with a default VPC.
-In general, you will not want to use that.
+In general, you will not want to use that VPC.
 
-Use our [VPC Terraform Module](https://github.com/trussworks/terraform-aws-default-vpc) to configure the default VPC to not allow public network access.
+Use our [VPC Terraform Module](https://github.com/trussworks/terraform-aws-default-vpc) to disable the VPC.
+WARNING: undoing this module is hard so if you have inherited the infrastructure you are managing and MIGHT have old resources in the default VPC we don't suggest using it.
 
 ## Reference Links
 
