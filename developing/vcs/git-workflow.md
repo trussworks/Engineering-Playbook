@@ -36,7 +36,7 @@ read-only repos).
 
 ## Working locally
 
-Pick either `rebase` or `merge` to incorporate changes from master onto your
+Pick either `rebase` or `merge` to incorporate changes from the default branch onto your
 local branch. Use the same method every time for consistency. Most people
 use `rebase`.
 

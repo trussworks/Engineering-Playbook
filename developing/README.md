@@ -8,6 +8,12 @@ Truss aims to find a balance between giving the autonomy and tools to make the b
 
 Generally, our approach should be "if there is a suggestion or answer in these pages, follow it until you have a *compelling* reason not to". Once you have a compelling reason to change the practice document it by adding to or updating these pages.
 
+## Note on Default Branches
+
+Where possible the documents here should refer to the Default Branch instead of using the word `master`. Where this
+is not possible try to use the default branch name `main`. In links to repos in github please also attempt to get
+the reference to `main` and not to `master`.
+
 ## Contents
 
 * [Command Line Tools](./command-line-tools/README.md)

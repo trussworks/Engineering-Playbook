@@ -17,12 +17,12 @@ them into the project is relatively simple:
 3. Make your changes to the code and commit them, then push your code to
    the central repository.
 4. Create a pull request, get approvals, and then merge your `my-feature`
-   branch into `master`.
+   branch into the default branch.
 
 The virtue of this workflow over more complicated methods like the one
 shown [here](https://nvie.com/posts/a-successful-git-branching-model/) is
-that we are constantly merging to `master`, so the drift of any specific
-branch from `master` is kept to a minimum. The idea of more frequent small
+that we are constantly merging to the default branch, so the drift of any specific
+branch from the default branch is kept to a minimum. The idea of more frequent small
 changes over less frequent large changes is a fundamental aspect of many
 development practices (such as Agile). The core of this belief is that
 things which break the the application can quickly be noticed, isolated,
@@ -39,7 +39,7 @@ disrupting the project's development.
 ## Unit Testing
 
 Key to ensuring that our CI workflow is safe is making sure we are doing
-unit testing of our code *prior* to merging in to `master`. To do this,
+unit testing of our code *prior* to merging in to the default branch. To do this,
 we use automated tools like CircleCI to run a battery of tests against
 every branch we create a PR from. We want to run a variety of tests that
 cover a variety of things like:
@@ -59,8 +59,8 @@ gets from a Git repository into a live environment where someone can touch
 it. This workflow is orchestrated via an automated tool like CircleCI, and
 looks something like this:
 
-1. New code is merged into `master`.
-2. CircleCI detects that `master` has been updated and deploys the code to
+1. New code is merged into the default branch.
+2. CircleCI detects that the default branch has been updated and deploys the code to
    our `development` environment.
 3. CircleCI checks to make sure the deploy was successful. Is our
    environment running the right version of the code?

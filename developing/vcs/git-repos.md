@@ -42,15 +42,15 @@ Locally, you can add an alias to your `~/.gitconfig` file. Example:
 
   ```
   [alias]
-    fresh = "!git co master && git pull && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D"
+    fresh = "!git co main && git pull && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D"
   ```
 
-  Then instead of doing the typical `git checkout master && git pull`, you would
+  Then instead of doing the typical `git checkout main && git pull`, you would
   only run `git fresh`.
 
 ## GitHub Repo Settings
 
-* [Protect the master branch](https://help.github.com/en/articles/configuring-protected-branches) by turning on the following settings at a minimum:
+* [Protect the default branch](https://help.github.com/en/articles/configuring-protected-branches) by turning on the following settings at a minimum:
 
   * Require pull request reviews before merging
   * Require status checks to pass before merging
@@ -80,7 +80,7 @@ git remote rm origin
 Filter out commits that change the specified directory:
 
 ```sh
-git filter-branch --prune-empty --subdirectory-filter DIRNAME master
+git filter-branch --prune-empty --subdirectory-filter DIRNAME main
 ```
 
 Create a new repo using the GitHub UI as you would normally.

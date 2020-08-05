@@ -22,7 +22,7 @@ description of the patterns we've adopted.
 
 * Pick a standard prefix you can use for all the accounts in your
   organization; for our example we'll use `spacecats`.
-* The first account you should create is the "master" account for the
+* The first account you should create is the "org-root" account for the
   organization, which is where you will configure organization-wide
   resources. We call this the "org-root" account and name it like
   `spacecats-org-root`. *This account should not be used for anything
@@ -108,7 +108,7 @@ experiences on various projects.
   to be `spacecats-infra+aws-org-id@truss.works`, etc. This email will be
   where support responses and other notifications about your AWS accounts
   will be sent.
-* As stated above, *severely limit access to the master account.* This
+* As stated above, *severely limit access to the org-root account.* This
   account provides access to everything else in the organization, and
   as a result poses a significant security risk if compromised. Use IAM
   roles and the ID account to provide granular access to resources.

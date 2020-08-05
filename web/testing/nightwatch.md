@@ -14,7 +14,7 @@ This is documentation of a decision on the eApp project as to why cypress was no
 
 The tests need to be run regularly to ensure they are still passing. If they are not run they will inevitably begin to fail and if no one notices, then regressions are not caught and the value of the tests goes down since when they are run it will be unclear as to what has caused them to fail.
 
-So to support this we will mark all the currently failing tests as pending except for the newly fixed identification section tests. Once this is complete then ensure that the tests are run regularly. Primary desire is to have Circle CI build process run on a regular basis, ideally on every PR branch, but if not at least once a week against master. If these options are not possible or we run out of time the tests should be run at least once a week by one of the eApp team developers.
+So to support this we will mark all the currently failing tests as pending except for the newly fixed identification section tests. Once this is complete then ensure that the tests are run regularly. Primary desire is to have Circle CI build process run on a regular basis, ideally on every PR branch, but if not at least once a week against the default branch. If these options are not possible or we run out of time the tests should be run at least once a week by one of the eApp team developers.
 
 #### Ability To Run Tests Against IE Locally And In A CI Environment
 
