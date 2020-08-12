@@ -115,11 +115,8 @@ You can see some examples of how to set them up [here](https://github.com/terraf
 
 VPC Flow logs allow you to monitor all network traffic in your VPC.
 
-Unless you have a plan to ingest, manage, view, and monitor network flow logs we do not recommend you turn these on.
-
-Note: AWS GuardDuty relies on VPC flow logs to bee able to detect certain network events.
-We haven't definitively determined if AWS implicitly finds these events or if you need to be sure to also enable VPC flow logs.
-We will update guidance once we know.
+If you plan to use AWS GuardDuty you must turn these on.
+Otherwise, unless you have a plan to ingest, manage, view, and monitor network flow logs we do not recommend you turn these on.
 
 ## Default VPC configuration
 
