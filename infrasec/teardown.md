@@ -57,8 +57,8 @@ some guidelines when tearing down Terraform namespaces:
   from the console or using the CLI) and then close it from the My
   Account panel.
 * To tear down nested OUs, you will first need to change the parent OU to the
-  top level OU in order to add billing information, otherwise you will encounter
-  the dreaded `ConstraintViolationException` error.
+  top level OU in order to add billing information, otherwise you will
+  encounter the dreaded `ConstraintViolationException` error.
 
 ## SSL Certificates
 
