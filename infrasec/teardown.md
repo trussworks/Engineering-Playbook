@@ -52,7 +52,7 @@ some guidelines when tearing down Terraform namespaces:
   operations are set up. If billing operations are set up in the
   parent OU, leave the parent OU to avoid any cascading SCP errors.
 * In order to completely close an account (aside from the `org-root`
-  account, you'll need to go through the password recovery procedure for
+  account), you'll need to go through the password recovery procedure for
   the root user account (ie, you need to try to log in with the email
   address for the account and click the "Forgot Password" link), then
   set up billing information for the account. Once you have done that,
