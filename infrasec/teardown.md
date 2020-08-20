@@ -48,6 +48,9 @@ some guidelines when tearing down Terraform namespaces:
   destroyed to begin closing accounts; this will remove all the
   organization SCPs and let you remove accounts from the organization
   as you go.
+* For OUs nested within another OU, identify where the billing operations
+  are set up. If billing operations are set up in the parent OU, leave the
+  parent OU to avoid any cascading SCPs.
 * In order to completely close an account (aside from the `org-root`
   account, you'll need to go through the password recovery procedure for
   the root user account (ie, you need to try to log in with the email
@@ -56,9 +59,6 @@ some guidelines when tearing down Terraform namespaces:
   you can safely remove the account from the AWS Organization (either
   from the console or using the CLI) and then close it from the My
   Account panel.
-* To tear down nested OUs, you will first need to change the parent OU to the
-  top level OU in order to add billing information, otherwise you will
-  encounter the dreaded `ConstraintViolationException` error.
 
 ## SSL Certificates
 
