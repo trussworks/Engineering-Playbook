@@ -49,8 +49,8 @@ some guidelines when tearing down Terraform namespaces:
   organization SCPs and let you remove accounts from the organization
   as you go.
 * For OUs nested within another OU, identify where the billing
-  operations are set up. If billing operations are set up in the parent
-  OU, leave the parent OU to avoid any cascading SCPs.
+  operations are set up. If billing operations are set up in the
+  parent OU, leave the parent OU to avoid any cascading SCP errors.
 * In order to completely close an account (aside from the `org-root`
   account, you'll need to go through the password recovery procedure for
   the root user account (ie, you need to try to log in with the email
