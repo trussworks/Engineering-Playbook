@@ -48,9 +48,7 @@ some guidelines when tearing down Terraform namespaces:
   destroyed to begin closing accounts; this will remove all the
   organization SCPs and let you remove accounts from the organization
   as you go.
-* For OUs nested within another OU, identify where the billing
-  operations are set up. If billing operations are set up in the
-  parent OU, leave the parent OU to avoid any cascading SCP errors.
+* If your organization has an SCP applied to OUs which restricts editing billing data (which is a common practice for Truss), you will need to remove that SCP from accounts you're attempting to close first. You can do this either by removing the SCP from the affected OU or moving the account out of the affected OU.
 * In order to completely close an account (aside from the `org-root`
   account), you'll need to go through the password recovery procedure for
   the root user account (ie, you need to try to log in with the email
