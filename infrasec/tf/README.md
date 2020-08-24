@@ -30,7 +30,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 
 ### Splitting a git repo
 
-We often start out with Terraform code embedded into the infrastructure for a specific project before we decide we want to publish a chunk of it as stand-alone module. When moving code from one git repository to another, it is useful to maintain the revision history. To split a git repository while preserving the history, see [this page](../../vcs/git-repos.md) in the Engineering Playbook.
+We often start out with Terraform code embedded into the infrastructure for a specific project before we decide we want to publish a chunk of it as stand-alone module. When moving code from one git repository to another, it is useful to maintain the revision history. To split a git repository while preserving the history, see [this page](../../developing/vcs/git-repos.md) in the Engineering Playbook.
 
 Once the Terraform code has been split into a separate repo, you can add the usual trimmings for a Terraform module: README, pre-commit/CircleCI configuration, terratest(s), etc.
 
