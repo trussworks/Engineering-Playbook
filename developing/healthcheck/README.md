@@ -14,11 +14,17 @@ There are many ways that Healthcheck endpoints can be used in a system:
 * Connectivity - Can the app connect to its external dependencies successfully?
 * Quality - Does this endpoint do all its work and respond in a timely manner?
 
-Many apps will try to achieve their subset of the above goals via a single endpoint, but apps grow in sophistication it is not unheard of to tease those reponsibilities out to separate endpoints.
+Many apps will try to achieve their subset of the above goals via a single endpoint, but as apps grow in sophistication it is not unheard of to tease those responsibilities out to separate endpoints.
 
-## Authorization
+## Security
 
-Frequently healthcheck endpoints are agnostic about authentication and authorization, meaning anyone that can reach the service via the network can access these endpoints. This implies that any information available in the healthcheck should not be confidential nor could be used to jeopardize the smooth running of the service.
+Frequently healthcheck endpoints are agnostic about authentication and authorization, meaning anyone that can reach the service via the network can access these endpoints.
+
+Having heathcheck endpoints be un-authenticated implies several other considerations:
+
+* Any information available in the healthcheck should not be confidential, nor should the information be able to be (ab)used to jeopardize the smooth running of the service.
+* Unsecured healthchecks could open up the system or its checked dependencies to Denial of Service attacks. This may be mitigated by adding some level of caching in the healthchecks.
+* One possible technique for lowering risk is to isolate operational endpoints to a separate port with tighter network ACLs.
 
 ## Reliability
 
@@ -32,11 +38,11 @@ However, if only a subset of the app's functionality is impacted by an unreliabi
 
 ## Healthchecks in Deployment Pipelines
 
-It is not uncommon to see teams utilize an app's healthcheck endpoint on the critical path of a deployment pipeline, however this should considered for unintended consequences.
+It is not uncommon to see teams utilize an app's healthcheck endpoint on the critical path of a deployment pipeline, however this should be evaluated for unintended consequences.
 
 In modern software engineering, automated deployments are a critical feature of a software system, facilitating the ability to safely and incrementally improve the quality of a running app.
 
-Again, consider the app example from above that uses an email sending service for one feature: should the external serivce instability to jeopardize the ability to roll out new code? Perhaps the new code for deployment is useful for diagnosing the issue, or is intended to temporarily turn off the offending sending of emails, blocking roll out of this code is actually making remediation of the issue harder rather than safer.
+Again, consider the app example from above that uses an email sending service for one feature: should the external service instability be able to jeopardize the ability to roll out new code? Perhaps the new code for deployment is useful for diagnosing the issue or is intended to temporarily turn off the offending sending of emails: blocking roll out makes remediation of the issue harder rather than safer.
 
 ## Contents
 
