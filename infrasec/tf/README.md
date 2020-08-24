@@ -7,7 +7,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 ## Contents
 
 * [Semantic Versioning](#semantic-versioning)
-* [Splitting a git repo](#git-repo-splitting)
+* [Splitting a git repo](#splitting-a-git-repo)
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
 * [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
