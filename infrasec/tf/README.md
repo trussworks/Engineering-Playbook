@@ -30,19 +30,9 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 
 ### Splitting a git repo
 
-We often start out with Terraform code embedded into the infrastructure for a specific project before we decide we want to publish a chunk of it as stand-alone module. When moving code from one git repository to another, it is useful to maintain the revision history. Since that history would be lost if we move the code by simply copying the files, a specialized tool is required: [git-filter-repo](https://github.com/newren/git-filter-repo)
+We often start out with Terraform code embedded into the infrastructure for a specific project before we decide we want to publish a chunk of it as stand-alone module. When moving code from one git repository to another, it is useful to maintain the revision history. To split a git repository while preserving the history, see [this page](../../vcs/git-repos.md) in the Engineering Playbook.
 
-For example, suppose we have a module called `cloudfront_http_headers` located in our project at this path: `/modules/cloudfront_http_headers`. To publish this module in its own repository, perform these steps:
-
-1. Create an empty GitHub repository. _Do not_ make any commits to it yet.
-1. Make a fresh clone of your project repository. `/tmp/` is a logical place to do this.
-1. Inside that clone, remove the origin remote with `git remote rm origin`
-1. Call git-filter-repo to filter the subdirectory into the root of the project: `git-filter-repo --subdirectory-filter modules/cloudfront_http_headers`
-1. Confirm that the directory structure is correct & git history is present.
-1. Add the remote for the new module repository using `git remote add origin git@github.com:trussworks/terraform-cloudfront-http-headers`
-1. Push everything up: `git push`
-
-Now you can add the usual trimmings for a Terraform module: README, pre-commit/CircleCI configuration, terratest(s), etc.
+Once the Terraform code has been split into a separate repo, you can add the usual trimmings for a Terraform module: README, pre-commit/CircleCI configuration, terratest(s), etc.
 
 Before going public, consider sourcing the module from github as described in the [sources](https://www.terraform.io/docs/modules/sources.html) documentation to confirm that no changes are planned after the migration.
 

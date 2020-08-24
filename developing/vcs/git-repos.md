@@ -65,6 +65,11 @@ If you need to split out code from one of your repositories into its own
 separate repo, you can follow these steps to make sure you're preserving
 the commit history when doing so.
 
+The `filter-branch` subcommand to `git` can be used to accomplish this, but the
+[documentation](https://git-scm.com/docs/git-filter-branch) strongly
+discourages its use. Instead, a third-party utility called
+[git-filter-repo](https://github.com/newren/git-filter-repo) is recommended.
+
 In your terminal clone a copy of the original repo into a new folder:
 
 ```sh
@@ -80,13 +85,14 @@ git remote rm origin
 Filter out commits that change the specified directory:
 
 ```sh
-git filter-branch --prune-empty --subdirectory-filter DIRNAME main
+git-filter-repo --subdirectory-filter DIRNAME
 ```
 
 Create a new repo using the GitHub UI as you would normally.
 
-Note: This repo should be public and properly licensed. You can use a
-Github license template for MIT or BSD-3.
+Note: This repo should be public and properly licensed. Truss has a
+:lock:[decision record][license_tdr] on what licenses should be applied to
+which sorts of projects.
 
 If your project is managing its GitHub repositories with Terraform as
 we suggest, make sure you add the repo to the Terraform code and import
@@ -109,3 +115,5 @@ git push origin .
 
 * [GitHub's documentation](https://help.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
 * [Chris Gilmer’s full instructions](https://github.com/chrisgilmerproj/silliness#how-to-break-out-projects)
+
+[license_tdr]: https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit
