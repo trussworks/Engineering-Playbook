@@ -70,7 +70,9 @@ The `filter-branch` subcommand to `git` can be used to accomplish this, but the
 discourages its use. Instead, a third-party utility called
 [git-filter-repo](https://github.com/newren/git-filter-repo) is recommended.
 
-In your terminal clone a copy of the original repo into a new folder:
+First, create a new repo using the GitHub UI as you would normally.
+
+In your terminal, clone a copy of the original repo into a new folder:
 
 ```sh
 git clone git@github.com:OWNER/REPONAME.git NEWREPO && cd NEWREPO
@@ -89,8 +91,6 @@ repo URL, and push the filtered work tree:
 git remote add origin git@github.com:OWNER/NEWREPO.git
 git push --set-upstream origin <main>
 ```
-
-Create a new repo using the GitHub UI as you would normally.
 
 Note: This repo should be public and properly licensed. Truss has a
 :lock:[decision record][license_tdr] on what licenses should be applied to
