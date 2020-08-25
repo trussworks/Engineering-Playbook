@@ -111,9 +111,4 @@ Push history:
 git push origin .
 ```
 
-### References
-
-* [GitHub's documentation](https://help.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
-* [Chris Gilmer’s full instructions](https://github.com/chrisgilmerproj/silliness#how-to-break-out-projects)
-
 [license_tdr]: https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit
