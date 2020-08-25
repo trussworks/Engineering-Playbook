@@ -65,47 +65,40 @@ If you need to split out code from one of your repositories into its own
 separate repo, you can follow these steps to make sure you're preserving
 the commit history when doing so.
 
-In your terminal clone a copy of the original repo into a new folder:
+The `filter-branch` subcommand to `git` can be used to accomplish this, but the
+[documentation](https://git-scm.com/docs/git-filter-branch) strongly
+discourages its use. Instead, a third-party utility called
+[git-filter-repo](https://github.com/newren/git-filter-repo) is recommended.
+
+First, create a new repo using the GitHub UI as you would normally.
+
+In your terminal, clone a copy of the original repo into a new folder:
 
 ```sh
-git clone git@github.com:OWNER/REPONAME.git NEWREPO
-```
-
-In that new repo folder remove the origin:
-
-```sh
-git remote rm origin
+git clone git@github.com:OWNER/REPONAME.git NEWREPO && cd NEWREPO
 ```
 
 Filter out commits that change the specified directory:
 
 ```sh
-git filter-branch --prune-empty --subdirectory-filter DIRNAME main
+git-filter-repo --subdirectory-filter DIRNAME
 ```
 
-Create a new repo using the GitHub UI as you would normally.
+The `origin` remote will be removed in this process. Add it back with the new
+repo URL, and push the filtered work tree:
 
-Note: This repo should be public and properly licensed. You can use a
-Github license template for MIT or BSD-3.
+```sh
+git remote add origin git@github.com:OWNER/NEWREPO.git
+git push --set-upstream origin <main>
+```
+
+Note: This repo should be public and properly licensed. Truss has a
+:lock:[decision record][license_tdr] on what licenses should be applied to
+which sorts of projects.
 
 If your project is managing its GitHub repositories with Terraform as
 we suggest, make sure you add the repo to the Terraform code and import
 it from GitHub. Speak to your project's infrasec team if you need help
 with this.
 
-Add the new repo as upstream:
-
-```sh
-git remote add origin https://github.com/OWNER/NEWREPO.git
-```
-
-Push history:
-
-```sh
-git push origin .
-```
-
-### References
-
-* [GitHub's documentation](https://help.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
-* [Chris Gilmer’s full instructions](https://github.com/chrisgilmerproj/silliness#how-to-break-out-projects)
+[license_tdr]: https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit

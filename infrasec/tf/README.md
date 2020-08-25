@@ -7,6 +7,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 ## Contents
 
 * [Semantic Versioning](#semantic-versioning)
+* [Splitting a git repo](#splitting-a-git-repo)
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
 * [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
@@ -26,6 +27,14 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 ### Starting a module experiment
 
 ...
+
+### Splitting a git repo
+
+We often start out with Terraform code embedded into the infrastructure for a specific project before we decide we want to publish a chunk of it as stand-alone module. When moving code from one git repository to another, it is useful to maintain the revision history. To split a git repository while preserving the history, see [this page](../../developing/vcs/git-repos.md) in the Engineering Playbook.
+
+Once the Terraform code has been split into a separate repo, you can add the usual trimmings for a Terraform module: README, pre-commit/CircleCI configuration, terratest(s), etc.
+
+Before going public, consider sourcing the module from github as described in the [sources](https://www.terraform.io/docs/modules/sources.html) documentation to confirm that no changes are planned after the migration.
 
 ### Going public
 
