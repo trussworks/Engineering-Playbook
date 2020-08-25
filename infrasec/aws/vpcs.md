@@ -123,7 +123,7 @@ Otherwise, unless you have a plan to ingest, manage, view, and monitor network f
 Every AWS account comes with a default VPC.
 In general, you will not want to use that VPC.
 
-Use our [VPC Terraform Module](https://github.com/trussworks/terraform-aws-default-vpc) to disable the VPC.
+Use our [Destroy default VPC Terraform Module](https://github.com/trussworks/terraform-aws-destroy-default-vpc) to effectively destroy the VPC.
 WARNING: undoing this module is hard so if you have inherited the infrastructure you are managing and MIGHT have old resources in the default VPC we don't suggest using it.
 
 ## Reference Links
