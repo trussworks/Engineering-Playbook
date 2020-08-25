@@ -73,19 +73,21 @@ discourages its use. Instead, a third-party utility called
 In your terminal clone a copy of the original repo into a new folder:
 
 ```sh
-git clone git@github.com:OWNER/REPONAME.git NEWREPO
-```
-
-In that new repo folder remove the origin:
-
-```sh
-git remote rm origin
+git clone git@github.com:OWNER/REPONAME.git NEWREPO && cd NEWREPO
 ```
 
 Filter out commits that change the specified directory:
 
 ```sh
 git-filter-repo --subdirectory-filter DIRNAME
+```
+
+The `origin` remote will be removed in this process. Add it back with the new
+repo URL, and push the filtered work tree:
+
+```sh
+git remote add origin git@github.com:OWNER/NEWREPO.git
+git push --set-upstream origin <main>
 ```
 
 Create a new repo using the GitHub UI as you would normally.
@@ -98,17 +100,5 @@ If your project is managing its GitHub repositories with Terraform as
 we suggest, make sure you add the repo to the Terraform code and import
 it from GitHub. Speak to your project's infrasec team if you need help
 with this.
-
-Add the new repo as upstream:
-
-```sh
-git remote add origin https://github.com/OWNER/NEWREPO.git
-```
-
-Push history:
-
-```sh
-git push origin .
-```
 
 [license_tdr]: https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit
