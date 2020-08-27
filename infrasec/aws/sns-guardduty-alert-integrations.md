@@ -248,14 +248,14 @@ You may also want PagerDuty to integrate with Slack, in order to create alerts f
 ```hcl
 
 ## Slack extension integration with pagerduty for app level alerts
-data "pagerduty_extension_schema" "slack_v2" {
+data "pagerduty_extension_schema" "slack-v2" {
   name = "Slack V2"
 }
 
-resource "pagerduty_extension" "slack_v2" {
+resource "pagerduty_extension" "slack-v2-service" {
   name = "slack v2 - team"
 
-  extension_schema  = data.pagerduty_extension_schema.slack_v2.id
+  extension_schema  = data.pagerduty_extension_schema.slack-v2.id
   extension_objects = [pagerduty_service.team_account.id]
 
   # Ignore this configuration as the actual authorization must be done manually.
