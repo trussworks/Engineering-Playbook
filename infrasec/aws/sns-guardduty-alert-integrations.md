@@ -241,70 +241,33 @@ resource "aws_sns_topic_subscription" "team_notification_region" {
 
 ## PagerDuty Slack Integration
 
-You may also want PagerDuty to integrate with Slack, in order to create alerts from PagerDuty incidents on Slack and allow users to Acknowledge and Resolve incidents from Slack itself. To do that, you will have to create a `pagerduty_extension` resource, which includes a configuration template (known as an `extension_schema`) designating the channels where you want alerts to fire and which service they are coming from (in this example, which team). More information about the [Slack extension here](https://support.pagerduty.com/docs/slack-integration-guide). You will most likely only create one extension per service, so we recommend putting them wherever the service is created.
+You may also want PagerDuty to integrate with Slack, in order to create alerts from PagerDuty incidents on Slack and allow users to Acknowledge and Resolve incidents from Slack itself. You will most likely only create one extension per service, so we recommend putting them wherever the service is created.
 
 ### Extension
 
 ```hcl
+
 ## Slack extension integration with pagerduty for app level alerts
-data "pagerduty_extension_schema" "slack-app" {
+data "pagerduty_extension_schema" "slack_v2" {
   name = "Slack V2"
 }
 
-## Slack extension integration with pagerduty for team level alerts
-data "template_file" "pagerduty_slack_extension_team_account" {
-  template = file("pagerduty-slack-extension-team-account.json")
+resource "pagerduty_extension" "slack_v2" {
+  name = "slack v2 - team"
 
-  vars = {
-    access_token = data.aws_ssm_parameter.pagerduty_slack_access_token_v2.value
-  }
-}
-
-resource "pagerduty_extension" "slack-v2-team-account" {
-  name = "slack v2 - team account"
-
-  extension_schema  = data.pagerduty_extension_schema.slack-app.id
+  extension_schema  = data.pagerduty_extension_schema.slack_v2.id
   extension_objects = [pagerduty_service.team_account.id]
 
-  config = data.template_file.pagerduty_slack_extension_team_account.rendered
+  # Ignore this configuration as the actual authorization must be done manually.
+  # See manual operations log in the README for details
+  config = null
+  lifecycle {
+    ignore_changes = [config]
+  }
 }
 ```
 
-### Extension Schema
-
-```json
-{
-  "access_token": "${access_token}",
-  "bot": {
-    "bot_user_id": "BOT_USER_ID"
-  },
-  "enterprise_id": null,
-  "incoming_webhook": {
-    "channel": "CHANNEL_NAME",
-    "channel_id": "CHANNEL_ID"
-  },
-  "notify_types": {
-    "acknowledge": true,
-    "annotate": false,
-    "assignments": true,
-    "escalate": true,
-    "resolve": true,
-    "trigger": true
-  },
-  "ok": true,
-  "referer": "https://movemil.pagerduty.com/extensions",
-  "scope": "identify,bot,commands,incoming-webhook,channels:read,groups:read,im:read,team:read,users:read,users:read.email,channels:write,chat:write:user,chat:write:bot,groups:write",
-  "team_id": "PG_TEAM_ID",
-  "team_name": "TEAM_NAME",
-  "urgency": {
-    "high": true,
-    "low": true
-  },
-  "user_id": "USER_ID"
-}
-```
-
-You're not quite done yet. Although you've specified channel and permissions, PagerDuty does not actually authorize the link between the extension and Slack until you manually create it. Sign into PagerDuty and [visit the extensions page](https://movemil.pagerduty.com/extensions). Locate your new extension in the Service Extensions table and click on the gear button on the bottom right of the far-right Details cell for your extension. Select either the Re-authorize or the Edit option (they do the same thing) from the drop-down. Scroll down and select the same channel you specified in the extension schema under `Where should PagerDuty post?` then click "Allow". You should see a notification appear in the channel you've selected in Slack that says "[your name] added an integration to this channel: PagerDuty".
+You're not quite done yet. PagerDuty does not actually authorize the link between the extension and Slack until you manually create it. Sign into PagerDuty and [visit the extensions page](https://movemil.pagerduty.com/extensions). Locate your new extension in the Service Extensions table and click on the gear button on the bottom right of the far-right Details cell for your extension. Select either the Re-authorize/Authorize or Edit option (they do the same thing) from the drop-down. Scroll down and select the channel you prefer under `Where should PagerDuty post?` then click "Allow". You should see a notification appear in the channel you've selected in Slack that says "[your name] added an integration to this channel: PagerDuty". Make sure to record that you've done this in your Manual Operations log. Note: You only need to create one extension per service rather than per environment.
 
 ## GuardDuty Tie-In
 
