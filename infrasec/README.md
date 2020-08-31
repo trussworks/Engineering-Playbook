@@ -57,4 +57,4 @@ response](../incident-response/README.md), and a number of other fields.
 
 - [Alert Providers](./alert-providers.md)
 - [Project Teardown Guide](./teardown.md)
-- [SSL Certificates](./certs/README.md)
+- [SSL Certificates](./certs.md)
