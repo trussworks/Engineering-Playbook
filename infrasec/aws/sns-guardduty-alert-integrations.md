@@ -250,8 +250,7 @@ resource "pagerduty_service_integration" "guardduty" {
 ### Subscription
 
 ```hcl
-resource "aws_sns_topic_subscription"
-"guardduty_team_notification_region" {
+resource "aws_sns_topic_subscription" "guardduty_team_notification_region" {
   provider = aws.region
 
   topic_arn              = "arn:aws:sns:region:${data.aws_caller_identity.current.account_id}:sns_topic_name"
