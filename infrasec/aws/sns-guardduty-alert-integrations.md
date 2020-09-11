@@ -154,9 +154,21 @@ We set up these subscriptions in a number of ways, depending on the integration.
 
 Terraform doesn't support email protocol, so any subscription to email will be set up manually. We do record these as commented out terraform code in our repos.
 
+### SSM Parameters
+
+To integrate with PagerDuty and Slack, you will need to generate API keys. For Slack, you'll have to set up an [incoming webhook](https://my.slack.com/services/new/incoming-webhook/). With PagerDuty, you'll have to [create an API key](https://support.pagerduty.com/docs/generating-api-keys).
+
+We recommend storing these keys in [SSM Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) as secure strings. We prefix our keys with the stacks they live since there may be more than one key per account. Then you can refer to them in your code without revealing their contents:
+
+```hcl
+data "aws_ssm_parameter" "pagerduty_api_key" {
+  name = "admin_global/pagerduty_api_key"
+}
+```
+
 ## Slack Integration
 
-We use this [notify-slack module](https://registry.terraform.io/modules/terraform-aws-modules/notify-slack/aws). It allows you to either create or pass in an SNS topic and then creates an AWS Lambda to send Slack notifications. Our implementation favors creating SNS topics on our own so we can set the topics' policies. Create an instance of this module for each of the topics you have created that you want to use for a Slack notification, in each region you want that topic and notification to exist. If this is the first time using this integration in your Slack, you'll have to set up an [incoming webhook](https://my.slack.com/services/new/incoming-webhook/).
+We use this [notify-slack module](https://registry.terraform.io/modules/terraform-aws-modules/notify-slack/aws). It allows you to either create or pass in an SNS topic and then creates an AWS Lambda to send Slack notifications. Our implementation favors creating SNS topics on our own so we can set the topics' policies. Create an instance of this module for each of the topics you have created that you want to use for a Slack notification, in each region and account you want that topic and notification to exist. Since we're using GuardDuty with Organizations, we're expecting GuardDuty incidents to bubble up to the `orgname-infrasec` account. That means that for GuardDuty, we only need to set up the slack integration in that delegated administrator account.
 
 ```hcl
 
@@ -208,9 +220,18 @@ Using PagerDuty with AWS Organizations allows us to set organization-wide servic
 
 ## PagerDuty Integration
 
-Once you have created those resources, you can create PagerDuty services for each unit you want alerts on. We decided to split by team--so there is a service for the app team and one for the infra team. Note, you do not need a service for each AWS account! You should keep the `pagerduty_service_integration` resources in the same place as you put the the PagerDuty team services.
+Once you have created those resources, you can create a PagerDuty provider to create resources on PagerDuty. You'll refer to your `pagerduty_api_key` that you stored in Parameter Store here.
 
-Create a `pagerduty_service_integration` for each of the AWS services you'd like to get PagerDuty alerts on. In this case, we have set up integrations for CloudWatch and of course, GuardDuty. Once you have created those integrations, you should create `aws_sns_topic_subscription` linking the subscription endpoint to the service integration you just set up. This will read something like `"https://events.pagerduty.com/integration/${pagerduty_service_integration.guardduty.integration_key}/enqueue"`. It is likely you will only have these in the AWS account where you expect alerts to go off--i.e. your GuardDuty designated admin account and any account that has separate CloudWatch alerts.
+```hcl
+provider "pagerduty" {
+  version = "~> 1.7.4"
+  token   = data.aws_ssm_parameter.pagerduty_api_key.value
+}
+```
+
+Once you have a PagerDuty provider, you can create PagerDuty services for each unit you want alerts on. We decided to split by team--so there is a service for the app team and one for the infra team. Be aware: you do not need a service for each AWS account! You should keep the `pagerduty_service_integration` resources in the same place as you put the the PagerDuty team services.
+
+Create a `pagerduty_service_integration` for each of the AWS services you'd like to get PagerDuty alerts on. In this case, we have set up integrations for CloudWatch and of course, GuardDuty. Once you have created those integrations, you should create `aws_sns_topic_subscription` linking the subscription endpoint to the service integration you just set up. This will read something like `"https://events.pagerduty.com/integration/${pagerduty_service_integration.guardduty.integration_key}/enqueue"`. You will only have these in the AWS account where you expect alerts to go off--your GuardDuty designated admin account (i.e. `orgname-infrasec`). Only add subscriptions elsewhere if you have other integration alerts such as CloudWatch.
 
 ### Integration
 
@@ -220,7 +241,7 @@ data "pagerduty_vendor" "guardduty" {
 }
 
 resource "pagerduty_service_integration" "guardduty" {
-  name    = data.pagerduty_vendor.guardduty.name
+  name    = "GuardDuty - team env cloud"
   service = pagerduty_service.team_account.id
   vendor  = data.pagerduty_vendor.guardduty.id
 }
@@ -229,7 +250,7 @@ resource "pagerduty_service_integration" "guardduty" {
 ### Subscription
 
 ```hcl
-resource "aws_sns_topic_subscription" "team_notification_region" {
+resource "aws_sns_topic_subscription" "guardduty_team_notification_region" {
   provider = aws.region
 
   topic_arn              = "arn:aws:sns:region:${data.aws_caller_identity.current.account_id}:sns_topic_name"
