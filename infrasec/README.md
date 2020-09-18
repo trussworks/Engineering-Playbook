@@ -20,7 +20,7 @@ response](../incident-response/README.md), and a number of other fields.
   - [CircleCI Patterns (in Tools and Practice)](../developing/cicd/circleci-patterns.md)
   - [Orbs](./circleci/orbs.md)
 - Packer
-- [Terraform](./tf/README.md)
+- [Terraform](./terraform/README.md)
 
 ## Immutable Infrastructure
 
