@@ -78,8 +78,8 @@ In order to preserve the ability to release updates for previous Terraform versi
 1. Merge your changes in to the module's default branch.
 1. Cut a new release as described above. Increment the *major* version of the module as you described in the README.
 
-[publish-release]: ./publish-release.png "Screenshot of a published release"
-[draft-release]: ./draft-release.png "Screenshot of a release draft"
+[publish-release]: images/publish-release.png "Screenshot of a published release"
+[draft-release]: images/draft-release.png "Screenshot of a release draft"
 
 ### Terraform state mv
 
