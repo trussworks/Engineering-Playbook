@@ -4,17 +4,23 @@
 
 ## Context
 
-Naming instances in a shared name space, such as AWS is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
+Naming instances in a shared name space, such as AWS, is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
 
-Things are further complicated in AWS because some names, e.g. S3 buckets, must be globally unique across the whole of AWS' customer base, some scoped within an account but across all AWS regions, e.g. IAM resources, and others are scoped to the local AWS region.
+Things are further complicated in AWS because there are different uniqueness constraints in play:
+
+| Uniqueness constraint | Example resources
+| --- | ---
+| Globally (all of AWS) | S3 buckets
+| Per account | IAM resources (users, groups, roles, policies, …)
+| Per region | ALB, ECS, Parameter Store, RDS, and many more
 
 As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following:
 
 ## AWS Wide resources, e.g. Buckets
 
-*${account.alias}-${application.name}[-${environment}][-${region}]* - these names are pre-fixed with a consistent account/usage prefix as they are globally scoped withing aws
+*${account.alias}-${application.name}\[-${environment}\]\[-${region}\]* - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
 
-* *$account.alias* - is a prefix for the account, e.g. "truss", "client-name"
+* *$account-alias* - is a prefix for the account, e.g. "truss", "client-name"
 * *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
 * *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 * *$region* - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
@@ -27,7 +33,7 @@ e.g.
 
 IAM resource names are globally visible within an account, e.g. for roles:
 
-*${service/realm}[-${role}]-${project/application}-${environment}* - is the general form
+*${service/realm}\[-${role}\]-${project/application}-${environment}* - is the general form
 
 * *$service/realm* - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
 * *$role* - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
