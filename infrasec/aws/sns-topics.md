@@ -25,4 +25,4 @@ The action or subscription that each SNS topic handled is up to the engineer. Al
 
 Here is a common setup for infra and app team for account type com (commercial).
 
-![SNS Topics](./diagram/doc-sns-topic.png)
+![SNS Topics](images/doc-sns-topic.png)

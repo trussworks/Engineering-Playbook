@@ -8,7 +8,7 @@ Our intent is to have a system which notifies regarding GuardDuty events on two 
 
 ## Information Flow
 
-![SNS Information Flow](./diagram/sns-info-flow.png)
+![SNS Information Flow](images/sns-info-flow.png)
 
 ## GuardDuty Organizational Setup
 
