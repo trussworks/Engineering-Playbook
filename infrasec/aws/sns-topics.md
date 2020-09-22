@@ -1,4 +1,4 @@
-# SNS Topics
+# [AWS](README.md) / SNS Topics
 
 We are using SNS topics as mainly a way to round messages and event to other services such as PagerDuty or Slack.
 

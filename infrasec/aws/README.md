@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / Amazon Web Services (AWS)
+# [InfraSec](../README.md) / AWS
 
 AWS is the most popular cloud provider, accounting for about ⅓ of all cloud spend. Almost all our infrastructure client discoveries find they are already using or want to use AWS.
 
@@ -17,7 +17,7 @@ We encapsulate a lot of the complexity of configuring services (with good defaul
 
 There's also [this 2 minute video which sings through the names of 168 services](https://twitter.com/forrestbrazeal/status/1301182968766107656). Watch at your own peril. 😱
 
-## Organizations & Accounts
+## Organizations & accounts
 
 * [AWS Organizations](aws-organizations.md)
 * [Bootstrapping an AWS Organization](org-bootstrap.md)

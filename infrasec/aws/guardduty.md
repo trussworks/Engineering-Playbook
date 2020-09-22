@@ -1,4 +1,4 @@
-# [AWS](./README.md) / GuardDuty for Organizations
+# [AWS](README.md) / GuardDuty for Organizations
 
 [GuardDuty](https://aws.amazon.com/guardduty/) is an anomaly detection
 system that can alert you via SNS when it detects unusual activity within
@@ -9,7 +9,17 @@ small amount of Terraform, but there are some issues you may run into as
 you do so. This document is intended to help you get GuardDuty set up in
 your organization and work around these pitfalls.
 
-## Initial Configuration
+<!-- toc -->
+
+* [Initial configuration](#initial-configuration)
+* [Adding GuardDuty to existing accounts](#adding-guardduty-to-existing-accounts)
+* [Adding more regions](#adding-more-regions)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
+
+## Initial configuration
 
 To get GuardDuty set up within your organization, the first task will be
 to make some changes in your `org-root` account to get it started. First,
@@ -67,7 +77,7 @@ will automatically have a detector created that is connected to the
 detector in the GuardDuty admin account. Accounts that already exist
 will not have GuardDuty set up in them yet, however.
 
-## Adding GuardDuty to Existing Accounts
+## Adding GuardDuty to existing accounts
 
 To add an account to an organization's GuardDuty configuration, in the
 GuardDuty admin account, you'll need to add an `aws_guardduty_member`
@@ -120,7 +130,7 @@ $ aws guardduty list-members --detector-id 1234567890abcdef0000000000000000
 You will still see the detector for the account you added in this list of
 members, even though Terraform will claim to have destroyed it.
 
-## Adding More Regions
+## Adding more regions
 
 GuardDuty is a regional service -- creating the detectors and members as
 above will only enable GuardDuty in a single region. Our best practice

@@ -1,9 +1,7 @@
-# [Tools and Practice](../README.md) / Intro to CI/CD
-
-## Overview
+# [Tools and Practice](../README.md) / CI/CD
 
 The release process is one of the most important parts of development
-for obvious reasons -- without a release, your code is never going to
+for obvious reasons: without a release, your code is never going to
 actually be used by anyone. This section provides resources for setting
 up a continuous integration and continuous delivery (CI/CD) pipeline
 according to Truss best practices to deliver software to customers.
@@ -12,6 +10,28 @@ The goal of CI/CD practice is to provide a workflow that can support
 frequent updates, good testing, consistent builds, and prompt deploys.
 Additionally issues with code should be found quickly and addressed before
 it is released to customers.
+
+<!-- toc -->
+
+* [Delivery Pipeline Basics](#delivery-pipeline-basics)
+  * [Build](#build)
+    * [Notes about Versioning](#notes-about-versioning)
+      * [Semantic Versioning](#semantic-versioning)
+      * [Commit Hash](#commit-hash)
+      * [Other versioning strategies](#other-versioning-strategies)
+  * [Test](#test)
+  * [Deployment](#deployment)
+  * [Release](#release)
+* [Continuous (Integration | Delivery | Deployment)](#continuous-integration--delivery--deployment)
+  * [Continuous Integration](#continuous-integration)
+  * [Continuous Delivery](#continuous-delivery)
+  * [Continuous Deployment](#continuous-deployment)
+* [Contents](#contents)
+* [Resources](#resources)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## Delivery Pipeline Basics
 
@@ -38,8 +58,7 @@ That they are configurable and repeatable.
 **Builds should be repeatable.**
 This means you should be able to check out the code from your project at that same commit hash and build it again and get the same artifact(s).
 _Note_: This means that dependencies should be versioned in your codebase.
-To keep dependencies up to date in an automated way you can try [Dependabot](https://dependabot.com/).
-Our internal documentation on setting up Dependabot is [here](./dependabot.md).
+To keep dependencies up to date in an automated way you can use [Dependabot](https://dependabot.com/) with our [documentation on configuring it](dependabot.md).
 Please do whatever is "correct" in the context of the languages/frameworks your project is built in.
 
 **Builds should be hermetic.** This means that the build should be isolated from other builds.
@@ -66,7 +85,7 @@ Here is a preferential ordering of versioning schemes:
 Why semver? It tells you and your customer how much has changed since the last released code and sets expectations accordingly.
 If you are tagging at mainline where you are building from, you can rebuild the artifact from the same point.
 
-From [semver.org](https://semver.org/).
+From [semver.org](https://semver.org):
 
 ```
 Given a version number MAJOR.MINOR.PATCH, increment the:
@@ -128,7 +147,7 @@ If you're releasing a CLI, it may mean that you're releasing your binary to a Ho
 If you have a service, you could have a loadbalancer manage traffic between different versions of your services.
 Or you could use something like Launch Darkly to leverage feature flags to do something similar for different user cohorts.
 
-## Continous (Integration | Delivery | Deploy)
+## Continuous (Integration | Delivery | Deployment)
 
 We throw around terms like CI or CD with the assumption that we know what the differences are between these practices.
 
@@ -163,7 +182,7 @@ For example, Docker containers might go to Docker Hub or Amazon Elastic Containe
 Might mean that the code has been deployed to a staging environment.
 All of these could be "delivered" depending on the project's workflow.
 
-### Continous Deployment
+### Continuous Deployment
 
 `Continuous Deployment` can be described as a further extension of `Continuous Delivery`.
 In addition to automated build, test, and delivery, production deployment is also automated.
@@ -172,9 +191,10 @@ This is an advanced state that requires excellent, trustworthy, automated tests 
 
 ## Contents
 
-* [Standard Development/Deployment Pipeline](./cicd-pipeline.md)
-* [CircleCI Config Patterns](./circleci-patterns.md)
-* [Dependabot](./dependabot.md)
+* [Standard Delivery Pipeline](delivery-pipeline.md)
+* [CircleCI Config Patterns](circleci-patterns.md)
+* [CircleCI Orbs](circleci-orbs.md)
+* [Dependabot](dependabot.md)
 
 ## Resources
 
@@ -184,7 +204,7 @@ This is an advanced state that requires excellent, trustworthy, automated tests 
 * [12 Factor app: Build/Release/Run](https://12factor.net/build-release-run)
 * [7 Pipeline Design Patterns for Continuous Delivery from Singlestone](https://www.singlestoneconsulting.com/blog/7-pipeline-design-patterns-for-continuous-delivery/)
 
-some OG references
+Some OG references:
 
 * [Martin Fowler on Continuous Delivery](https://martinfowler.com/bliki/ContinuousDelivery.html)
 * [Timothy Fitz on Continuous Deployment](http://timothyfitz.com/2009/02/08/continuous-deployment/)

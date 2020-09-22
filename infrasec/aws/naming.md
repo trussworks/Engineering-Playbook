@@ -1,22 +1,33 @@
-# [aws](./README.md) / Naming
+# [AWS](README.md) / Naming
 
-*Naming* is one of the [hard problems in computing](https://martinfowler.com/bliki/TwoHardThings.html). This page contains patterns for naming things (resources, roles, policies, etc.) in AWS.
-
-## Context
-
-Naming instances in a shared name space, such as AWS, is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
+*Naming* is one of the [hard problems in computing](https://martinfowler.com/bliki/TwoHardThings.html). Naming instances in a shared name space, such as AWS, is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
 
 Things are further complicated in AWS because there are different uniqueness constraints in play:
 
 | Uniqueness constraint | Example resources
 | --- | ---
-| Globally (all of AWS) | S3 buckets
+| Global (the entirety of AWS) | S3 buckets
 | Per account | IAM resources (users, groups, roles, policies, …)
-| Per region | ALB, ECS, Parameter Store, RDS, and many more
+| Per region | Most everything else (ALB, ECS, RDS, …)
 
-As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following:
+As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following.
 
-## AWS Wide resources, e.g. Buckets
+<!-- toc -->
+
+* [Globally unique](#globally-unique)
+  * [S3 Buckets](#s3-buckets)
+* [Unique per account](#unique-per-account)
+  * [IAM resources](#iam-resources)
+    * [IAM policies](#iam-policies)
+* [Unique per region](#unique-per-region)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
+
+## Globally unique
+
+### S3 Buckets
 
 *${account.alias}-${application.name}\[-${environment}\]\[-${region}\]* - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
 
@@ -29,9 +40,11 @@ e.g.
 
 * truss-aws-logs-us-east-1
 
-## IAM Resources
+## Unique per account
 
-IAM resource names are globally visible within an account, e.g. for roles:
+### IAM resources
+
+IAM resource names are account unique (i.e., visible across all regions), e.g. for roles:
 
 *${service/realm}\[-${role}\]-${project/application}-${environment}* - is the general form
 
@@ -45,14 +58,14 @@ e.g.
 * lambda-rds-snapshot-cleaner-app-experimental
 * ecs-task-role-app-client-tls-experimental
 
-### Policies
+#### IAM policies
 
 Where the details of an IAM role are in an associated policy (usually the case) they are named after the associated role, but with `-policy` appended, e.g.
 
 * lambda-rds-snapshot-cleaner-app-experimental-policy
 * ecs-task-role-app-client-tls-experimental-policy
 
-## Other Resources
+## Unique per region
 
 Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
 

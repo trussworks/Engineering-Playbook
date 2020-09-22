@@ -1,4 +1,21 @@
-# [AWS](./README.md) / VPC Configuration
+# [AWS](README.md) / VPC Configuration
+
+<!-- toc -->
+
+* [VPC basics](#vpc-basics)
+  * [Subnets](#subnets)
+  * [Route tables](#route-tables)
+  * [Network ACLs](#network-acls)
+  * [Security Groups](#security-groups)
+  * [Gateways](#gateways)
+  * [VPC endpoints](#vpc-endpoints)
+  * [Flow logs](#flow-logs)
+* [Default VPC configuration](#default-vpc-configuration)
+* [Reference links](#reference-links)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## VPC basics
 
@@ -126,7 +143,7 @@ In general, you will not want to use that VPC.
 Use our [Destroy default VPC Terraform Module](https://github.com/trussworks/terraform-aws-destroy-default-vpc) to effectively destroy the VPC.
 WARNING: undoing this module is hard so if you have inherited the infrastructure you are managing and MIGHT have old resources in the default VPC we don't suggest using it.
 
-## Reference Links
+## Reference links
 
 * [AWS VPC documentation](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 * [AWS VPC Endpoint documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)

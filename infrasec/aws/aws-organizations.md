@@ -1,4 +1,4 @@
-# AWS Organizations
+# [AWS](README.md) / AWS Organizations
 
 [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 provide a native way to manage multiple AWS accounts.  They provide
@@ -9,13 +9,27 @@ As security best practices prefer account boundaries over IAM policies
 as a way to limit resource access, AWS Organizations are becoming a
 standard part of any AWS deployment.
 
+<!-- toc -->
+
+* [Truss Patterns](#truss-patterns)
+  * [The Organization Root Account](#the-organization-root-account)
+  * [The ID Account](#the-id-account)
+  * [The Infra Account](#the-infra-account)
+  * [Other Accounts](#other-accounts)
+* [Best Practices](#best-practices)
+* [External links](#external-links)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
+
 ## Truss Patterns
 
 As Truss has begun adopting AWS Organizations for most of our new
 projects, we have developed a number of patterns for organizations.
 For a more thorough description of the process of bootstrapping a
 new AWS Organization, see the [Bootstrapping an AWS
-Organization](./org-bootstrap.md) document, but below is a brief
+Organization](org-bootstrap.md) document, but below is a brief
 description of the patterns we've adopted.
 
 ### The Organization Root Account
@@ -40,7 +54,7 @@ description of the patterns we've adopted.
 * Create a `suspended` OU for the organization in this account which
   you can place accounts into if you think they have been compromised
   or are exhibiting strange behavior. It can also be used for dummy
-  accounts for [GovCloud](./govcloud/README.md) deployments.
+  accounts for [GovCloud](govcloud/README.md) deployments.
 * To bootstrap other accounts, you can define them here with the
   [`aws_organizations_account`](https://www.terraform.io/docs/providers/aws/r/organizations_account.html)
   Terraform resource. Once they are created, you can access them using
