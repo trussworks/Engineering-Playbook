@@ -1,4 +1,4 @@
-# [InfraSec](./README.md) / Project Teardown Guide
+# [InfraSec](README.md) / Project Teardown Guide
 
 When a project reaches the end of its lifetime and the client doesn't
 want to continue it, we need to teardown all the infrastructure we've
@@ -6,6 +6,18 @@ created for the project -- sometimes on relatively short notice. This
 guide is intended to provide a step-by-step procedure for tearing down
 infrastructure we've created for a project and highlight any potential
 sources of trouble.
+
+<!-- toc -->
+
+* [Terraform and AWS](#terraform-and-aws)
+* [SSL certificates](#ssl-certificates)
+* [CircleCI](#circleci)
+* [GitHub](#github)
+* [1Password](#1password)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## Terraform and AWS
 
@@ -58,7 +70,7 @@ some guidelines when tearing down Terraform namespaces:
   from the console or using the CLI) and then close it from the My
   Account panel.
 
-## SSL Certificates
+## SSL certificates
 
 For most projects, we'll hopefully be able to use AWS ACM certificates,
 and those will get torn down with our Terraform teardown above. However,

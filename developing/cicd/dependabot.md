@@ -1,8 +1,8 @@
-# [Tools and Practice](../README.md) / [Intro to CI/CD](README.md) / Dependabot
+# [CI/CD](README.md) / Dependabot
 
 [Dependabot](https://dependabot.com/) is a tool to automatically find updates to dependencies in our repos.
 
-## Dependabot Configuration
+## Configuration
 
 The Dependabot website has configuration for when/how often to run checks and configuration variables but you'll configure each repo in a file `.dependabot/config.yml`.
 

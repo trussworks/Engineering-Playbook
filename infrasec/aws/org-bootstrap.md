@@ -1,9 +1,26 @@
-# [AWS](./README.md) / Bootstrapping an AWS Organization
+# [AWS](README.md) / Bootstrapping an AWS Organization
 
 The purpose of this document is to take you step by step through the
-process of bootstrapping an [AWS Organization](./aws-organizations.md).
+process of bootstrapping an [AWS Organization](aws-organizations.md).
 This is only intended for cases where we are setting up the AWS account
 structure from scratch.
+
+<!-- toc -->
+
+* [Naming Conventions](#naming-conventions)
+* [Create Organization Root Account](#create-organization-root-account)
+* [Bootstrap Terraform for org-root Account](#bootstrap-terraform-for-org-root-account)
+* [Terraforming the org-root Account](#terraforming-the-org-root-account)
+  * [Create org-root Admin Users](#create-org-root-admin-users)
+  * [Create AWS Organization](#create-aws-organization)
+    * [A Note on Terraforming Accounts](#a-note-on-terraforming-accounts)
+* [Setting Up the id Account Users and Role Assumption](#setting-up-the-id-account-users-and-role-assumption)
+* [Next Steps](#next-steps)
+  * [Shared Resources](#shared-resources)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## Naming Conventions
 

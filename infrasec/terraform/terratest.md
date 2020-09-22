@@ -1,8 +1,23 @@
-# [InfraSec](../README.md) / [Terraform](README.md) / Terratest Guide
+# [Terraform](README.md) / Terratest Guide
 
 Terratest is a Go framework that is used to test Terraform infrastructure code.
-
 It executes the defined Terraform and then validates things you're asserting.
+
+<!-- toc -->
+
+* [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
+  * [Other Examples](#other-examples)
+* [Run manually](#run-manually)
+* [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
+  * [Configure CircleCi Job](#configure-circleci-job)
+  * [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
+  * [Update the Key rotator configuration](#update-the-key-rotator-configuration)
+  * [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
+* [Documentation links](#documentation-links)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## Basic Terratest example of a module
 
@@ -184,7 +199,7 @@ Now we should be able to see both the tests and artifacts tabs in our CircleCI p
 
 ![CircleCI Tabs](images/circleci_tabs.png "CircleCI Tabs")
 
-## Documentation Links
+## Documentation links
 
 * [Terratest repo](https://github.com/gruntwork-io/terratest)
 * [Official Terratest Documentation](https://terratest.gruntwork.io/docs/)

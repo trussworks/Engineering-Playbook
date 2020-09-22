@@ -1,10 +1,20 @@
-# Standard Development/Deployment Pipeline
+# [CI/CD](README.md) / Standard Delivery Pipeline
 
 The following is a standardized workflow for developing and deploying our
 code using CI/CD. This is meant to be an example, not a prescriptive
-ideal; if your project needs to use a different workflow, that's fine --
-your goal should still be to provide a workflow that can support frequent
+ideal; if your project needs to use a different workflow, that's fine.
+Your goal should still be to provide a workflow that can support frequent
 updates, good testing, and prompt deploys.
+
+<!-- toc -->
+
+* [Developing Your Code](#developing-your-code)
+* [Unit Testing](#unit-testing)
+* [Deploying Our Code](#deploying-our-code)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
 
 ## Developing Your Code
 
