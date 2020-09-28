@@ -76,7 +76,7 @@ Examples:
 
 * Parameter Store instead of Hashicorp Vault
 * Fargate instead of EC2
-* SaaS versus on-premise
+* SaaS instead of on-premise
 
 ### Codify entire stacks
 
@@ -94,7 +94,7 @@ One of the goals for codifying infrastructure as code is having the ability to s
 
 ### Automation
 
-One of the primary goals of creating infrastructure as code is enabling automation. When we automate our infrastructure we are able to repeat our structures in consistent ways. We can create reusable, testable, units of functionality. We can [eliminate toil](https://landing.google.com/sre/workbook/chapters/eliminating-toil/) and focus our energies on creative problem solving.
+One of the primary goals of creating infrastructure as code is enabling automation. When we automate our infrastructure we are able to repeat our structures in consistent ways. We can create reusable, testable, units of functionality. We can [⎋eliminate toil](https://landing.google.com/sre/workbook/chapters/eliminating-toil/) and focus our energies on creative problem solving.
 
 Like other mechanisms, the automation must be run regularly to ensure it's functional. This can usually be achieved via CI/CD. For automation that's expensive (in time, in money, etc.) and infrequently used, you could setup an automated, scheduled test, to ensure functionality.
 
@@ -104,7 +104,7 @@ Like other mechanisms, the automation must be run regularly to ensure it's funct
 
 ### Delivery pipeline
 
-_[:eyes: See the Intro to CI/CD](../developing/cicd/README.md) for a deeper dive into this topic._
+_[:eyes: See the Intro to CI/CD](../developing/cicd/intro.md) for a deeper dive into this topic._
 
 An effective delivery pipeline is important for creating a successful — organization-wide — delivery culture. This mechanism brings code from development into production, ties together the (technical and non-technical) teams, and enables the company to iterate quickly.
 
@@ -163,7 +163,7 @@ An effect of adopting an immutable architecture is being guided toward more mini
 
 ## The Twelve-Factor App
 
-Build infrastructure to support [the Twelve-Factor methodology](https://12factor.net/). We should be architecting our delivery and deployment pipelines with this view and pushing back against changes the undermine this methodology.
+Build infrastructure to support [⎋the Twelve-Factor methodology](https://12factor.net/). We should be architecting our delivery and deployment pipelines with this view and pushing back against changes the undermine this methodology.
 
 [^1]: There's no single strategy. Managing slow tests is complicated topic. You need to weigh the risks of getting slow feedback for each component to arrive at a place that feels comfortable.
 
