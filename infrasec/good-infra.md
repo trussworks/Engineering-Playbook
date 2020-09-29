@@ -82,6 +82,8 @@ Examples:
 
 Codify entire stacks into a single callable unit (calling into other units). Keep the number of parameterizations (inputs) small so the infrastructure doesn't vary wildly and the unit's actions remain clear. This makes it easy to spin up the same infrastructure in multiple environments and reduces the proliferation of code unique to each environment.
 
+Care should be given to not hardcode environmental assumptions into this wrapper. Follow the same notions for building a [Twelve-Factor App](#the-twelve-factor-app). The callable stack is our version of a deployable artifact.
+
 ## Delivery
 
 ### Infrastructure as code
@@ -163,7 +165,7 @@ An effect of adopting an immutable architecture is being guided toward more mini
 
 ## The Twelve-Factor App
 
-Build infrastructure to support [⎋the Twelve-Factor methodology](https://12factor.net/). We should be architecting our delivery and deployment pipelines with this view and pushing back against changes the undermine this methodology.
+Build infrastructure in the spirit of and to support [⎋the Twelve-Factor methodology](https://12factor.net/). We should be architecting our delivery and deployment pipelines with this view and pushing back against changes which undermine this methodology.
 
 [^1]: There's no single strategy. Managing slow tests is complicated topic. You need to weigh the risks of getting slow feedback for each component to arrive at a place that feels comfortable.
 
