@@ -8,8 +8,9 @@ response](../incident-response/README.md), and a number of other fields.
 
 ## Theory
 
-- [InfraSec Practice Charter](charter.md)
-- :lock: [InfraSec "Book" Club - Talk and Article Suggestions](https://docs.google.com/document/d/1X0GDtCMrPnl_Zdpo0qEtaxUW4SocxnZairCM9JQAcyo/edit)
+- [InfraSec Practice Charter](charter.md) - How we think about the Truss InfraSec Practice.
+- [Good Infrastructure - A Philosophy](good-infra.md) — How we think about building good infrastructure.
+- :lock: [InfraSec "Book" Club - Talk and Article Suggestions](https://docs.google.com/document/d/1X0GDtCMrPnl_Zdpo0qEtaxUW4SocxnZairCM9JQAcyo/edit) — Talks and articles we :sparkling_heart:.
 
 ## Practice
 
