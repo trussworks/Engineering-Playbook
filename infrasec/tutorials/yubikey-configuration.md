@@ -10,7 +10,7 @@
 * [Configuring Your Environment](#configuring-your-environment)
   * [Using pinentry](#using-pinentry)
 * [Verifying Your YubiKey](#verifying-your-yubikey)
-* [Setting the Yubikey User and Admin PIN codes](#setting-the-yubikey-user-and-admin-pin-codes)
+* [Setting the YubiKey User and Admin PIN codes](#setting-the-yubikey-user-and-admin-pin-codes)
 * [Key Generation](#key-generation)
   * [Generating a GPG Private Key](#generating-a-gpg-private-key)
   * [Add a (S) signing subkey](#add-a-s-signing-subkey)
@@ -21,7 +21,7 @@
   * [Create a backup of your key (optional)](#create-a-backup-of-your-key-optional)
   * [Create a revocation certificate (optional)](#create-a-revocation-certificate-optional)
 * [Configuring the YubiKey](#configuring-the-yubikey)
-  * [Importing the keys to your Yubikey](#importing-the-keys-to-your-yubikey)
+  * [Importing the keys to your YubiKey](#importing-the-keys-to-your-yubikey)
 * [Adding Additional Email Addresses](#adding-additional-email-addresses)
 * [Configuring SSH](#configuring-ssh)
 * [Configuring git commit Signing](#configuring-git-commit-signing)
@@ -52,9 +52,9 @@ PIN codes and passphrases may be cached for a short duration at any point during
 
 It is currently recommended that distributed Trussels purchase their YubiKey directly from either Amazon or [Yubico](https://www.yubico.com/store/). The SF office may opt to purchase some YubiKeys in bulk for local Trussels, but this has not been decided yet. Bulk purchasing of YubiKeys yields a savings of $2.40 per $60 YubiKey.
 
-If ordering a Yubikey for a project, check with your project on how to categorize the expense in Expensify. Otherwise, use the `Computer Equipment` category.
+If ordering a YubiKey for a project, check with your project on how to categorize the expense in Expensify. Otherwise, use the `Computer Equipment` category.
 
-You should purchase a Yubikey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
+You should purchase a YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
 
 * **5Ci** supports both USB C and Lighting ports, which is good if you have an iPhone.
 * **5C** and **5C Nano** only support USB C and come in different form factors.
@@ -65,8 +65,8 @@ If you have a YubiKey Series 4 or a YubiKey 5 NEO, you _should_ upgrade to a 5 S
 
 ### Hardware Requirements
 
-* Yubikey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
-* Yubikey 4 Series and 5 NEO are acceptable, but not preferred. Keys are limited to 2048 bits
+* YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
+* YubiKey 4 Series and 5 NEO are acceptable, but not preferred. Keys are limited to 2048 bits
 
 _FIPS based YubiKeys ship with security vulnerabilities. Do not purchase a FIPS based YubiKey for work performed at Truss. FIPS YubiKey models are specifically called YubiKey FIPS and not part of the 5 series listed above._
 
@@ -88,7 +88,7 @@ If xcode is not up to date, you will be prompted to install it with: `xcode-sele
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
 ```bash
-# Enable SSH Key on Yubikey Device
+# Enable SSH Key on YubiKey Device
 killall gpg-agent
 killall ssh-agent
 eval $( gpg-agent --daemon --enable-ssh-support )
@@ -123,7 +123,7 @@ To verify a YubiKey is genuine, open a [browser with U2F support](https://suppor
 
 This website verifies the YubiKey's device attestation certificates signed by a set of Yubico CAs, and helps mitigate [supply chain attacks](https://media.defcon.org/DEF%20CON%2025/DEF%20CON%2025%20presentations/DEF%20CON%2025%20-%20r00killah-and-securelyfitz-Secure-Tokin-and-Doobiekeys.pdf).
 
-## Setting the Yubikey User and Admin PIN codes
+## Setting the YubiKey User and Admin PIN codes
 
 The YubiKey ships with a default User PIN of `123456` and a default Admin PIN of `12345678`. For security purposes, these PIN codes must be changed before use.
 
@@ -231,7 +231,7 @@ If you add one too many keys, you can delete them.
 * Verify the key is deleted
 * Repeat if multiple keys need to be deleted
 
-_Note that if you have not imported the keys to your Yubikey yet then your output will not include those card-no details._
+_Note that if you have not imported the keys to your YubiKey yet then your output will not include those card-no details._
 
 ## Creating Backups
 
@@ -259,7 +259,7 @@ This will allow you to revoke the key should your secret key becomes lost or com
 
 ## Configuring the YubiKey
 
-### Importing the keys to your Yubikey
+### Importing the keys to your YubiKey
 
 This will _destructively_ move the secret key as well as the three subkeys to the YubiKey from the local keystore, via the `keytocard` command. In this case, _destructively_ is a good thing because it will require the YubiKey to be inserted to perform any of these functions.
 
@@ -377,7 +377,7 @@ NOTE: When touch mode is enabled, operations will appear to stall. This is the o
 
 ### Disabling OTP (One Time Password)
 
-Disabling the OTP is possible using the Yubikey Manager, and does not affect any other functionality of the Yubikey.
+Disabling the OTP is possible using the YubiKey Manager, and does not affect any other functionality of the YubiKey.
 
 A side effect of the YubiKey is the Yubisneeze. The YubiKey will generate and paste a password to your screen nearly every time that you touch it.
 
