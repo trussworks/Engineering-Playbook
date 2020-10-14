@@ -87,12 +87,14 @@ If xcode is not up to date, you will be prompted to install it with: `xcode-sele
 
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
-    #Enable SSH Key on Yubikey Device
-    killall gpg-agent
-    killall ssh-agent
-    eval $( gpg-agent --daemon --enable-ssh-support )
+```bash
+# Enable SSH Key on Yubikey Device
+killall gpg-agent
+killall ssh-agent
+eval $( gpg-agent --daemon --enable-ssh-support )
 
-    export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
+```
 
 In the future, if you receive the message `No matching processes
 belonging to you were found` after running `source ~/.bashrc`, this is
@@ -105,11 +107,13 @@ Instead of prompting you in a terminal, you can have gpg-agent use an
 external program.  This might be useful if you want to use your editor
 for commits.
 
-    brew install pinentry-mac
-    echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
-        ~/.gnupg/gpg-agent.conf
-    gpgconf --kill gpg-agent
-    gpg-agent --daemon
+```console
+brew install pinentry-mac
+echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
+    ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+gpg-agent --daemon
+```
 
 If you use this, you do not need to set `GPG_TTY`.
 
@@ -312,9 +316,11 @@ _The interface is not intuitive here. Typing `key 1` will select the first subke
 * Enter the GPG command: `gpg --export --armor 1234ABC` (where 1234ABC is the key ID of your secret key)
 * This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
 
-    -----BEGIN PGP PUBLIC KEY BLOCK-----
+  ```plaintext
+  -----BEGIN PGP PUBLIC KEY BLOCK-----
 
-    -----END PGP PUBLIC KEY BLOCK-----
+  -----END PGP PUBLIC KEY BLOCK-----
+  ```
 
 * Add this key into GitHub
 * Add the key into your git config with the following command: `git config --global user.signingkey 1234ABC` (where 1234ABC is the key ID of your key)
@@ -344,11 +350,15 @@ _This step is not sequential and is linked in previous steps. If you’ve reache
 * Insert the YubiKey into the USB port
 * To manually sign a git commit (commits should already be signed automatically if you've enabled it in your git config):
 
-`$ git commit -a -S -m 'Fixed a small undocumented procedure that made foo crash'`
+  ```console
+  $ git commit -a -S -m 'Fixed a small undocumented procedure that made foo crash'
+  ```
 
 * To manually sign a git tag:
 
-`$ git tag foo-1.0 -s -m 'Release 1.0 of foo'`
+  ```console
+  $ git tag foo-1.0 -s -m 'Release 1.0 of foo'
+  ```
 
 * When signing, you should be prompted to enter your YubiKey User PIN
 * If you’ve enabled touch mode, touch the YubiKey to complete the operation
