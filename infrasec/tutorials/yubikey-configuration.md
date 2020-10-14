@@ -54,7 +54,7 @@ It is currently recommended that distributed Trussels purchase their YubiKey dir
 
 If ordering a YubiKey for a project, check with your project on how to categorize the expense in Expensify. Otherwise, use the `Computer Equipment` category.
 
-You should purchase a YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
+You should purchase a YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/))
 
 * **5Ci** supports both USB C and Lighting ports, which is good if you have an iPhone.
 * **5C** and **5C Nano** only support USB C and come in different form factors.
@@ -65,7 +65,7 @@ If you have a YubiKey Series 4 or a YubiKey 5 NEO, you _should_ upgrade to a 5 S
 
 ### Hardware Requirements
 
-* YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/ref=sr_1_3?keywords=Yubikey+5c&qid=1564690767&s=gateway&sr=8-3), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/ref=sr_1_3?keywords=Yubikey+5c+nano&qid=1564690804&s=gateway&sr=8-3), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/ref=sr_1_3?keywords=Yubikey+5ci&qid=1575825716&sr=8-3))
+* YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/))
 * YubiKey 4 Series and 5 NEO are acceptable, but not preferred. Keys are limited to 2048 bits
 
 _FIPS based YubiKeys ship with security vulnerabilities. Do not purchase a FIPS based YubiKey for work performed at Truss. FIPS YubiKey models are specifically called YubiKey FIPS and not part of the 5 series listed above._
