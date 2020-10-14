@@ -85,13 +85,19 @@ If xcode is not up to date, you will be prompted to install it with: `xcode-sele
 
 ## Configuring Your Environment
 
+Enable SSH support by default when launching gpg-agent:
+
+```bash
+echo enable-ssh-support >> ~/.gnupg/gpg-agent.conf
+```
+
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
 ```bash
 # Enable SSH Key on YubiKey Device
 killall gpg-agent
 killall ssh-agent
-eval $( gpg-agent --daemon --enable-ssh-support )
+eval $(gpg-agent --daemon)
 
 export GPG_TTY=$(tty)
 ```
