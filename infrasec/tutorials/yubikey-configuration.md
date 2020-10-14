@@ -235,7 +235,7 @@ _Note that if you have not imported the keys to your Yubikey yet then your outpu
 
 ## Creating Backups
 
-These steps are optional and will help to configure a new YubiKey should yours become lost or damaged. While you could easily start from scratch, and should in some cases, this will provide the quickest path to recovery.
+These steps are optional and will help to configure a new YubiKey should yours become lost or damaged. While you could start from scratch, and should in some cases, this will provide the quickest path to recovery.
 
 ### Create a backup of your key (optional)
 
