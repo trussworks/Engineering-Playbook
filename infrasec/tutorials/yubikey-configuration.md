@@ -74,12 +74,18 @@ _FIPS based YubiKeys ship with security vulnerabilities. Do not purchase a FIPS 
 
 ### Software Requirements
 
-* Brew
-  * gnupg
+* brew
   * ykman
   * ykpers
+* brew cask
+  * gpg-suite-no-mail
 
-Configure your environment with: `brew install gnupg ykman ykpers`
+Configure your environment with:
+
+```console
+brew install ykman ykpers
+brew cask install gpg-suite-no-mail
+````
 
 If xcode is not up to date, you will be prompted to install it with: `xcode-select --install`
 
