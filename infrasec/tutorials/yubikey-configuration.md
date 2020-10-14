@@ -100,18 +100,47 @@ echo enable-ssh-support >> ~/.gnupg/gpg-agent.conf
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
 ```bash
-# Enable SSH Key on YubiKey Device
-killall gpg-agent
-killall ssh-agent
-eval $(gpg-agent --daemon)
+# Expose the SSH agent to the GPG agent.
+SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+export SSH_AUTH_SOCK
 
-export GPG_TTY=$(tty)
+# Define a function to manually reset the GPG and SSH agent.
+yubikey-init () {
+    if pgrep gpg-agent > /dev/null; then killall gpg-agent; fi
+    if pgrep ssh-agent > /dev/null; then killall ssh-agent; fi
+    eval "$(gpg-agent --daemon)"
+}
 ```
 
-In the future, if you receive the message `No matching processes
-belonging to you were found` after running `source ~/.bashrc`, this is
-not necessarily an error message. It may just mean you’re not
-currently running the processes associated with this change.
+Run `yubikey-init` to manually reset the GPG agent whenever you need to, such as after re-inserting
+your YubiKey into your computer.
+
+To configure the GPG agent to use your YubiKey upon logging into the system, create a new file at
+`~/Library/LaunchAgents/gpg-agent.plist` with the following contents (_Note: this assumes you are
+using GPG Suite, which can be installed using `brew cask install gpg-suite-no-mail`_):
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>gpg-agent</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>
+            if pgrep gpg-agent > /dev/null; then killall gpg-agent; fi
+            if pgrep ssh-agent > /dev/null; then killall ssh-agent; fi
+            eval "$(/usr/local/MacGPG2/bin/gpg-agent --daemon)"
+        </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+```
 
 ### Using pinentry (optional)
 
