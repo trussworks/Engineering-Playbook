@@ -8,7 +8,7 @@
   * [Hardware Requirements](#hardware-requirements)
   * [Software Requirements](#software-requirements)
 * [Configuring Your Environment](#configuring-your-environment)
-  * [Using pinentry](#using-pinentry)
+  * [Using pinentry (optional)](#using-pinentry-optional)
 * [Verifying Your YubiKey](#verifying-your-yubikey)
 * [Setting the YubiKey User and Admin PIN codes](#setting-the-yubikey-user-and-admin-pin-codes)
 * [Key Generation](#key-generation)
@@ -113,7 +113,7 @@ belonging to you were found` after running `source ~/.bashrc`, this is
 not necessarily an error message. It may just mean you’re not
 currently running the processes associated with this change.
 
-### Using pinentry
+### Using pinentry (optional)
 
 Instead of prompting you in a terminal, you can have gpg-agent use an
 external program.  This might be useful if you want to use your editor
