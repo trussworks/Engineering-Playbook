@@ -28,6 +28,7 @@
 * [Configuring Github](#configuring-github)
   * [Using Github Desktop](#using-github-desktop)
 * [Verifying your configuration](#verifying-your-configuration)
+  * [Deleting local secret key material](#deleting-local-secret-key-material)
 * [Using The YubiKey](#using-the-yubikey)
   * [Signing git commits](#signing-git-commits)
   * [Enabling touch-only mode (optional)](#enabling-touch-only-mode-optional)
@@ -394,8 +395,9 @@ To verify that you have both GPG and SSH properly configured, perform the follow
 1. Remove your YubiKey.
 1. Verify that the only data from your key in your GPG keyring is public key information. If you
    see `sec` (secret) next to your primary key and/or `ssb` (secret subkey), then you still have
-   secret key material in your keyring and/or on your system. Follow the <link to section for
-   deleting secret key material> if this is the case.
+   secret key material in your keyring and/or on your system. Follow the instructions in the
+   [deleting local secret key material](#deleting-local-secret-key-material) section if this is the
+   case.
 
    ```console
    $ gpg --list-keys 1234ABC
@@ -460,8 +462,8 @@ To verify that you have both GPG and SSH properly configured, perform the follow
    ```
 
    If you do not see the `#` and `>` characters after `sec` and `ssb`, then the secret key material
-   needs to be removed from your local system. See the <link to section for deleting secret key
-   material> if this is the case.
+   needs to be removed from your local system. See the [deleting local secret key
+   material](#deleting-local-secret-key-material) section if this is the case.
 1. Verify that the SSH agent can use the subkey used for authentication. If you do not see an entry
    with `cardno` near the end, then the SSH agent is not correctly configured to use the
    authentication subkey on your YubiKey.
@@ -519,6 +521,80 @@ To verify that you have both GPG and SSH properly configured, perform the follow
    gpg: error opening lockfile '/Users/human/.gnupg/pubring.kbx.lock': No such file or directory
    gpg: lockfile disappeared
    ```
+
+### Deleting local secret key material
+
+During this process, you may find that you have secret key material on your system even though you
+thought you removed it. For instance, this may happen when using `keytocard`. While it is supposed
+to be destructive and remove secret key material from your system (leaving it only on your
+YubiKey), this is not always the case despite what the documentation indicates. Therefore, you may
+have to manually remove the secret keys from your system. To do that, follow this procedure:
+
+1. Remove the YubiKey from the computer.
+1. Delete the **secret** key material from your system. _Do not remove your **public** key material
+   or else your GPG agent will not be able to identify the correct secret keys to use on your
+   YubiKey._
+
+   To delete your primary secret key material, run the following command:
+
+   ```console
+   gpg --delete-secret-key 1234ABC
+   ```
+
+   If for some reason that command does not fully delete the subkey secret key material, you can
+   delete that data with this procedure. First identify the keygrips for each subkey. Then delete
+   them.
+
+   ```console
+   $ gpg --with-keygrip --list-secret-keys "1234ABC"
+   sec#  rsa4096 2020-10-13 [SC]
+         REALLYEXTRALONGSTRINGTHATENDSWITH1234ABC
+         Keygrip = REALLYEXTRALONGSTRINGTHATENDSWITH5677EFA
+   uid           [ultimate] Human Person <noreply@truss.works>
+   ssb>  rsa4096 2020-10-13 [E]
+         Keygrip = REALLYEXTRALONGSTRINGTHATENDSWITH2345BCD
+   ssb>  rsa4096 2020-10-14 [S]
+         Keygrip = REALLYEXTRALONGSTRINGTHATENDSWITH3456CDE
+   ssb>  rsa4096 2020-10-14 [A]
+         Keygrip = REALLYEXTRALONGSTRINGTHATENDSWITH4567DEF
+   ```
+
+   Once you have the subkey keygrips, delete the secret subkey material:
+
+   ```
+   $ gpg-connect-agent "delete_key REALLYEXTRALONGSTRINGTHATENDSWITH2345BCD" /bye
+   OK
+   $ gpg-connect-agent "delete_key REALLYEXTRALONGSTRINGTHATENDSWITH3456CDE" /bye
+   OK
+   $ gpg-connect-agent "delete_key REALLYEXTRALONGSTRINGTHATENDSWITH4567DEF" /bye
+   OK
+   ```
+
+1. Insert YubiKey back into the computer.
+1. Ensure that the signature key, encryption key, and authentication key are set. Ensure that each
+   of these keys have a `card-no` entry next to them.
+
+   ```console
+   gpg --card-status
+   <snip>
+   Signature key ....: AAAA BBBB CCCC DDDD EEEE  FFFF 0000 1111 2345 6CDE
+         created ....: 2020-10-14 00:06:51
+   Encryption key....: BBBB CCCC DDDD EEEE FFFF  0000 1111 2222 3234 5BCD
+         created ....: 2020-10-13 23:59:43
+   Authentication key: CCCC DDDD EEEE FFFF 0000  1111 2222 3333 4456 7DEF
+         created ....: 2020-10-14 00:07:50
+   General key info..: sub  rsa4096/3456CDE 2020-10-14 Human Person <noreply@truss.works>
+   sec#  rsa4096/1234ABC  created: 2020-10-13  expires: never
+   ssb>  rsa4096/2345BCD  created: 2020-10-13  expires: never
+                          card-no: 000Y XXXXXXXX
+   ssb>  rsa4096/3456CDE  created: 2020-10-14  expires: never
+                          card-no: 000Y XXXXXXXX
+   ssb>  rsa4096/4567DEF  created: 2020-10-14  expires: never
+                          card-no: 000Y XXXXXXXX
+   ```
+
+Note: if you delete the public keys from your local system, then `gpg` operations will fail when
+using your YubiKey.
 
 ## Using The YubiKey
 
