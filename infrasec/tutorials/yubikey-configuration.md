@@ -195,7 +195,7 @@ This subkey will be used to pull private git repos via SSH and may be used to au
 This is interface has a unique design where you need to toggle things on and off to get the desired result.
 The default state shows **Sign Encrypt** active.
 
-![Sign Encrypt Default State](images/yubikey-sign-encrypt-1.png "default state")
+![Sign Encrypt Default State](images/yubikey-sign-encrypt.png "default state")
 
 Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
