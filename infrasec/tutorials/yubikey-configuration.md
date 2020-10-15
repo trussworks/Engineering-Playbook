@@ -18,7 +18,8 @@
 * [Check Your Keys](#check-your-keys)
 * [Deleting a secret key](#deleting-a-secret-key)
 * [Creating Backups](#creating-backups)
-  * [Create a backup of your key (optional)](#create-a-backup-of-your-key-optional)
+  * [Create a backup of your secret keys (optional)](#create-a-backup-of-your-secret-keys-optional)
+  * [Create a backup of your public key (optional)](#create-a-backup-of-your-public-key-optional)
   * [Create a revocation certificate (optional)](#create-a-revocation-certificate-optional)
 * [Configuring the YubiKey](#configuring-the-yubikey)
   * [Importing the keys to your YubiKey](#importing-the-keys-to-your-yubikey)
@@ -280,7 +281,7 @@ _Note that if you have not imported the keys to your YubiKey yet then your outpu
 
 These steps are optional and will help to configure a new YubiKey should yours become lost or damaged. While you could start from scratch, and should in some cases, this will provide the quickest path to recovery.
 
-### Create a backup of your key (optional)
+### Create a backup of your secret keys (optional)
 
 This will create a backup of the secret key and subkeys.
 
@@ -288,6 +289,14 @@ This will create a backup of the secret key and subkeys.
 1. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC >> /path/to/secret.key` (where 1234ABC is the key ID of your key)
 1. Enter the GPG command: `gpg --export-secret-subkeys >> /path/to/secret.sub.key --armor 1234ABC` (where 1234ABC is the key ID of your key)
 1. Store these files in 1Password and delete them from your system.
+
+### Create a backup of your public key (optional)
+
+Save the public key in 1Password for reference. This is not secret material, but it can be helpful to have it saved alongside the secret key material. You can export it using the following command:
+
+```console
+gpg --export --armor 1234ABC > public.key
+```
 
 ### Create a revocation certificate (optional)
 
