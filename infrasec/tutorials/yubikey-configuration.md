@@ -31,6 +31,7 @@
   * [Using Github Desktop](#using-github-desktop)
 * [Verifying your configuration](#verifying-your-configuration)
   * [Deleting local secret key material](#deleting-local-secret-key-material)
+  * [Subkey stubs](#subkey-stubs)
 * [Using The YubiKey](#using-the-yubikey)
   * [Signing git commits](#signing-git-commits)
   * [Enabling touch-only mode (optional)](#enabling-touch-only-mode-optional)
@@ -643,6 +644,21 @@ have to manually remove the secret keys from your system. To do that, follow thi
 
 Note: if you delete the public keys from your local system, then `gpg` operations will fail when
 using your YubiKey.
+
+### Subkey stubs
+
+`~/.gnupg/private-keys-v1.d` will contain the key stubs for each of the subkeys. These do not
+contain secret key material, but instead tell GPG that the secret key material is on your YubiKey.
+To verify this, you can look at the strings in that file and search for a match for
+`shadowed-private-key`. The output will look similar to the following:
+
+```console
+$ strings filename.key| grep shadowed-private-key
+(20:shadowed-private-key(3:rsa(1:n513:
+```
+
+If you see something like the output above, then the file is a stub key, which does not contain the
+secret key material. Instead, it indicates that the secret key material is on your YubiKey.
 
 ## Using The YubiKey
 
