@@ -24,6 +24,7 @@
 * [Configuring the YubiKey](#configuring-the-yubikey)
   * [Importing the keys to your YubiKey](#importing-the-keys-to-your-yubikey)
 * [Adding Additional Email Addresses](#adding-additional-email-addresses)
+  * [UIDs and the primary key](#uids-and-the-primary-key)
 * [Configuring SSH](#configuring-ssh)
 * [Configuring git commit Signing](#configuring-git-commit-signing)
 * [Configuring Github](#configuring-github)
@@ -348,6 +349,44 @@ This will _destructively_ move the secret key as well as the three subkeys to th
 1. Enter your PIN if prompted
 1. Enter the command: `quit`
 1. When prompted to save your changes, enter y (yes). You have now saved the additional email address to your YubiKey
+
+### UIDs and the primary key
+
+User IDs are attached to the primary key (aka: master key). Subkeys do not contain any user ID
+information. Therefore, if you want to change the user ID information, you only need to:
+
+1. Modify the primary key (after importing from the key saved in 1Password) to include whatever
+   user ID(s) you choose.
+1. Re-generate GPG ASCII armor.
+1. Upload the new GPG ASCII armor to GitHub.
+1. Re-import the new public key into your local keychain.
+
+This process does not require modification of anything on the YubiKey. You can verify the results
+of your changes by running `gpg --card-status` while you do and do not have the public key imported
+into your local keychain. For example:
+
+Without importing public key into your local GPG keychain:
+
+```console
+$ gpg --card-status | grep key
+URL of public key : [not set]
+Signature key ....: AAAA BBBB CCCC DDDD EEEE  FFFF 0000 1111 2345 6CDE
+Encryption key....: BBBB CCCC DDDD EEEE FFFF  0000 1111 2222 3234 5BCD
+Authentication key: CCCC DDDD EEEE FFFF 0000  1111 2222 3333 4456 7DEF
+General key info..: [none]
+```
+
+With importing public key into your local GPG keychain (note the "General key info" now shows User
+ID information):
+
+```console
+$ gpg --card-status | grep key
+URL of public key : [not set]
+Signature key ....: AAAA BBBB CCCC DDDD EEEE  FFFF 0000 1111 2345 6CDE
+Encryption key....: BBBB CCCC DDDD EEEE FFFF  0000 1111 2222 3234 5BCD
+Authentication key: CCCC DDDD EEEE FFFF 0000  1111 2222 3333 4456 7DEF
+General key info..: sub  rsa4096/3456CDE 2020-10-14 Human Person <noreply@truss.works>
+```
 
 ## Configuring SSH
 
