@@ -195,11 +195,11 @@ This subkey will be used to pull private git repos via SSH and may be used to au
    This is interface has a unique design where you need to toggle things on and off to get the desired result.
    The default state shows **Sign Encrypt** active.
 
-   ![Sign Encrypt Default State](images/yubikey-sign-encrypt.png "default state")
+   <img src="images/yubikey-sign-encrypt.png" alt="default state" width="400" />
 
    Enter `A` to enable **Authenticate**. Enter `E` and `S` (separately) to disable **Sign** and **Encrypt**.
 
-   ![Sign Select Authenticate](images/yubikey-select-authenticate.png "authenticate")
+   <img src="images/yubikey-select-authenticate.png" alt="authenticate" width="400" />
 
 1. Hit `Q` to finish.
 1. Specify the size of the key that you want to generate. Do one of the following:
@@ -216,7 +216,7 @@ After adding the subkeys, enter the GPG command: `gpg --expert --edit-key 1234AB
 
 The optimal output should look similar to this, showing an individual subkey for **E (Encrypt)**, **A (Authenticate)**, and **S (Sign)** in the YubiKey keychain.
 
-![Check Your Keys](images/yubikey-check-keys.png "keycheck")
+<img src="images/yubikey-check-keys.png" alt="keycheck" width="500" />
 
 ## Deleting a secret key
 
@@ -270,7 +270,7 @@ This will _destructively_ move the secret key as well as the three subkeys to th
 
    _The interface is not intuitive here. Typing `key 1` will select the first subkey (ssb). An * next to the key will indicate that it has been selected:_
 
-   ![Check Key Import](images/yubikey-key-import.png "checkimport")
+   <img src="images/yubikey-key-import.png" alt="check import" width="500" />
 
 1. Enter the command: `keytocard`
 1. When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
@@ -404,4 +404,4 @@ _The YubiKey appears to hang when performing operations and then the operations 
 
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
 
-![OTP Error](images/yubikey-otp-error.png "otperror")
+<img src="images/yubikey-otp-error.png" alt="otp error" width="450" />
