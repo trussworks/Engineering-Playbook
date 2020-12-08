@@ -113,7 +113,7 @@ export SSH_AUTH_SOCK
 yubikey-init () {
     if pgrep gpg-agent > /dev/null; then killall gpg-agent; fi
     if pgrep ssh-agent > /dev/null; then killall ssh-agent; fi
-    eval "$(gpg-agent --daemon)"
+    gpg --card-status all &> /dev/null
 }
 ```
 
@@ -138,7 +138,7 @@ using GPG Suite, which can be installed using `brew cask install gpg-suite-no-ma
         <string>
             if pgrep gpg-agent > /dev/null; then killall gpg-agent; fi
             if pgrep ssh-agent > /dev/null; then killall ssh-agent; fi
-            eval "$(/usr/local/MacGPG2/bin/gpg-agent --daemon)"
+            gpg --card-status all &> /dev/null
         </string>
     </array>
     <key>RunAtLoad</key>
@@ -146,6 +146,11 @@ using GPG Suite, which can be installed using `brew cask install gpg-suite-no-ma
 </dict>
 </plist>
 ```
+
+Regarding the use of `gpg --card-status all &> /dev/null`, this seems to be the only reliable
+approach we have found to get gpg-agent to use YubiKey when running Big Sur. This command starts
+gpg-agent as a daemon if it is not currently running, so it is an implicit way of starting
+gpg-agent. Otherwise, using something like `gpg-agent --daemon` would work equally as well.
 
 ### Using pinentry (optional)
 
@@ -158,7 +163,7 @@ brew install pinentry-mac
 echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
     ~/.gnupg/gpg-agent.conf
 gpgconf --kill gpg-agent
-gpg-agent --daemon
+gpg --card-status all &> /dev/null
 ```
 
 If you use this, you do not need to set `GPG_TTY`.
@@ -479,8 +484,8 @@ To verify that you have both GPG and SSH properly configured, perform the follow
 1. Re-insert your YubiKey.
 1. Initialize your YubiKey in whatever way you configured it. If you made a separate script, run
    that. If you need to open a new terminal, do that. Whatever approach you take, it should be the
-   thing that does a `killall` on gpg-agent and ssh-agent, followed by `eval "$(gpg-agent --daemon
-   --enable-ssh-support)"`.
+   thing that does a `killall` on gpg-agent and ssh-agent, followed by `gpg --card-status all &>
+   /dev/null`.
 1. Verify that the secret key data is now available to GPG. This is what it looks like when the key
    material only exists on the YubiKey (not loaded from secret material stored on your system):
 
