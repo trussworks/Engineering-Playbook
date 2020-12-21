@@ -85,6 +85,10 @@ In order to preserve the ability to release updates for previous Terraform versi
 
 Refer to the Truss [`terraform state mv` info sheet](terraform-state-mv.md).
 
+### Terraform import
+
+Refer to the Truss [`terraform import` info sheet](terraform-import.md).
+
 ### How to layout/structure a Terraform Project
 
 Refer to the Truss [Terraform Layout Example](https://github.com/trussworks/terraform-layout-example).
