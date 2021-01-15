@@ -11,7 +11,7 @@ jobs:
         keys:
         - pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
     - run:
-        command: pre-commit run --all-files
+        command: pre-commit run --all-files --show-diff-on-failure
         name: Run pre-commit tests
     - save_cache:
         key: pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
