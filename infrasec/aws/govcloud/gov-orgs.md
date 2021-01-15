@@ -14,6 +14,7 @@ getting an organization and its accounts set up properly.
 * [Enabling Business Support in GovCloud](#enabling-business-support-in-govcloud)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
 <!-- tocstop -->
 
 ## GovCloud Organization master account
