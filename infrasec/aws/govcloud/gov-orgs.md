@@ -186,3 +186,22 @@ your `suspended` OU -- usually something like
 `aws_organizations_organizational_unit.suspended.id`. This will make it
 impossible to use that account for anything else, and has no effect on
 the corresponding GovCloud account.
+
+## Enabling Business Support in GovCloud
+
+If you intend to have more than just the basic AWS support for your GovCloud
+account. You will need to enable it in the corresponding dummy account in your
+commercial AWS organization. Yes you read that right, to enable the AWS Support
+in GovCloud you need to actually enable it in AWS commercial. It's also
+important to note that as of this writing Business Support needs to be enabled
+on an account by account basis and can't be enabled at the Organization level.
+
+1. If the dummy commercial AWS account tied that you want Business Support on is
+in the `suspended` OU, you will need to temporarily remove it from the
+`suspended` OU.
+2. Reset the root password for the dummy commercial AWS account tied to your
+GovCloud account. These credentials should be thrown away once you're done.
+3. Log into the AWS account as root and enable Business Support.
+4. Log into the corresponding GovCloud account and confirm you have Business
+Support enabled.
+5. Move the dummy commercial AWS account back into the `suspended` OU.
