@@ -196,9 +196,8 @@ in GovCloud you need to actually enable it in AWS commercial. It's also
 important to note that as of this writing Business Support needs to be enabled
 on an account by account basis and can't be enabled at the Organization level.
 
-1. If the dummy commercial AWS account tied that you want Business Support on is
-in the `suspended` OU, you will need to temporarily remove it from the
-`suspended` OU.
+1. If the dummy commercial AWS account is in the `suspended` OU, you will need
+to temporarily remove it from the`suspended` OU first.
 2. Reset the root password for the dummy commercial AWS account tied to your
 GovCloud account. These credentials should be thrown away once you're done.
 3. Log into the AWS account as root and enable Business Support.
