@@ -191,7 +191,7 @@ the corresponding GovCloud account.
 ## Enabling Business Support in GovCloud
 
 If you intend to have more than just the basic AWS support for your GovCloud
-account. You will need to enable it in the corresponding dummy account in your
+account, you will need to enable it in the corresponding dummy account in your
 commercial AWS organization. Yes you read that right, to enable the AWS Support
 in GovCloud you need to actually enable it in AWS commercial. It's also
 important to note that as of this writing Business Support needs to be enabled
