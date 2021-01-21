@@ -33,7 +33,8 @@ We will first be focusing on the **Building REST APIs** section. And will decide
 ## Building REST APIs
 
 * Use RESTful design practices (Shimona 20210114)
-  * How to pick a good url for the endpoint
+  * [URL Design](URL-Design.md) - **COMPLETED**
+    * How to pick a good url for the endpoint
     * ids in path, url depth
     * plurals for the objects
     * noun updates vs verb actions
@@ -44,13 +45,15 @@ We will first be focusing on the **Building REST APIs** section. And will decide
     * everything else we put in the body, and we use json
   * Versioning,
 
-  * What are the basic style components of paths/queries/headers/params
+  * [Style Guide](Style-Guide.md) - **COMPLETED**
+    * What are the basic style components of paths/queries/headers/params
     * kebab-case for url, plurals, nouns
     * use the case that natural for the type of response so for json it should javascript styled variables
-    * yaml
-      * Alphabetize the definitions
     * Suggest linter usage - link?
 
+* yaml style??
+      * Alphabetize the definitions
+  
 * Use HTTP methods and status codes
 
   * [HTTP Methods](HTTP-Methods.md) - **COMPLETED**
