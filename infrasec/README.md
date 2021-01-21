@@ -18,6 +18,14 @@ response](../incident-response/README.md), and a number of other fields.
 - [Terraform](terraform/README.md) — Our primary infrastructure as code (IaC) tool.
 - [Ansible](ansible/README.md) — For when we have to build non-container based images (e.g., AMIs).
 
+### Useful Repo Templates
+
+To get you up and running faster, we have created a few template repos. Please feel free to submit PRs and help us stay up to date!
+
+- [Terraform Module](https://github.com/trussworks/terraform-module-template)
+- [Docker container](https://github.com/trussworks/docker-template)
+- [Golang CLI tool](https://github.com/trussworks/golang-cli-template)
+
 ### Tutorials
 
 #### AWS
