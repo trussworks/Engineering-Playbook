@@ -47,7 +47,7 @@ When you're ready to turn the prototype module into a published one, there are a
 3. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
    * First read through the Terraform docs on [Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html) and make appropriate changes to your repository
    * Ensure that the module you wish to publish has a SemVer tag attached to it. If not use `v1.0.0`.
-   * Sign into the registry using your Github credentials
+   * Sign into the registry using your the trussworks-infra Github credentials (available in 1Password)
    * In the upper right corner select "Publish" or go directly to the [Publish URL](https://registry.terraform.io/github/create)
    * Select the repository you wish to publish from the drop down list. If you don't see it hit the refresh icon.
    * Select the "Publish Module" button.
