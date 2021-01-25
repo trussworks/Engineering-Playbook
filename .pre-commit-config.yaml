@@ -1,3 +1,7 @@
+default_language_version:
+  # this should match the version in .node-version at the root of this project
+  node: 12.16.3
+
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
