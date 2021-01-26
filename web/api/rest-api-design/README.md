@@ -53,7 +53,7 @@ We will first be focusing on the **Building REST APIs** section. And will decide
 
 * yaml style??
       * Alphabetize the definitions
-  
+
 * Use HTTP methods and status codes
 
   * [HTTP Methods](HTTP-Methods.md) - **COMPLETED**

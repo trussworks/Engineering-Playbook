@@ -10,12 +10,12 @@ Here's one example for the Milmove Prime API.
 - All resources must be plural.
 - All JSON response payloads must use `camelCase` for all keys.
 - All simple resource identifier keys, with no prefix, should be lowercase `id`.
-- All keys postfixed with ID in response payloads should be capitalize ID, so `shipmentID` is correct - not `shipmentId` or `shipmentid`. 
+- All keys postfixed with ID in response payloads should be capitalize ID, so `shipmentID` is correct - not `shipmentId` or `shipmentid`.
 - All timestamps are post-fixed with `At`, such as `updatedAt`, `createdAt`.
 
-It does not matter if you choose a different style than what is described here, just that you define it and stick with it. 
+It does not matter if you choose a different style than what is described here, just that you define it and stick with it.
 
-### Linters
+## Linters
 
 A good way to ensure compliance is to use a linter. If you are using a `yaml` format such as OpenAPI to define the REST API, you can use [Spectral](https://stoplight.io/open-source/spectral) as a linter.
 
