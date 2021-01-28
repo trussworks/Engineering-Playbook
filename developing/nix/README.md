@@ -61,3 +61,18 @@ direnv: export +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER -PS2
 ```
 
 Your local environment variables should be updated now. Any time the `.envrc` file is changed, you will need to re-approve the file, but it will load automatically otherwise.
+
+Nix installations are immutable, so by default you cannot make changes
+like installing additional global software via `go get` or `npm
+install -g`.
+
+To use a local directory for installing go binaries, add to your
+`.envrc`:
+
+    export GOPATH=$PWD/.gopath
+    PATH_add ./.gopath/bin
+
+To use a local directory for installing npm binaries:
+
+    export NPM_CONFIG_PREFIX=$PWD/.npmglobal
+    PATH_add ./.npmglobal/bin
