@@ -46,7 +46,7 @@
     - Consider serving markup from a Node.JS server in order to share templates and code across the stack.
 - Do you need to include other assets such as fonts, images, or SVG?
 
-### Additional considerations if using a build tool:
+### Additional considerations if using a build tool
 
 - [ ] What tool to use? (webpack, gulp, rollup, parcel, etc.)
 - [ ] What environment to build in (Node version)
@@ -67,7 +67,7 @@
   - CSS modules
   - CSS-in-JS (styled components, etc.)
 
-### Additional considerations if building a SPA:
+### Additional considerations if building a SPA
 
 - [ ] Global state management (Redux, context, etc.)
   - [ ] side effects (sagas, thunks, hooks?)

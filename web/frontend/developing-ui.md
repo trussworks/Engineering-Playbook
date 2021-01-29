@@ -104,7 +104,7 @@ However, you might notice the `p` style block in that file will still apply glob
 
 All of the above also applies to SASS/SCSS files (`.scss, .module.scss`).
 
-### References:
+### References
 
 - [CSS modules](https://github.com/css-modules/css-modules)
 - [What are CSS modules and why do we need them?](https://css-tricks.com/css-modules-part-1-need/)
@@ -119,7 +119,9 @@ When it comes to adding CSS declarations, here are some guidelines:
 
 - Use existing variables/mixins for colors, spacing units, etc.
 - Avoid setting global margins on components. Setting margins on elements inside of components is fine, but use the sibling selectors (`+` and `~`) where appropriate.
+
   - For example, you can control the margin between specific elements. In this snippet, the space between an `h2` and `p` will be 15px, but the space between an `h2` and a `ul` will be 20px:
+
     ```
     h2 + p { margin-top: 15px; }
     h2 + ul { margin-top: 20px; }
@@ -129,7 +131,7 @@ Ultimately, it's important to understand what each line of CSS is doing. Adding 
 
 Finally, the USWDS _does_ expose some [utility classes](https://designsystem.digital.gov/utilities/) that can be used directly in the markup (such as `margin-x-auto`). I want to caution against using these unless something is _truly_ an exception. The reason is that it adds additional points of dependencies between the styling and the markup (components will only have the expected visual result if they also have the correct classes) and adds more variables to where applied CSS may come from. For example, if a component is pulling CSS in from global styles, _and_ a CSS modules file, _and_ inline utility class names, it adds to the complexity of what styles will be effectively applied, and makes it harder to change or debug in the future.
 
-### References:
+### References
 
 - [CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

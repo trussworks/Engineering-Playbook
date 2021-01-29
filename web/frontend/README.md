@@ -14,7 +14,7 @@ These are our recommendations and best practices for front end development at Tr
 - [Testing](./testing.md)
 - [Developer Experience](./developer-experience.md) - information about using debugging tools, linters and auto-formatters
 
-## TLDR:
+## TLDR
 
 - We typically choose React as our front end framework of choice.
 - We recommend using [TypeScript](https://www.typescriptlang.org/) when possible. We have compiled some [TypeScript Resources](./typescript.md).
