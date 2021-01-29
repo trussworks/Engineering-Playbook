@@ -1,87 +1,46 @@
-# [Engineering Playbook](../../README.md) / [Web Development](../README.md) / Front End Guide
+# [Engineering Playbook](../../README.md) / [Web Development](../README.md) / Front End
 
 ## Overview
 
-These are recommendations for front end development.
+These are our recommendations and best practices for front end development at Truss.
 
-### Testing Another
+## Contents
 
-Foo bar.
+- [Project Architecture](./project-architecture.md) - guidance around starting a new F/E project from scratch
+- [General Guide to Implementing UI](./developing-ui.md) - includes best practices around writing HTML, CSS, and using CSS modules
+- [Project Checklist](./project-checklist.md) - a high-level list of things to consider when setting up a F/E project or making architectural decisions
+- [React Guide](./react.md)
+- [TypeScript Resources](./typescript.md)
+- [Testing](./testing.md)
+- [Developer Experience](./developer-experience.md) - information about using debugging tools, linters and auto-formatters
 
-### Frameworks
+## TLDR:
 
-We typically choose React as our front end framework of choice.
+- We typically choose React as our front end framework of choice.
+- We recommend using [TypeScript](https://www.typescriptlang.org/) when possible. We have compiled some [TypeScript Resources](./typescript.md).
+- We like to practice component-driven development and often use [Storybook](https://storybook.js.org/) for design system documentation.
 
-### Languages
+### What is front end development?
 
-We are cautiously optimistic about recommending
-[TypeScript](https://www.typescriptlang.org/) after using it on
-multiple projects. We have compiled some [TypeScript
-Resources](./typescript.md).
+In order to make informed decisions around what kind of tools, libraries, and frameworks to use for your web application, it helps to have a strong understanding of what "front end" means in the context of web development. The front end part of an application stack refers to the client-side code that is downloaded from a web server, and executed in the browser on an end user's device. It includes, but is not limited to, the HTML and CSS that renders the user interface.
 
-### Testing
+It is also important to keep in mind, especially as the ecosystem of front end development continues to expand, that the compiled code that will be executed natively by the browser is ultimately HTML, CSS, and JavaScript. While it is certainly possible to build a dynamic web app using just these languages, it is all run in a single environment, uncompartamentalized, making it easy to introduce bugs and unintended side effects. Therefore, many of the tools we see in modern front end development are actually used in order to improve the developer experience, and in turn the users, by enforcing consistent patterns, reducing the potentiality for bugs, and automating tasks that assist in performance optimization.
 
-#### Test Runners and Libraries (for React)
+## ReactUSWDS
 
-- Jest
-  - If you use create-react-app, this is included.
-  - Provides snapshot and DOM testing.
-- Enzyme
-  - Allows you to assert and manipulate rendered components with jQuery-like selectors.
+[ReactUSWDS](https://github.com/trussworks/react-uswds) is an internal Truss project aiming to create React implementations of USWDS 2.0 UI components. If you are building a new UI component that is based on a USWDS design, and might be useful to abstract so it can be shared by other projects, you may want to consider building it in ReactUSWDS instead. You can find more information about [contributing to and using ReactUSWDS here](https://github.com/trussworks/react-uswds).
 
-#### Writing Tests
+## Additional Resources
 
-- Each React component should have a test.
-  - At minimum, does the component render?
-  - Container components have logic in them, and that logic should be tested.
+### Libraries We Like
 
-#### Browser Testing
+- [ ] [classnames](https://github.com/JedWatson/classnames) (managing CSS classes in JS components)
+- [ ] [DayJS](https://day.js.org/), [luxon](https://moment.github.io/luxon/index.html) (newer alternatives to Moment, working with dates and times)
+- [ ] [validateJS](https://validatejs.org/), [yup](https://github.com/jquense/yup) (validating form object models)
+- [ ] [Formik](https://formik.org/), [React-hook-form](https://react-hook-form.com/) (building forms in React)
+- [ ] [numeral.js](http://numeraljs.com/), [big.js](https://mikemcl.github.io/big.js/) (working with numbers and decimals)
 
-- We use [Cypress](https://www.cypress.io) for most browser testing with both Chrome and headless Chrome.
-
-### Browser Extensions
-
-The following extensions can be installed to assist with debugging React and Redux applications:
-
-- [React Developer Tools](https://github.com/facebook/react-devtools#installation)
-- [Redux DevTools Extension](http://extension.remotedev.io/#redux-devtools-extension)
-
-### Style and Formatting
-
-We generally adhere to the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript), unless they conflict with project specific Prettier or lint rules.
-
-#### Auto-formatting
-
-- [Prettier](https://prettier.io) is recommended.
-  - [Prettier editor integration](https://prettier.io/docs/en/editors.html) to make it easy to format and autosave.
-  - Prefer single quotes for non-JSX code (CLI: `--single-quote` API: `singleQuote: true`)
-  - Prefer trailing commas for cleaner PRs and error reduction (CLI: `--trailing-comma true` API: `trailingComma: true`)
-  - A `.prettierrc` will be in the project for custom settings.
-
-#### Linting
-
-- [ESLint](https://eslint.org).
-
-#### Selecting a release of Node.js
-
-When starting a new project, you will want to select an Active LTS release of Node.js and make plans to move to the next LTS release after it becomes active and before the selected release goes out of maintenance. You could choose a "current" release but there is a good chance that the libraries you want to use have not been tested until it becomes active. Odd-numbered releases are short-lived, so only choose one intentionally. (For instance, if some library you want to use doesn't work in an LTS release.) Please refer to this [release schedule](https://nodejs.org/en/about/releases/) to make your selection.
-
-Once you have done this, you may want to enforce it by configuring the `engines` your projects package.json. For instance, if you have selected 12.x, you might want to add this section:
-
-```
-# package.json
-"engines": {
-  "node": "^12"
-}
-```
-
-You might want to create team recommendations for how your team manages their local version of node.js. For instance, you could recommend they use [nodenv](https://github.com/nodenv/nodenv) or [nvm](https://github.com/nvm-sh/nvm) and provide configuration to keep it on the release path you want.
-
-### CSS
-
-Follow the BEM (Block, Element, Modifier) methodology. Also helpful to follow is the [U.S. Web Design System](https://designsystem.digital.gov/components/).
-
-### Additional Resources
+### Learning
 
 Various resources on React, Redux, etc, for a variety of learning styles.
 
@@ -105,3 +64,13 @@ Various resources on React, Redux, etc, for a variety of learning styles.
   - Add [Redux](https://redux.js.org/) to your project.
     - This is a rather big step. You’ll need to have some sort of state, so make a login button and “logged in” will be the state you are going to keep track of.
     - When the user is logged in, there should be a “log out” button shown.
+
+## More Topics to Cover
+
+This guide is not complete, and always a work in progress! These are other areas of frontend development that we'd like to develop more resources and best practices for. Feel free to add onto this playbook!
+
+- Single page application development
+- Server-side rendering
+- Progressive web app (PWA)
+- Non-React frameworks
+- Webpack & frontend compilation tooling
