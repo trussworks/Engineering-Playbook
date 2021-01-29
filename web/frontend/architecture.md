@@ -52,9 +52,9 @@ This is a suggested directory structure for your frontend application. It's not 
 
 - `/src/types` - Type definitions that are shared throughout the application.
 
-## Application Bootstrap
+### Application Bootstrap
 
-### (or, how does all of this come together?)
+#### (or, how does all of this come together?)
 
 The primary entry point is `src/index.tsx`. This file is responsible for:
 
