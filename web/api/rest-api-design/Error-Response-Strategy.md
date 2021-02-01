@@ -14,24 +14,35 @@ __Parameters / Path__ — a description of which part of the request triggered t
 
 ### Strategy on returning consistent errors across the API
 
-* You should always return consistent errors
-This way your error handling code on the front end can be somewhat generic, instead of having to adapt to different response types based on the API
-This is an argument in favor of returning a list of error objects, rather than a single error object, so that the front end doesn’t have to check every time what the shape of the error response is
+* You should always return consistent errors. This way your error
+  handling code on the front end can be somewhat generic, instead of
+  having to adapt to different response types based on the API.
+
+* This is an argument in favor of returning a list of error objects,
+  rather than a single error object, so that the front end doesn’t
+  have to check every time what the shape of the error response is
 
 ### Example of error strategies for each type of error (i.e. server, client, validation, etc.)
 
 #### Errors
 
-Any logic or presentation of the error in the front end should be based on the code here, never match against the message
-Some people use `ints` for this but a short string is more readable:
+Any logic or presentation of the error in the front end should be
+based on the code here, never match against the message. Some people
+use `ints` for this but a short string is more readable:
 
 * 2123 vs. “MISSING_PARAMETER”
 
 #### Messages
 
-Messages are mainly used by developers who are reading a raw response, errors presented to users can be switched on the “code” parameter.
-Provide detail. It’s best to always return a list of errors, lists are easier to read.
-Consider adding parameters to your messages. This is most commonly used for validation errors, describing what parameter in the request is wrong. E.g. “submitter.email”
+Messages are mainly used by developers who are reading a raw response,
+errors presented to users can be switched on the “code” parameter.
+
+Provide detail. It’s best to always return a list of errors, lists are
+easier to read.
+
+Consider adding parameters to your messages. This is most commonly
+used for validation errors, describing what parameter in the request
+is wrong. E.g. “submitter.email”
 
 ### Examples
 
@@ -66,6 +77,7 @@ _From go, a bad error response:_
 
 Validation issues can be global, per object, and per field and a single request can have multiple errors.
 This is why it is important to be able return an array of errors.
+
 We reccomend having a list of errors be the default, even in cases when there is only one error returned.
 This simplifies client side code to be able to assume the top level format of error bodies.
 
