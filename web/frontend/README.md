@@ -6,7 +6,7 @@ These are our recommendations and best practices for front end development at Tr
 
 ## Contents
 
-- [Project Architecture](./project-architecture.md) - guidance around starting a new F/E project from scratch
+- [Project Architecture](./architecture.md) - guidance around starting a new F/E project from scratch
 - [General Guide to Implementing UI](./developing-ui.md) - includes best practices around writing HTML, CSS, and using CSS modules
 - [Project Checklist](./project-checklist.md) - a high-level list of things to consider when setting up a F/E project or making architectural decisions
 - [React Guide](./react.md)

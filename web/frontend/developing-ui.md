@@ -17,7 +17,7 @@ You can use browser dev tools to inspect elements and view the executed markup f
 
 Some HTML elements have quirks around how the browser renders them (such as [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend)) or strict rules around what child elements are allowed and how they must be structured (such as [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)). It's important to familiarize yourself with elements like these in order to use them effectively. Fortunately, React will usually print out a console error when it detects invalid HTML, and it's important to notice and correct these errors since they can be an indicator of potential browser compatibility issues.
 
-![Image of console error reading "Warning: validateDOMNesting(...): <td> cannot appear as a child of <table>."](images/ui/validateDOMNesting_error.png)
+![Image of console error reading "Warning: validateDOMNesting(...): <td> cannot appear as a child of <table>."](./validateDOMNesting_error.png)
 
 Ultimately, structuring the markup in a way that corresponds to the content of the page will make implementing a design easier, because it will define patterns and objects that _also_ exist in the language of the design. For instance, if the design indicates a certain margin in between groups of text content, it might make sense to group that content using a `<section>`, `<div>` or other element, even if there's no other visual indication of separation such as a border or background color. Identifying the repeating components and subcomponents of a design will help establish the foundation upon which you can start styling with CSS.
 
@@ -113,7 +113,7 @@ All of the above also applies to SASS/SCSS files (`.scss, .module.scss`).
 
 Another reason to start with defining the HTML is because you will immediately get to see how far that gets you without writing any CSS at all. Most of the time, base styles such as typography and layout should be inherited by global CSS or top-level components. If additional styling on a page or component is needed, it's usually a good idea to verify with the designer whether it is a change that should occur globally or not, and if not then that's usually a signal that a new UI component is needed.
 
-When adding a new UI component, it's easiest to first build it in Storybook, outside of the context of the application. That will ensure there is no tight coupling to API data or other contexts, and the UI can be viewed and tested in isolation. Build the component with stories for each test case in mind, and expose props that might be needed when using the component in the application (such as for passing in API data and event handlers). Add a CSS module file for the component, make sure to scope all styles under a class, and add style declarations only as needed.
+When adding a new UI component, it's easiest to first build it in a component library tool such as [Storybook](https://storybook.js.org/), outside of the context of the application. That will ensure there is no tight coupling to API data or other contexts, and the UI can be viewed and tested in isolation. Build the component with stories for each test case in mind, and expose props that might be needed when using the component in the application (such as for passing in API data and event handlers). Add a CSS module file for the component, make sure to scope all styles under a class, and add style declarations only as needed.
 
 When it comes to adding CSS declarations, here are some guidelines:
 
@@ -127,9 +127,9 @@ When it comes to adding CSS declarations, here are some guidelines:
     h2 + ul { margin-top: 20px; }
     ```
 
-Ultimately, it's important to understand what each line of CSS is doing. Adding lines until something looks right is usually a recipe for unknown consequences, and can have effects on accessibility or add unnecessary kb to the bundle. When in doubt, ask for assistance in #prac-frontend!
+Ultimately, it's important to understand what each line of CSS is doing. Adding lines until something looks right is usually a recipe for unknown consequences, and can have effects on accessibility or add unnecessary kb to the bundle.
 
-Finally, the USWDS _does_ expose some [utility classes](https://designsystem.digital.gov/utilities/) that can be used directly in the markup (such as `margin-x-auto`). Be cautious of using these unless something is _truly_ an exception. The reason is that it adds additional points of dependencies between the styling and the markup (components will only have the expected visual result if they also have the correct classes) and adds more variables to where applied CSS may come from. For example, if a component is pulling CSS in from global styles, _and_ a CSS modules file, _and_ inline utility class names, it adds to the complexity of what styles will be effectively applied, and makes it harder to change or debug in the future.
+Finally, if you are using USWDS, it _does_ expose some [utility classes](https://designsystem.digital.gov/utilities/) that can be used directly in the markup (such as `margin-x-auto`). Be cautious of using these unless something is _truly_ an exception. The reason is that it adds additional points of dependencies between the styling and the markup (components will only have the expected visual result if they also have the correct classes) and adds more variables to where applied CSS may come from. For example, if a component is pulling CSS in from global styles, _and_ a CSS modules file, _and_ inline utility class names, it adds to the complexity of what styles will be effectively applied, and makes it harder to change or debug in the future.
 
 ### References
 
