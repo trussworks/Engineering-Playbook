@@ -36,6 +36,7 @@ It is also important to keep in mind, especially as the ecosystem of front end d
 
 - [ ] [classnames](https://github.com/JedWatson/classnames) (managing CSS classes in JS components)
 - [ ] [DayJS](https://day.js.org/), [luxon](https://moment.github.io/luxon/index.html) (newer alternatives to Moment, working with dates and times)
+  - Note: [MomentJS](https://momentjs.com/) has been deprecated, **do not use on new projects**
 - [ ] [validateJS](https://validatejs.org/), [yup](https://github.com/jquense/yup) (validating form object models)
 - [ ] [Formik](https://formik.org/), [React-hook-form](https://react-hook-form.com/) (building forms in React)
 - [ ] [numeral.js](http://numeraljs.com/), [big.js](https://mikemcl.github.io/big.js/) (working with numbers and decimals)

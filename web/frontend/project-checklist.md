@@ -117,11 +117,11 @@
 - Unit tests
   - Test small pieces or components in isolated environments
   - Good to run continuously during development, as well as part of CI checks
-  - Jest
+  - Jest, Testing Library
 - Integration tests
   - Test larger chunks of the app and how they work together with partial or complete context
   - Good to run continuously during development, as well as part of CI checks
-  - Jest
+  - Jest, Testing Library, Enzyme
 - End-to-end (E2E) tests
   - Test complete user flows in the browser, as if you were a user
   - Most often useful for high-level regression tests and critical paths
@@ -134,6 +134,9 @@
   - Tests pass or fail when the images are compared to references
   - Heavy load, often best done in CI
   - Happo, Loki, Percy
+- Accessibility Testing
+  - Can be done through unit/integration testing and/or end to end.
+  - pa11y, axe-core, Cypress audit
 
 ## Deploying
 
