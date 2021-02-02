@@ -6,8 +6,13 @@ I pulled in all the questions that were solicited from our meetings within the t
 
 ## Overview
 
-* Who is the audience for this guide
-* Who is the audience for the API
+### Audience
+
+This guide is for developers of an API, including:
+
+* Engineers starting on a project looking to develop a REST API
+* Feature leads for API development
+* Individual developer implementing / extending / testing an API
 
 ## Principles
 
@@ -18,13 +23,9 @@ These principles were copied from [https://apiguide.readthedocs.io/en/latest/pri
 We will first be focusing on the **Building REST APIs** section. And will decide our principles in collaboration with the GraphQL documentation team.
 
 * Developer empathy
-* Granularity
-  * What is the philosophy behind the design and breakdown of the endpoints?
 * Functionality
 * Ubiquitous standards
-  * Don't rewrite/reinvent standards that already exist
 * Special technologies
-  *
 * Endpoint stability
 * Security
 * Documentation
@@ -32,43 +33,35 @@ We will first be focusing on the **Building REST APIs** section. And will decide
 
 ## Building REST APIs
 
-* Use RESTful design practices (Shimona 20210114)
-  * [URL Design](URL-Design.md) - **COMPLETED**
-    * How to pick a good url for the endpoint
-    * ids in path, url depth
-    * plurals for the objects
-    * noun updates vs verb actions
-    * good and bad restful url examples
-  * What about other data, such as query, body, header?
-    * should be careful about putting any secure data in query
-    * headers tend to be consistent across the api (we use content-type and if-match)
-    * everything else we put in the body, and we use json
-  * Versioning,
+* [HTTP Methods](HTTP-Methods.md) - Use HTTP methods and status codes correctly
 
-  * [Style Guide](Style-Guide.md) - **COMPLETED**
-    * What are the basic style components of paths/queries/headers/params
-    * kebab-case for url, plurals, nouns
-    * use the case that natural for the type of response so for json it should javascript styled variables
-    * Suggest linter usage - link?
+* [URL Design](URL-Design.md) - How to pick the right URL for your endpoint.
 
-* yaml style??
-      * Alphabetize the definitions
+  * URL Depth
+  * Using plurals for the objects
+  * Noun vs. verb endpoints
+  * Good and bad RESTful url examples
+* [Style Guide](Style-Guide.md) - Simple style guide for a REST API
+  * Cases for url and body
+  * Linter to enforce rules
 
-* Use HTTP methods and status codes
-
-  * [HTTP Methods](HTTP-Methods.md) - **COMPLETED**
-    * What requirements are there of put/post/patch vs get endpoints
-  * How are requests for multiple nested objects handled? - **Sandy/Shimona to deliver 20201209**
-    * Which IDs for which objects are required? It’s possible that in a nested set-up that some IDs for children could be found by the system without user input
-    * Which IDs should be in the path?
-      * May be able to reference this MilMove ADR: [0045-nesting-swagger-paths.md](https://github.com/transcom/mymove/blob/master/docs/adr/0045-nesting-swagger-paths.md)
-    * Which object is considered the parent? Which object is most important from a data integrity perspective?
-      * May be able to reference this MilMove ADR: [0049-etag-for-child-updates.md](https://github.com/transcom/mymove/blob/master/docs/adr/0049-etag-for-child-updates.md)
-    * If an update fails for one of the nested objects, how will that affect the entire transaction? Should the entire update fail in that case?
+* [Data Design] Where to pass in data or parameters to your endpoint
+  * When should you use query, body, or header params?
+  * should be careful about putting any secure data in query
+  * headers tend to be consistent across the api (we use content-type and if-match)
+  * everything else we put in the body, and we use json
 
 * [Error Response Strategy](Error-Response-Strategy.md) - **COMPLETED**
 
-* Use versions
+* How are requests for multiple nested objects handled? - **Sandy/Shimona to deliver 20201209**
+  * Which IDs for which objects are required? It’s possible that in a nested set-up that some IDs for children could be found by the system without user input
+  * Which IDs should be in the path?
+    * May be able to reference this MilMove ADR: [0045-nesting-swagger-paths.md](https://github.com/transcom/mymove/blob/master/docs/adr/0045-nesting-swagger-paths.md)
+  * Which object is considered the parent? Which object is most important from a data integrity perspective?
+    * May be able to reference this MilMove ADR: [0049-etag-for-child-updates.md](https://github.com/transcom/mymove/blob/master/docs/adr/0049-etag-for-child-updates.md)
+  * If an update fails for one of the nested objects, how will that affect the entire transaction? Should the entire update fail in that case?
+
+* Versioning
   * How are we versioning the api and how does that effect work on any one endpoint?
   * When is it ok to make a breaking API change?  How is that communicated?
 
