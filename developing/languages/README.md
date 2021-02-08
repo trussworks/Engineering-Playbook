@@ -18,6 +18,7 @@ While Truss may have opinions on particular languages and strategic reasons for 
 * Java
 * C/C++
 * [bash](./BASH.md)
+* SQL
 
 ## Language Resources
 
@@ -58,3 +59,11 @@ Important JS patterns and features to understand:
   * [Template Literals](https://css-tricks.com/template-literals/)
 * React and Typescript
   * [Truss resources for React, Typescript, and front end tooling](https://github.com/trussworks/Engineering-Playbook/tree/master/web/frontend)
+
+### SQL
+
+Did you know that SQL dialects have provisions for leaving comments within their queries? The following observability hint comes directly from [Database Reliability Engineering](https://www.oreilly.com/library/view/database-reliability-engineering/9781491925935/?sortby=bestSellers):
+
+> When doing SQL tuning, a big challenge is mapping SQL running in the database to the specific place in the codebase from which it is being called. In many database engines, you can add comments for information. These comments will show up in the database query logs. This is a great place to insert the codebase location.
+
+Additionally, if you have a request-scoped identifier (e.g. a `requestID` or `traceID`), you might be able to weave that into a built SQL query to give even finer-grained visibility.
