@@ -37,7 +37,9 @@ instructions.
 ## Getting started
 
 After installing nix, you should have `~/.nix-profile/bin` in your
-PATH. Now you want to create a new profile and install packages in that
+PATH. If you're using the fish shell, check out [nix-env.fish](https://github.com/lilyball/nix-env.fish).
+
+Now you want to create a new profile and install packages in that
 profile. If you have a directory `nix` with a `default.nix` in it, you
 can do
 
