@@ -11,6 +11,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
 * [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
+* [Version not appearing in the registry](#version-not-appearing-in-the-registry)
 * [Terraform state mv](#terraform-state-mv)
 * [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
 * [How to test your Terraform code](#how-to-test-your-terraform-code)
@@ -80,6 +81,12 @@ In order to preserve the ability to release updates for previous Terraform versi
 
 [publish-release]: images/publish-release.png "Screenshot of a published release"
 [draft-release]: images/draft-release.png "Screenshot of a release draft"
+
+### Version not appearing in the registry
+
+If a release published in GitHub does not appear properly in the Terraform registry, see [Releasing New Versions](https://www.terraform.io/docs/registry/modules/publish.html#releasing-new-versions) for instructions on how to address.
+
+If the steps outlined in the above link do not work, try publishing a new patch release with the same commit id.
 
 ### Terraform state mv
 
