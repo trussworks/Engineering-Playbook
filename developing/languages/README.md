@@ -22,24 +22,6 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Language Resources
 
-### Go
-
-If you are new to Go, these are resources that can help you get started:
-
-1. [A Tour of Go](https://tour.golang.org) (in-browser interactive language tutorial)
-1. [How to Write Go Code](https://golang.org/doc/code.html) (info about the Go environment, testing, etc.)
-1. [Effective Go](https://golang.org/doc/effective_go.html) (how to do things “the Go way”)
-1. [Daily Dep documentation](https://golang.github.io/dep/docs/daily-dep.html) (common tasks you’ll encounter with our dependency manager)
-1. [Exercism](http://exercism.io/languages/go/about) offers a series of exercises with gradually increasing complexity
-
-Additional resources:
-
-* [GoDoc](https://godoc.org/) (where you can read the docs for nearly any Go package)
-* Check out the [Go wiki](https://github.com/golang/go/wiki/Learn)
-* Advanced Testing with Go [Video](https://www.youtube.com/watch?v=yszygk1cpEc) and [Article](https://about.sourcegraph.com/go/advanced-testing-in-go) (great overview of useful techniques, useful for all Go programmers)
-* _Book_: [The Go Programming Language](http://www.gopl.io/)
-* _Article_: [Copying data from S3 to EBS 30x faster using Golang](https://medium.com/@venks.sa/copying-data-from-s3-to-ebs-30x-faster-using-go-e2cdb1093284)
-
 ### JavaScript
 
 Important JS patterns and features to understand:

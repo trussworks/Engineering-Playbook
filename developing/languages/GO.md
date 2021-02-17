@@ -15,7 +15,7 @@ provides some specifics to web development.
 * [The Go Programming Language Official Website](https://golang.org/)
 * [Effective Go](https://golang.org/doc/effective_go.html) (how to do things “the Go way”)
 * [Go Pointer Primer](https://github.com/trussworks/go-pointer-primer)
-* [GoDoc](https://godoc.org/) (where you can read the docs for nearly any Go package)
+* [pkg.go.dev](https://pkg.go.dev/) (where you can read the docs for nearly any Go package)
 * [Go wiki](https://github.com/golang/go/wiki/Learn)
 * _Book_: [The Go Programming Language](http://www.gopl.io/)
 * Advanced Testing with Go
@@ -31,6 +31,7 @@ provides some specifics to web development.
 * [How to Write Go Code](https://golang.org/doc/code.html) (info about the Go environment, testing, etc.)
 * [Go by Example](https://gobyexample.com)
 * [Go Track on Exercism](https://exercism.io/tracks/go)
+* _Article_: [Copying data from S3 to EBS 30x faster using Golang](https://medium.com/@venks.sa/copying-data-from-s3-to-ebs-30x-faster-using-go-e2cdb1093284)
 
 ## Testing
 
@@ -54,6 +55,12 @@ provides some specifics to web development.
   it might mean it needs to be refactored as it's exported function elsewhere.
 
 ## Packages
+
+### Dependency Management
+
+* [Go Modules](https://blog.golang.org/v2-go-modules) has become the standard way to manage your dependencies
+* Before Go Modules were solidified, `dep` was frequently used for dependency management.
+  * This might be helpful if you are dealing with an older project: [Daily Dep documentation](https://golang.github.io/dep/docs/daily-dep.html) (common tasks you’ll encounter with the dependency manager)
 
 ### Prefer Standard Libraries
 
