@@ -42,12 +42,16 @@ provides some specifics to web development.
 * Comments delineating the [3](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80) or [4](https://thoughtbot.com/blog/four-phase-test) phases of your tests can help with comprehension.
 * Use [`t.Helper()`](https://golang.org/pkg/testing/#T.Helper) in your test helper functions to keep stack traces clean.
 * Use [`t.Parallel()`](https://rakyll.org/parallelize-test-tables/) to speed up tests.
+* Trend away from using [`testify/suite`](https://pkg.go.dev/github.com/stretchr/testify/suite). (It used to address some shortcomings in the standard library `testing` tools that have since been addressed.)
+* Lightweight assertion packages can help with expressiveness. Consider using [`testify/assert`](https://pkg.go.dev/github.com/stretchr/testify@v1.7.0/assert) or [`is`](https://pkg.go.dev/github.com/matryer/is)
 
 ### Coverage
 
 * Always test exported functions.
   Exported functions should be treated as an API layer for other packages.
   Cover the expected behavior and error scenarios as a user of that API.
+  * Consider using the [`_test` package suffix](https://golang.org/cmd/go/#hdr-Test_packages)
+    to simulate calling the package under test from an external package
 * Try not to test unexported functions.
   Unexported functions are implementation details of exported ones
   and should not change the intended usage.
@@ -100,9 +104,6 @@ Some examples of third party packages we've found to be helpful and stable are:
   for SQL querying and struct marshalling.
 * [cobra/pflag/viper](https://github.com/spf13/cobra)
   for writing command line utilities.
-* [testify](https://github.com/stretchr/testify)
-  for some testing helpers,
-  especially its `suite` package
 
 If you're exploring a new package,
 [Awesome Go](https://awesome-go.com/)
