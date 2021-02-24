@@ -13,7 +13,7 @@ repos:
       - id: markdownlint
 
   - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v0.0.4
+    rev: v1.0.1
     hooks:
       - id: markdown-toc
       - id: circleci-validate

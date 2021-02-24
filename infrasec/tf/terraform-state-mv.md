@@ -18,3 +18,4 @@ Sometimes you will be wary about running state move because you aren't sure that
 ## Resources
 
 * [Terraform state commands](https://www.terraform.io/docs/commands/state/index.html)
+* [Terraform moving across across different state files](https://medium.com/@lynnlin827/moving-terraform-resources-states-from-one-remote-state-to-another-c76f8b76a996)
