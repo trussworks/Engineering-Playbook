@@ -1,6 +1,4 @@
-# [InfraSec](./README.md) / SSL Certificates
-
-## Overview
+# [InfraSec](README.md) / SSL Certificates
 
 SSL Certificates are most commonly used to verify a server's identity and
 encrypt HTTP traffic. Usually, we try to use offerings like Amazon's
@@ -17,7 +15,7 @@ is essentially the second generation of SSL. It is not uncommon for both
 terms to be used interchangeably at this point, but "real" SSL is
 deprecated. Any modern systems should be using TLS.
 
-## Getting a Real Certificate
+## Getting a real certificate
 
 ### Let's Encrypt
 
@@ -77,6 +75,6 @@ one-off certificates. Their documentation is
   $ aws-vault exec my-aws-profile -- chamber write "app-myapp-myenv" server-key - < example.com.key
   ```
 
-## External Resources
+## External resources
 
 * How an SSL/TLS handshake works: <https://www.ssl.com/article/ssl-tls-handshake-overview/>

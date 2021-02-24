@@ -1,4 +1,4 @@
-# [InfraSec](./README.md) / InfraSec Practice Charter
+# [InfraSec](README.md) / InfraSec Practice Charter
 
 At Truss, we have a single practice combining infrastructure and security
 practices, which is a pattern that is becoming more prevalent in the

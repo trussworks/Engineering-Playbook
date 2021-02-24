@@ -9,8 +9,8 @@ security and compliance standards needed to meet federal guidelines like
 
 ## GovCloud Topics
 
-* [Setting Up a GovCloud Organization](./gov-orgs.md)
-* [ACM in GovCloud](./gov-acm.md)
+* [Setting Up a GovCloud Organization](gov-orgs.md)
+* [ACM in GovCloud](gov-acm.md)
 
 ## General Considerations With GovCloud
 

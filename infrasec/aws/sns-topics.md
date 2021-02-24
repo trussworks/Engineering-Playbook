@@ -1,4 +1,4 @@
-# SNS Topics
+# [AWS](README.md) / SNS Topics
 
 We are using SNS topics as mainly a way to round messages and event to other services such as PagerDuty or Slack.
 
@@ -25,4 +25,4 @@ The action or subscription that each SNS topic handled is up to the engineer. Al
 
 Here is a common setup for infra and app team for account type com (commercial).
 
-![SNS Topics](./diagram/doc-sns-topic.png)
+![SNS Topics](images/doc-sns-topic.png)

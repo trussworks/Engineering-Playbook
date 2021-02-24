@@ -1,10 +1,8 @@
 # [InfraSec](../README.md) / One-Time Passwords
 
-## Introduction
-
 One-Time Passwords (aka OTPs or TOPTs) are exactly what they sound like. They are randomly generated passwords that can only be used once. They are often used for two-factor or multi-factor authentication.
 
-## Storing One-Time Passwords in 1Password
+## Storing one-time passwords in 1Password
 
 You can store one-time passwords in a number of ways: Authy, Google Authenticator, 1Password, etc. This tutorial will focus on 1Password since this is where Truss stores passwords in the first place.
 

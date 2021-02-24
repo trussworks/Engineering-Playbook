@@ -11,6 +11,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 * [Going public](#going-public)
 * [Publishing a release](#publishing-a-release)
 * [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
+* [Version not appearing in the registry](#version-not-appearing-in-the-registry)
 * [Terraform state mv](#terraform-state-mv)
 * [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
 * [How to test your Terraform code](#how-to-test-your-terraform-code)
@@ -38,7 +39,7 @@ Before going public, consider sourcing the module from github as described in th
 
 ### Going public
 
-When you're ready to turn the prototype module into a published one, there's a few things you'll need to do if you haven't already:
+When you're ready to turn the prototype module into a published one, there are a few things you'll need to do if you haven't already:
 
 1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/github-global/main.tf) managed by our GitHub repo management module.
 2. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
@@ -47,7 +48,7 @@ When you're ready to turn the prototype module into a published one, there's a f
 3. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
    * First read through the Terraform docs on [Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html) and make appropriate changes to your repository
    * Ensure that the module you wish to publish has a SemVer tag attached to it. If not use `v1.0.0`.
-   * Sign into the registry using your Github credentials
+   * Sign into the registry using the trussworks-infra Github credentials (available in 1Password)
    * In the upper right corner select "Publish" or go directly to the [Publish URL](https://registry.terraform.io/github/create)
    * Select the repository you wish to publish from the drop down list. If you don't see it hit the refresh icon.
    * Select the "Publish Module" button.
@@ -78,12 +79,22 @@ In order to preserve the ability to release updates for previous Terraform versi
 1. Merge your changes in to the module's default branch.
 1. Cut a new release as described above. Increment the *major* version of the module as you described in the README.
 
-[publish-release]: ./publish-release.png "Screenshot of a published release"
-[draft-release]: ./draft-release.png "Screenshot of a release draft"
+[publish-release]: images/publish-release.png "Screenshot of a published release"
+[draft-release]: images/draft-release.png "Screenshot of a release draft"
+
+### Version not appearing in the registry
+
+If a release published in GitHub does not appear properly in the Terraform registry, see [Releasing New Versions](https://www.terraform.io/docs/registry/modules/publish.html#releasing-new-versions) for instructions on how to address.
+
+If the steps outlined in the above link do not work, try publishing a new patch release with the same commit id.
 
 ### Terraform state mv
 
 Refer to the Truss [`terraform state mv` info sheet](terraform-state-mv.md).
+
+### Terraform import
+
+Refer to the Truss [`terraform import` info sheet](terraform-import.md).
 
 ### How to layout/structure a Terraform Project
 

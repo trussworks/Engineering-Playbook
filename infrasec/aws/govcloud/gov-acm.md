@@ -1,4 +1,4 @@
-# [GovCloud](./README.md) / ACM in GovCloud
+# [GovCloud](README.md) / ACM in GovCloud
 
 AWS Certificate Manager (ACM) is our preferred way to handle certificates
 in AWS whenever possible. Unfortunately, due to the fact that Route53
@@ -6,7 +6,7 @@ cannot create public DNS entries in GovCloud, the modules which create
 ACM certificates and validate them with DNS will not work. This means the
 process of creating these certificates becomes slightly more complicated.
 
-## The Problem: ACM DNS Validation
+## The problem: ACM DNS validation
 
 In both the Truss and `terraform-aws-modules` ACM module, the module
 attempts to create three resources:
@@ -31,7 +31,7 @@ a timing issue, because we need to create the certificate to get the
 DNS validation information, but we have to create the DNS entry in the
 commercial organization before we can use it elsewhere in GovCloud.
 
-## The Solution: Step-By-Step Creation
+## The solution: step-by-step creation
 
 We can solve this by using a step-by-step creation method for our systems
 which require ACM certificates. We recommend *not* creating these

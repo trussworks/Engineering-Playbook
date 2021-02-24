@@ -1,18 +1,41 @@
-# Using SNS, GuardDuty, and External Integrations with AWS Organizations
+# [AWS](README.md) / Using SNS, GuardDuty, and External Integrations with AWS Organizations
 
-## Context
-
-Ideally our infrastructure is flawless and impenetrable, but much of our work requires us to be aware of unexpected occurrences. We rely on a system using a number of AWS resources and services such as SNS, GuardDuty, and CloudWatch with external integrations such as Slack and PagerDuty to allow us to stay alert and aware of unforeseen or suspicious activity. This primer should describe our recommended current set up and allow you to set up your own system to achieve similar results. Please familiarize yourself with [Truss' conception of AWS Organizations](./aws-organizations.md) before proceeding.
+Ideally our infrastructure is flawless and impenetrable, but much of our work requires us to be aware of unexpected occurrences. We rely on a system using a number of AWS resources and services such as SNS, GuardDuty, and CloudWatch with external integrations such as Slack and PagerDuty to allow us to stay alert and aware of unforeseen or suspicious activity. This primer should describe our recommended current set up and allow you to set up your own system to achieve similar results. Please familiarize yourself with [Truss' conception of AWS Organizations](aws-organizations.md) before proceeding.
 
 Our intent is to have a system which notifies regarding GuardDuty events on two integration channels (PagerDuty and Slack), depending on the kind of alert.
 
+<!-- toc -->
+
+* [Information Flow](#information-flow)
+* [GuardDuty Organizational Setup](#guardduty-organizational-setup)
+* [SNS Topics](#sns-topics)
+* [SNS Subscriptions](#sns-subscriptions)
+  * [Special consideration for email protocol (07/2020)](#special-consideration-for-email-protocol-072020)
+  * [SSM Parameters](#ssm-parameters)
+* [Slack Integration](#slack-integration)
+  * [Special consideration for broken lambdas (07/2020)](#special-consideration-for-broken-lambdas-072020)
+* [PagerDuty Organizational Setup](#pagerduty-organizational-setup)
+* [PagerDuty Integration](#pagerduty-integration)
+  * [Integration](#integration)
+  * [Subscription](#subscription)
+* [PagerDuty Slack Integration](#pagerduty-slack-integration)
+  * [Extension](#extension)
+* [GuardDuty Tie-In](#guardduty-tie-in)
+* [A note about root login notification](#a-note-about-root-login-notification)
+* [Testing your work](#testing-your-work)
+* [How to Resolve/Respond to GuardDuty Findings](#how-to-resolverespond-to-guardduty-findings)
+
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
+
+<!-- tocstop -->
+
 ## Information Flow
 
-![SNS Information Flow](./diagram/sns-info-flow.png)
+![SNS Information Flow](images/sns-info-flow.png)
 
 ## GuardDuty Organizational Setup
 
-Using GuardDuty with AWS Organizations allows us to designate an administrative account to "roll up" all findings for member accounts, aggregating findings in one place. [This is a user guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html) that may provide helpful background information, although we do this in Terraform code. You should set up a GuardDuty detector in your GuardDuty administrative account and invite all the other accounts in your organization as members. Please refer to [Truss' example of an organization account layout](https://github.com/trussworks/terraform-layout-example) for more info. Make sure to enable a GuardDuty detector in the region you will have SNS subscriptions by using the `aws_guardduty_detector` resource in your GuardDuty administrative account. Use [Truss' GuardDuty for Organizations Guide](./guardduty.md) to help with the set up.
+Using GuardDuty with AWS Organizations allows us to designate an administrative account to "roll up" all findings for member accounts, aggregating findings in one place. [This is a user guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html) that may provide helpful background information, although we do this in Terraform code. You should set up a GuardDuty detector in your GuardDuty administrative account and invite all the other accounts in your organization as members. Please refer to [Truss' example of an organization account layout](https://github.com/trussworks/terraform-layout-example) for more info. Make sure to enable a GuardDuty detector in the region you will have SNS subscriptions by using the `aws_guardduty_detector` resource in your GuardDuty administrative account. Use [Truss' GuardDuty for Organizations Guide](guardduty.md) to help with the set up.
 
 We do not suggest setting this up in your `org-root` account, as that should not be used for frequent access. Instead, set it up in whichever account you use to handle org-wide infrastructure (for this example, we'll call that `infrasec`).
 
@@ -70,7 +93,7 @@ resource "aws_guardduty_member" "project_environment" {
 
 [Here's a primer](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) on how SNS works to familiarize you with vocabulary.
 
-Set up the SNS topics. Please review [this doc](./sns-topics.md) to understand the organization structure we're using.
+Set up the SNS topics. Please review [this doc](sns-topics.md) to understand the organization structure we're using.
 
 The SNS topics and related policy documents should live in the `admin-global` stack of whichever AWS account you are using for your GuardDuty administrative account in whatever regions you're planning to set up your GuardDuty detectors in. In our example, `project-infrasec/admin-global`, `us-west-2`.
 
@@ -294,7 +317,7 @@ You're not quite done yet. PagerDuty does not actually authorize the link betwee
 
 At this point, you have SNS topics, notify-slack lambdas and therefore Slack subscriptions, PagerDuty subscriptions, and a Slack-PagerDuty extension. The final step is to tie everything to GuardDuty, the source of all these alerts!
 
-Given that you have set up outside integrations, you will likely want to use the [TrussWorks GuardDuty Notifications](https://registry.terraform.io/modules/trussworks/guardduty-notifications/aws) module. This module allows you to create the CloudWatch event targets for the SNS topic you are using for PagerDuty notifications and the SNS topic you are using for Slack notifications. These must be two separate topics, as they are formatted differently. Given [this setup](./sns-topics.md), we used the `team-type-notification` SNS topic for Slack and the `team-type-alert` topic for PagerDuty. Note, this assumes you've already enabled a GuardDuty detector in the region with your SNS topics. You will need to implement an instance of the `guardduty_notifications` module for each region you expect to receive GuardDuty notifications from.
+Given that you have set up outside integrations, you will likely want to use the [TrussWorks GuardDuty Notifications](https://registry.terraform.io/modules/trussworks/guardduty-notifications/aws) module. This module allows you to create the CloudWatch event targets for the SNS topic you are using for PagerDuty notifications and the SNS topic you are using for Slack notifications. These must be two separate topics, as they are formatted differently. Given [this setup](sns-topics.md), we used the `team-type-notification` SNS topic for Slack and the `team-type-alert` topic for PagerDuty. Note, this assumes you've already enabled a GuardDuty detector in the region with your SNS topics. You will need to implement an instance of the `guardduty_notifications` module for each region you expect to receive GuardDuty notifications from.
 
 ```hcl
 module "guardduty_notifications" {
