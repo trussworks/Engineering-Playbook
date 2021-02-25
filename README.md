@@ -17,6 +17,7 @@ One question we might ask is whether or not this repo should be public? My incli
 * [Web Development](./web/README.md) - Languages, frameworks and tools used to develop web applications
 * [Infrastructure/Deployment](./infra/README.md) - DevOps, Infrastructure ... call it what you will, somehow that application needs to get out into production and been maintained once it gets there.
 * [Security](./security/README.md) - The world is not as nice as we would like it to be. What should we do about that? What should we not be afraid of, despite what people say?
+* [Leadership](./leadership/README.md) - Guidance and resources around being an Engineering Lead or Manager at Truss.
 * [Templates](./templates/README.md) - "Ooh, ooh... I have a thing to add." Here's how to add to this Playbook
 
 ## Initial Setup
