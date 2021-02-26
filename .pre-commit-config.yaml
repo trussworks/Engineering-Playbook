@@ -1,17 +1,19 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
+    rev: v3.4.0
     hooks:
       - id: check-merge-conflict
+      - id: check-yaml
       - id: detect-private-key
       - id: trailing-whitespace
 
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.17.0
+    rev: v0.26.0
     hooks:
       - id: markdownlint
 
   - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v0.0.1
+    rev: v1.0.1
     hooks:
       - id: markdown-toc
+      - id: circleci-validate

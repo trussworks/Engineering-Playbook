@@ -20,7 +20,7 @@ rules](https://www.youtube.com/watch?v=jl0hMfqNQ-g).*
   or may not have passed code review yet.
 
 - Delivered (waiting on acceptance) -- For code, this means it's landed in
-  master and passed the build, or has gone all the way to production, whichever
+  the default branch and passed the build, or has gone all the way to production, whichever
   makes sense for the story. For other work, use common sense.
 
 ### Creating
