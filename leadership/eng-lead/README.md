@@ -7,7 +7,6 @@ Guidance and resources for Application Engineering Leads.
 * Manager and peer support
   * Lean on your manager and set up 1:1s with other past/present Engineering Leads for feedback or advice.
   * Begin to ascertain any aspects of the projects you may not be as familiar with. For example, if you are concerned about any gaps in infrastructure knowledge, please reach out to someone in #infra.
-* Review the [Technical Requirements Checklist 🔒](https://docs.google.com/document/d/1ozaXs8FiI6tqRWS_mEmEx_PothTioJsOxHoYlJF0b3I/)
   * List of requirements/scaffolding that underpins building features for clients.
 * Review the [AppEng Directory 🔒](https://docs.google.com/spreadsheets/d/1wzlDUjMsHv8mfam7XaCVjw9F5UTrE7U9pJEQa5dEiAA/)
   * A helpful reference to see what languages, frameworks, tools, etc that other projects have used as a guide
@@ -32,3 +31,5 @@ Guidance and resources for Application Engineering Leads.
   * Example: [MilMove Quality Measures 🔒](https://docs.google.com/document/d/1-YMSTj6keTS6zYgvq3lTY0PDqO09z-hbY8MMrVRjwdU/)
 * Managing the Backlog
   * Example: [MyMove: Balancing the Backlog 🔒](https://docs.google.com/document/d/1vDZWJfjEZKLWZhtANYfmGk4M89_wGFYD/edit)
+* List of technical requirements
+  * Example (UNDER REVIEW): [Technical Requirements Checklist 🔒](https://docs.google.com/document/d/1ozaXs8FiI6tqRWS_mEmEx_PothTioJsOxHoYlJF0b3I/)
