@@ -16,6 +16,7 @@ One question we might ask is whether or not this repo should be public? My incli
 * [Documentation](./documentation/README.md) - How to write effective documentation your users will read.
 * [Web Development](./web/README.md) - Languages, frameworks and tools used to develop web applications
 * [InfraSec](./infrasec/README.md) - Infrastructure and security are foundational disciplines for building and maintaining stable systems.
+* [Leadership](./leadership/README.md) - Guidance and resources around being an Engineering Lead or Manager at Truss.
 * [Templates](./templates/README.md) - "Ooh, ooh... I have a thing to add." Here's how to add to this Playbook
 
 ## Initial Setup
