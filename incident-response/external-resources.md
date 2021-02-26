@@ -13,11 +13,15 @@ to add new resources if you find something particularly interesting.
   incident response documentation, and it is very comprehensive. It is
   an excellent resource for seeing how to apply our general principles
   to a specific service.
+* [Remote Incident Response](https://ryanfrantz.com/posts/remote-incident-response.html)
+  This article by Ryan Frantz with help from Dr. Laura Maguire discusses
+  the unique challenges of dealing with incident response with a
+  distributed team.
 
 ### Talks and Videos
 
 * [nrrd 911 ic me: The Incident Commander Role](https://www.usenix.org/node/195653)
-  This is a talk by Alice Goldfuss from SRECon 2015 where she talked
+  This is a talk by Alice Goldfuss from SRECon 2016 where she talked
   about the incident response process at New Relic; this includes a
   discussion of severity levels and how they used a chatbot to
   automate elements of the process.
@@ -54,6 +58,11 @@ to add new resources if you find something particularly interesting.
   and how what actually happened often gets oversimplified in a desire
   to make incidents fit in standardized boxes. If you watch nothing else
   about incident analysis, watch this.
+* [Who Destroyed Three Mile Island?](https://www.youtube.com/watch?v=1xQeXOz0Ncs)
+  This talk by Nickolas Means at LeadDev Austin 2018 talks about the 1979
+  Three Mile Island disaster and is an excellent walkthrough of the
+  difference between first stories and second stories, and the dangers of
+  hindsight and outcome bias.
 
 ### Books
 

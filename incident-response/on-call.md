@@ -14,7 +14,7 @@ For the sake of argument, most of this article assumes you will be using
 [PagerDuty](https://www.pagerduty.com) for handling the actual alerting
 of the engineers on-call; if you are using another provider, most of these
 recommendations can be adapted for them. You can read more about various
-alerting providers in the [Alert Providers](../infra/alerting/alert-providers.md)
+alerting providers in the [Alert Providers](../infrasec/alert-providers.md)
 guide.
 
 ## Definition of Terms

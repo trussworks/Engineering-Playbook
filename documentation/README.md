@@ -10,3 +10,4 @@ use and operate it.
 
 * [Introduction to Documentation](./intro-to-docs.md)
 * [External Resources](./external-resources.md)
+* [Architectural Decision Records](./adr.md)

@@ -87,7 +87,7 @@ Either Jasmine on its own, or Karma. Here’s why:
 - Allows us to learn to use three different testing frameworks (Jasmine, Mocha, and QUnit), with the option of writing an adapter for any other framework we’d like
 - Tests on multiple browsers and devices
 - Lets you use React import syntax
-- - Integrates with a number of different CIs, if we were so inclined
+- Integrates with a number of different CIs, if we were so inclined
 - We could add Enzyme, for easier use of React components, and a nice complement to Jasmine
 
 ## Notes on each option
