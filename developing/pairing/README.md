@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Pairing
+# [Tools and Practice](../README.md) / Pair Programming
 
 ## Overview
 
