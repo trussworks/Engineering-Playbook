@@ -32,4 +32,4 @@ the reference to `main` and not to `master`.
 - [Learning Resources](./learning/README.md)
 - [Building and Releasing Go CLI tools with goreleaser](./command-line-tools/HOW2GORELEASER.md)
 - [Healthchecks](./healthcheck/README.md)
-- [Pair Programming](./pairing.README.md)
+- [Pair Programming](./pairing/README.md)
