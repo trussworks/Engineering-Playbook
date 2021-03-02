@@ -42,12 +42,11 @@
 
 ### Next steps
 
-(Note any tasks that remain. Do you need another pairing session? Are there tests to write? Also, record any bugs or other discovered work so they can be brought back to the team.)
+(Note any tasks that remain. Do you need another pairing session? Are there tests to write? Also, record any bugs or other discovered work so they can be brought back to the team to discuss opening any new tickets.)
 
 ### Retro
 
-(Allow a few moments at the end of the session to review the work you've done.)
-The work
+(Allow a few moments at the end of the session to review.)
 
 - Were the goals achieved?
 - Was the work unblocked?
