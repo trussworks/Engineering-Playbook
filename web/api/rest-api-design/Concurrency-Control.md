@@ -61,7 +61,7 @@ Then when the client wishes to update this resource, they send the eTag in the `
 Request, notice the `If-Match` in the header:
 
 ```
-PUT /v1/shipments/01b9671e-b268 HTTP/1.1
+PATCH /v1/shipments/01b9671e-b268 HTTP/1.1
 Host: api.move.mil
 Content-Type: application/json
 If-Match: MjAyMC0xMi0wMVQxODo1NjoxMy4zNjkxNzRa
