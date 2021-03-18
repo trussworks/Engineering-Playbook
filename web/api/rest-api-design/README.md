@@ -45,11 +45,9 @@ We will first be focusing on the **Building REST APIs** section. And will decide
   * Cases for url and body
   * Linter to enforce rules
 
-* [Data Design] Where to pass in data or parameters to your endpoint
-  * When should you use query, body, or header params?
-  * should be careful about putting any secure data in query
-  * headers tend to be consistent across the api (we use content-type and if-match)
-  * everything else we put in the body, and we use json
+* [Data Design](Data-Design.md)
+  * Path, Query, Body and Header Parameters
+  * Security considerations related to parameter location
 
 * [Error Response Strategy](Error-Response-Strategy.md) - **COMPLETED**
 
