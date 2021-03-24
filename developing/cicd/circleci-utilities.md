@@ -20,11 +20,11 @@ The example below leverages a GET request to get the details of a given PR, spec
 
   ```yaml
   jobs:
-    get-pull-request-changes: 
+    get-pull-request-changes:
       executor: main
       steps:
         - checkout
-        - run: 
+        - run:
             name: "git PR diff"
             command: |
               pr_number=${CIRCLE_PULL_REQUEST##*/}
