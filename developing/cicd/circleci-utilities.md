@@ -11,7 +11,7 @@ The example below leverages a GET request to get the details of a given PR, spec
 <details>
   <summary>GET Pull Request changed files</summary>
 
-  ### Useful resources:
+  References:
   [Only build Pull Requests](https://circleci.com/docs/2.0/oss/#only-build-pull-requests)
   [Built-in environment variables](https://circleci.com/docs/2.0/env-vars/?section=pipelines#built-in-environment-variables)
   [Get PR number from CircleCI pull request build](https://support.circleci.com/hc/en-us/articles/360047521451-Why-is-CIRCLE-PR-NUMBER-empty-)
@@ -39,4 +39,5 @@ The example below leverages a GET request to get the details of a given PR, spec
             environment:
               TERM: xterm-256color
   ```
+  
 </details>
