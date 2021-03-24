@@ -39,5 +39,5 @@ The example below leverages a GET request to get the details of a given PR, spec
             environment:
               TERM: xterm-256color
   ```
-  
+
 </details>
