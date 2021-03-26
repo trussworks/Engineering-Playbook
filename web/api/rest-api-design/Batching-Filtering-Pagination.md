@@ -40,22 +40,25 @@ In this example we see the query parameter `”query”:{...}` indicates a conte
 
 #### URL parameters:
 
-**TODO:** Add context for what the API is doing, add clearer examples and explanation for each example.
-For a basic and simple way to add filtering, consider url parameters.
+**TODO:** Add more examples
 
-- You can filter using resource names. For example, if you have an API that tracks users’ moves across the country and you want to filter by a move. You would use the resource name `move` and filter via `GET /move`
+- You can filter using resource names. For example, if you have an API that tracks different dogs breeds, their names, and their birth years.
 
-* Square brackets on key names within a resource provide more flexibility with filtering and enable you to indicate a ranges. For example, one way to indicate a range of values:
+`GET https://api.thedogapi.com/v1/breeds`
 
-  `GET /move?since=<timestamp>`
+- If adding a query to your url parameters, use question marks before providing a query parameters, e.g. limits:
+  `GET https://api.thedogapi.com/v1/breeds?limit=2`
+- Square brackets on key names within a resource provide more flexibility with filtering and enable you to indicate a range. For example, one way to indicate a range of values:
 
-  A more complex way to indicate a range:
+  If you want to search for dogs born between 2019 and 2021:
+  `GET https://api.thedogapi.com/v1/dogs/birth[year]=2019&birth[year]=2021`
 
-  `GET /move?location[miles]=100&location[miles]=200`
+  If you want to search for dogs whose birthdays are in the Spring:
+  `GET https://api.thedogapi.com/v1/dogs/birth[month]=March&birth[month]=May`
 
-* Using square brackets can help clearly display units and make provding a range easier to read to the human eye. The example belor is another way of providing a range, but note that is less readable than the example above: `GET /move?location=miles:100&location=miles:200`
+- The above examples using brackets indicate different resources that can be passed in as URL parameters to indicate range.
 
-* Search Query Params allow for more flexibility in adding filters to a URL. You can add sorts and other search parameters to make filtering suit your needs more efficiently
+- Search Query Params allow for more flexibility in adding filters to a URL. You can add sorts and other search parameters to make filtering suit your needs more efficiently
 
 #### Downside to URL Parameters in Filtering:
 
