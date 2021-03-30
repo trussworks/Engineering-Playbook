@@ -10,6 +10,7 @@ according to Truss best practices to deliver software to customers.
 * [Standard Delivery Pipeline](delivery-pipeline.md)
 * [CircleCI Config Patterns](circleci-patterns.md)
 * [CircleCI Orbs](circleci-orbs.md)
+* [CircleCI Utilities](circleci-utilities.md)
 * [Dependabot](dependabot.md)
 
 ## Resources
