@@ -40,8 +40,6 @@ In this example we see the query parameter `”query”:{...}` indicates a conte
 
 #### URL parameters:
 
-**TODO:** Add more examples
-
 - You can filter using resource names. For example, if you have an API that tracks different dogs breeds, their names, and their birth years.
 
 `GET https://api.thedogapi.com/v1/breeds`
@@ -53,7 +51,7 @@ In this example we see the query parameter `”query”:{...}` indicates a conte
   If you want to search for dogs born between 2019 and 2021:
   `GET https://api.thedogapi.com/v1/dogs/birth[year]=2019&birth[year]=2021`
 
-  If you want to search for dogs whose birthdays are in the Spring:
+  If you want to search for dogs whose birthdays are in the Spring you can search using a range of months:
   `GET https://api.thedogapi.com/v1/dogs/birth[month]=March&birth[month]=May`
 
 - The above examples using brackets indicate different resources that can be passed in as URL parameters to indicate range.
