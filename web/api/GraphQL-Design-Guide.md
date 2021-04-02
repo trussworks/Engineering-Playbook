@@ -88,3 +88,7 @@ untyped `errors` field. This makes the most sense for errors that are
 specific to the operation being made that you want the client to
 handle gracefully. It also encourages you to include errors as part of
 your domain modeling, which is a good thing.
+
+### Tooling
+
+Using a schema linter (such as [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter)) and running it as part of your pre-commit checks is recommended. Some of the defaults of such linters may be optimized for large public APIs and should be adjusted to best suit your project.
