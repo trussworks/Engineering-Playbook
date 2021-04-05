@@ -1,9 +1,9 @@
-# [ansible](./README.md) / Molecule Primer
+# [Ansible](README.md) / Molecule Primer
 
 Molecule is the officially supported testing framework for Ansible. For now, this is mostly just a collection of
 experiences and resources you can use when adding testing to your own Ansible roles; take these with a grain of salt.
 
-## Molecule Documentation and Articles
+## Molecule documentation and articles
 
 These resources will likely come in handy when trying to get Molecule up and running for yourself:
 
@@ -22,12 +22,12 @@ anyway. Using Python 3 as the Python binary is also highly recommended. In addit
 will need these Python modules as well:
 
 * molecule
-* molecule[docker] - For testing with docker containers (the default)
-* molecule[ec2] - For testing on ec2 instances
+* molecule\[docker\] - For testing with docker containers (the default)
+* molecule\[ec2\] - For testing on ec2 instances
 * docker-py
 * boto
 
-## Creating a Role or Scenario
+## Creating a role or scenario
 
 If you’re just about to start making an Ansible role, you can use Molecule to do it and it will automatically build out
 the Ansible role directory structure in the Galaxy-expected format in addition to creating the files needed for Molecule

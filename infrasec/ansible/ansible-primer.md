@@ -1,6 +1,4 @@
-# [ansible](./README.md) / Ansible Primer
-
-## Context
+# [Ansible](README.md) / Ansible Primer
 
 Ansible is a Python-based configuration management tool owned and supported by Red Hat; while it is essentially a
 remote-execution tool originally designed to orchestrate a wider environment, it can also be used as a provisioning tool
@@ -10,7 +8,7 @@ This primer is not intended to replace the official documentation for Ansible, w
 <https://docs.ansible.com/ansible/latest/index.html>. It is only intended to provide a high-level overview and give you
 an idea where to find more detailed resources.
 
-## Setting Up Your Environment
+## Setting up your environment
 
 When working with Ansible, you’ll probably want to set up a virtual environment so that you can install ansible and any
 other Python modules necessary without contaminating your system Python installation. If you’ve never done this before,
@@ -34,7 +32,7 @@ Each role contains *tasks*; these tasks could be installing a package, writing o
 restarting a service, or even running an arbitrary shell script. These are defined via YAML configurations. A role may
 also contain other components, such as variables or handlers.
 
-Ansible modules can be tested with [Molecule](./molecule-primer.md), which is the Red Hat-supported automated testing
+Ansible modules can be tested with [Molecule](molecule-primer.md), which is the Red Hat-supported automated testing
 method. Molecule can be configured to spin up a docker container or EC2 instance, among other providers, and run your
 role in isolation to make sure it works as intended. Molecule will also use
 [ansible-lint](https://github.com/ansible/ansible-lint) to lint your modules, which we recommend you install as a
@@ -50,7 +48,7 @@ repos:
         types: [yaml]
 ```
 
-## Ansible Repos
+## Ansible repos
 
 In general, if at all possible, each Ansible role you write should use a separate repo, so that it can be used
 elsewhere. This means it should be written for the general case as much as possible; environment-specific variables

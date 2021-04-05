@@ -15,7 +15,7 @@ These instructions will help moving repos from using the default branch name `ma
 * [Tooling Changes](#tooling-changes)
 * [References](#references)
 
-Regenerate with "pre-commit run -a markdown-toc"
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
 <!-- tocstop -->
 

@@ -22,6 +22,7 @@ In addition to hard-copy books, there are several options for accessing digital 
 
 ## Contents
 
+- [Asking for Help](./asking_for_help.md)
 - [Continuous Delivery](./continuous_delivery.md)
 - [Crucial Conversations](./crucial_conversations.md)
 - [The Goal](./goal.md)

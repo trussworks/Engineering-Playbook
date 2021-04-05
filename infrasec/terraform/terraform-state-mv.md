@@ -1,8 +1,6 @@
-# `terraform state mv` in Delicate Circumstances
+# [Terraform](README.md) / `terraform state mv` in Delicate Circumstances
 
-## Background
-
-Sometimes you have a preexisting resource that you'd like to replace with another version. That's why the `terraform state mv` command exists. The [documentation](https://www.terraform.io/docs/commands/state/mv.html) will give you an outline of the different circumstances in which you can use it (including when moving resource between state files).
+Sometimes you have a preexisting resource that you'd like to replace with another version. That's why the `terraform state mv` command exists. The [Terraform documentation](https://www.terraform.io/docs/commands/state/mv.html) will give you an outline of the different circumstances in which you can use it (including when moving resource between state files).
 
 ## Steps
 
@@ -18,3 +16,4 @@ Sometimes you will be wary about running state move because you aren't sure that
 ## Resources
 
 * [Terraform state commands](https://www.terraform.io/docs/commands/state/index.html)
+* [Terraform moving across across different state files](https://medium.com/@lynnlin827/moving-terraform-resources-states-from-one-remote-state-to-another-c76f8b76a996)

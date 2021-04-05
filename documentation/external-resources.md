@@ -10,6 +10,8 @@ especially interested in this topic.
 * [A Primer on Documentation Content Strategy](https://increment.com/documentation/primer-on-documentation-content-strategy/), Stephanie Blotner
 * [What to Write](https://jacobian.org/writing/what-to-write/) and [Technical Style](https://jacobian.org/writing/technical-style/), Jacob Kaplan-Moss
 * [Yelp Production Engineering Documentation Style Guide](https://engineeringblog.yelp.com/2018/10/yelp-production-engineering-documentation-style-guide.html), Chastity Blackwell
+* [Content debt: What it is, where to find it, and how to prevent it in the first place](https://18f.gsa.gov/2016/05/19/content-debt-what-it-is-where-to-find-it-and-how-to-prevent-it-in-the-first-place/), Melody Kramer
+* [Keep Refining](https://content-guide.18f.gov/our-approach/keep-refining/), 18F
 
 ## Talks
 
