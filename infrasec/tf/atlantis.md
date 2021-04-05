@@ -69,8 +69,7 @@ Create an `atlantis-global` directory in your desired account:
 
 BUCKET: Add the bucket, version, and provider files following the steps (more or less) done in the bootstrapping document in [the Atlantis section](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/bootstrap-new-aws-account.md#atlantis).
 
-IAM user: Add the IAM user similarly to how the circleci user is added:
-See `main.tf` where we add the `aws_iam_group`, `aws_iam_user`, and `aws_iam_group_membership`. At this point you can go ahead and add the `atlantis.yaml` with a list of directories Atlantis needs to access, and [update the PR](https://github.com/transcom/transcom-infrasec-gov/pull/275) template to include the new directory.
+IAM role: Add the IAM role. TODO: add note explaining why we do this differently from circleci (and need only roles but not a user). At this point you can go ahead and add the `atlantis.yaml` with a list of directories Atlantis needs to access, and [update the PR](https://github.com/transcom/transcom-infrasec-gov/pull/275) template to include the new directory.
 
 ### Add & validate a certificate for Atlantis
 
