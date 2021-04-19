@@ -12,9 +12,7 @@ Configuration to atlantis server can be specified via command line flags, enviro
 
 In the [legendary waddle](https://github.com/trussworks/legendary-waddle) repo, for example, we used a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml).
 
-In deciding how to implement Atlantis in your project's context, let's first take a moment to step back and remind ourselves what Atlantis is and what it does.
-
-Atlantis is ["a simple Go app. It receives webhooks from your Git host and executes Terraform commands locally."](https://www.runatlantis.io/docs/deployment.html#architecture-overview) It's high-level infrastructure middleware.
+In deciding how to implement Atlantis in your project's context, let's first take a moment to step back and remind ourselves what Atlantis is and what it does. Atlantis is ["a simple Go app. It receives webhooks from your Git host and executes Terraform commands locally."](https://www.runatlantis.io/docs/deployment.html#architecture-overview) It's high-level infrastructure middleware.
 
 We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to create the resources we need to deploy Atlantis. As you can see in the documentation, this module leverages the a variety of modules, submodules, and direct resource calls in your code to create the following:
 
@@ -27,7 +25,7 @@ We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com
 
 If you've already got some of these resources created on your project, the module expects you to integrate them. If the resources don't exist, the module (and submodules) will create those resources for you. Figuring out which of your project's pre-existing resources to integrate, and then which resources you should leverage the module's calls to create is the first step. Here's a rough whiteboarded visual of the process. Some call it art:
 
-![TODO](images/atlantis_process1.png "TODO")
+![TODO](images/atlantis_process1.png =250x "TODO")
 
 The next step is to figure out _the order in which to create the resources you need_ so as to avoid/minimize interdependency resource conflicts with the pre-existing resources you are integrating. The order of operations for the latter is what makes implementing Atlantis a bit tricky, especially if you're not familiar with ways to troubleshoot the resources the Atlantis module creates.
 
