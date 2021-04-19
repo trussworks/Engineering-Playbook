@@ -16,14 +16,14 @@ In deciding how to implement Atlantis in your project's context, let's first tak
 
 Atlantis is ["a simple Go app. It receives webhooks from your Git host and executes Terraform commands locally."](https://www.runatlantis.io/docs/deployment.html#architecture-overview) It's high-level infrastructure middleware.
 
-We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to create the resources we need to deploy Atlantis. As you can see in the documentation, this module leverages the following resources in your code:
+We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to create the resources we need to deploy Atlantis. As you can see in the documentation, this module leverages the a variety of modules, submodules, and direct resource calls in your code to create the following:
 
-- Virtual Private Cloud (VPC)
-- SSL certificate using Amazon Certificate Manager (ACM)
-- Application Load Balancer (ALB)
-- Domain name using AWS Route53 which points to ALB
-- AWS Elastic Cloud Service (ECS) and AWS Fargate running Atlantis Docker image
-- AWS Parameter Store to keep secrets and access them in ECS task natively
+- [Virtual Private Cloud (VPC)](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) and the accompanying [EC2-VPC security group](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)
+- [SSL certificate using Amazon Certificate Manager (ACM)](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest)
+- [Application Load Balancer (ALB)](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/latest) and submodules for [https 443](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/https-443) and [http 80](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/http-80)
+- Domain name using [AWS Route53](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) which points to ALB
+- AWS [Elastic Cloud Service (ECS)](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest), and [AWS Fargate running Atlantis Docker image](https://github.com/cloudposse/terraform-aws-ecs-container-definition)
+- AWS [Parameter Store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) to keep secrets and access them in ECS task natively
 
 If you've already got some of these resources created on your project, the module expects you to integrate them. If the resources don't exist, the module (and submodules) will create those resources for you. Figuring out which of your project's pre-existing resources to integrate, and then which resources you should leverage the module's calls to create is the first step. Here's a rough whiteboarded visual of the process. Some call it art:
 
