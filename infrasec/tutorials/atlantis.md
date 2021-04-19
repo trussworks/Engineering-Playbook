@@ -25,7 +25,7 @@ We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com
 
 If you've already got some of these resources created on your project, the module expects you to integrate them. If the resources don't exist, the module (and submodules) will create those resources for you. Figuring out which of your project's pre-existing resources to integrate, and then which resources you should leverage the module's calls to create is the first step. Here's a rough whiteboarded visual of the process. Some call it art:
 
-![TODO](images/atlantis_process1.png =250x "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" width="250">
 
 The next step is to figure out _the order in which to create the resources you need_ so as to avoid/minimize interdependency resource conflicts with the pre-existing resources you are integrating. The order of operations for the latter is what makes implementing Atlantis a bit tricky, especially if you're not familiar with ways to troubleshoot the resources the Atlantis module creates.
 
