@@ -192,9 +192,15 @@ To fix this in our case, we can mimic the ecs tasks in another stack. We create 
 
 ![TODO](images/atlantis_ecs5.png "TODO")
 
-### LB Log Bucket Drama
+### Connect the Bucket
 
-One must create the log bucket to store logs in! Otherwise you can't use these calls in the module, bc of all the things this module does, the bucket is not created for you:
+Of all the things this module does, it **does not** create a logs bucket. The module itself has the expectation you will either create a new bucket or connect an existing one. In our example, we'll connect an existing logs bucket and ensure our permissions are correct.
+
+Locate your existing logs bucket, presumably created using the `trussworks/logs/aws` module. We're just going to put logs in the bucket that already exists for the account, in our case `transcom-gov-milmove-exp-aws-logs`.
+
+Once we find the code that creates the bucket, we need to give Atlantis permission to add our logs to the bucket. We do this by adding our chosen logs bucket prefix (we're following the established pattern and using `alb/atlantis-exp` here) to the `alb_logs_prefixes` and the `nlb_logs_prefixes` lists [in our existing logs bucket](https://github.com/transcom/transcom-infrasec-gov/blob/0eeba19465584e10772a9b1d1f71fb3e87d7138c/transcom-gov-milmove-exp/admin-global/main.tf#L25-L26).
+
+After that, we seal the deal by returning to our code and adding the following code to our module call:
 
 ```hcl
 alb_log_bucket_name             = "transcom-gov-milmove-exp-aws-logs"
@@ -203,7 +209,11 @@ alb_logging_enabled             = true
 alb_listener_ssl_policy_default = true
 ```
 
-Here you can see we're just putting this in the bucket that already exists for the stack.
+Another example is available in the [legendary-waddle repo](https://github.com/trussworks/legendary-waddle/blob/6b63fc65c6d2b0237a7233ad36cb9356f329966b/trussworks-prod/atlantis-prod/main.tf#L54-L56)
+
+Then we can go into the console to check that the bucket contains the prefix path by viewing the auto-created `ELBAccessLogTestFile` under the path you indicated, in our case `alb/atlantis-exp/`:
+
+![TODO](images/atlantis_lb_bucket.png)
 
 ## SSM/Parameter Store Drama
 
