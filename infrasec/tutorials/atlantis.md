@@ -2,9 +2,20 @@
 
 ## Step-by-Step Atlantis Implementation
 
-### Where to start
+### Contextual Planning
 
-First off, there are [3 ways to configure Atlantis](https://www.runatlantis.io/docs/configuring-atlantis.html). Step one is looking at your own configuration and deciding which way to implement your Atlantis server. The [Atlantis docs](https://www.runatlantis.io/docs/server-configuration.html) summarize our options:
+#### Step 1: Know the Options
+
+In deciding how to implement Atlantis in your project's context, let's first take a moment to step back and remind ourselves what Atlantis is and what it does. Atlantis is ["a simple Go app. It receives webhooks from your Git host and executes Terraform commands locally."](https://www.runatlantis.io/docs/deployment.html#architecture-overview) It's high-level infrastructure middleware.
+
+Although you certainly do not have to make concrete decisions on all implementation facets before you begin , you should take some time to familiarize yourself with your options regarding
+
+1. How to **configure** the Atlantis server, and
+1. How to **integrate** Atlantis' resources into your existing structure
+
+#### Configuration
+
+As of the time of this publication, there are [3 ways to configure Atlantis](https://www.runatlantis.io/docs/configuring-atlantis.html). Step one is looking at your own configuration and deciding which way to implement your Atlantis server. The [Atlantis docs](https://www.runatlantis.io/docs/server-configuration.html) summarize our options:
 
 ```text
 Configuration to atlantis server can be specified via command line flags, environment variables, a config file or a mix of the three.
@@ -12,9 +23,9 @@ Configuration to atlantis server can be specified via command line flags, enviro
 
 In the [legendary waddle](https://github.com/trussworks/legendary-waddle) repo, for example, we used a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml).
 
-In deciding how to implement Atlantis in your project's context, let's first take a moment to step back and remind ourselves what Atlantis is and what it does. Atlantis is ["a simple Go app. It receives webhooks from your Git host and executes Terraform commands locally."](https://www.runatlantis.io/docs/deployment.html#architecture-overview) It's high-level infrastructure middleware.
+#### Integration
 
-We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to create the resources we need to deploy Atlantis. As you can see in the documentation, this module leverages the a variety of modules, submodules, and direct resource calls in your code to create the following:
+This tutorial covers using the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis. As you can see [in the documentation](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest#modules), this module leverages a variety of other modules, submodules, and direct resource calls in your code to create the following key components:
 
 - [Virtual Private Cloud (VPC)](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) and the accompanying [EC2-VPC security group](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)
 - [SSL certificate using Amazon Certificate Manager (ACM)](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest)
@@ -23,15 +34,17 @@ We'll be calling the [Atlantis Fargate module](https://tf-registry.herokuapp.com
 - AWS [Elastic Cloud Service (ECS)](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest), and [AWS Fargate running Atlantis Docker image](https://github.com/cloudposse/terraform-aws-ecs-container-definition)
 - AWS [Parameter Store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) to keep secrets and access them in ECS task natively
 
-If you've already got some of these resources created on your project, the module expects you to integrate them. If the resources don't exist, the module (and submodules) will create those resources for you. Figuring out which of your project's pre-existing resources to integrate, and then which resources you should leverage the module's calls to create is the first step. Here's a rough whiteboarded visual of the process. Some call it art:
+If you've already got some of these resources created on your project, the module expects you to integrate them. If the resources don't exist, the Atlantis module (and submodules) will create those resources for you. Figuring out which of your project's pre-existing resources to integrate, and then which resources you should leverage the Atlantis module's calls to create is the first step. Here's a rough whiteboarded visual of the process. Some call it art:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" width="450">
 
-The next step is to figure out _the order in which to create the resources you need_ so as to avoid/minimize interdependency resource conflicts with the pre-existing resources you are integrating. The order of operations for the latter is what makes implementing Atlantis a bit tricky, especially if you're not familiar with ways to troubleshoot the resources the Atlantis module creates.
+The next step is to figure out _the order in which to create the resources you need_ so as to avoid/minimize interdependency conflicts with the pre-existing resources you must integrate. The order of operations for this is what makes using this Atlantis module a bit tricky, especially if you're not familiar with how to both troubleshoot the creation of the resources Atlantis requires **_and_** troubleshoot the interconnectedness of those resources.
 
-As a good example, here are the tickets Ryan & Josh used on EASi in planning/implementing Atlantis:
+However, as a general example, here are some tickets @rpdelaney shared from [CMS's EASi project](https://github.com/CMSgov/easi-app) in planning/implementing Atlantis:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_tix.png" width="450">
+
+After you've planned out your implementation, you're ready to begin.
 
 ### Make sure you have an email
 
@@ -60,7 +73,7 @@ See [this PR](https://github.com/transcom/circleci-docker/pull/98) for the imple
 
 If you do not set the `atlantis_image` variable, you'll find `atlantis:latest` is used by default. This default is not recognized as updated when a new "latest" is released due to the word remaining unchanged. Therefore, we recommend you pass in a numbered version of the Atlantis docker image to the `atlantis_image` var.
 
-### Add the Atlantis bucket and iam role
+### Create the Atlantis IAM role
 
 Create an `atlantis-global` directory in your desired account:
 `mkdir -p transcom-gov-milmove-exp/atlantis-global`
@@ -85,7 +98,7 @@ In a PR that [looks like this](https://github.com/transcom/transcom-infrasec-gov
 
 Which you will need to either use `-target` to apply or apply several times to create resources in an order that respects their interdependency.
 
-You'll also need to add the code to pull in the token like so:
+You'll also need to add a little code to pull in the token from AWS as data:
 
 ```hcl
 data "aws_ssm_parameter" "github_user_token" {
@@ -97,12 +110,12 @@ Here's how we check what we made in the console, with a few corresponding troubl
 
 ### Cert Drama
 
-We want to see a `503` like so:
+We'll get a 503 connection refusal error if our certs aren't set up correctly:
+
 ![TODO](images/atlantis_503.png)
 
-If you get a cert error (wrong cert) when you look at `atlantis.exp.move.mil`
+If you get a cert error when you look at your chosen (in our case `atlantis.exp.move.mil`):
 
-ex:
 ![TODO](images/atlantis_cert1.png "TODO")
 
 Check the records and corresponding IP addresses in the terminal using `dig move.mil` and `host atlantis.move.mil` to pull up your ACM associated values. Here we also check `orders.exp.move.mil` (corresponding to our misaligned certificate), but it looks similar to this:
@@ -212,6 +225,14 @@ Another example is available in the [legendary-waddle repo](https://github.com/t
 Then we can go into the console to check that the bucket contains the prefix path by viewing the auto-created `ELBAccessLogTestFile` under the path you indicated, in our case `alb/atlantis-exp/`:
 
 ![TODO](images/atlantis_lb_bucket.png)
+
+## Hide the UI
+
+tl;dr:
+We used to use Cognito, then Atlantis gave us the capability in the PR workflow so we don't need access to the UI and now we use WAF
+
+This is what we want to see:
+![TODO](images/atlantis_waf1.png)
 
 ## SSM/Parameter Store Drama
 
