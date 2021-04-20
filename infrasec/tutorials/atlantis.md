@@ -184,12 +184,12 @@ We'll see two ALB listeners in the plan related to the redirect on the ALB. Take
 
 ```hcl
   # module.atlantis.module.alb.aws_lb_listener.frontend_http_tcp[0] will be created
-  ...blah...blah...blah...
+  ...
       + port              = 80
       + protocol          = "HTTP"
       + ssl_policy        = (known after apply)
 
-...blah...blah...blah...{{
+  ...{{
 
           + redirect {
               + host        = "#{host}"
@@ -204,7 +204,7 @@ We'll see two ALB listeners in the plan related to the redirect on the ALB. Take
 
   # module.atlantis.module.alb.aws_lb_listener.frontend_https[0] will be created
   + resource "aws_lb_listener" "frontend_https" {
-  ...blah...blah...blah...
+  ...
       + port              = 443
       + protocol          = "HTTPS"
       + ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -251,14 +251,17 @@ To fix this in our case, we can mimic the ecs tasks in another stack. We create 
 
 ## Hide the UI
 
-tl;dr:
 We used to use Cognito, then Atlantis gave us the capability in the PR workflow so we don't need access to the UI and now we use WAF
 
 This is what we want to see:
 
 ![TODO](images/atlantis_waf1.png)
 
-So we use the WAF.
+To obscure the URL we made to set up Atlantis, we'll use our internal Truss [`terraform-aws-wafv2` module](https://registry.terraform.io/modules/trussworks/wafv2/aws/latest).
+
+You'll need the `arn` of the load balancer the Atlantis module created to set this up.
+
+TODO: WAF instructions
 
 ## SSM/Parameter Store Drama
 
