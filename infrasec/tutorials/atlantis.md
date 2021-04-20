@@ -110,7 +110,7 @@ Add a certificate to ACM, which [manages our certificates for us](https://github
 
 We'll need to find the `arn` to plug it into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
 
-![TODO](images/atlantis_acm1.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" width="450">
 
 ### Step 3: Call the [Atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest)
 
@@ -147,7 +147,7 @@ Another example is available in the [legendary-waddle repo](https://github.com/t
 
 Then we can go into the console to check that the bucket contains the prefix path by viewing the auto-created `ELBAccessLogTestFile` under the path we indicated, in our case `alb/atlantis-exp/`:
 
-![TODO](images/atlantis_lb_bucket.png)
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" width="450">
 
 ### Step 4: Troubleshooting
 
@@ -157,11 +157,11 @@ Due to some bugs in the module and the inherent complexity of integrating/settin
 
 We'll get a 503 connection refusal error if our certs aren't set up correctly:
 
-![TODO](images/atlantis_503.png)
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_503.png" width="450">
 
 If we get a cert error when we look at our chosen (in our case `atlantis.exp.move.mil`):
 
-![TODO](images/atlantis_cert1.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_cert1.png" width="450">
 
 Check the records and corresponding IP addresses in the terminal using `dig move.mil` and `host atlantis.move.mil` to pull up our ACM associated values. Here we also check `orders.exp.move.mil` (corresponding to our misaligned certificate), but it looks similar to this:
 
@@ -172,7 +172,7 @@ We can also look at this in Route 53 > Hosted zones check record name --> and lo
 We troubleshoot by logging into the console, looking at our ALB, and checking what's associated with it:
 EC2 > load balancer > `atlantis-exp`
 
-![TODO](images/atlantis_alb2.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb2.png" width="450">
 
 Click on our cert and do a manual hack to point to the load balancer.
 
@@ -218,7 +218,8 @@ We'll see two ALB listeners in the plan related to the redirect on the ALB. Take
 ```
 
 Check out those ports because this is what's happening:
-![TODO](images/atlantis_alb1.png "TODO")
+
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" width="450">
 
 The ALB is being created with these two listeners (one https & one tcp). The tcp port (on 80) serves to redirect to https/443 to force use of our ACM cert we created & sets up SSL termination. This keeps us from having to jump through the hoops of setting up docker and the client with certs and dealing with SSL termination the TCP way, which is much more of a PITA (and is also how we have to do it with NLBs).
 
@@ -230,23 +231,23 @@ We only had govcloud drama here. The module hard-codes `aws` as the provider but
 
 Check task exists in console via ECS > Clusters > `atlantis-exp`
 
-![TODO](images/atlantis_ecs1.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs1.png" width="450">
 
 We can also see the task definition by clicking on the `Task definition` name
 
-![TODO](images/atlantis_ecs2.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs2.png" width="450">
 
 If we can see in the console that the Fargate container says `STOPPED`, we can also see the reason.
 
-![TODO](images/atlantis_ecs3.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs3.png" width="450">
 
-Typically this is a policy/permissions error. We can see here the only permissions we have are thw two policies needed to read our Github secrets.
+Typically this is a policy/permissions error. We can see here the only permissions we have are the two policies needed to read our Github secrets.
 
-![TODO](images/atlantis_ecs4.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" width="450">
 
 To fix this in our case, we can mimic the ecs tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role. A successful poicy attachement will look like this:
 
-![TODO](images/atlantis_ecs5.png "TODO")
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs5.png" width="450">
 
 ## Hide the UI
 
@@ -254,6 +255,7 @@ tl;dr:
 We used to use Cognito, then Atlantis gave us the capability in the PR workflow so we don't need access to the UI and now we use WAF
 
 This is what we want to see:
+
 ![TODO](images/atlantis_waf1.png)
 
 So we use the WAF.
