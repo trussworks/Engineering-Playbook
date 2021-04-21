@@ -217,3 +217,19 @@ func TestMyTimeFunc(t *testing.T) {
   }
 }
 ```
+
+## `http.ResponseWriter`
+
+### HTTP Status Codes & Bytes Written
+
+There are a surprising number of
+[footguns](https://en.wiktionary.org/wiki/footgun) associated with trying to
+gather statistics about an HTTP request, having to do with several obscure
+and optional ("smuggled"?) `http.ResponseWriter` interfaces. This is a
+regularly occurring challenge for anyone trying to implement a request-
+logging middleware.
+
+The recommended package for this task is called
+[httpsnoop](https://github.com/felixge/httpsnoop), and the author has a great
+explaination of
+["Why this package exists"](https://github.com/felixge/httpsnoop#why-this-package-exists).
