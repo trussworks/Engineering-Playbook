@@ -118,7 +118,9 @@ Whether not you chose to create a dedicated IAM user for Atlantis, you will need
     }
     ```
 
-1. Create the ECS policy for the Auto-Created Role
+    We'll also need to add a line of code to let Atlantis role control terraform. In `legendary-waddle` this is done per account by adding a single line of code to the [`role_arn` value to the s3 backend](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-misty/atlantis-global/terraform.tf#L10), and an [`assume_role` object to the account provider](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/admin-global/providers.tf#L3-L5). We may want to begin by leaving this code commented out. See the [IAM troubleshooting section](#general-iam-role-assumptions-troubleshooting) for caveats regarding role assumption.
+
+2. Create the ECS policy for the Auto-Created Role
 
 The Atlantis module creates the ECS task automatically (using your name variable and called `<NAME>-ecs_task_execution`) by passing in the [`terraform-aws-ecs`](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest) module as a submodule, which in turn uses the [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) resource to create the IAM role for the task. As you can see, we're now a few layers deep, which makes any variance in the expected chain of events a bit tricky to troubleshoot.
 
@@ -300,6 +302,10 @@ Submit a PR, get approval, and `terraform apply` the code. We should check our u
 
 Due to some bugs in the module and the inherent complexity of integrating/setting up so many resources, some degree of troubleshooting will be necessary. Thus it's included here as a step.
 
+### General IAM Role Assumptions Troubleshooting
+
+We added code to let the Atlantis role control terraform following the  `legendary-waddle` examples for the [s3 backend](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-misty/atlantis-global/terraform.tf#L10), and the [account provider](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/admin-global/providers.tf#L3-L5). While we're making changes in terraform for various resources (such as the VPC, ALB, etc.), those resources do not neccesarily also have permissions to control our code. As a result, `terraform init` (as well as any other terraform commands) throw an "access denied" or "unauthorized" error. Temporarily commenting out the assumed role-related code allows us to continue.
+
 ### ACM/Certificate Troubleshooting
 
 We'll get a `503` connection refusal error if our certs aren't set up correctly:
@@ -376,7 +382,7 @@ The ALB is being created with these two listeners (one https & one http). The ht
 
 Check that the Fargate instance is behind the ALB. If not we'll have to put it there manually in the console. We can do this by specifying the target group.
 
-### ECS Tasks Permissions Troubleshooting
+### ECS Task and Role Permissions Troubleshooting
 
 We only had govcloud drama here. The module hard-codes `aws` as the provider but govcloud requires `aws-us-gov` to create the task policy attachment. 🤷‍♀️
 
