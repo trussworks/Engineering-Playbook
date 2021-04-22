@@ -1,6 +1,8 @@
 # [InfraSec](./README.md) / Atlantis
 
-This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud. Unsurprisingly, both this module and Atlantis have evolved since we first deployed Atlantis at Truss, and this step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
+This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud. Unsurprisingly, both the Atlantis module and Atlantis itself have evolved since we first deployed Atlantis at Truss. This step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
+
+For accessibility, code links are sourced from the [legendary-waddle](https://github.com/trussworks/legendary-waddle) repository as Atlantis is not currently deployed in [legendary-waddle-gov](https://github.com/trussworks/legendary-waddle-gov). Inline code examples have been supplied for notable deviations.
 
 ## Step 1: Know the Options
 
@@ -99,9 +101,66 @@ Assuming the robot user does not have access to our newly created account's `/at
 
 We can log into the console for the account we want to deploy Atlantis in (in our case, `transcom-gov-milmove-exp`), and add our key to AWS Systems Manager > Parameter Store using the naming convention `</directory/object_name>` (ex. `/atlantis-global/atlantis_key`) as type `SecureString`. Use "My current account" as the KMS key source.
 
-### Create the Atlantis IAM role 🎩 TODO
+### Create the Atlantis IAM role and policies 🎩
 
-Whether not you chose to create a dedicated IAM user for Atlantis, you will need to create a role to assume. Atlantis needs a role in order to assume two functions for our module:
+Whether not you chose to create a dedicated IAM user for Atlantis, you will need to create an IAM role for Atlantis. Atlantis needs a role (and corresponding policy permissions) in order to perform two main functions for our module: assuming ECS task control and assuming Terraform/GitHub control in the Account.
+
+1. Create the Atlantis role and policy
+
+    Our role, policy, and policy attachment will look a lot like [the example in legendary waddle](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-global/main.tf#L22-L48). We'll want to alter the policy principals to match our project's role names, but otherwise the code is pretty standard. Depending on our logs setup, we may want to add access to service logs as an additional principal like so:
+
+    ```hcl
+    principals {
+      type = "Service"
+      identifiers = [
+        "delivery.logs.amazonaws.com"
+      ]
+    }
+    ```
+
+1. Create the ECS policy for the Auto-Created Role
+
+The Atlantis module creates the ECS task automatically (using your name variable and called `<NAME>-ecs_task_execution`) by passing in the [`terraform-aws-ecs`](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest) module as a submodule, which in turn uses the [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) resource to create the IAM role for the task. As you can see, we're now a few layers deep, which makes any variance in the expected chain of events a bit tricky to troubleshoot.
+
+For our example, we'll need to create:
+
+* a [policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)
+* a [policy document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document), and
+* a [role policy attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)
+
+Our final code will look look something like this:
+
+```hcl
+resource "aws_iam_policy" "atlantis" {
+  name   = "atlantis"
+  path   = "/"
+  policy = data.aws_iam_policy_document.atlantis.json
+}
+
+data "aws_iam_policy_document" "atlantis" {
+  # Atlantis can read information about clusters, services, tasks, and task definitions.
+  statement {
+    actions   = ["ssm:*"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+  statement {
+    actions = ["sts:AssumeRole"]
+    resources = [
+      "arn:aws-us-gov:iam::${data.aws_caller_identity.current.account_id}:role/atlantis",
+    ]
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "atlantis" {
+  role       = aws_iam_role.atlantis.name
+  policy_arn = aws_iam_policy.atlantis.arn
+}
+```
+
+For comparison, there is a slightly different setup in the [`legendary-waddle` repository](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-prod/atlantis-global/main.tf#L50-L79) which places [the policy attachments in the individual accounts](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-misty/atlantis-global/main.tf#L12-L35). Pick your poison; the setup will vary based on your account structure.
+
+Finally, because we're using GovCloud, we'll need to manually go in the console and change the ECS policy arn until [this PR gets merged](https://github.com/terraform-aws-modules/terraform-aws-atlantis/pull/192). This is because the Atlantis module's [`policies_arn` variable](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest#input_policies_arn) passes through a default value for an [AWS "managed" policy for ECS task execution](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html) using a partition that only works in commercial accounts. Tl;dr: instead of `aws`, we need the value `aws-us-gov` in our policy.
 
 ### Add & validate a certificate for Atlantis
 
