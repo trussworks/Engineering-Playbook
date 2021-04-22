@@ -413,5 +413,6 @@ When resetting a GitHub personal token in Parameter Store, we will have to redep
 ## Links and other reading
 
 * [Truss's Atlantis blog post](https://truss.works/blog/infrastructure-management-with-atlantis)
-* 🔒 [Atlantis setup in Truss's commercial accounts for the prod tiers](https://github.com/trussworks/legendary-waddle)
-* 🔒 [Atlantis setup in Truss's commercial accounts for the dev tiers](https://github.com/trussworks/legendary-waddle-dev)
+* [Design Doc on Using Multiple Atlantis Servers for Multiple Accounts](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/docs/technical-design/multiple-atlantis-servers.md)
+* [ADR on Running Multiple Atlantis Servers](https://github.com/trussworks/legendary-waddle/blob/master/docs/adr/0004-multiple-atlantis-servers.md)
+* [ADR on Building Our Own Atlantis Image](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/docs/adr/0009-build-atlantis-image.md)
