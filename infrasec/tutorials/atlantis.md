@@ -59,15 +59,13 @@ This section contains prep work to highlight resources we will need before calli
 
     `mkdir -p transcom-gov-milmove-exp/atlantis-global`
 
-    Add the terraform state bucket, version, and provider files following the steps following the bootstrapping document in [the Atlantis section](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/bootstrap-new-aws-account.md#atlantis).
+    Add the terraform state bucket, version, and provider files following the steps in the bootstrapping document from [the Atlantis section](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/bootstrap-new-aws-account.md#atlantis).
 
     While we're here, we can go ahead and set up our [`repo config`](https://www.runatlantis.io/docs/server-configuration.html#flags) and [`atlantis.yaml`](https://www.runatlantis.io/docs/repo-level-atlantis-yaml.html#do-i-need-an-atlantis-yaml-file) files.
 
     The official Atlantis documentation provides a lot of options for this configuration if you're feeling experimental, but there are some really great base models in [legendary-waddle](https://github.com/trussworks/legendary-waddle/) for both the [yaml](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml) and [config](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-prod/atlantis_repo_config.json).
 
-1. Set up GitHub Access for the Atlantis Role
-
-1. Use the Bot 🤖
+2. Use the Bot 🤖
 
 If our project has a Robot user already, we can ride the coattails of those pre-existing GitHub user permissions for Atlantis as well. To do this, all you need to do is pass in the name of the robot user to the `atlantis_github_user` value in a later step when we call [the Atlantis module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest).
 
@@ -256,7 +254,11 @@ Eventually we'll build out until our call looks lot like [the example in `legend
 
 1. Submit a PR, get approval, and `terraform apply` the code.
 
-## Step 4: Connect the ALB Logs Bucket 🪣
+## Step 4: Configure Your Webhook
+
+The Atlantis module conveniently creates a GitHub webhook for you, and the documentation on this is fairly good. Follow the Atlantis documentation on [how to configure that webhook](https://www.runatlantis.io/docs/configuring-webhooks.html#github-github-enterprise).
+
+## Step 5: Connect the ALB Logs Bucket 🪣
 
 Of all the things this module does, it **does not** create a logs bucket. The module itself has the expectation we will either create a new bucket or connect an existing one. In our example, we'll connect an existing logs bucket and ensure our permissions are correct.
 
@@ -281,7 +283,7 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" width="450">
 
-## Step 5: Hide the UI (and a little backstory) 📰
+## Step 6: Hide the UI (and a little backstory) 📰
 
 Once you've [confirmed ACM](#acmcertificate-troubleshooting) grants Atlantis access to GitHub, we should hide the UI. Previously, the only option we had for releasing a `terraform lock` held by Atlantis was through the UI, so it was necessary for both Infra and GitHub to access this UI. However, we still need to prevent malicious outsiders access so they can't do nasty things like sneak into Atlantis, tap into it's Administrator-level access, and run `terraform destroy` on all our precious code, for example.
 
@@ -298,7 +300,7 @@ In this way, we're able to restrict our ingress rules to allow only GitHub IPs. 
 
 Submit a PR, get approval, and `terraform apply` the code. We should check our urls (in our example, `atlantis.exp.move.mil` and `atlantis.exp.move.mil/events`) to ensure we receive our desired responses.
 
-## Step 4: Troubleshooting 🔧
+## Step 7: Troubleshooting 🔧
 
 Due to some bugs in the module and the inherent complexity of integrating/setting up so many resources, some degree of troubleshooting will be necessary. Thus it's included here as a step.
 
