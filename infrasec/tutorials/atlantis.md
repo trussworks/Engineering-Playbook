@@ -1,6 +1,6 @@
 # [InfraSec](./README.md) / Atlantis
 
-This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud. Unsurprisingly, both the Atlantis module and Atlantis itself have evolved since we first deployed Atlantis at Truss. This step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
+This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud in a single account. Unsurprisingly, both the Atlantis module and Atlantis itself have evolved since we first deployed Atlantis at Truss. This step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
 
 For accessibility, code links are sourced from the [legendary-waddle](https://github.com/trussworks/legendary-waddle) repository as Atlantis is not currently deployed in [legendary-waddle-gov](https://github.com/trussworks/legendary-waddle-gov). Inline code examples have been supplied for notable deviations.
 
