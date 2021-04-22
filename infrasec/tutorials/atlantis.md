@@ -291,8 +291,8 @@ One method we've succesfully used is to force federated login via [Cognito](http
 
 Another option is to simply tighten security groups to restrict access so that only GitHub IPs are allowed to access Atlantis. We combine two [Atlantis module optional input settings](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest?tab=inputs#optional-inputs) to get the result we want:
 
-   1. Leave `allow_unauthenticated_access` to remain at its default setting of `false`
-   2. Set `alb_ingress_cidr_blocks = []`
+   1. Leave [`allow_unauthenticated_access`](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L252) to remain at its default setting of `false`
+   2. Set [`alb_ingress_cidr_blocks = []`](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L306)
 
 In this way, we're able to restrict our ingress rules to allow only GitHub IPs. All other requests will return  `ERR_CONNECTION_TIMED_OUT`.
 
@@ -337,7 +337,7 @@ There are no open issues in the module for this discrepancy, so this mystery may
 
 ### ALB Troubleshooting
 
-We'll see two ALB listeners in the plan related to the redirect on the ALB. Take note bc this hot mess might cause problems later:
+We'll see [two ALB listeners](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L235) in the plan related to the redirect on the ALB. Here's a sample plan output:
 
 ```hcl
   # module.atlantis.module.alb.aws_lb_listener.frontend_http_tcp[0] will be created
@@ -378,7 +378,7 @@ Check out these ports because this is what's happening:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" width="450">
 
-The ALB is being created with these two listeners (one https & one http). The http port (on 80) serves to redirect to https/443 and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
+The ALB is being created with these two listeners (one [https](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L222) & one [http](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L224-L235)). The http port (on `80`) serves to redirect to https/`443` and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
 
 Check that the Fargate instance is behind the ALB. If not we'll have to put it there manually in the console. We can do this by specifying the target group.
 
