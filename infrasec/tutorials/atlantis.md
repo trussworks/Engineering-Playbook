@@ -1,6 +1,6 @@
 # [InfraSec](./README.md) / Atlantis
 
-This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud in a single account. Unsurprisingly, both the Atlantis module and Atlantis itself have evolved since we first deployed Atlantis at Truss. This step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
+This step-by-step guide uses the [Atlantis Fargate module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud in a single account. Unsurprisingly, both the Atlantis module and Atlantis itself have evolved since we first deployed Atlantis at Truss. This step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
 
 For accessibility, code links are sourced from the [legendary-waddle](https://github.com/trussworks/legendary-waddle) repository as Atlantis is not currently deployed in [legendary-waddle-gov](https://github.com/trussworks/legendary-waddle-gov). Inline code examples have been supplied for notable deviations.
 
@@ -22,13 +22,13 @@ As of the time of this publication, there are [3 ways to configure Atlantis](htt
 * a config file, or
 * a mix of all three
 
-As an example, Truss' [legendary waddle](https://github.com/trussworks/legendary-waddle) repo uses a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml).
+As an example, Truss' [legendary waddle](https://github.com/trussworks/legendary-waddle) repo uses a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml).
 
 We'll want to decide which accounts to place Atlantis in before we begin, as well as have a general idea of which server configuration method(s) we want to use.
 
 ### Integration Options
 
-This tutorial covers using the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis. This module leverages a variety of other modules, submodules, and direct resource calls in our code to create the following key components:
+This tutorial covers using the [Atlantis Fargate module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis. This module leverages a variety of other modules, submodules, and direct resource calls in our code to create the following key components:
 
 * [Virtual Private Cloud (VPC)](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) and the accompanying [EC2-VPC security group](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)
 * [SSL certificate using Amazon Certificate Manager (ACM)](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest)
@@ -67,9 +67,9 @@ This section contains prep work to highlight resources we will need before calli
 
 2. Use the Bot 🤖
 
-If our project has a Robot user already, we can ride the coattails of those pre-existing GitHub user permissions for Atlantis as well. To do this, all you need to do is pass in the name of the robot user to the `atlantis_github_user` value in a later step when we call [the Atlantis module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest).
+    If our project has a Robot user already, we can ride the coattails of those pre-existing GitHub user permissions for Atlantis as well. To do this, all you need to do is pass in the name of the robot user to the `atlantis_github_user` value in a later step when we call [the Atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest).
 
-Since we have a robot user, we can skip to ["Store a Key in AWS SSM/Parameter Store."](#store-a-key-in-aws-ssmparameter-store-️)
+    Since we have a robot user, we can skip to ["Store a Key in AWS SSM/Parameter Store."](#store-a-key-in-aws-ssmparameter-store-️)
 
 ### Set Up a User, Email, and GitHub Deploy Key (optional) 📧
 
@@ -120,47 +120,47 @@ Whether not you chose to create a dedicated IAM user for Atlantis, you will need
 
 2. Create the ECS policy for the Auto-Created Role
 
-The Atlantis module creates the ECS task automatically (using your name variable and called `<NAME>-ecs_task_execution`) by passing in the [`terraform-aws-ecs`](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest) module as a submodule, which in turn uses the [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) resource to create the IAM role for the task. As you can see, we're now a few layers deep, which makes any variance in the expected chain of events a bit tricky to troubleshoot.
+    The Atlantis module creates the ECS task automatically (using your name variable and called `<NAME>-ecs_task_execution`) by passing in the [`terraform-aws-ecs`](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest) module as a submodule, which in turn uses the [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) resource to create the IAM role for the task. As you can see, we're now a few layers deep, which makes any variance in the expected chain of events a bit tricky to troubleshoot.
 
-For our example, we'll need to create:
+    For our example, we'll need to create:
 
-* a [policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)
-* a [policy document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document), and
-* a [role policy attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)
+    * a [policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)
+    * a [policy document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document), and
+    * a [role policy attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)
 
-Our final code will look look something like this:
+    Our final code will look look something like this:
 
-```hcl
-resource "aws_iam_policy" "atlantis" {
-  name   = "atlantis"
-  path   = "/"
-  policy = data.aws_iam_policy_document.atlantis.json
-}
+    ```hcl
+    resource "aws_iam_policy" "atlantis" {
+      name   = "atlantis"
+      path   = "/"
+      policy = data.aws_iam_policy_document.atlantis.json
+    }
 
-data "aws_iam_policy_document" "atlantis" {
-  # Atlantis can read information about clusters, services, tasks, and task definitions.
-  statement {
-    actions   = ["ssm:*"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = ["sts:AssumeRole"]
-    resources = [
-      "arn:aws-us-gov:iam::${data.aws_caller_identity.current.account_id}:role/atlantis",
-    ]
-  }
-}
+    data "aws_iam_policy_document" "atlantis" {
+      # Atlantis can read information about clusters, services, tasks, and task definitions.
+      statement {
+        actions   = ["ssm:*"]
+        effect    = "Allow"
+        resources = ["*"]
+      }
+      statement {
+        actions = ["sts:AssumeRole"]
+        resources = [
+          "arn:aws-us-gov:iam::${data.aws_caller_identity.current.account_id}:role/atlantis",
+        ]
+      }
+    }
 
-resource "aws_iam_role_policy_attachment" "atlantis" {
-  role       = aws_iam_role.atlantis.name
-  policy_arn = aws_iam_policy.atlantis.arn
-}
-```
+    resource "aws_iam_role_policy_attachment" "atlantis" {
+      role       = aws_iam_role.atlantis.name
+      policy_arn = aws_iam_policy.atlantis.arn
+    }
+    ```
 
-For comparison, there is a slightly different setup in the [`legendary-waddle` repository](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-prod/atlantis-global/main.tf#L50-L79) which places [the policy attachments in the individual accounts](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-misty/atlantis-global/main.tf#L12-L35). Pick your poison; the setup will vary based on your account structure.
+    For comparison, there is a slightly different setup in the [`legendary-waddle` repository](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-prod/atlantis-global/main.tf#L50-L79) which places [the policy attachments in the individual accounts](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-misty/atlantis-global/main.tf#L12-L35). Pick your poison; the setup will vary based on your account structure.
 
-Finally, because we're using GovCloud, we'll need to manually go in the console and change the ECS policy arn until [this PR gets merged](https://github.com/terraform-aws-modules/terraform-aws-atlantis/pull/192). This is because the Atlantis module's [`policies_arn` variable](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest#input_policies_arn) passes through a default value for an [AWS "managed" policy for ECS task execution](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html) using a partition that only works in commercial accounts. Tl;dr: instead of `aws`, we need the value `aws-us-gov` in our policy.
+    Finally, because we're using GovCloud, we'll need to manually go in the console and change the ECS policy arn until [this PR gets merged](https://github.com/terraform-aws-modules/terraform-aws-atlantis/pull/192). This is because the Atlantis module's [`policies_arn` variable](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest#input_policies_arn) passes through a default value for an [AWS "managed" policy for ECS task execution](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html) using a partition that only works in commercial accounts. Tl;dr: instead of `aws`, we need the value `aws-us-gov` in our policy.
 
 ### Add & validate a certificate for Atlantis
 
@@ -180,9 +180,9 @@ We'll need to add a new certificate to ACM, which [manages our certificates for 
 
 3. Validate the Route53 DNS records in the Commercial account using the [`aws_acm_certificate_validation` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation).
 
-We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
+    We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" width="450">
 
 ### Set up Docker 🐋
 
@@ -281,7 +281,7 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 1. Log into the console to make sure the bucket stores logs in our prefix path by viewing the auto-created `ELBAccessLogTestFile` in the path we chose: `alb/atlantis-exp/`
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" width="450">
 
 ## Step 6: Hide the UI (and a little backstory) 📰
 
@@ -304,7 +304,7 @@ Due to some bugs in the module and the inherent complexity of integrating/settin
 
 ### General IAM Role Assumptions Troubleshooting
 
-We added code to let the Atlantis role control terraform following the  `legendary-waddle` examples for the [s3 backend](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-misty/atlantis-global/terraform.tf#L10), and the [account provider](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/admin-global/providers.tf#L3-L5). While we're making changes in terraform for various resources (such as the VPC, ALB, etc.), those resources do not neccesarily also have permissions to control our code. As a result, `terraform init` (as well as any other terraform commands) throw an "access denied" or "unauthorized" error. Temporarily commenting out the assumed role-related code allows us to continue.
+We added code to let the Atlantis role control terraform following the  `legendary-waddle` examples for the [s3 backend](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/atlantis-global/terraform.tf#L10), and the [account provider](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/admin-global/providers.tf#L3-L5). While we're making changes in terraform for various resources (such as the VPC, ALB, etc.), those resources do not neccesarily also have permissions to control our code. As a result, `terraform init` (as well as any other terraform commands) throw an "access denied" or "unauthorized" error. Temporarily commenting out the assumed role-related code allows us to continue.
 
 ### ACM/Certificate Troubleshooting
 
