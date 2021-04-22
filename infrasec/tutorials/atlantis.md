@@ -1,8 +1,6 @@
 # [InfraSec](./README.md) / Atlantis
 
-## Step-by-Step Atlantis Implementation
-
-## Contextual Planning
+This step-by-step guide uses the [Atlantis Fargate module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest) to deploy Atlantis in GovCloud. Unsurprisingly, both this module and Atlantis have evolved since we first deployed Atlantis at Truss, and this step-by-step guide seeks to reflect how our implementations evolve along with the module. If you use this guide and you notice something is out of date, please submit a PR with improvements (no matter how small) to try and keep it up to date as a courtesy to those who come after you.
 
 ## Step 1: Know the Options
 
@@ -10,8 +8,8 @@ The first step in implementing Atlantis is to familiarize ourselves with what At
 
 We don't have to make concrete decisions on all implementation facets before we begin, but we should make some decisions on
 
-1. How to **configure** the Atlantis server, and
-2. How to **integrate** Atlantis' resources into our existing structure
+1. How to **_configure_** the Atlantis server, and
+2. How to **_integrate_** Atlantis' resources into our existing structure
 
 ### Configuration Options
 
@@ -69,15 +67,15 @@ This section contains prep work to highlight resources we will need before calli
 
 1. Use the Bot 🤖
 
-    If our project has a Robot user already, we can ride the coattails of those pre-existing GitHub user permissions for Atlantis as well. To do this, all you need to do is pass in the name of the robot user to the `atlantis_github_user` value in a later step when we call [the Atlantis module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest).
+If our project has a Robot user already, we can ride the coattails of those pre-existing GitHub user permissions for Atlantis as well. To do this, all you need to do is pass in the name of the robot user to the `atlantis_github_user` value in a later step when we call [the Atlantis module](https://tf-registry.herokuapp.com/modules/terraform-aws-modules/atlantis/aws/latest).
 
-    Since we have a robot user, we can skip to Step 8, "Store a Key in AWS SSM/Parameter Store."
+Since we have a robot user, we can skip to ["Store a Key in AWS SSM/Parameter Store."](#store-a-key-in-aws-ssmparameter-store-️)
 
-1. Set Up a User, Email, and GitHub Deploy Key (optional) 📧
+### Set Up a User, Email, and GitHub Deploy Key (optional) 📧
 
-    The official Atlantis docs recommend [creating a dedicated user](https://www.runatlantis.io/docs/access-credentials.html#create-an-atlantis-user-optional). At this point you may want to set up a robot user (you'll eventually need one anyway).
+The official Atlantis docs recommend [creating a dedicated user](https://www.runatlantis.io/docs/access-credentials.html#create-an-atlantis-user-optional). At this point you may want to set up a robot user (you'll eventually need one anyway).
 
-    Although this decision is outside the scope of this tutorial, we can consult [the ADR in legendary waddle on robot accounts](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/adr/0002-robot-accounts.md) and this [ADR on key rotation consequences regarding creating a user](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/technical-design/aws-iam-key-rotation.md#implementation) to make our decision.
+Although this decision is outside the scope of this tutorial, we can consult [the ADR in legendary waddle on robot accounts](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/adr/0002-robot-accounts.md) and this [ADR on key rotation consequences regarding creating a user](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/technical-design/aws-iam-key-rotation.md#implementation) to make our decision.
 
 1. Make sure we've got an email we can associate with Atlantis to recieve notifications, etc. On milmove we were able to associate our pre-existing `dp3.us` email address and use `dp3-integrations+atlantis@truss.works` to associate with the Atlantis role created in the next step.
 
@@ -93,30 +91,24 @@ This section contains prep work to highlight resources we will need before calli
 
     GitHub will send an email to our chosen email address to confirm we succesfully addted the key.
 
-1. **Store a Key in AWS SSM/Parameter Store** 🗝️
+### Store a Key in AWS SSM/Parameter Store 🗝️
 
-    If we're using a pre-existing robot user, we can repurpose that Robot's existing deploy key. The easiest way to find this information may be to just log into the account where the robot user exists and look for a key that corresponds in name to the robot user.
+If we're using a pre-existing robot user, we can repurpose that Robot's existing deploy key. The easiest way to find this information may be to just log into the account where the robot user exists and look for a key that corresponds in name to the robot user.
 
-    Assuming the robot user does not have access to our newly created account's `/atlantis-global` directory, we can simply copy/paste the key value into the parameter store for the account we want to use Atlantis in.
+Assuming the robot user does not have access to our newly created account's `/atlantis-global` directory, we can simply copy/paste the key value into the parameter store for the account we want to use Atlantis in.
 
-    We can log into the console for the account we want to deploy Atlantis in (in our case, `transcom-gov-milmove-exp`), and add our key to AWS Systems Manager > Parameter Store using a naming convention like </directory/object_name> (ex. `/atlantis-global/atlantis_key`) as type `SecureString`. Use "My current account" as the KMS key source.
+We can log into the console for the account we want to deploy Atlantis in (in our case, `transcom-gov-milmove-exp`), and add our key to AWS Systems Manager > Parameter Store using the naming convention `</directory/object_name>` (ex. `/atlantis-global/atlantis_key`) as type `SecureString`. Use "My current account" as the KMS key source.
 
-1. **Set up Docker** (optional) 🐋
+### Create the Atlantis IAM role 🎩 TODO
 
-    Our project continues an established Docker pattern. We'll create a docker image for Atlantis and put that image in ECR with all our other images. Next, we can create (and define) an ECS task to retrieve our Atlantis image from ECR. This way, we can require our Atlantis instance to operate using our specific desired conditions.
+Whether not you chose to create a dedicated IAM user for Atlantis, you will need to create a role to assume. Atlantis needs a role in order to assume two functions for our module:
 
-    However, you can use the Truss image
+### Add & validate a certificate for Atlantis
 
-    If we do not set the `atlantis_image` variable, we'll find `atlantis:latest` is used by default. This default is not recognized as updated when a new "latest" is released due to the word remaining unchanged. Therefore, we recommend passing in a numbered version of the Atlantis docker image to the `atlantis_image` var.
+We'll need to add a new certificate to ACM, which [manages our certificates for us](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html). There are two steps: adding the certificate, and validating the certificate. We can't create **_and_** validate Route53 records in Govcloud. For a more thorough explanation, see our Engineering Playbook documentation on [ACM in GovCloud](https://github.com/trussworks/Engineering-Playbook/blob/23cad804d1390fc5def7a9f7b41d44db88b902a8/infrasec/aws/govcloud/gov-acm.md). To reiterate briefly here, we'll need to:
 
-1. **Create the Atlantis IAM role** 🎩 TODO
-
-## Add & validate a certificate for Atlantis
-
-Add a certificate to ACM, which [manages our certificates for us](https://github.com/transcom/transcom-infrasec-gov/pull/279). If we're using GovCloud, note that we can't create Route53 records in GovCloud. As a result, we'll need to:
-
-1. Create _the certificate_ in GovCloud using the [`aws_acm_certificate` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate)
-1. Export the values as an output in the `output.tf` file like so:
+1. Create the new certificate in GovCloud using the [`aws_acm_certificate` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate)
+2. Export the values as an output in the `output.tf` file like so:
 
     ```hcl
     output "atlantis_cert_validation" {
@@ -127,11 +119,19 @@ Add a certificate to ACM, which [manages our certificates for us](https://github
 
     Once we've merged the PR, we'll have the cert validation output value to validate the certificate in the next step.
 
-1. Validate the Route53 DNS records in the Commercial account using the [`aws_acm_certificate` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record).
+3. Validate the Route53 DNS records in the Commercial account using the [`aws_acm_certificate_validation` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation).
 
 We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" width="450">
+
+### Set up Docker 🐋
+
+For any project not requiring a specific type of docker implementation, we can simply [pass in the `trussworks-atlantis-ecs-image` image](https://github.com/trussworks/trussworks-atlantis-ecs-image) when we make the module call in [Step 3](#step-3-call-the-atlantis-module-).
+
+If we do not set the `atlantis_image` variable, we'll find `atlantis:latest` is used by default. This default is not recognized as updated when a new "latest" is released due to the word remaining unchanged. Therefore, we recommend passing in a numbered version of the Atlantis docker image to the `atlantis_image` var.
+
+Note that the use of Docker in tandem with Atlantis is actually optional, however both our example usage here and the Atlantis Fargate module expect it.
 
 ## Step 3: Call the [Atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) 🧜
 
