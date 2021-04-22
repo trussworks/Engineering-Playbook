@@ -408,7 +408,7 @@ To fix this in our case, we can mimic the ecs tasks in another stack. We create 
 
 ### SSM/Parameter Store Troubleshooting
 
-* When resetting a GitHub personal token in Parameter Store, we will have to redeploy the Atlantis instance. Otherwise, the new credential will not be updated in the instance.
+When resetting a GitHub personal token in Parameter Store, we will have to redeploy the Atlantis instance. Otherwise, the new credential will not be updated in the instance.
 
 ## Links and other reading
 
