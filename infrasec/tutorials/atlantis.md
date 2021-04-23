@@ -252,6 +252,8 @@ Eventually we'll build out until our call looks lot like [the example in `legend
     ]
     ```
 
+    Notice we use `custom_environment_secrets` here instead of using the module's built in `atlantis_github_user_token` variable. This avoids storing the SSM parameter in the state file and prevents us from having to troubleshoot the [general bugginess around parameters](https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS) in the module.
+
 1. Submit a PR, get approval, and `terraform apply` the code.
 
 ## Step 4: Configure Your Webhook
