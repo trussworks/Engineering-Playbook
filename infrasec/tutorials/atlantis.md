@@ -105,7 +105,7 @@ Whether not you chose to create a dedicated IAM user for Atlantis, you will need
 
 1. Create the Atlantis role and policy
 
-    Our role, policy, and policy attachment will look a lot like [the example in legendary waddle](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-global/main.tf#L22-L48). We'll want to alter the policy principals to match our project's role names, but otherwise the code is pretty standard. Depending on our logs setup, we may want to add access to service logs as an additional principal like so:
+    Our role, policy, and policy attachment will look a lot like [the example in legendary waddle](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/atlantis-global/main.tf#L22-L48). We'll want to alter the policy principals to match our project's role names, but otherwise the code is pretty standard. Depending on our logs setup, we may want to add access to service logs as an additional principal:
 
     ```hcl
     principals {
@@ -167,7 +167,7 @@ Whether not you chose to create a dedicated IAM user for Atlantis, you will need
 We'll need to add a new certificate to ACM, which [manages our certificates for us](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html). There are two steps: adding the certificate, and validating the certificate. We can't create **_and_** validate Route53 records in Govcloud. For a more thorough explanation, see our Engineering Playbook documentation on [ACM in GovCloud](https://github.com/trussworks/Engineering-Playbook/blob/23cad804d1390fc5def7a9f7b41d44db88b902a8/infrasec/aws/govcloud/gov-acm.md). To reiterate briefly here, we'll need to:
 
 1. Create the new certificate in GovCloud using the [`aws_acm_certificate` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate)
-2. Export the values as an output in the `output.tf` file like so:
+2. Export the values as an output in the `output.tf` file:
 
     ```hcl
     output "atlantis_cert_validation" {
@@ -296,7 +296,7 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 Once you've [confirmed ACM](#acmcertificate-troubleshooting) grants Atlantis access to GitHub, we should hide the UI. Previously, the only option we had for releasing a `terraform lock` held by Atlantis was through the UI, so it was necessary for both Infra and GitHub to access this UI. However, we still need to prevent malicious outsiders access so they can't do nasty things like sneak into Atlantis, tap into it's Administrator-level access, and run `terraform destroy` on all our precious code, for example.
 
-One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403` like so
+One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403`:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_503.png" width="450">
 
