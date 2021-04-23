@@ -296,7 +296,9 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 Once you've [confirmed ACM](#acmcertificate-troubleshooting) grants Atlantis access to GitHub, we should hide the UI. Previously, the only option we had for releasing a `terraform lock` held by Atlantis was through the UI, so it was necessary for both Infra and GitHub to access this UI. However, we still need to prevent malicious outsiders access so they can't do nasty things like sneak into Atlantis, tap into it's Administrator-level access, and run `terraform destroy` on all our precious code, for example.
 
-One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403` forbidden error.
+One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403` like so
+
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_503.png" width="450">
 
 Another option is to simply tighten security groups to restrict access so that only GitHub IPs are allowed to access Atlantis. We combine two [Atlantis module optional input settings](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest?tab=inputs#optional-inputs) to get the result we want:
 
@@ -319,7 +321,7 @@ We added code to let the Atlantis role control terraform following the  `legenda
 
 When adding access to directories within the same account, we may encounter a `Host key verification failed` error of this flavor:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_gh1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_gh1.png" width="450">
 
 We can see Atlantis is trying to download `git@github.com/transcom/terraform-aws-app-environment.git?ref=3648044cbc497e8fdbc7b31815c7e96c8f2a4976` via ssh and can't. This happens because our Atlantis docker container doesn't have GitHub permissions to clone the private module. It's possible to fix this using a [Dockerfile `ENTRYPOINT` customization](https://github.com/terraform-aws-modules/terraform-aws-atlantis/issues/63#issuecomment-525439848), but the simplest way is to pass in the [`--write-git-creds` flag](https://www.runatlantis.io/docs/server-configuration.html#write-git-creds) to your environment variables. Add the following code to the `custom_environment_variables` section of your Atlantis module call.
 
