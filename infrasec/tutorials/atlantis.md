@@ -219,7 +219,6 @@ We'll start with the most basic Atlantis module call we can. Assuming an existin
 
     # Atlantis
     atlantis_github_user = "atlantis"
-    atlantis_github_user_token = data.aws_ssm_parameter.github_user_token.value
     atlantis_repo_whitelist          = ["github.com/transcom/transcom-infrasec-gov"]
     atlantis_hide_prev_plan_comments = "true"
     allow_github_webhooks = true
@@ -227,14 +226,6 @@ We'll start with the most basic Atlantis module call we can. Assuming an existin
   ```
 
 Eventually we'll build out until our call looks lot like [the example in `legendary-waddle`](https://github.com/trussworks/legendary-waddle/blob/ce52ce64ac2c41be1c0c8e9b3ed577b968714bd6/trussworks-prod/atlantis-prod/main.tf#L33-L123). Note that the example above is GovCloud-based. Replace any references to `us-gov` with `us` if not using GovCloud.
-
-1. We'll also need to add a little code to pull in the token from AWS as data:
-
-    ```hcl
-    data "aws_ssm_parameter" "github_user_token" {
-      name = "/atlantis/github/user/token"
-    }
-    ```
 
 1. Add custom environment secrets:
 
@@ -244,11 +235,11 @@ Eventually we'll build out until our call looks lot like [the example in `legend
     # see https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS
     custom_environment_secrets = [
       {
-        name      = "SSM_ATLANTIS_GH_TOKEN"
+        name      = "ATLANTIS_GH_TOKEN"
         valueFrom = "/atlantis/github/user/token"
       },
       {
-        name      = "SSM_ATLANTIS_GH_WEBHOOK_SECRET"
+        name      = "ATLANTIS_GH_WEBHOOK_SECRET"
         valueFrom = "/atlantis/webhook/secret"
       },
     ]
