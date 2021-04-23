@@ -332,11 +332,9 @@ We added code to let the Atlantis role control terraform following the  `legenda
 
 ### GitHub Troubleshooting
 
-When adding access to directories within the same account, we may encounter a `Host key verification failed` error of this flavor:
+When adding access to directories within the same account, we may encounter a `Host key verification failed` error.
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_gh1.png" alt="Atlantis run Host key verification failed error" width="450">
-
-We can see Atlantis is trying to download `git@github.com/transcom/terraform-aws-app-environment.git?ref=3648044cbc497e8fdbc7b31815c7e96c8f2a4976` via ssh and can't. This happens because our Atlantis docker container doesn't have GitHub permissions to clone the private module. It's possible to fix this using a [Dockerfile `ENTRYPOINT` customization](https://github.com/terraform-aws-modules/terraform-aws-atlantis/issues/63#issuecomment-525439848), but the simplest way is to pass in the [`--write-git-creds` flag](https://www.runatlantis.io/docs/server-configuration.html#write-git-creds) to your environment variables. Add the following code to the `custom_environment_variables` section of your Atlantis module call.
+Atlantis is trying to download a `git@github.com/` prefixed module via ssh and can't. This happens because our Atlantis docker container doesn't have GitHub permissions to clone the private module. It's possible to fix this using a [Dockerfile `ENTRYPOINT` customization](https://github.com/terraform-aws-modules/terraform-aws-atlantis/issues/63#issuecomment-525439848), but the simplest way is to pass in the [`--write-git-creds` flag](https://www.runatlantis.io/docs/server-configuration.html#write-git-creds) to your environment variables. Add the following code to the `custom_environment_variables` section of your Atlantis module call.
 
     ```hcl
     { "name" : "ATLANTIS_WRITE_GIT_CREDS",
@@ -348,24 +346,12 @@ Our plan will show this updates the `aws_ecs_service` task definition and replac
 
 ### ACM/Certificate Troubleshooting
 
-We'll get a `503` connection refusal error if our certs aren't set up correctly:
-
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_503.png" alt="Browser screenshot of a 503 connection refusal error" width="450">
-
-If we get a cert error when we look at our chosen url:
-
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_cert1.png" alt="Browser screenshot of a Certificate Error" width="450">
-
-Check the records and corresponding IP addresses in the terminal using `dig exp.net` and `host atlantis.exp.net` to pull up our ACM associated values. Here we also check `orders.exp.net` (corresponding to our misaligned certificate), but it looks similar to this:
-
-![TODO](images/atlantis_cert2.png "TODO")
+We'll get a `503` connection refusal error if our certs aren't set up correctly. If we get a cert error when we look at our chosen url (atlantis.exp.net) check the records and corresponding IP addresses in the terminal using `dig exp.net` and `host atlantis.exp.net` to pull up our ACM associated values.
 
 We can also look at this in Route 53 > Hosted zones check record name --> and look at the `Value/Route traffic to` column. The value should not be going to an IP, it should be going to a CNAME.
 
-We troubleshoot by logging into the console, looking at our ALB, and checking what's associated with it:
+We troubleshoot by logging into the console, looking at our ALB, and checking what's associated with it via the path:
 EC2 > load balancer > `atlantis-exp`
-
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb2.png" alt="AWS console screenshot of Load Balancer settings" width="450">
 
 We can click on our certificate and manually point to the load balancer.
 
