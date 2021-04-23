@@ -11,18 +11,18 @@ The first step in implementing Atlantis is to familiarize ourselves with what At
 We don't have to make concrete decisions on all implementation facets before we begin, but we should make some decisions on
 
 1. How to **_configure_** the Atlantis server, and
-2. How to **_integrate_** Atlantis' resources into our existing structure
+2. How to **_integrate_** Atlantis' resources into our existing structure.
 
 ### Configuration Options
 
-As of the time of this publication, there are [3 ways to configure Atlantis](https://www.runatlantis.io/docs/configuring-atlantis.html). Step one is looking at our project's configuration and deciding which way to implement our Atlantis server. The [Atlantis docs](https://www.runatlantis.io/docs/server-configuration.html) summarize our options. We can use
+As of the time of this publication, there are [3 ways to configure Atlantis](https://www.runatlantis.io/docs/configuring-atlantis.html). Step one is looking at our project's configuration and deciding which way to implement our Atlantis server. The [Atlantis docs](https://www.runatlantis.io/docs/server-configuration.html) summarize our options.
 
 * command line flags
 * environment variables
 * a config file, or
 * a mix of all three
 
-As an example, Truss' [legendary waddle](https://github.com/trussworks/legendary-waddle) repo uses a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml).
+As an example, Truss' [legendary waddle](https://github.com/trussworks/legendary-waddle) repo uses a combination of [environment variables](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-prod/atlantis-prod/main.tf#L85-L102) and [repo-level `atlantis.yaml` files](https://github.com/trussworks/legendary-waddle/blob/master/atlantis.yaml). In general, we only want to use environment variables and a config file. However it's good to know we can use command line flags for certain [workarounds](#github-troubleshooting).
 
 We'll want to decide which accounts to place Atlantis in before we begin, as well as have a general idea of which server configuration method(s) we want to use.
 
@@ -39,13 +39,36 @@ This tutorial covers using the [Atlantis Fargate module](https://registry.terraf
 
 Some of these resources probably already exist on your project. The module expects us to integrate them. If the key resources don't exist, the Atlantis module (and submodules) will create those resources for us. Figuring out which of our project's pre-existing resources to integrate, and then which resources we should leverage the Atlantis module's calls to create is the next step. Here's a rough whiteboarded visual of the process. Some call it art:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" alt="poorly drawn visual of terraform module interdependency" width="450">
 
 The next step is to figure out _the order in which to create the resources we need_ so as to avoid/minimize interdependency conflicts with the pre-existing resources we must integrate. The order of operations for this is what makes using this Atlantis module a bit tricky, especially if we're not familiar with how to both troubleshoot the creation of the resources Atlantis requires **_and_** troubleshoot the interconnectedness of those resources.
 
 However, as a general example, here are some tickets @rpdelaney shared from [CMS's EASi project](https://github.com/CMSgov/easi-app) in planning/implementing Atlantis:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_tix.png" width="450">
+| Ticket Name | Type |
+| --------------- | --------------- |
+| GitHub user | Story |
+| ACM Certificate | Story |
+| IAM, provider, backend changes | Story |
+| Set up network connectivity | Story |
+| Image build pipeline | Story |
+| Email for Atlantis user | Story |
+| Create GitHub repos | Story |
+| Create ECR repo | Story |
+| Grant automation user push access to the ECR repo | Task |
+| Create GitHub token & add to SSM | Task |
+| Add Atlantis module in terraform | Task |
+| Investigate accessibility via GitHub hook with ALB DNS record | Task |
+| Add policies to automation role policy document | Task |
+| Tune automation policy document to grant access to necessary SSM parameters | Task |
+| Add IAM policy attachments for Execution role to Atlantis module | Task |
+| Add yaml to infra repo | Story |
+| Update Atlantis policy to allow cross-account role assumption to dev | Story |
+| Configure webhook via new DNS record | Task |
+| Add the Atlantis IAM roles to impl, prod, infra | Story |
+| Pass ECR access from automation user to Atlantis user | Task |
+| Investigate applicability of auto-planning | Task |
+| Grant Atlantis service permission to assume the Atlantis role | Task |
 
 After we've planned out our implementation, we're ready to begin.
 
@@ -55,9 +78,9 @@ This section contains prep work to highlight resources we will need before calli
 
 1. Directory Setup
 
-    Create an `atlantis-global` directory in our desired account, in our case (`transcom-gov-milmove-exp`):
+    Create an `atlantis-global` directory in our desired account, in our case (`exp`):
 
-    `mkdir -p transcom-gov-milmove-exp/atlantis-global`
+    `mkdir -p exp/atlantis-global`
 
     Add the terraform state bucket, version, and provider files following the steps in the bootstrapping document from [the Atlantis section](https://github.com/trussworks/legendary-waddle/blob/master/docs/how-to/bootstrap-new-aws-account.md#atlantis).
 
@@ -77,16 +100,16 @@ The official Atlantis docs recommend [creating a dedicated user](https://www.run
 
 Although this decision is outside the scope of this tutorial, we can consult [the ADR in legendary waddle on robot accounts](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/adr/0002-robot-accounts.md) and this [ADR on key rotation consequences regarding creating a user](https://github.com/trussworks/legendary-waddle/blob/344b8c54218e553d778cf5c07ce5f915bb7157a9/docs/technical-design/aws-iam-key-rotation.md#implementation) to make our decision.
 
-1. Make sure we've got an email we can associate with Atlantis to recieve notifications, etc. On milmove we were able to associate our pre-existing `dp3.us` email address and use `dp3-integrations+atlantis@truss.works` to associate with the Atlantis role created in the next step.
+1. Make sure we've got an email we can associate with Atlantis to recieve notifications, etc. On milmove we were able to associate our pre-existing email address and use `myProjectEmail-integrations+atlantis@truss.works` to associate with the Atlantis role created in the next step.
 
-1. Generate a new SSH key per [GitHub's documentation](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key).
+2. Generate a new SSH key per [GitHub's documentation](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key).
 
-1. Next, add the key as a [Deploy Key](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys), following GitHub Docs. As we can see, the first step in the setup is to "Run the `ssh-keygen` procedure" on our server, which we did in the previous step. Note that the act of adding the deploy key is done in the GUI for the repo associated with the location we'd like to deploy Atlantis in. In our case, we're in `transcom/transcom-infrasec-gov` because we're deploying to the `exp` account first. Go to the GitHub repo, click on Settings, and then click on "Deploy keys". Check the box to "Allow write access."
+3. Next, add the key as a [Deploy Key](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys), following GitHub Docs. As we can see, the first step in the setup is to "Run the `ssh-keygen` procedure" on our server, which we did in the previous step. Note that the act of adding the deploy key is done in the GUI for the repo associated with the location we'd like to deploy Atlantis in. In our example we're deploying to the `exp` account first. Go to the GitHub repo, click on Settings, and then click on "Deploy keys". Check the box to "Allow write access."
 
     We can `cat` our `id_ed25519.pub` to see our public key. It will look something like
 
     ```bash
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErcI6OvZmjDqdzucoaLEndRx2DWfPVUKR9aF27ijH6V dp3-integrations+atlantis@truss.works
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErcI6OvZmjDqdzucoaLEndRx2DWfPVUKR9aF27ijH6V myProjectEmail-integrations+atlantis@truss.works
     ```
 
     GitHub will send an email to our chosen email address to confirm we succesfully addted the key.
@@ -97,7 +120,7 @@ If we're using a pre-existing robot user, we can repurpose that Robot's existing
 
 Assuming the robot user does not have access to our newly created account's `/atlantis-global` directory, we can simply copy/paste the key value into the parameter store for the account we want to use Atlantis in.
 
-We can log into the console for the account we want to deploy Atlantis in (in our case, `transcom-gov-milmove-exp`), and add our key to AWS Systems Manager > Parameter Store using the naming convention `</directory/object_name>` (ex. `/atlantis-global/atlantis_key`) as type `SecureString`. Use "My current account" as the KMS key source.
+We can log into the console for the account we want to deploy Atlantis in (in our case, `exp`), and add our key to AWS Systems Manager > Parameter Store using the naming convention `</directory/object_name>` (ex. `/atlantis-global/atlantis_key`) as type `SecureString`. Use "My current account" as the KMS key source.
 
 ### Create the Atlantis IAM role and policies 🎩
 
@@ -182,15 +205,13 @@ We'll need to add a new certificate to ACM, which [manages our certificates for 
 
     We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
 
-    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" alt="Console screenshot of ACM" width="450">
 
-### Set up Docker 🐋
+### Set up the Image for Fargate to Use 🐋
 
 For any project not requiring a specific type of docker implementation, we can simply [pass in the `trussworks-atlantis-ecs-image` image](https://github.com/trussworks/trussworks-atlantis-ecs-image) when we make the module call in [Step 3](#step-3-call-the-atlantis-module-).
 
 If we do not set the `atlantis_image` variable, we'll find `atlantis:latest` is used by default. This default is not recognized as updated when a new "latest" is released due to the word remaining unchanged. Therefore, we recommend passing in a numbered version of the Atlantis docker image to the `atlantis_image` var.
-
-Note that the use of Docker in tandem with Atlantis is actually optional, however both our example usage here and the Atlantis Fargate module expect it.
 
 ## Step 3: Call the [Atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) 🧜
 
@@ -207,19 +228,19 @@ We'll start with the most basic Atlantis module call we can. Assuming an existin
 
     # Route53
     create_route53_record = false
-    route53_zone_name = "atlantis.exp.move.mil"
-    certificate_arn = "arn:aws-us-gov:acm:us-gov-west-1:015681133840:certificate/456c11bd-a730-476d-ba7c-1bd4690ede3f"
+    route53_zone_name = "atlantis.exp.net"
+    certificate_arn = "arn:aws-us-gov:acm:us-gov-west-1:0000000000:certificate/000a00aa-a000-000aaba0a-0aa0000aaa0a"
 
     # VPC
-    vpc_id          = "vpc-0a1234a56789a10"
-    cidr            = "10.30.0.0/16"
+    vpc_id          = "vpc-0a0000a00000a0"
+    cidr            = "255.255.255.255/31"
     azs             = ["us-gov-east-1a", "us-gov-east-1b", "us-gov-east-1c"]
     private_subnet_ids = ["subnet-012345678f01", "subnet-012345678f02", "subnet-012345678f03"]
     public_subnet_ids  = ["subnet-012345678f04", "subnet-012345678f05", "subnet-012345678f06"]
 
     # Atlantis
     atlantis_github_user = "atlantis"
-    atlantis_repo_whitelist          = ["github.com/transcom/transcom-infrasec-gov"]
+    atlantis_repo_whitelist          = ["github.com/myproject/exp"]
     atlantis_hide_prev_plan_comments = "true"
     allow_github_webhooks = true
   }
@@ -232,7 +253,6 @@ Eventually we'll build out until our call looks lot like [the example in `legend
     ```hcl
     # We use custom environment secrets rather than the module inputs
     # because the module is buggy
-    # see https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS
     custom_environment_secrets = [
       {
         name      = "ATLANTIS_GH_TOKEN"
@@ -254,7 +274,7 @@ Eventually we'll build out until our call looks lot like [the example in `legend
 
     Notice we use `custom_environment_secrets` here instead of using the module's built in `atlantis_github_user_token` variable. This avoids storing the SSM parameter in the state file and prevents us from having to troubleshoot the [general bugginess around parameters](https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS) in the module.
 
-1. Submit a PR, get approval, and `terraform apply` the code.
+2. Submit a PR, get approval, and `terraform apply` the code.
 
 ## Step 4: Configure Your Webhook
 
@@ -264,14 +284,14 @@ The Atlantis module conveniently creates a GitHub webhook for you, and the docum
 
 Of all the things this module does, it **does not** create a logs bucket. The module itself has the expectation we will either create a new bucket or connect an existing one. In our example, we'll connect an existing logs bucket and ensure our permissions are correct.
 
-1. Locate the existing logs bucket, presumably created using the `trussworks/logs/aws` module. We're just going to put logs in the bucket that already exists for the account, in our case `transcom-gov-milmove-exp-aws-logs`.
+1. Locate the existing logs bucket, presumably created using the `trussworks/logs/aws` module. We're just going to put logs in the bucket that already exists for the account, in our case `exp-aws-logs`.
 
-    Once we find the code that creates the bucket, we need to give Atlantis permission to add our logs to the bucket. We do this by adding our chosen logs bucket prefix (we're following the established pattern and using `alb/atlantis-exp` here) to the `alb_logs_prefixes` and the `nlb_logs_prefixes` lists [in our existing logs bucket](https://github.com/transcom/transcom-infrasec-gov/blob/0eeba19465584e10772a9b1d1f71fb3e87d7138c/transcom-gov-milmove-exp/admin-global/main.tf#L25-L26).
+    Once we find the code that creates the bucket, we need to give Atlantis permission to add our logs to the bucket. We do this by adding our chosen logs bucket prefix (we're following the established pattern and using `alb/atlantis-exp` here) to the `alb_logs_prefixes` and the `nlb_logs_prefixes` lists in our existing logs bucket.
 
     After that, we seal the deal by returning to our code and adding the code like this inside our module call:
 
       ```hcl
-      alb_log_bucket_name             = "transcom-gov-milmove-exp-aws-logs"
+      alb_log_bucket_name             = "exp-aws-logs"
       alb_log_location_prefix         = "alb/atlantis-exp"
       alb_logging_enabled             = true
       alb_listener_ssl_policy_default = true
@@ -300,9 +320,9 @@ Another option is to simply tighten security groups to restrict access so that o
 
 In this way, we're able to restrict our ingress rules to allow only GitHub IPs. All other requests will return  `ERR_CONNECTION_TIMED_OUT`.
 
-Submit a PR, get approval, and `terraform apply` the code. We should check our urls (in our example, `atlantis.exp.move.mil` and `atlantis.exp.move.mil/events`) to ensure we receive our desired responses.
+Submit a PR, get approval, and `terraform apply` the code. We should check our urls (in our example, `atlantis.exp.net` and `atlantis.exp.net/events`) to ensure we receive our desired responses.
 
-## Step 7: Troubleshooting 🔧
+## Troubleshooting 🔧
 
 Due to some bugs in the module and the inherent complexity of integrating/setting up so many resources, some degree of troubleshooting will be necessary. Thus it's included here as a step.
 
@@ -332,11 +352,11 @@ We'll get a `503` connection refusal error if our certs aren't set up correctly:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_503.png" width="450">
 
-If we get a cert error when we look at our chosen url (in our case `atlantis.exp.move.mil`):
+If we get a cert error when we look at our chosen url:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_cert1.png" width="450">
 
-Check the records and corresponding IP addresses in the terminal using `dig move.mil` and `host atlantis.move.mil` to pull up our ACM associated values. Here we also check `orders.exp.move.mil` (corresponding to our misaligned certificate), but it looks similar to this:
+Check the records and corresponding IP addresses in the terminal using `dig exp.net` and `host atlantis.exp.net` to pull up our ACM associated values. Here we also check `orders.exp.net` (corresponding to our misaligned certificate), but it looks similar to this:
 
 ![TODO](images/atlantis_cert2.png "TODO")
 
@@ -436,3 +456,8 @@ When resetting a GitHub personal token in Parameter Store, we will have to redep
 * [Design Doc on Using Multiple Atlantis Servers for Multiple Accounts](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/docs/technical-design/multiple-atlantis-servers.md)
 * [ADR on Running Multiple Atlantis Servers](https://github.com/trussworks/legendary-waddle/blob/master/docs/adr/0004-multiple-atlantis-servers.md)
 * [ADR on Building Our Own Atlantis Image](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/docs/adr/0009-build-atlantis-image.md)
+
+## What Would Improve This Documentation <br>
+
+* **Switch Default Scenario to Commercial:** Since commercial deployments will be the default case (and ACM, etc. still need to be handled in commercial), the GovCloud-specific cases should be in an appendix or in annotations - ex) "in GovCloud, due to X, you must do Y...". This also allows us to use the `legendary-waddle` deployment verbatim.
+* **Upgrade/improve certain images to diagrams or remove altogether:** Not everyone can be expected to understand my art. More seriously, images can reduce accessibility. UIs often change, so screenshots tend to be outdated quickly. Images should be used strategically and sparingly.
