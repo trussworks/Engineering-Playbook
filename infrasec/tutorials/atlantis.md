@@ -211,7 +211,7 @@ We'll start with the most basic Atlantis module call we can. Assuming an existin
     certificate_arn = "arn:aws-us-gov:acm:us-gov-west-1:015681133840:certificate/456c11bd-a730-476d-ba7c-1bd4690ede3f"
 
     # VPC
-    vpc_id          = ""
+    vpc_id          = "vpc-0a1234a56789a10"
     cidr            = "10.30.0.0/16"
     azs             = ["us-gov-east-1a", "us-gov-east-1b", "us-gov-east-1c"]
     private_subnet_ids = ["subnet-012345678f01", "subnet-012345678f02", "subnet-012345678f03"]
@@ -239,17 +239,26 @@ Eventually we'll build out until our call looks lot like [the example in `legend
 1. Add custom environment secrets:
 
     ```hcl
-    # from https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS
-      custom_environment_secrets = [
-        {
-          name      = "ATLANTIS_GH_TOKEN"
-          valueFrom = data.aws_ssm_parameter.github_user_token.name
-        },
-        # {
-        #   name      = "ATLANTIS_GH_WEBHOOK_SECRET"
-        #   valueFrom = local.webhook_ssm_parameter_name
-        # },
-      ]
+    # We use custom environment secrets rather than the module inputs
+    # because the module is buggy
+    # see https://trussworks.slack.com/archives/CLNC1MUBS/p1615847664002200?thread_ts=1615570522.023200&cid=CLNC1MUBS
+    custom_environment_secrets = [
+      {
+        name      = "SSM_ATLANTIS_GH_TOKEN"
+        valueFrom = "/atlantis/github/user/token"
+      },
+      {
+        name      = "SSM_ATLANTIS_GH_WEBHOOK_SECRET"
+        valueFrom = "/atlantis/webhook/secret"
+      },
+    ]
+
+    custom_environment_variables = [
+      {
+        name  = "ATLANTIS_REPO_CONFIG_JSON"
+        value = file("atlantis.json")
+      }
+    ]
     ```
 
 1. Submit a PR, get approval, and `terraform apply` the code.
@@ -305,6 +314,22 @@ Due to some bugs in the module and the inherent complexity of integrating/settin
 ### General IAM Role Assumptions Troubleshooting
 
 We added code to let the Atlantis role control terraform following the  `legendary-waddle` examples for the [s3 backend](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/atlantis-global/terraform.tf#L10), and the [account provider](https://github.com/trussworks/legendary-waddle/blob/d896c9efb00bf2fb6ca0bf883747852d1851840b/trussworks-misty/admin-global/providers.tf#L3-L5). While we're making changes in terraform for various resources (such as the VPC, ALB, etc.), those resources do not neccesarily also have permissions to control our code. As a result, `terraform init` (as well as any other terraform commands) throw an "access denied" or "unauthorized" error. Temporarily commenting out the assumed role-related code allows us to continue.
+
+### GitHub Troubleshooting
+
+When adding access to directories within the same account, we may encounter a `Host key verification failed` error of this flavor:
+
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_gh1.png" width="450">
+
+We can see Atlantis is trying to download `git@github.com/transcom/terraform-aws-app-environment.git?ref=3648044cbc497e8fdbc7b31815c7e96c8f2a4976` via ssh and can't. This happens because our Atlantis docker container doesn't have GitHub permissions to clone the private module. It's possible to fix this using a [Dockerfile `ENTRYPOINT` customization](https://github.com/terraform-aws-modules/terraform-aws-atlantis/issues/63#issuecomment-525439848), but the simplest way is to pass in the [`--write-git-creds` flag](https://www.runatlantis.io/docs/server-configuration.html#write-git-creds) to your environment variables. Add the following code to the `custom_environment_variables` section of your Atlantis module call.
+
+    ```hcl
+    { "name" : "ATLANTIS_WRITE_GIT_CREDS",
+      "value" : "1"
+    },
+    ```
+
+Our plan will show this updates the `aws_ecs_service` task definition and replaces the `aws_ecs_task_definition` environment, adding our variable.
 
 ### ACM/Certificate Troubleshooting
 
