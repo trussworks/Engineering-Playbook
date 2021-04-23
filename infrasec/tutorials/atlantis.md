@@ -39,7 +39,7 @@ This tutorial covers using the [Atlantis Fargate module](https://registry.terraf
 
 Some of these resources probably already exist on your project. The module expects us to integrate them. If the key resources don't exist, the Atlantis module (and submodules) will create those resources for us. Figuring out which of our project's pre-existing resources to integrate, and then which resources we should leverage the Atlantis module's calls to create is the next step. Here's a rough whiteboarded visual of the process. Some call it art:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" alt="poorly drawn visual of terraform module interdependency" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_process1.png" alt="Poorly drawn visual of terraform module interdependency" width="450">
 
 The next step is to figure out _the order in which to create the resources we need_ so as to avoid/minimize interdependency conflicts with the pre-existing resources we must integrate. The order of operations for this is what makes using this Atlantis module a bit tricky, especially if we're not familiar with how to both troubleshoot the creation of the resources Atlantis requires **_and_** troubleshoot the interconnectedness of those resources.
 
@@ -205,7 +205,7 @@ We'll need to add a new certificate to ACM, which [manages our certificates for 
 
     We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
 
-    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" alt="Console screenshot of ACM" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" alt="AWS Console screenshot of ACM" width="450">
 
 ### Set up the Image for Fargate to Use 🐋
 
@@ -303,7 +303,7 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 1. Log into the console to make sure the bucket stores logs in our prefix path by viewing the auto-created `ELBAccessLogTestFile` in the path we chose: `alb/atlantis-exp/`
 
-    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" alt="AWS Console screenshot of ELBAccessLogTestFile success" width="450">
 
 ## Step 6: Hide the UI (and a little backstory) 📰
 
@@ -311,7 +311,7 @@ Once you've [confirmed ACM](#acmcertificate-troubleshooting) grants Atlantis acc
 
 One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403`:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_503.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_503.png" alt="Browser screenshot of our expected 403" width="450">
 
 Another option is to simply tighten security groups to restrict access so that only GitHub IPs are allowed to access Atlantis. We combine two [Atlantis module optional input settings](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest?tab=inputs#optional-inputs) to get the result we want:
 
@@ -334,7 +334,7 @@ We added code to let the Atlantis role control terraform following the  `legenda
 
 When adding access to directories within the same account, we may encounter a `Host key verification failed` error of this flavor:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_gh1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/b1c165f02307de053cb4c02cb104ea6443d4d265/infrasec/tutorials/images/atlantis_gh1.png" alt="Atlantis run Host key verification failed error" width="450">
 
 We can see Atlantis is trying to download `git@github.com/transcom/terraform-aws-app-environment.git?ref=3648044cbc497e8fdbc7b31815c7e96c8f2a4976` via ssh and can't. This happens because our Atlantis docker container doesn't have GitHub permissions to clone the private module. It's possible to fix this using a [Dockerfile `ENTRYPOINT` customization](https://github.com/terraform-aws-modules/terraform-aws-atlantis/issues/63#issuecomment-525439848), but the simplest way is to pass in the [`--write-git-creds` flag](https://www.runatlantis.io/docs/server-configuration.html#write-git-creds) to your environment variables. Add the following code to the `custom_environment_variables` section of your Atlantis module call.
 
@@ -350,11 +350,11 @@ Our plan will show this updates the `aws_ecs_service` task definition and replac
 
 We'll get a `503` connection refusal error if our certs aren't set up correctly:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_503.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_503.png" alt="Browser screenshot of a 503 connection refusal error" width="450">
 
 If we get a cert error when we look at our chosen url:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_cert1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_cert1.png" alt="Browser screenshot of a Certificate Error" width="450">
 
 Check the records and corresponding IP addresses in the terminal using `dig exp.net` and `host atlantis.exp.net` to pull up our ACM associated values. Here we also check `orders.exp.net` (corresponding to our misaligned certificate), but it looks similar to this:
 
@@ -365,7 +365,7 @@ We can also look at this in Route 53 > Hosted zones check record name --> and lo
 We troubleshoot by logging into the console, looking at our ALB, and checking what's associated with it:
 EC2 > load balancer > `atlantis-exp`
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb2.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb2.png" alt="AWS console screenshot of Load Balancer settings" width="450">
 
 We can click on our certificate and manually point to the load balancer.
 
@@ -416,7 +416,7 @@ We'll see [two ALB listeners](https://github.com/terraform-aws-modules/terraform
 
 Check out these ports because this is what's happening:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" alt="Poorly drawn depiction of SSL termination and http to https port redirection" width="450">
 
 The ALB is being created with these two listeners (one [https](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L222) & one [http](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L224-L235)). The http port (on `80`) serves to redirect to https/`443` and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
 
@@ -428,23 +428,23 @@ We only had govcloud drama here. The module hard-codes `aws` as the provider but
 
 Check task exists in console via ECS > Clusters > `atlantis-exp`
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs1.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs1.png" alt="AWS Console screenshot of ECS tasks" width="450">
 
 We can also see the task definition by clicking on the `Task definition` name
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs2.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs2.png" alt="AWS Console screenshot of ECS task definition" width="450">
 
 If we can see in the console that the Fargate container says `STOPPED`, we can also see the reason.
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs3.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs3.png" alt="AWS Console screenshot of a stopped fargate container" width="450">
 
 Typically this is a policy/permissions error. We can see here the only permissions we have are the two policies needed to read our Github secrets.
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
 
 To fix this in our case, we can mimic the ecs tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role. A successful poicy attachement will look like this:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs5.png" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs5.png" alt="AWS Console screenshot of a succesful policy attachment" width="450">
 
 ### SSM/Parameter Store Troubleshooting
 
