@@ -140,9 +140,9 @@ Whether not you chose to create a dedicated IAM user for Atlantis, you will need
     data "aws_iam_policy_document" "atlantis" {
       # Atlantis can read information about clusters, services, tasks, and task definitions.
       statement {
-        actions   = ["ssm:*"]
+        actions   = ["ssm:GetParameters"]
         effect    = "Allow"
-        resources = ["*"]
+        resources = ["*"] # This can be restricted to the particular SSM parameters Atlantis uses
       }
       statement {
         actions = ["sts:AssumeRole"]
