@@ -1,5 +1,9 @@
 # [Tools and Practice](../README.md) / nix
 
+## EXPERIMENT
+
+We are experimenting with using Nix for developer environments.
+
 ## Overview
 
 The [nix package manager](https://nixos.org/manual/nix/stable/) is a
@@ -22,6 +26,54 @@ The [nix package manager](https://nixos.org/manual/nix/stable/) is a
 
 Nix is used to manage the dependencies of a project to ensure that
 everyone is using the same version of all tools.
+
+## Why Nix? Why not Docker?
+
+Docker for local development provides many of the same advantages of
+nix: reproducible environments with strict versioning. However, docker
+for development, while awesome in many ways, also has some downsides.
+
+### Advantages of Docker
+
+The biggest downside of native development is that our deployments are
+on Linux and it is possible for libraries and code paths to behave
+differently on macOS than on Linux. We currently use native
+development environments and haven't really hit something severe yet,
+so this is more of a theoretical concern for Truss projects right now.
+
+### Advantages of Nix
+
+When doing local development using docker, you need to share your
+mac filesystem with the docker container. Docker for mac has to keep
+the files in sync between your mac and the docker container. That
+synchronization has historically had poor performance. This means that
+operations that access the filesystem inside docker are slow AND use
+significant CPU. Running the same code outside the container is
+sometimes 25-50% faster and that penalty is hard to swallow.
+
+Using Docker for development also complicates committing code. When
+using [pre-commit](../vcs/tools.md) you need access to the development
+environment when committing code. This means either running git inside
+docker or trying to find a way to run your pre-commit hooks inside
+docker.
+
+Running git inside docker has problems because it makes using a hardware
+device for code signing like a
+[yubikey](../../infrasec/tutorials/yubikey-configuration.md) much more
+complicated and difficult.
+
+Running pre-commit inside docker is not a supported configuration by
+pre-commit which takes us even farther away from the well worn path.
+
+Finally, configuring local tooling like editors to use the docker
+development environment is generally much more complicated that
+configuring it to use a native development environment.
+
+For all of these reasons, a native development environment seems like
+a less risky path forward.
+
+Using Nix seems like a way to get almost all of the advantages of
+docker and a native development environment.
 
 ### Differences with homebrew
 
