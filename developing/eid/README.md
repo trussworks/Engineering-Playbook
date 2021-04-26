@@ -11,6 +11,8 @@ In this section you will find overviews of the range of tools to use and suggest
 List of editors that Truss engineers use (sorted alphabetically):
 
 * Atom
+* Emacs
+* Goland
 * Sublime Text
 * vi(m)
 * VS Code
@@ -23,6 +25,7 @@ List of editors that Truss engineers use (sorted alphabetically):
 ##### Plugins
 
 * PackageControl
+* [Sublime Language Server](https://github.com/sublimelsp/LSP)
 * EditorConfig
 * JsPrettier (you will need to configure it to auto-format on save)
 * Babel (for JSX syntax--though looking for better option)
