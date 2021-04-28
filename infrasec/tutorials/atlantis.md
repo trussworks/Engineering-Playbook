@@ -418,11 +418,14 @@ We can also see the task definition by clicking on the `Task definition` name
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs2.png" alt="AWS Console screenshot of ECS task definition" width="450">
 
-If we can see in the console that the Fargate container says `STOPPED`, we can also see the reason.
+If the Fargate container is `STOPPED`, we'll see a section called "Stopped reason" including the reason with the error message included. Unfortunately AWS character-limits this field so the error message may be truncated and end in an  ellipsis, looking something like this:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs3.png" alt="AWS Console screenshot of a stopped fargate container" width="450">
+```text
+Stopped reason
+ResourceinitializationError: unable to pull secrets or registry auth: execution resource retrieval failed: unable to retrieve secrets from ssm: service call has been retried 1 time(s): AccessDenied Exception: User: arn:aws-us-gov:sts:012345678910:assum...
+```
 
-Typically this is a policy/permissions error. We can see here the only permissions we have are the two policies needed to read our Github secrets.
+Typically this specific error is a policy/permissions error. We can see here the only permissions we have are the two policies needed to read our Github secrets.
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
 
