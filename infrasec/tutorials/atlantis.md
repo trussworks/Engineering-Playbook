@@ -402,7 +402,7 @@ Check out these ports because this is what's happening:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" alt="Poorly drawn depiction of SSL termination and http to https port redirection" width="450">
 
-The ALB is being created with these two listeners (one [https](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L222) & one [http](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L224-L235)). The http port (on `80`) serves to redirect to https/`443` and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
+The ALB is being created with these two listeners (one [https](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L222) & one [http](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L224-L235)). The http/`80` port serves to redirect to https/`443` and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
 
 Check that the Fargate instance is behind the ALB. If not we'll have to put it there manually in the console. We can do this by specifying the target group.
 
@@ -429,7 +429,7 @@ Typically this specific error is a policy/permissions error. We can see here the
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
 
-To fix this in our case, we can mimic the ecs tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role. A successful poicy attachement will look like this:
+To fix this in our case, we can mimic the ECS tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role. A successful poicy attachement will look like this:
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs5.png" alt="AWS Console screenshot of a succesful policy attachment" width="450">
 
