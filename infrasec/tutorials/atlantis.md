@@ -309,7 +309,7 @@ Once you've [confirmed ACM](#acmcertificate-troubleshooting) grants Atlantis acc
 
 One method we've succesfully used is to force federated login via [Cognito](https://aws.amazon.com/cognito/), keeping the UI visible so that Infra could still access the UI and unlock plans as needed. However, the Atlantis module evolved. We can now simply run `atlantis unlock` as a command in the PR workflow. Humans no longer need acces to the UI to resolve locks. As a result, we can now construct a WAF to restrict access and return a `403`:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/atlantis-step-by-step/infrasec/tutorials/images/atlantis_403.png" alt="Browser screenshot of our expected 403" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/81aa3c4d5442b49423c8d2a6992c21f054fa46da/infrasec/tutorials/images/atlantis_403.png" alt="Browser screenshot of our expected 403" width="450">
 
 Another option is to simply tighten security groups to restrict access so that only GitHub IPs are allowed to access Atlantis. We combine two [Atlantis module optional input settings](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest?tab=inputs#optional-inputs) to get the result we want:
 
@@ -400,7 +400,7 @@ We'll see [two ALB listeners](https://github.com/terraform-aws-modules/terraform
 
 Check out these ports because this is what's happening:
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_alb1.png" alt="Poorly drawn depiction of SSL termination and http to https port redirection" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/81aa3c4d5442b49423c8d2a6992c21f054fa46da/infrasec/tutorials/images/atlantis_alb1.png" alt="Poorly drawn depiction of SSL termination and http to https port redirection" width="450">
 
 The ALB is being created with these two listeners (one [https](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L212-L222) & one [http](https://github.com/terraform-aws-modules/terraform-aws-atlantis/blob/124e266a8c5746b948114820c07339b5b221917d/main.tf#L224-L235)). The http/`80` port serves to redirect to https/`443` and force use of our ACM certificate, setting up SSL termination on the load balancer. This keeps us from having to jump through the hoops of setting up docker and the client with certificates and dealing with SSL termination the TCP way (which is also how we would have to terminate the certificate with NLBs).
 
