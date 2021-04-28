@@ -34,7 +34,7 @@ This tutorial covers using the [Atlantis Fargate module](https://registry.terraf
 * [SSL certificate using Amazon Certificate Manager (ACM)](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest)
 * [Application Load Balancer (ALB)](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/latest) and submodules for [https 443](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/https-443) and [http 80](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest/submodules/http-80)
 * Domain name using [AWS Route53](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) which points to ALB
-* AWS [Elastic Cloud Service (ECS)](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest), and [AWS Fargate running Atlantis Docker image](https://github.com/cloudposse/terraform-aws-ecs-container-definition)
+* AWS [Elastic Container Service (ECS)](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest), and [AWS Fargate running Atlantis Docker image](https://github.com/cloudposse/terraform-aws-ecs-container-definition)
 * AWS [Parameter Store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) to keep secrets and access them in ECS task natively
 
 Some of these resources probably already exist on your project. The module expects us to integrate them. If the key resources don't exist, the Atlantis module (and submodules) will create those resources for us. Figuring out which of our project's pre-existing resources to integrate, and then which resources we should leverage the Atlantis module's calls to create is the next step. Here's a rough whiteboarded visual of the process. Some call it art:
@@ -203,9 +203,7 @@ We'll need to add a new certificate to ACM, which [manages our certificates for 
 
 3. Validate the Route53 DNS records in the Commercial account using the [`aws_acm_certificate_validation` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation).
 
-    We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. We can find this in the console's Certificate Manager after merging the PR to add the certificate.
-
-    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_acm1.png" alt="AWS Console screenshot of ACM" width="450">
+    We'll need to find the `arn` to plug into the [atlantis module](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) we'll call in the next step. After merging the PR to add the certificate, we can find this `arn` in the console's Certificate Manager under the "Details" section for the domain name (in our example, `atlantis.exp.net`).
 
 ### Set up the Image for Fargate to Use 🐋
 
