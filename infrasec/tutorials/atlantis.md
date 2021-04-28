@@ -301,7 +301,7 @@ Of all the things this module does, it **does not** create a logs bucket. The mo
 
 1. Log into the console to make sure the bucket stores logs in our prefix path by viewing the auto-created `ELBAccessLogTestFile` in the path we chose: `alb/atlantis-exp/`
 
-    <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_lb_bucket.png" alt="AWS Console screenshot of ELBAccessLogTestFile success" width="450">
+    <img src="https://github.com/trussworks/Engineering-Playbook/blob/78a48e75c81825136f892e97df1d661bbe6565ae/infrasec/tutorials/images/atlantis_lb_bucket.png" alt="AWS Console screenshot of ELBAccessLogTestFile success" width="450">
 
 ## Step 6: Hide the UI (and a little backstory) 📰
 
