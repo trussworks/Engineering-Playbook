@@ -412,11 +412,11 @@ We only had govcloud drama here. The module hard-codes `aws` as the provider but
 
 Check task exists in console via ECS > Clusters > `atlantis-exp`
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs1.png" alt="AWS Console screenshot of ECS tasks" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/2afdeb497a9a03542acc63703c3004d5c3ce6901/infrasec/tutorials/images/atlantis_ecs1.png" alt="AWS Console screenshot of ECS tasks" width="450">
 
 We can also see the task definition by clicking on the `Task definition` name
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs2.png" alt="AWS Console screenshot of ECS task definition" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/2afdeb497a9a03542acc63703c3004d5c3ce6901/infrasec/tutorials/images/atlantis_ecs2.png" alt="AWS Console screenshot of ECS task definition" width="450">
 
 If the Fargate container is `STOPPED`, we'll see a section called "Stopped reason" including the reason with the error message included. Unfortunately AWS character-limits this field so the error message may be truncated and end in an  ellipsis, looking something like this:
 
@@ -427,7 +427,7 @@ ResourceinitializationError: unable to pull secrets or registry auth: execution 
 
 Typically this specific error is a policy/permissions error. We can see here the only permissions we have are the two policies needed to read our Github secrets.
 
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
+<img src="https://github.com/trussworks/Engineering-Playbook/blob/2afdeb497a9a03542acc63703c3004d5c3ce6901/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
 
 To fix this in our case, we can mimic the ECS tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role.
 
