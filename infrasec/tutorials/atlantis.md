@@ -222,7 +222,8 @@ We'll start with the most basic Atlantis module call we can. Assuming an existin
 
     name = "${var.environment}-atlantis"
 
-    atlantis_image = "milmove/circleci-docker:milmove-atlantis"
+    # Image managed by repo https://github.com/trussworks/trussworks-atlantis-ecs-image
+    atlantis_image = "trussworks/atlantis:cef8470b4f0aa0a9382f2c4149c53d6a0207f07e"
 
     # Route53
     create_route53_record = false
