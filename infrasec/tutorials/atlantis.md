@@ -429,9 +429,7 @@ Typically this specific error is a policy/permissions error. We can see here the
 
 <img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs4.png" alt="AWS Console screenshot of policies" width="450">
 
-To fix this in our case, we can mimic the ECS tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role. A successful poicy attachement will look like this:
-
-<img src="https://github.com/trussworks/Engineering-Playbook/blob/3efe6ea02ed010f3db2c07921c5c8acc60406b84/infrasec/tutorials/images/atlantis_ecs5.png" alt="AWS Console screenshot of a succesful policy attachment" width="450">
+To fix this in our case, we can mimic the ECS tasks in another stack. We create the policy in terraform and attach it to either the Atlantis IAM user we created or the Atlantis role.
 
 ### SSM/Parameter Store Troubleshooting
 
