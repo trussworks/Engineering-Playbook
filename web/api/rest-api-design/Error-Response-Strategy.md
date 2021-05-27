@@ -1,44 +1,97 @@
-# Key Takeaways
+# Error Response Strategy
 
-* Use a consistent error response strategy
-* Have a default list of errors
-* Your error code should not change, unlink messages, which can change.
+Well formatted errors are an important component of education to the user of the API and should be given as much care as the API design.
+
+Just like an HTML error page shows a useful error message to a visitor, an API should provide a **useful error message** in a known consumable format.
+
+## Key Takeaways
+
+* Use a consistent error response strategy.
+* Have a default list of errors, in addition to abiding by the correct HTTP status codes.
+* Your error codes should not change, unlike descriptive messages, which can change.
 * Consider readability by providing a list of errors and using strings for messages instead of integers.
 
 ## Terms
 
-__Error/Code__        — A unique, machine readable, identifier for the error.\
+__Error Code__        — A unique, machine readable, identifier for the error.\
+__Status Code__ — The status code on the HTTP response. \
 __Message__           — A brief human-readable message.\
 __Detail__            — A lengthier explanation of the error.\
 __Parameters / Path__ — a description of which part of the request triggered the error.
 
-### Strategy on returning consistent errors across the API
+### Use a consistent error format across the API
 
-* You should always return consistent errors. This way your error
-  handling code on the front end can be somewhat generic, instead of
-  having to adapt to different response types based on the API.
+When the client handles an error, they should know the format of the error beforehand. To make this simple, use the same error format across all errors, at least at the top level.
 
-* This is an argument in favor of returning a list of error objects,
-  rather than a single error object, so that the front end doesn’t
-  have to check every time what the shape of the error response is
+This way the error handling code on the frontend can be somewhat generic, instead of having to adapt to different response types based on the API.
 
-### Example of error strategies for each type of error (i.e. server, client, validation, etc.)
+**Example**
+A bad example would be to return errors like these in the same system. Notice one has parameters `Message` and `MissingParameter` and the other `Code` and `Message`:
 
-#### Errors
+```json
+  "Message": "Required parameter AppId is missing.",
+  "MissingParameter": "SearchRequest.AppId",
+```
 
-Any logic or presentation of the error in the front end should be
-based on the code here, never match against the message. Some people
-use `ints` for this but a short string is more readable:
+```json
+  "Code": "125764",
+  "Message": "Transaction could not be completed"
+```
 
-* 2123 vs. “MISSING_PARAMETER”
+The client cannot tell whether `code` will always be returned or not, they would have to match the string. The string could change in another similar error.
 
-#### Messages
+A good example would be to return an error like this, where the `Code`, `Title` and `Message` are available in ALL errors across the API:
 
-Messages are mainly used by developers who are reading a raw response,
-errors presented to users can be switched on the “code” parameter.
+```json
+  "Code": "VALIDATION_ERROR",
+  "Title": "Validation Error",
+  "Message": "Required parameter is missing from body"
+  "Body": {
+    "Parameter": "appId"
+  }
+```
 
-Provide detail. It’s best to always return a list of errors, lists are
-easier to read.
+There's an argument in favor of returning a list of error objects, rather than a single error object, so that the frontend doesn’t have to check every time what the shape of the error response is. This is especially true if you may return multiple errors anywhere in the API.
+
+### Use the correct HTTP status codes
+
+HTTP defines a lot of [meaningful status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) that can be returned from an API. Use these as your HTTP response type.
+
+For e.g. The types of responses are grouped into the following top level categories.
+
+* `2xx` **Success** - This category indicates the action requested by the client was received, understood, and accepted.
+* `4xx` **Client Error** - This category indicate that the error seems to have been caused by the client.
+* `5xx` **Server Error** - This category indicates the server failed to fulfill a request.
+
+**Importance of the Client vs. Server Error Distinction** - `500` server errors signal that something went wrong on the backend *that shouldn't have*. Most known errors should be a `4xx`. Most `500` errors are bugs. Keep this in mind as you select which type of error response your situation calls for.
+
+Since there are a lot of status codes, it's advisable to pick a well-known subset of HTTP responses and return mainly those.
+
+* `200` **OK** - Response to a successful GET, PUT, PATCH or DELETE. Can also be used for a POST that doesn't result in a creation.
+* `201` **Created** - Response to a POST that results in a creation.
+* `404` **Not Found** - When a non-existent resource is requested.
+* `422` **Unprocessable Entity** - Used for validation errors.
+* `409` **Conflict** - When we cannot process the request due to the current state of the server.
+* `412` **Precondition Failed** - A precondition like [optimistic locking](./Concurrency-Control.md) has failed.
+
+### Use a constant error code to uniquely identify errors
+
+A constant error code in the body allows the logic on the frontend to understand and handle the error correctly. Note this is different from the HTTP status code.
+
+Any logic that handles this error code should match on the error code and not on an error string. This ensures error handling won’t break if the message changes.
+
+For the error code itself, consider using an enumerated short string for readability. This provides the twofold benefit of being a constant value, but also being human-readable.
+
+```json
+  "Code": "MISSING_PARAMETER"
+```
+
+### Provide Detailed Messages
+
+Messages are mainly used by developers who are reading a raw response, so help them understand what went wrong and how they could fix it.
+
+Provide detail. If there are multiple errors, it's best to always return a list of errors, lists are
+easier to read and process.
 
 Consider adding parameters to your messages. This is most commonly
 used for validation errors, describing what parameter in the request
@@ -69,16 +122,16 @@ _From Bing, a good error response:_
 
 _From go, a bad error response:_
 
-```
-    Server error.
+```json
+    Bad Request
 ```
 
 ### Reporting validation errors
 
-Validation issues can be global, per object, and per field and a single request can have multiple errors.
-This is why it is important to be able return an array of errors.
+Validation issues can be global, per object, and per field and a single request can have multiple errors. This is why it is important to be able return an array of errors.
 
-We reccomend having a list of errors be the default, even in cases when there is only one error returned.
+We recommend having a list of errors be the default, even in cases when there is only one error returned.
+
 This simplifies client side code to be able to assume the top level format of error bodies.
 
 You can tie individual errors to the invalid request using a “parameters/path” key
@@ -100,11 +153,20 @@ You can tie individual errors to the invalid request using a “parameters/path�
 }
 ```
 
-### Internationalizing errors
+### Add a traceID to help trace errors
 
-#### Best practice is to handle internationalization in the Front End
+It can be useful to add a parameter that uniquely identifies the specific request with a UUID. Then in your server logs, be sure to add that parameter in your structured logging data.
 
-React uses the React-Intl library. Examples of how errors are
+When a client has an error and cannot solve it themselves, they can report the error with the traceID, allowing backend developers to find the associated logs.
+
+```json
+ {
+      "code": "CONFLICT_ERROR",
+      "title": "Conflict Error",
+      "detail": "Estimated weight must be set before this item can be approved.",
+      "trace": "7673868d-231e-490d-9c4f-19288e7e668d"
+ }
+```
 
 ### Handling errors in API requests that affect multiple "objects"
 
@@ -128,11 +190,9 @@ Example:
 }
 ```
 
-### TODO: LIST TRADEOFFS in this document
+## Todo
 
-## Topics for Discussion
-
-* HTTP Status Code - how are we using them across [MilMove], are they used differently, provide examples..
+* Internationalizing errors
 
 ### Resources
 
