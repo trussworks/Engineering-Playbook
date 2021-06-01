@@ -2,7 +2,7 @@
 
 ## Overview
 
-Go aka Golang is a programming language designed by folks at Google.
+Go (a.k.a. Golang) is a programming language designed by folks at Google.
 
 This guide provides some general resources for working in Go.
 [Web Application in Go](../../web/server/go.md)
@@ -57,6 +57,14 @@ provides some specifics to web development.
   and should not change the intended usage.
   If you find that an unexported function is complex and needs testing,
   it might mean it needs to be refactored as it's exported function elsewhere.
+
+## Context
+
+### Function First Parameter
+
+As a general rule, `context.Context` should be passed down through the layers of your program, as this is the conventional Go way [to address "cross cutting concerns"](https://blog.golang.org/context-and-structs#TOC_5.), e.g. cancellation, logging, distributed tracing, or other types of instrumentation (which in other languages might be addressed via Thread Locals or similar constructs).
+
+At Google, they found this pattern to be so useful that [they require it](https://blog.golang.org/context#TOC_5.).
 
 ## Packages
 
