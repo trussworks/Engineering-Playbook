@@ -66,6 +66,94 @@ As a general rule, `context.Context` should be passed down through the layers of
 
 At Google, they found this pattern to be so useful that [they require it](https://blog.golang.org/context#TOC_5.).
 
+## Errors
+
+FYI, Go's error handling had a bit of a shift and update
+[as of 1.13](https://blog.golang.org/go1.13-errors) in ~2019.
+
+### Wrap Errors
+
+Prior to Go 1.13, people were forced to make a hard choice: either add
+descriptive context around an error that was received, or to just pass the
+error through in case it was a "sentinel error" like the canonical `io.EOF`
+example. Nowadays you can both add context to an error, and still ensure the
+caller can examine the error to see if it is a sentinel.
+
+```go
+err := ...
+if err != nil {
+  if oldStyle == true {
+    // this is the pre-1.13 error encapsulation.
+    // the problem here is that this created a whole new error,
+    // which hid the underlying error type.
+    return fmt.Errorf("<richer contextual information>: %v", err)
+  }
+
+  // using the "%w" (wrap) verb means that the error chain is returned
+  // and can be examined by the caller using the
+  // `errors.Unrwap(...)` or `errors.Is(...)` functions
+  return fmt.Errorf("<richer contextual information>: %w", err)
+}
+```
+
+Since these capabilities changed fairly recently, it's common to see many
+libraries and legacy code not using the wrapping pattern, but going forward it
+is preferable to opt for wrapping errors where possible.
+
+### Handle Errors Once
+
+This advice is mostly stolen from the second-to-last section of Dave Cheney's
+somewhat dated [blog post](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully).
+
+If there are 0 side effects from an error received in your code, this means
+you are swallowing it, and this will generally make someone's life (maybe even
+yours) more difficult in the future. Please don't ignore errors.
+
+If there are 2+ side effects from receiving an error, you are adding too much
+noise to the system. This usually manifests as doing BOTH logging of the error
+AND returning the error back up the call stack, but if every layer were to do
+this you'd fill your logs with unnecessary duplication.
+
+### Eliminate Errors
+
+This section is ispired by another Dave Cheney
+[missive](https://dave.cheney.net/2019/01/27/eliminate-error-handling-by-eliminating-errors).
+
+It is possible to reduce error handling overhead by considering if your
+functions absolutely need to return errors. Consider the following:
+
+```go
+func Logger(ctx context.Context) (*zap.Logger, bool) {
+  logger, ok := ctx.Value(loggerKey).(*zap.Logger)
+  return logger, ok
+}
+```
+
+This function means that every place that wants a `*zap.Logger` has to deal
+with the `!ok` condition, creating a lot of boilerplate checking at callsites
+who likely have no idea what the proper fallback is if there is no logger
+defined.
+
+As a consumer, wouldn't the following function signature be easier to deal
+with?:
+
+```go
+func Logger(ctx context.Context) *zap.Logger {
+  logger, ok := ctx.Value(loggerKey).(*zap.Logger)
+  if ok {
+    return logger
+  }
+  fmt.Fprintf(os.Stderr, "no logger configured")
+  return zap.NewNoopLogger()
+}
+```
+
+Callers can now be sure that they will always get a logger of _some_ type. And
+we've centralized, rather than distributed, the fallback behavior. (This
+implementation chose to communicate the configuration problem to the system
+operators via `stderr`, but you might also choose to `panic()`, or do something
+else, YMMV.)
+
 ## Packages
 
 ### Dependency Management
