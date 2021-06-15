@@ -5,15 +5,16 @@ It executes the defined Terraform and then validates things you're asserting.
 
 <!-- toc -->
 
-* [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
-  * [Other Examples](#other-examples)
-* [Run manually](#run-manually)
-* [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
-  * [Configure CircleCi Job](#configure-circleci-job)
-  * [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
-  * [Update the Key rotator configuration](#update-the-key-rotator-configuration)
-  * [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
-* [Documentation links](#documentation-links)
+- [Terraform / Terratest Guide](#terraform--terratest-guide)
+  - [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
+    - [Other Examples](#other-examples)
+  - [Run manually](#run-manually)
+  - [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
+    - [Configure CircleCi Job](#configure-circleci-job)
+    - [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
+    - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
+    - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
+  - [Documentation links](#documentation-links)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
@@ -141,7 +142,7 @@ These keys are rotated daily.
 
 We have automation in place that updates the AWS Access Keys used by CircleCI daily so you'll need to add this repo to rotator configuration if it is running Terratests against the trussworks-ci AWS account .
 
-Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/trussworks/legendary-waddle-dev) to include a sink to your new repo. A sink stanza looks like this:
+Update the `rotate.yaml` file in [Legendary Waddle](https://github.com/trussworks/legendary-waddle) to include a sink to your new repo. A sink stanza looks like this:
 
 ```yaml
       - kind: CircleCI
