@@ -141,7 +141,7 @@ These keys are rotated daily.
 
 We have automation in place that updates the AWS Access Keys used by CircleCI daily so you'll need to add this repo to rotator configuration if it is running Terratests against the trussworks-ci AWS account .
 
-Update the `rotate.yaml` file in [Legendary Waddle Dev](https://github.com/trussworks/legendary-waddle-dev) to include a sink to your new repo. A sink stanza looks like this:
+Update the `rotate.yaml` file in [Legendary Waddle](https://github.com/trussworks/legendary-waddle) to include a sink to your new repo. A sink stanza looks like this:
 
 ```yaml
       - kind: CircleCI
