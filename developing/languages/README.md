@@ -22,6 +22,31 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Language Resources
 
+### Cross-Language Patterns
+
+In many projects, it is fairly common to have interoperation between disparate
+languages, e.g. a Python codebase that also builds an OpenAPI spec or Go
+entities that are marshaled into JSON.
+
+As a general guideline, it is recommended to use identifiers that are idiomatic
+to the destination representation.
+
+Some things to consider:
+
+* Swagger/OpenAPI specs are intended to be JSON (or YAML), so whether you're
+coming from Python (`snake_case`) or BASIC (`CAPITAL_CASE`) or Go
+(`PascalCase`), prefer to output JSON with idiomatic `camelCase` identifiers.
+* Structured logging usually uses JSON as the destination structure, so when
+creating log attributes/names, prefer JSON idiomatic identifiers in
+`camelCase` where possible.
+* Go's idiomatic "acronyms should be capitalized" is actually lossy when it
+comes to acronym/word boundaries, so carefully consider where you apply that
+capitalization rule. For example, some code generators might turn the
+identifier `ExampleHTTPID` into a filename that looks like
+`example_h_t_t_p_i_d.txt`, but if you use `ExampleHttpId` the generator has
+a much better chance of spitting out something reasonable like
+`example_http_id.txt`.
+
 ### JavaScript
 
 Important JS patterns and features to understand:
