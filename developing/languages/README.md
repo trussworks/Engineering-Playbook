@@ -29,7 +29,8 @@ languages, e.g. a Python codebase that also builds an OpenAPI spec or Go
 entities that are marshaled into JSON.
 
 As a general guideline, it is recommended to use identifiers that are idiomatic
-to the destination representation.
+to the destination representation. For example, prefer using `camelCase` with
+JSON APIs.
 
 Some things to consider:
 
