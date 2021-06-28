@@ -85,7 +85,7 @@ In order to preserve the ability to release updates for previous Terraform versi
 ### Version support policy
 
 Truss policy is to support no more than 2 "current" versions of a
-Terrafrom module; this usually means a version to support the latest
+Terraform module; this usually means a version to support the latest
 release of Terraform and the previous release, e.g. Terraform 1.0 and
 Terraform 0.15.
 
