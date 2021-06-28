@@ -82,6 +82,13 @@ In order to preserve the ability to release updates for previous Terraform versi
 [publish-release]: images/publish-release.png "Screenshot of a published release"
 [draft-release]: images/draft-release.png "Screenshot of a release draft"
 
+### Version support policy
+
+Truss policy is to support no more than 2 "current" versions of a
+Terraform module; this usually means a version to support the latest
+release of Terraform and the previous release, e.g. Terraform 1.0 and
+Terraform 0.15.
+
 ### Version not appearing in the registry
 
 If a release published in GitHub does not appear properly in the Terraform registry, see [Releasing New Versions](https://www.terraform.io/docs/registry/modules/publish.html#releasing-new-versions) for instructions on how to address.
