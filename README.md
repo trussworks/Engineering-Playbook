@@ -18,6 +18,7 @@ One question we might ask is whether or not this repo should be public? My incli
 * [InfraSec](./infrasec/README.md) - Infrastructure and security are foundational disciplines for building and maintaining stable systems.
 * [Leadership](./leadership/README.md) - Guidance and resources around being an Engineering Lead or Manager at Truss.
 * [Templates](./templates/README.md) - "Ooh, ooh... I have a thing to add." Here's how to add to this Playbook
+* [Practices](./practices/README.md) - Resources on how the Truss Engineering practices organize
 
 ## Initial Setup
 
