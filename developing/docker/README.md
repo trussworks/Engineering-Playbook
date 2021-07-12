@@ -11,6 +11,10 @@
 * [Volume Mount Performance](#volume-mount-performance)
 * [Inspecting the Docker Virtual Machine](#inspecting-the-docker-virtual-machine)
 * [Inspecting Container Resources](#inspecting-container-resources)
+* [Image IDs, Tags, and Digests](#image-ids-tags-and-digests)
+  * [Problem Statement and Summary](#problem-statement-and-summary)
+  * [Deep Dive](#deep-dive)
+  * [Locally Built Images vs. Images Pushed to a Registry](#locally-built-images-vs-images-pushed-to-a-registry)
 * [Cleaning Up](#cleaning-up)
 * [Docker Configuration](#docker-configuration)
   * [Keybindings](#keybindings)
@@ -93,6 +97,162 @@ run commands inside the Virtual Machine with
 To get a `top` like report of what your containers are doing
 
     docker stats
+
+## Image IDs, Tags, and Digests
+
+Docker image identifiers and SHA256 digests (aka hashes or checksums) are a
+complex topic. In the context of our work at Truss, the topic is especially
+relevant when figuring out which value to use when referencing an image in an
+Amazon Elastic Container Service (ECS) task definition.
+
+### Problem Statement and Summary
+
+An [ECS task
+definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_image)
+can pull an image by tag or digest, so which should you use? Image tags are
+potentially mutable and are not tied to the image contents. For instance, a new
+image could be created with different contents, but could reuse the same tag as
+an earlier, different image. If your ECS task definition pulls the image based
+on tag, you could be pulling in a different image than expected. An image's
+digest, on the other hand, is a hash based on the image contents. Pulling the
+image based on digest provides greater security and protection against
+unintended changes.
+
+When building a Docker image locally, the SHA256 digest to use in the ECS task
+definition won't be known until the image has been pushed to the Docker
+registry. The reason for this is explained in more detail in the sections
+below.
+
+However, once the image has been pushed to the registry, the SHA256 digest to
+use in the ECS task definition can be found with the following command:
+
+    docker image inspect some_image_name -f '{{.RepoDigests}}'
+
+Or if using Amazon's Elastic Container Registry (ECR):
+
+    aws ecr describe-images --repository-name some_repo_name --image-ids imageTag=some_image_tag | jq ".imageDetails[0].imageDigest" -r
+
+### Deep Dive
+
+For a deep dive into docker image IDs and digests, pull and inspect the
+`hello-world` image:
+
+    docker image pull hello-world:latest
+    docker image inspect hello-world:latest
+
+The output will look something like this (not all fields are shown):
+
+    [
+        {
+            "Id": "sha256:bf756fb1ae65adf866bd8c456593cd24beb6a0a061dedf42b26a993176745f6b",
+            "RepoTags": [
+                "hello-world:latest"
+            ],
+            "RepoDigests": [
+                "hello-world@sha256:4cf9c47f86df71d48364001ede3a4fcd85ae80ce02ebad74156906caff5378bc"
+            ],
+            "Parent": "",
+            ...
+            "Container": "71237a2659e6419aee44fc0b51ffbd12859d1a50ba202e02c2586ed999def583",
+            "ContainerConfig": {
+                ...
+                "Image": "sha256:eb850c6a1aedb3d5c62c3a484ff01b6b4aade130b950e3bf3e9c016f17f70c34",
+                ...
+            },
+            ...
+            "Config": {
+                ...
+                "Image": "sha256:eb850c6a1aedb3d5c62c3a484ff01b6b4aade130b950e3bf3e9c016f17f70c34",
+                ...
+            },
+            ...
+            "RootFS": {
+                "Type": "layers",
+                "Layers": [
+                    "sha256:9c27e219663c25e0f28493790cc0b88bc973ba3b1686355f221c38a36978ac63"
+                ]
+            },
+        }
+    ]
+
+In this example, there are four unique sha256 digests: Id, RepoDigests,
+ContainerConfig/Config (which share the same sha256), and Layers (many images
+will have more one than layer, each with its own sha256).
+
+For comparison, here is the `docker image ls` output for the same image:
+
+    docker image ls --digests hello-world
+
+Output:
+
+    REPOSITORY          TAG                 DIGEST                                                                    IMAGE ID            CREATED             SIZE
+    hello-world         latest              sha256:4cf9c47f86df71d48364001ede3a4fcd85ae80ce02ebad74156906caff5378bc   bf756fb1ae65        9 months ago        13.3kB
+
+The following table shows how the digests and IDs correspond between the output
+of the `docker image ls` and `docker image inspect` commands.
+
+| docker image ls| docker image inspect |
+| :------------- | :------------------- |
+| DIGEST | RepoDigests |
+| IMAGE ID | Id |
+
+Why are there so many sha256 digests? Why are they different? Which one(s) will
+you most likely use in your daily workflow?
+
+Let's start by reviewing some of the terminology involved:
+
+    Image: a collection of one more layers.
+
+    Layer: identified by a digest, which is a computed SHA256 of the layer's
+    content. If the content changes, the digest will change.
+
+    Image configuration object (JSON): includes, among other things, an ordered
+    list of all the layer digests that combine to form an image.
+
+Now, let's go through some of the fields in the `docker image inspect` output:
+
+    Id: this is the Image ID, a digest or computed SHA256 hash of the image's JSON
+    configuration object. Note: this is different from the RepoDigest.
+
+    RepoTags: the Repository and Tag for the image. Images that have been built
+    locally and those that have been pushed to or pulled from a Docker registry
+    will have RepoTags.
+
+    RepoDigests: the SHA256 of an image that has been pushed to or pulled from a
+    Docker registry. Note: a locally built Docker image will not have a
+    RepoDigest until it has been pushed to a Docker registry (more on that in
+    the section below).
+
+    Parent, Container, ContainerConfig, Config: these relate to the intermediate
+    container and image used to build the image. You will most likely not need
+    to use these fields in your daily Docker development.
+
+    RootFS: contains the list of layers that make up the image.
+
+### Locally Built Images vs. Images Pushed to a Registry
+
+The difference between locally built images and those that are pushed to or
+pulled from from a Docker registry are where things get especially complicated.
+
+The article [Explaining Docker Image
+IDs](https://windsock.io/explaining-docker-image-ids/) has a very helpful
+description of the concepts discussed in this and the above sections, in particular:
+
+* [Locally Built
+Images](https://windsock.io/explaining-docker-image-ids/#locallybuiltimages).
+Summary: a locally built Docker image includes information about the
+intermediate image used to build the image; when the image is pushed to a Docker
+registry, only the leaf image is uploaded.
+* [Content Digest vs. Distribution
+  Digest](https://windsock.io/explaining-docker-image-ids/#afinaltwist).
+  Summary: the digests for a locally built image are based on the layers' tar
+  archived content; the layers pushed to the registry are compressed, and the
+  manifest created and uploaded to the registry refer to the compressed
+  versions.
+
+The entire article is worth a careful read, but hopefully the summaries above
+will help to explain why locally built images and registry images have different
+digests.
 
 ## Cleaning Up
 
