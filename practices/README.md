@@ -13,3 +13,5 @@ focused on building software applications--
 including and mostly dealing with web development.
 
 ## [InfraSec](./infrasec)
+
+Infrastructure and security engineering (InfraSec) is the practice of building secure, robust systems that are foundational to having reliable applications and services.
