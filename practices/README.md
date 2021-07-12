@@ -12,6 +12,6 @@ Application Engineering (AppEng) is the practice area at Truss
 focused on building software applications--
 including and mostly dealing with web development.
 
-## [InfraSec](./infrasec)
+## [Infrastructure and Security Engineering](./infrasec)
 
-Infrastructure and security engineering (InfraSec) is the practice of building secure, robust systems that are foundational to having reliable applications and services.
+Infrastructure and Security Engineering (InfraSec) is the practice of building secure, robust systems that are foundational to having reliable applications and services.
