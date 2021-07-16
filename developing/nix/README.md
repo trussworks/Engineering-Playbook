@@ -77,48 +77,210 @@ docker and a native development environment.
 
 ### Differences with homebrew
 
-Homebrew has more packages than nix, and installs them globally. For
+Homebrew has more packages than `nix`, and installs them globally. For
 certain things, that might work great. However, that doesn't give
 projects reproducible installs.
 
+One other difference is that versions of particular packages may be more
+up to date in one or the other. E.g. as of this writing, homebrew's 
+`watchman` version is `2021.06.07.00` but `nix` is on `4.9.0`, which is 
+from sometime in 2017 or 2018. 
+
 ## Installation
 
+MacOS requires that we add an argument to the installation command. We also want to 
+do the single user installation. So to install, run:
+
+```shell
+sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
+```
+
 See the [macOS installation](https://nixos.org/manual/nix/stable/#sect-macos-installation)
-instructions.
+and [single user installation](https://nixos.org/manual/nix/stable/#sect-single-user-installation) 
+instructions for more details.
 
 ## Getting started
 
-After installing nix, you should have `~/.nix-profile/bin` in your
-PATH. If you're using the fish shell, check out
-[nix-env.fish](https://github.com/lilyball/nix-env.fish). If you are
-using fish, add this to your `~/.config/fish/config.sh`
+After installing `nix`, you should have `~/.nix-profile/bin` in your
+PATH. 
+
+### Extra Setup (Only Fish Shell Users)
+
+If you're using the fish shell, check out
+[nix-env.fish](https://github.com/lilyball/nix-env.fish). 
+
+Add this to your `~/.config/fish/config.sh`
 
     set -g fish_user_paths "/Users/[your_os_username]/.nix-profile/bin" $fish_user_paths
 
-Now you want to create a new profile and install packages in that
-profile. If you have a directory `nix` with a `default.nix` in it, you
-can do
+### Working With Packages
 
-    nix-env -p /nix/var/nix/profiles/myproject -f ./nix -i
+This is more of a quick overview, but more details can be found in the
+[nix basic package management docs](https://nixos.org/manual/nix/stable/#ch-basic-package-mgmt).
 
-Create an `.envrc` file in a directory with some environment variables your project needs:
+#### Installing New Packages
 
+```shell
+nix-env -i <package>
 ```
+
+E.g.
+
+```shell
+nix-env -i direnv
+```
+
+#### Seeing Installed Packages 
+
+```shell
+nix-env -q
+```
+
+#### Looking for Packages
+
+```shell
+nix-env -qa <package name>
+```
+
+E.g.
+
+```shell
+nix-env -qa python3
+```
+
+#### Uninstalling a Package
+
+```shell
+nix-env -e <package>
+```
+
+E.g.
+
+```shell
+nix-env -e chamber
+```
+
+### Profiles
+
+Profiles can be used at a global level, on a per-project basis, or
+on a per-repo basis.
+
+E.g. for MilMove, you might want a profile that contains things like
+`aws-vault`, `chamber`, etc. which spans more than just the `mymove` 
+repo. On the other hand, you may not want to use a global profile 
+(like the default one mentioned in the next section) because you may
+need different versions of `aws-vault` for different projects.
+
+#### Default
+
+When it's installed, `nix` creates a profile which will store all the 
+packages you install by default, unless you tell it to use a different 
+profile when you're installing a package, or you switch the active 
+profile to be another one.
+
+Default profile is in: `/nix/var/nix/profiles/per-user/<username>/profile/` 
+E.g. `/nix/var/nix/profiles/per-user/felipe/profile/`
+
+#### Creating a Profile
+
+You can create a new profile wherever you want, though convention seems 
+to be to do so in
+`/nix/var/nix/profiles/`
+or
+`/nix/var/nix/profiles/per-user/<username>/`
+
+To create a new profile, you can run the command below. Note that this
+won't actually set this new profile as the active one, that's in the 
+next section.
+
+```shell
+nix-env -p /nix/var/nix/profiles/<profile name> -i nix nss-cacert
+```
+
+E.g.
+
+```shell
+nix-env -p /nix/var/nix/profiles/milmove -i nix nss-cacert
+```
+
+The `-p` is telling it the path to the profile you want to use for 
+this `nix` command. This can be used to work with profiles that aren't
+the active profile. It can also be used with profiles that don't yet
+exist (like here) or with exising profiles.
+
+You may remember the `-i` is used for installing, so we're installing
+`nix` and `nss-cacert` into our new profile.
+
+This is needed because of an issue if you just switch to a new profile.
+If you don't install `nix` itself, you lose access to `nix` commands.
+And without `nss-cacert`, you can't install packages because `nix` will
+get SSL cert errors.
+
+For more info see: https://github.com/NixOS/nix/issues/1396 
+
+#### Switching Profiles
+
+To switch profiles, run
+
+```shell
+nix-env -S <path to profile>
+```
+
+E.g.
+
+```shell
+nix-env -S /nix/var/nix/profiles/milmove
+```
+
+Note that it is possible to switch to a profile that doesn't exist yet
+and break `nix` commands. See creating profiles section for more info.
+
+#### More Profile Info
+
+See the [nix profiles docs](https://nixos.org/manual/nix/stable/#sec-profiles)
+for more info.
+
+### Working with an Existing Nix Expressions
+
+For more info see the 
+[nix expressions docs](https://nixos.org/manual/nix/stable/#chap-writing-nix-expressions).
+
+If you have a project or directory with a pre-defined `default.nix` file,
+you can install have `nix` install the packages defined in it. Usually
+this file lives in a `nix` directory, and you can use it like this:
+
+```shell
+nix-env -p /nix/var/nix/profiles/<profile name> -f ./nix -i
+```
+
+Create an `.envrc` file in a directory with some environment variables 
+your project needs:
+
+```shell
 cat <<ENVRC > .envrc
 PATH_add /nix/var/nix/profiles/myproject/bin
 ENVRC
 ```
 
-On first run, you should get a message indicating that you will have to explicitly authorize `direnv` to load the file:
+On first run, you should get a message indicating that you will have to 
+explicitly authorize `direnv` to load the file:
 
-```
+```shell
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
+```
+
+Running this should fix it:
+
+```shell
+
 $ direnv allow
 direnv: loading .envrc
 direnv: export +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER -PS2
 ```
 
-Your local environment variables should be updated now. Any time the `.envrc` file is changed, you will need to re-approve the file, but it will load automatically otherwise.
+Your local environment variables should be updated now. Any time the `.envrc`
+file has changes, you will need to re-approve the file, but it will load 
+automatically otherwise.
 
 Nix installations are immutable, so by default you cannot make changes
 like installing additional global software via `go get` or `npm
@@ -134,3 +296,9 @@ To use a local directory for installing npm binaries:
 
     export NPM_CONFIG_PREFIX=$PWD/.npmglobal
     PATH_add ./.npmglobal/bin
+
+## Learn More About Nix
+
+There are several [nix guides](https://nixos.org/learn.html)
+that you may find helpful in learning more about how `nix` works
+if you are curious.
