@@ -82,13 +82,13 @@ certain things, that might work great. However, that doesn't give
 projects reproducible installs.
 
 One other difference is that versions of particular packages may be more
-up to date in one or the other. E.g. as of this writing, homebrew's 
-`watchman` version is `2021.06.07.00` but `nix` is on `4.9.0`, which is 
-from sometime in 2017 or 2018. 
+up to date in one or the other. E.g. as of this writing, homebrew's
+`watchman` version is `2021.06.07.00` but `nix` is on `4.9.0`, which is
+from sometime in 2017 or 2018.
 
 ## Installation
 
-MacOS requires that we add an argument to the installation command. We also want to 
+MacOS requires that we add an argument to the installation command. We also want to
 do the single user installation. So to install, run:
 
 ```shell
@@ -96,18 +96,18 @@ sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-v
 ```
 
 See the [macOS installation](https://nixos.org/manual/nix/stable/#sect-macos-installation)
-and [single user installation](https://nixos.org/manual/nix/stable/#sect-single-user-installation) 
+and [single user installation](https://nixos.org/manual/nix/stable/#sect-single-user-installation)
 instructions for more details.
 
 ## Getting started
 
 After installing `nix`, you should have `~/.nix-profile/bin` in your
-PATH. 
+PATH.
 
 ### Extra Setup (Only Fish Shell Users)
 
 If you're using the fish shell, check out
-[nix-env.fish](https://github.com/lilyball/nix-env.fish). 
+[nix-env.fish](https://github.com/lilyball/nix-env.fish).
 
 Add this to your `~/.config/fish/config.sh`
 
@@ -130,7 +130,7 @@ E.g.
 nix-env -i direnv
 ```
 
-#### Seeing Installed Packages 
+#### Seeing Installed Packages
 
 ```shell
 nix-env -q
@@ -166,31 +166,31 @@ Profiles can be used at a global level, on a per-project basis, or
 on a per-repo basis.
 
 E.g. for MilMove, you might want a profile that contains things like
-`aws-vault`, `chamber`, etc. which spans more than just the `mymove` 
-repo. On the other hand, you may not want to use a global profile 
+`aws-vault`, `chamber`, etc. which spans more than just the `mymove`
+repo. On the other hand, you may not want to use a global profile
 (like the default one mentioned in the next section) because you may
 need different versions of `aws-vault` for different projects.
 
 #### Default
 
-When it's installed, `nix` creates a profile which will store all the 
-packages you install by default, unless you tell it to use a different 
-profile when you're installing a package, or you switch the active 
+When it's installed, `nix` creates a profile which will store all the
+packages you install by default, unless you tell it to use a different
+profile when you're installing a package, or you switch the active
 profile to be another one.
 
-Default profile is in: `/nix/var/nix/profiles/per-user/<username>/profile/` 
+Default profile is in: `/nix/var/nix/profiles/per-user/<username>/profile/`
 E.g. `/nix/var/nix/profiles/per-user/felipe/profile/`
 
 #### Creating a Profile
 
-You can create a new profile wherever you want, though convention seems 
+You can create a new profile wherever you want, though convention seems
 to be to do so in
 `/nix/var/nix/profiles/`
 or
 `/nix/var/nix/profiles/per-user/<username>/`
 
 To create a new profile, you can run the command below. Note that this
-won't actually set this new profile as the active one, that's in the 
+won't actually set this new profile as the active one, that's in the
 next section.
 
 ```shell
@@ -203,7 +203,7 @@ E.g.
 nix-env -p /nix/var/nix/profiles/milmove -i nix nss-cacert
 ```
 
-The `-p` is telling it the path to the profile you want to use for 
+The `-p` is telling it the path to the profile you want to use for
 this `nix` command. This can be used to work with profiles that aren't
 the active profile. It can also be used with profiles that don't yet
 exist (like here) or with exising profiles.
@@ -216,7 +216,8 @@ If you don't install `nix` itself, you lose access to `nix` commands.
 And without `nss-cacert`, you can't install packages because `nix` will
 get SSL cert errors.
 
-For more info see: https://github.com/NixOS/nix/issues/1396 
+For more info see the
+[nix github issue](https://github.com/NixOS/nix/issues/1396)
 
 #### Switching Profiles
 
@@ -242,7 +243,7 @@ for more info.
 
 ### Working with an Existing Nix Expressions
 
-For more info see the 
+For more info see the
 [nix expressions docs](https://nixos.org/manual/nix/stable/#chap-writing-nix-expressions).
 
 If you have a project or directory with a pre-defined `default.nix` file,
@@ -253,7 +254,7 @@ this file lives in a `nix` directory, and you can use it like this:
 nix-env -p /nix/var/nix/profiles/<profile name> -f ./nix -i
 ```
 
-Create an `.envrc` file in a directory with some environment variables 
+Create an `.envrc` file in a directory with some environment variables
 your project needs:
 
 ```shell
@@ -262,7 +263,7 @@ PATH_add /nix/var/nix/profiles/myproject/bin
 ENVRC
 ```
 
-On first run, you should get a message indicating that you will have to 
+On first run, you should get a message indicating that you will have to
 explicitly authorize `direnv` to load the file:
 
 ```shell
@@ -279,7 +280,7 @@ direnv: export +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER -PS2
 ```
 
 Your local environment variables should be updated now. Any time the `.envrc`
-file has changes, you will need to re-approve the file, but it will load 
+file has changes, you will need to re-approve the file, but it will load
 automatically otherwise.
 
 Nix installations are immutable, so by default you cannot make changes
