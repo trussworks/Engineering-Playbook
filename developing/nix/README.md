@@ -322,3 +322,11 @@ and break `nix` commands. See creating profiles section for more info.
 
 See the [nix profiles docs](https://nixos.org/manual/nix/stable/#sec-profiles)
 for more info.
+
+## Uninstalling
+
+Uninstalling `nix` takes a few steps:
+
+1. Remove the `nix` entry from `fstab` using `sudo vifs`
+1. Destroy the data volume using `diskutil apfs deleteVolume 'Nix Store'`
+1. Remove the `nix` line from `/etc/synthetic.conf` (w/`sudo`)
