@@ -162,86 +162,32 @@ nix-env -e chamber
 
 ### Profiles
 
-Profiles can be used at a global level, on a per-project basis, or
-on a per-repo basis.
-
-E.g. for MilMove, you might want a profile that contains things like
-`aws-vault`, `chamber`, etc. which spans more than just the `mymove`
-repo. On the other hand, you may not want to use a global profile
-(like the default one mentioned in the next section) because you may
-need different versions of `aws-vault` for different projects.
+Profiles can be used at a global level and on a per-repo basis.
 
 #### Default
 
 When it's installed, `nix` creates a profile which will store all the
-packages you install by default, unless you tell it to use a different
-profile when you're installing a package, or you switch the active
-profile to be another one.
+packages you install by default. It will initially only contain the
+packages needed for `nix` itself to work properly.
+
+If you want, you could tell it to use a different profile. Either on a
+one-off command or by switching the active profile. This is covered
+more in the [Profiles: Advanced section](#profiles:-advanced).
 
 Default profile is in: `/nix/var/nix/profiles/per-user/<username>/profile/`
 E.g. `/nix/var/nix/profiles/per-user/felipe/profile/`
 
-#### Creating a Profile
+#### Repo Profiles
 
-You can create a new profile wherever you want, though convention seems
-to be to do so in
-`/nix/var/nix/profiles/`
-or
-`/nix/var/nix/profiles/per-user/<username>/`
+Ideally you'll have a profile defined at a repo level that will house
+your repo's dependencies. Then you can pre-pend this repo profile to
+your `PATH` when you're working with the repo, while keeping your
+default profile in the `PATH` behind the repo profile to still have
+access to `nix` commands. See
+[Working with Existing Nix Expressions](#working-with-existing-nix-expressions)
+for more details on how to set this up.
 
-To create a new profile, you can run the command below. Note that this
-won't actually set this new profile as the active one, that's in the
-next section.
-
-```shell
-nix-env -p /nix/var/nix/profiles/<profile name> -i nix nss-cacert
-```
-
-E.g.
-
-```shell
-nix-env -p /nix/var/nix/profiles/milmove -i nix nss-cacert
-```
-
-The `-p` is telling it the path to the profile you want to use for
-this `nix` command. This can be used to work with profiles that aren't
-the active profile. It can also be used with profiles that don't yet
-exist (like here) or with exising profiles.
-
-You may remember the `-i` is used for installing, so we're installing
-`nix` and `nss-cacert` into our new profile.
-
-This is needed because of an issue if you just switch to a new profile.
-If you don't install `nix` itself, you lose access to `nix` commands.
-And without `nss-cacert`, you can't install packages because `nix` will
-get SSL cert errors.
-
-For more info see the
-[nix github issue](https://github.com/NixOS/nix/issues/1396)
-
-#### Switching Profiles
-
-To switch profiles, run
-
-```shell
-nix-env -S <path to profile>
-```
-
-E.g.
-
-```shell
-nix-env -S /nix/var/nix/profiles/milmove
-```
-
-Note that it is possible to switch to a profile that doesn't exist yet
-and break `nix` commands. See creating profiles section for more info.
-
-#### More Profile Info
-
-See the [nix profiles docs](https://nixos.org/manual/nix/stable/#sec-profiles)
-for more info.
-
-### Working with an Existing Nix Expressions
+### Working with Existing Nix Expressions
 
 For more info see the
 [nix expressions docs](https://nixos.org/manual/nix/stable/#chap-writing-nix-expressions).
@@ -303,3 +249,76 @@ To use a local directory for installing npm binaries:
 There are several [nix guides](https://nixos.org/learn.html)
 that you may find helpful in learning more about how `nix` works
 if you are curious.
+
+## Advanced Usage
+
+### Profiles: Advanced
+
+In the main profiles section we mention having profiles at a global and
+repo level. You can also have profiles on a per-project basis.
+
+E.g. for MilMove, you might want a profile that contains things like
+`aws-vault`, `chamber`, etc. which spans more than just the `mymove`
+repo. On the other hand, you may not want to use a global profile
+(like the default one mentioned in the next section) because you may
+need different versions of `aws-vault` for different projects.
+
+#### Creating a Profile
+
+You can create a new profile wherever you want, though convention seems
+to be to do so in
+`/nix/var/nix/profiles/`
+or
+`/nix/var/nix/profiles/per-user/<username>/`
+
+To create a new profile, you can run the command below. Note that this
+won't actually set this new profile as the active one, that's in the
+next section.
+
+```shell
+nix-env -p /nix/var/nix/profiles/<profile name> -i nix nss-cacert
+```
+
+E.g.
+
+```shell
+nix-env -p /nix/var/nix/profiles/milmove -i nix nss-cacert
+```
+
+The `-p` is telling it the path to the profile you want to use for
+this `nix` command. This can be used to work with profiles that aren't
+the active profile. It can also be used with profiles that don't yet
+exist (like here) or with exising profiles.
+
+You may remember the `-i` is used for installing, so we're installing
+`nix` and `nss-cacert` into our new profile.
+
+This is needed because of an issue if you just switch to a new profile.
+If you don't install `nix` itself, you lose access to `nix` commands.
+And without `nss-cacert`, you can't install packages because `nix` will
+get SSL cert errors.
+
+For more info see the
+[nix github issue](https://github.com/NixOS/nix/issues/1396)
+
+#### Switching Profiles
+
+To switch profiles, run
+
+```shell
+nix-env -S <path to profile>
+```
+
+E.g.
+
+```shell
+nix-env -S /nix/var/nix/profiles/milmove
+```
+
+Note that it is possible to switch to a profile that doesn't exist yet
+and break `nix` commands. See creating profiles section for more info.
+
+#### More Profile Info
+
+See the [nix profiles docs](https://nixos.org/manual/nix/stable/#sec-profiles)
+for more info.
