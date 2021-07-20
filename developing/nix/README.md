@@ -180,10 +180,21 @@ E.g. `/nix/var/nix/profiles/per-user/felipe/profile/`
 #### Repo Profiles
 
 Ideally you'll have a profile defined at a repo level that will house
-your repo's dependencies. Then you can pre-pend this repo profile to
-your `PATH` when you're working with the repo, while keeping your
-default profile in the `PATH` behind the repo profile to still have
-access to `nix` commands. See
+your repo's dependencies.
+
+You can use the `NIX_PROFILE` environment variable when working with this
+type of profile so that `nix` commands know to use that profile, e.g.
+when installing repo dependencies. E.g.
+
+```shell
+export NIX_PROFILE=/nix/var/nix/profiles/myproject
+```
+
+Then you can pre-pend this repo profile to your `PATH` when you're working
+with the repo, while keeping your default profile in the `PATH` behind the
+repo profile to still have access to `nix` commands.
+
+See
 [Working with Existing Nix Expressions](#working-with-existing-nix-expressions)
 for more details on how to set this up.
 
@@ -205,7 +216,9 @@ your project needs:
 
 ```shell
 cat <<ENVRC > .envrc
-PATH_add /nix/var/nix/profiles/myproject/bin
+export NIX_PROFILE=/nix/var/nix/profiles/myproject
+
+PATH_add ${NIX_PROFILE}/bin
 ENVRC
 ```
 
