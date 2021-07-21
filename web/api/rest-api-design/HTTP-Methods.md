@@ -2,6 +2,8 @@
 
 When using HTTP methods like PUT or GET in your REST API, it's important to comply with their definitions under the [HTTP/1.1 Standard](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 
+Complying with the standard means that the users of your API will be able to understand it more easily and use it correctly. In addition, if you hook up observability or load testing tools in the future, they are more likely to work out of the box if you have abided by the common expectations.
+
 The most important ones will be covered here.
 
 ## GET
