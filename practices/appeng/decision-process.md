@@ -22,8 +22,8 @@ At it's core decision making process is as follows:
 3. Workshop the ADR with a [Domain Group](#domain-groups)
   and create a final draft.
 4. Propose it in Slack for all of AppEng for review.
-6. Represent it at the [quarterly decision meeting](#quarterly-meeting).
-7. Commit the [ADR](./adrs) and create [implementation documentation](#output).
+5. Represent it at the [quarterly decision meeting](#quarterly-meeting).
+6. Commit the [ADR](./adrs) and create [implementation documentation](#output).
 
 ## Writing an ADR
 
@@ -56,6 +56,7 @@ In order to organize members across projects,
 we've established domain groups
 that have responsibility over a certain part of the stack.
 Currently these are broken up into:
+
 * Frontend - For decisions around browser technology,
   frontend frameworks,
   and client side data modeling.
