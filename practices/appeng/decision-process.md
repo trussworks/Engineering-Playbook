@@ -57,13 +57,13 @@ we've established domain groups
 that have responsibility over a certain part of the stack.
 Currently these are broken up into:
 
-* _Frontend_ - For decisions around browser technology,
+* **Frontend** - For decisions around browser technology,
   frontend frameworks,
   and client side data modeling.
-* _Server_ - For decisions that deal with database modeling,
+* **Server** - For decisions that deal with database modeling,
   processing,
   and general API building.
-* _Other_(better name please) - For decisions that fall outside of the other two groups
+* **Other**(better name please) - For decisions that fall outside of the other two groups
   or heavily incorporate both.
   This will likely be broken out into other groups
   as we discover what topics come up.
