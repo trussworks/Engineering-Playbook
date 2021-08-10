@@ -57,13 +57,13 @@ we've established domain groups
 that have responsibility over a certain part of the stack.
 Currently these are broken up into:
 
-* Frontend - For decisions around browser technology,
+* *Frontend* - For decisions around browser technology,
   frontend frameworks,
   and client side data modeling.
-* Server - For decisions that deal with database modeling,
+* *Server* - For decisions that deal with database modeling,
   processing,
   and general API building.
-* Other - For decisions that fall outside of the other two groups
+* *Other*(better name please) - For decisions that fall outside of the other two groups
   or heavily incorporate both.
   This will likely be broken out into other groups
   as we discover what topics come up.
@@ -150,6 +150,7 @@ and applications are similar to a past pattern,
 projects should seek to utilize known resources first.
 Practice ADR repositories should be consulted
 prior to writing a new ADR.
+
 In the end,
 it is the Eng Lead's responsibility
 to decide when a decision is applicable.
