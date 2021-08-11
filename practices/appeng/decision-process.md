@@ -25,6 +25,16 @@ At it's core decision making process is as follows:
 5. Represent it at the [quarterly decision meeting](#quarterly-meeting).
 6. Commit the [ADR](./adrs) and create [implementation documentation](#output).
 
+The timeline may look as follows:
+
+| Time  | Action | Owner |
+| --- || --- | --- |
+| Start of quarter | Write ADRs  | All  |
+| Two weeks before last Leads meeting of quarter | Announce new ADRs   | ADR authors |
+| Two weeks before last Leads meeting of quarter | Review ADRs   | all |
+| Last Leads meeting of quarter | Discuss ADRs and seek decision  | Leads, Domain Group Leaders, Authors  |
+| One month after meeting | Documentation is written for new decisions | Authors  |
+
 ## Writing an ADR
 
 ADRs are a lightweight format that allows us
@@ -98,7 +108,7 @@ in quarterly AppEng checkins.
 
 ## Quarterly Meetings
 
-Quarterly meetings happen over the first AppEng Leads meeting of a quarter.
+Quarterly meetings happen over the last AppEng Leads meeting of a quarter.
 Team leads,
 domain group leaders,
 and any ADR representatives are required to attend.
