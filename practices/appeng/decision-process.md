@@ -30,8 +30,8 @@ The timeline may look as follows:
 | Time  | Action | Owner |
 | --- | --- | --- |
 | Start of quarter | Write ADRs  | All  |
-| Two weeks before last Leads meeting of quarter | Announce new ADRs   | ADR authors |
-| Two weeks before last Leads meeting of quarter | Review ADRs   | All |
+| Before two weeks before last Leads meeting of quarter | Announce new ADRs   | ADR authors |
+| Within two weeks before last Leads meeting of quarter | Review ADRs   | All |
 | Last Leads meeting of quarter | Discuss ADRs and seek decision  | Leads, Domain Group Leaders, Authors  |
 | One month after meeting | Write documentation for new decisions | Authors  |
 
