@@ -22,18 +22,18 @@ At it's core decision making process is as follows:
 3. Workshop the ADR with a [Domain Group](#domain-groups)
   and create a final draft.
 4. Propose it in Slack for all of AppEng for review.
-5. Represent it at the [quarterly decision meeting](#quarterly-meeting).
+5. (Optional) Hold a [meeting](#review-meeting) for review.
 6. Commit the [ADR](./adrs) and create [implementation documentation](#output).
 
 The timeline may look as follows:
 
-| Time  | Action | Owner |
-| --- | --- | --- |
-| Start of quarter | Write ADRs  | All  |
-| Before two weeks before last Leads meeting of quarter | Announce new ADRs   | ADR authors |
-| Within two weeks before last Leads meeting of quarter | Review ADRs   | All |
-| Last Leads meeting of quarter | Discuss ADRs and seek decision  | Leads, Domain Group Leaders, Authors  |
-| One month after meeting | Write documentation for new decisions | Authors  |
+|Action | Owner |
+| --- | --- |
+| Write ADRs continuously | All  |
+| Announce new ADR to #appeng   | ADR authors |
+| Review ADRs   | All |
+| At least two weeks after announcement, have review meeting  | Domain Group Leader, Authors, Reviewers  |
+| Write documentation for new decisions | Authors  |
 
 ## Writing an ADR
 
@@ -80,7 +80,9 @@ Currently these are broken up into:
 
 While guilds are established as topical and cross practice,
 domain groups that overlap with guilds may choose to use their time
-to workshop or prompt new ADRs.
+to prompt new ADRs,
+workshop,
+or review them.
 These are not explicitly 1:1 in overlap
 and leadership structures are not synonymous.
 
@@ -98,33 +100,28 @@ and have established specialization within their group's domain.
 They should also have a year experience at Truss.
 
 Group leaders are also responsible for connecting practice members
-with domain experts that can help them craft decisions best.
+with domain experts that can help them craft decisions best
+and reviewers to provide feedback.
 Their motivation should be to create a collaborative experience
 and effective group output.
 
 The rough expectation for time from a group leader is one hour per week.
-They are responsible for representing their domain
-in quarterly AppEng checkins.
 
-## Quarterly Meetings
+## Review Meetings
 
-Quarterly meetings happen over the last AppEng Leads meeting of a quarter.
-Team leads,
-domain group leaders,
-and any ADR representatives are required to attend.
-Proposed ADRs are sourced two weeks prior to the meeting,
-and are required to have at least that much time
-for asyncronous feedback from the practice.
-The agenda will be set by practice leadership
-in collaboration with domain group leaders.
+If a decision is contested
+or requires syncronous clarification,
+a review meeting should happen.
+The author of the ADR
+is responsible for scheduling the meeting
+and announcing it to #appeng for attendance.
+The author,
+domain group leader,
+and reviewers should be in attendance.
 
-ADR authors will summarize their decision
-followed by a period for discussion.
-This is *not* a time to read,
-collect,
-or incorporate new feedback.
-Meeting time should only be used to provide brief dissent
-and clarification.
+Review meetings should happen at earliest two weeks after an ADR is announced.
+This isn't to say folks can't collaborate earlier,
+but having asyncronous time to review and incorporate feedback is helpful.
 
 If a clear consensus can be found during the meeting,
 the domain group leader for the decision may move it forward.
@@ -146,7 +143,7 @@ there are three follow ups required:
 3. Write implementation documentation in this playbook.
 
 ADRs authors are responsible for the corresponding documentation.
-Practice leadership will check in one month after the quarterly meeting
+Practice leadership will check in on recent ADRs
 to ensure documentation has been written to reflect the decision.
 
 ## Project Implementation
