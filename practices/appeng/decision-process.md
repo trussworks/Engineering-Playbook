@@ -25,16 +25,6 @@ At it's core decision making process is as follows:
 5. (Optional) Hold a [meeting](#review-meeting) for review.
 6. Commit the [ADR](./adrs) and create [implementation documentation](#output).
 
-The timeline may look as follows:
-
-|Action | Owner |
-| --- | --- |
-| Write ADRs continuously | All  |
-| Announce new ADR to #appeng   | ADR authors |
-| Review ADRs   | All |
-| At least two weeks after announcement, have review meeting  | Domain Group Leader, Authors, Reviewers  |
-| Write documentation for new decisions | Authors  |
-
 ## Writing an ADR
 
 ADRs are a lightweight format that allows us
