@@ -63,7 +63,7 @@ Currently these are broken up into:
 * **Server** - For decisions that deal with database modeling,
   processing,
   and general API building.
-* **Other**(better name please) - For decisions that fall outside of the other two groups
+* **General**(better name please) - For decisions that fall outside of the other two groups
   or heavily incorporate both.
   This will likely be broken out into other groups
   as we discover what topics come up.
