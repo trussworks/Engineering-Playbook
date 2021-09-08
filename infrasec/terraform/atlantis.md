@@ -461,6 +461,8 @@ output "atlantis_alb_aws_fqdn" {
 }
 ```
 
+</details>
+
 This will add an output that will give you the AWS DNS entry that corresponds to your ALB. With that, you will need to add a [Route53 CNAME entry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) in your DNS that points your selected domain name to your ALB's AWS DNS entry. Note that for some projects, you may not be able to do this yourself (such as at CMS); in that case, you will need to provide that FQDN to the DNS manager and have them create the CNAME.
 
 ### Setting up the GitHub webhook
