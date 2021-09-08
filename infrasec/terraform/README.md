@@ -44,7 +44,7 @@ When you're ready to turn the prototype module into a published one, there are a
 1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/github-global/main.tf) managed by our GitHub repo management module.
 2. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
    * `/github subscribe trussworks/your-repo-here`
-   * `/github unsubscribe trussworks/your-repo-here statuses commits deployments public releases`
+   * `/github unsubscribe trussworks/your-repo-here commits deployments releases`
 3. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
    * First read through the Terraform docs on [Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html) and make appropriate changes to your repository
    * Ensure that the module you wish to publish has a SemVer tag attached to it. If not use `v1.0.0`.
