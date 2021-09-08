@@ -34,6 +34,7 @@ In the account we will be deploying the Atlantis service to (`org-infra` in our 
 
 <details>
 <summary>`atlantis-global/main.tf` for Atlantis service account</summary>
+
 ```hcl
 locals {
   org_root_account   = "000000000001"
@@ -104,6 +105,7 @@ In the other accounts, we'll add resources like the following to allow the Atlan
 
 <details>
 <summary>`atlantis-global/main.tf` for other accounts</summary>
+
 ```hcl
 locals {
   org_infra_account = "000000000004"
@@ -204,6 +206,7 @@ In addition, if you have not already, you will need to add permissions to your A
 
 <details>
 <summary>Terraform code for org-infra account AWS logs bucket</summary>
+
 ```hcl
 module "org_infra_logs" {
   source = "trussworks/aws/logs"
@@ -221,6 +224,7 @@ Calling the module will look something like this:
 
 <details>
 <summary>Terraform code for Atlantis module and associated resources</summary>
+
 ```hcl
 data "aws_caller_identity" "current" {}
 
@@ -449,6 +453,7 @@ If you're working in GovCloud, you should also add the following output to your 
 
 <details>
 <summary>output for ALB AWS DNS entry</summary>
+
 ```hcl
 output "atlantis_alb_aws_fqdn" {
   description = "AWS FQDN for Atlantis ALB"
@@ -467,7 +472,8 @@ Rather than restate the Atlantis docs, you can find the instructions on how to s
 The last step is to configure the repo-level Atlantis configuration. The `atlantis.yaml` file goes in the root of the Git repo you're using for your Terraform. The [Atlantis docs](https://www.runatlantis.io/docs/repo-level-atlantis-yaml.html) on this file will give you the full explanation of what you can put in here, but for most of our projects, the only thing you will need is a list of the Terraform namespaces you want Atlantis to manage. It will look something like this:
 
 <details>
-<summary>Example `atlantis.yaml` config</summmary>
+<summary>Example `atlantis.yaml` config</summary>
+
 ```yaml
 version: 3
 projects:
