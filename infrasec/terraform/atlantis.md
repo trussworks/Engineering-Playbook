@@ -24,7 +24,7 @@ org-infra-repo/
 ...
 ```
 
-In this structure, each account has an `atlantis-global` namespace which sets up the `atlantis` IAM role, and then there is an `atlantis-service` (or `atlantis-prod`, or whatever you prefer) namespace which contains the functional components of the Atlantis service.
+In this structure, each account has an `atlantis-global` namespace which sets up the `atlantis` IAM role, and then there is a single `atlantis-service` (or `atlantis-prod`, or whatever you prefer) namespace which contains the functional components of the Atlantis service.
 
 ### Setting up atlantis-global
 
