@@ -19,7 +19,12 @@ As with all naming schemes (and other stylistic things such as casing and commen
 * [Unique per account](#unique-per-account)
   * [IAM resources](#iam-resources)
     * [IAM policies](#iam-policies)
+    * [IAM users](#iam-users)
 * [Unique per region](#unique-per-region)
+  * [SNS topics](#sns-topics)
+  * [VPC](#vpc)
+  * [Subnets](#subnets)
+* [Terraform modules](#terraform-modules)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
@@ -65,6 +70,13 @@ Where the details of an IAM role are in an associated policy (usually the case) 
 * lambda-rds-snapshot-cleaner-app-experimental-policy
 * ecs-task-role-app-client-tls-experimental-policy
 
+#### IAM users
+
+When you create a new user, you should follow a first initial last name format (firstinitialLastName), e.g.
+
+* eeady for Elizabeth Eady
+* rkilberg for Rebecca Kilberg
+
 ## Unique per region
 
 Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
@@ -79,3 +91,54 @@ e.g.
 
 * slack-pivotal-tracker-bot-test
 * rds-log-cleaner-webapp-prod
+
+### SNS topics
+
+The main purpose of the SNS topics are for notifications to teams. The naming convention reflects that, closely followed by the AWS account type (Gov or Com) and action.
+
+*${team}-${account_type}-${action}* - is the general form
+
+Sample names:
+
+* app-com-notification
+* infra-gov-alert
+
+### VPC
+
+VPCs are unique by region but they should indicate which application and environment level they contain.
+
+[*${application}-]${environment}* - is the general form
+
+* *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+
+* eec-prod
+* staging
+
+### Subnets
+
+Although they are unique by region, we also want subnets to be descriptively named according to their AZs and public/private status.
+
+*${VPC name}-${public/private}-${AZ}* - is the general form
+
+* *$public/private* - can be used to distinguish whether the subnet is a private or a public subnet
+* *$AZ* - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
+
+In a VPC named "eec-prod":
+
+* eec-prod-public-us-east-1a
+* eec-prod-private-us-west-2c
+
+## Terraform modules
+
+Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should follow the following convention.
+
+*terraform-${provider}-${purpose}* - is the general form
+
+* *$provider* - the terraform provider, e.g. "aws", "pagerduty", "github"
+* *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+
+e.g.
+
+* terraform-aws-rds-log-cleaner
+* terraform-aws-cloudtrail-alarms

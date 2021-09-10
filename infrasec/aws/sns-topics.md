@@ -8,14 +8,7 @@ SNS Topics can quickly get confusing for what their intended purpose and their c
 
 ### Naming
 
-The main purpose of the SNS topics are for notifications to teams. The naming convention reflects that, closely followed by the AWS account type (Gov or Com) and action.
-
-`<TEAM>-<ACCOUNT_TYPE>-<ACTION>`
-
-Sample names:
-
-* app-com-notification
-* infra-gov-alert
+Refer to [naming conventions document](naming.md#sns-topics)).
 
 ### Actions
 
