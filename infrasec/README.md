@@ -46,5 +46,6 @@ To get you up and running faster, we have created a few template repos. Please f
 ### Other topics
 
 - [Alert Providers](alert-providers.md)
+- [Project Bootstrap Guide](bootstrap.md)
 - [Project Teardown Guide](teardown.md)
 - [SSL Certificates](certs.md)
