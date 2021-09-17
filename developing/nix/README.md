@@ -104,6 +104,10 @@ instructions for more details.
 After installing `nix`, you should have `~/.nix-profile/bin` in your
 PATH.
 
+### Quick HOWTO
+
+For a template for how to set up a project see [./HOWTO.md](HOWTO).
+
 ### Extra Setup (Only Fish Shell Users)
 
 If you're using the fish shell, check out
