@@ -4,7 +4,7 @@ jobs:
     - auth:
         password: $DOCKER_PASSWORD
         username: $DOCKER_USERNAME
-      image: trussworks/circleci:29ab89fdada1f85c5d8fb685a2c71660f0c5f60c
+      image: trussworks/circleci:03d0d0dcd05dad6cc03b570e5128c735ea90c80f
     steps:
     - checkout
     - restore_cache:
@@ -18,7 +18,7 @@ jobs:
         paths:
         - ~/.cache/pre-commit
 references:
-  circleci: trussworks/circleci:29ab89fdada1f85c5d8fb685a2c71660f0c5f60c
+  circleci: trussworks/circleci:03d0d0dcd05dad6cc03b570e5128c735ea90c80f
 version: 2
 workflows:
   validate:
