@@ -9,15 +9,13 @@ small amount of Terraform, but there are some issues you may run into as
 you do so. This document is intended to help you get GuardDuty set up in
 your organization and work around these pitfalls.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Initial configuration](#initial-configuration)
-* [Adding GuardDuty to existing accounts](#adding-guardduty-to-existing-accounts)
-* [Adding more regions](#adding-more-regions)
+- [Initial configuration](#initial-configuration)
+- [Adding GuardDuty to existing accounts](#adding-guardduty-to-existing-accounts)
+- [Adding more regions](#adding-more-regions)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Initial configuration
 

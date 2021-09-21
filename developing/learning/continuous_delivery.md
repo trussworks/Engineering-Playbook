@@ -4,5 +4,5 @@ _Continuous Delivery_ is yet another text that was very influential at the begin
 
 ## Links
 
-* [Amazon link](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
-* [Jez Humble's eponymous site](https://continuousdelivery.com)
+- [Amazon link](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
+- [Jez Humble's eponymous site](https://continuousdelivery.com)

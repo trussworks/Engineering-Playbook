@@ -8,4 +8,4 @@ paradigms, including object-oriented, functional, and procedural.
 
 ## Contents
 
-* [Installation](./installation.md)
+- [Installation](./installation.md)

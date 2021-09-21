@@ -6,9 +6,9 @@ for building images for deployment in AWS and elsewhere.
 
 ## Contents
 
-* [Ansible Primer](ansible-primer.md) - An introduction to working with Ansible.
-* [Molecule Primer](molecule-primer.md) - An introduction to Molecule, the Ansible testing framework.
+- [Ansible Primer](ansible-primer.md) - An introduction to working with Ansible.
+- [Molecule Primer](molecule-primer.md) - An introduction to Molecule, the Ansible testing framework.
 
 ## Outside resources
 
-* [Ansible Documentation](https://docs.ansible.com) - Official documentation for Ansible.
+- [Ansible Documentation](https://docs.ansible.com) - Official documentation for Ansible.

@@ -6,5 +6,5 @@ Every project at Truss is usually anchored with an (Application and/or Infrastru
 
 ## Contents
 
-* [Engineering Lead](./eng-lead/README.md)
-* [Engineering Manager](./eng-management/README.md)
+- [Engineering Lead](./eng-lead/README.md)
+- [Engineering Manager](./eng-management/README.md)

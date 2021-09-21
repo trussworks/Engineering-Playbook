@@ -1,21 +1,19 @@
 # [AWS](README.md) / VPC Configuration
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [VPC basics](#vpc-basics)
-  * [Subnets](#subnets)
-  * [Route tables](#route-tables)
-  * [Network ACLs](#network-acls)
-  * [Security Groups](#security-groups)
-  * [Gateways](#gateways)
-  * [VPC endpoints](#vpc-endpoints)
-  * [Flow logs](#flow-logs)
-* [Default VPC configuration](#default-vpc-configuration)
-* [Reference links](#reference-links)
+- [VPC basics](#vpc-basics)
+  - [Subnets](#subnets)
+  - [Route tables](#route-tables)
+  - [Network ACLs](#network-acls)
+  - [Security Groups](#security-groups)
+  - [Gateways](#gateways)
+  - [VPC endpoints](#vpc-endpoints)
+  - [Flow logs](#flow-logs)
+- [Default VPC configuration](#default-vpc-configuration)
+- [Reference links](#reference-links)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## VPC basics
 
@@ -84,7 +82,7 @@ Note: In our internal test configuration we weren't sure it was worth the cost t
 
 Example of S3 endpoint (heavily modified and commented) from [terraform-aws-vpc module endpoints file](https://github.com/terraform-aws-modules/terraform-aws-vpc/blob/master/vpc-endpoints.tf):
 
-``` terraform
+```terraform
 locals {
     vpc_id = "id of vpc"
     vpce_tags = { some map of tags... }
@@ -145,6 +143,6 @@ WARNING: undoing this module is hard so if you have inherited the infrastructure
 
 ## Reference links
 
-* [AWS VPC documentation](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-* [AWS VPC Endpoint documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
-* [Truss Internal guidance doc](https://docs.google.com/document/d/1LeEfqBqVw8gyvSU-TD5IUvDYEwM-0wq5IhYE58fNB8c/edit)
+- [AWS VPC documentation](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [AWS VPC Endpoint documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
+- [Truss Internal guidance doc](https://docs.google.com/document/d/1LeEfqBqVw8gyvSU-TD5IUvDYEwM-0wq5IhYE58fNB8c/edit)

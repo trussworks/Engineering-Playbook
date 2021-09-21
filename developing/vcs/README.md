@@ -15,11 +15,11 @@ often host their own repositories in their own system).
 
 ## Contents
 
-* [Tools](./tools.md) - A summary of tools we use for source code management
-* [Git Repos](./git-repos.md) - How to set up and maintain your Git repos
-* [Git Workflow](./git-workflow.md) - How best to work with Git as a developer
-* [Master-to-Main](./master-to-main.md) - Rename default branch
+- [Tools](./tools.md) - A summary of tools we use for source code management
+- [Git Repos](./git-repos.md) - How to set up and maintain your Git repos
+- [Git Workflow](./git-workflow.md) - How best to work with Git as a developer
+- [Master-to-Main](./master-to-main.md) - Rename default branch
 
 ## External Resources
 
-* [Dangit, Git!](https://dangitgit.com) - A plain English guide to solving common Git issues
+- [Dangit, Git!](https://dangitgit.com) - A plain English guide to solving common Git issues

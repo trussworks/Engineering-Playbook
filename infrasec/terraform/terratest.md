@@ -3,21 +3,19 @@
 Terratest is a Go framework that is used to test Terraform infrastructure code.
 It executes the defined Terraform and then validates things you're asserting.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
-  * [Other Examples](#other-examples)
-* [Run manually](#run-manually)
-* [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
-  * [Configure CircleCi Job](#configure-circleci-job)
-  * [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
-  * [Update the Key rotator configuration](#update-the-key-rotator-configuration)
-  * [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
-* [Documentation links](#documentation-links)
+- [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
+  - [Other Examples](#other-examples)
+- [Run manually](#run-manually)
+- [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
+  - [Configure CircleCi Job](#configure-circleci-job)
+  - [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
+  - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
+  - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
+- [Documentation links](#documentation-links)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Basic Terratest example of a module
 
@@ -71,9 +69,9 @@ func TestTerraformAwsEcrRepo(t *testing.T) {
 
 ### Other Examples
 
-* [terraform-aws-alb-web-containers](https://github.com/trussworks/terraform-aws-alb-web-containers)
-* [terrraform-aws-ecs-service](https://github.com/trussworks/terraform-aws-ecs-service)
-* [terraform-aws-logs](https://github.com/trussworks/terraform-aws-logs/)
+- [terraform-aws-alb-web-containers](https://github.com/trussworks/terraform-aws-alb-web-containers)
+- [terrraform-aws-ecs-service](https://github.com/trussworks/terraform-aws-ecs-service)
+- [terraform-aws-logs](https://github.com/trussworks/terraform-aws-logs/)
 
 ## Run manually
 
@@ -201,5 +199,5 @@ Now we should be able to see both the tests and artifacts tabs in our CircleCI p
 
 ## Documentation links
 
-* [Terratest repo](https://github.com/gruntwork-io/terratest)
-* [Official Terratest Documentation](https://terratest.gruntwork.io/docs/)
+- [Terratest repo](https://github.com/gruntwork-io/terratest)
+- [Official Terratest Documentation](https://terratest.gruntwork.io/docs/)

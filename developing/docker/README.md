@@ -1,25 +1,23 @@
 # [Tools and Practice](../README.md) / Docker
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Overview](#overview)
-* [Installation](#installation)
-  * [Configuration of Shared Folders](#configuration-of-shared-folders)
-  * [Configuration of Storage Driver](#configuration-of-storage-driver)
-  * [Configuration of Disk Image](#configuration-of-disk-image)
-  * [Configuration of Resources](#configuration-of-resources)
-* [Volume Mount Performance](#volume-mount-performance)
-* [Inspecting the Docker Virtual Machine](#inspecting-the-docker-virtual-machine)
-* [Inspecting Container Resources](#inspecting-container-resources)
-* [Cleaning Up](#cleaning-up)
-* [Docker Configuration](#docker-configuration)
-  * [Keybindings](#keybindings)
-  * [Credentials Store](#credentials-store)
-* [Additional Resources](#additional-resources)
+- [Overview](#overview)
+- [Installation](#installation)
+  - [Configuration of Shared Folders](#configuration-of-shared-folders)
+  - [Configuration of Storage Driver](#configuration-of-storage-driver)
+  - [Configuration of Disk Image](#configuration-of-disk-image)
+  - [Configuration of Resources](#configuration-of-resources)
+- [Volume Mount Performance](#volume-mount-performance)
+- [Inspecting the Docker Virtual Machine](#inspecting-the-docker-virtual-machine)
+- [Inspecting Container Resources](#inspecting-container-resources)
+- [Cleaning Up](#cleaning-up)
+- [Docker Configuration](#docker-configuration)
+  - [Keybindings](#keybindings)
+  - [Credentials Store](#credentials-store)
+- [Additional Resources](#additional-resources)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Overview
 
@@ -32,7 +30,9 @@ development as in CI and production.
 
 You should install via homebrew
 
-     brew cask install docker
+```
+ brew cask install docker
+```
 
 ### Configuration of Shared Folders
 
@@ -48,8 +48,10 @@ also find improvements removing `/Users` and replacing it with
 If you've been running Docker for Mac for some time, make sure you are
 using the `overlay2` storage driver.
 
-    $ docker info |grep Storage
-    Storage Driver: overlay2
+```
+$ docker info |grep Storage
+Storage Driver: overlay2
+```
 
 If you don't see overlay2, upgrading to the latest version will add
 that support, but you would need to recreate all of your docker data
@@ -85,25 +87,33 @@ to see if they might apply to the conditions in your project.
 If you are having performance problems or are just curious, you can
 run commands inside the Virtual Machine with
 
-    docker run --rm=true -it --privileged --pid=host \
-        justincormack/nsenter1 /usr/bin/top
+```
+docker run --rm=true -it --privileged --pid=host \
+    justincormack/nsenter1 /usr/bin/top
+```
 
 ## Inspecting Container Resources
 
 To get a `top` like report of what your containers are doing
 
-    docker stats
+```
+docker stats
+```
 
 ## Cleaning Up
 
 To see where all your disk space is going:
 
-    docker system df
+```
+docker system df
+```
 
 To remove stopped containers, dangling images, the build cache and
 unused networks:
 
-    docker system prune
+```
+docker system prune
+```
 
 See [the docker system prune
 documentation](https://docs.docker.com/engine/reference/commandline/system_prune/)
@@ -119,9 +129,11 @@ config.json](https://docs.docker.com/engine/reference/commandline/cli/#configura
 If you dislike the default detach keybindings of `CTRL-p CTRL-q`, you
 can override it in `config.json` with something like:
 
-    {
-      "detachKeys": "ctrl-@,ctrl-["
-    }
+```
+{
+  "detachKeys": "ctrl-@,ctrl-["
+}
+```
 
 ### Credentials Store
 
@@ -136,6 +148,6 @@ can be used.
 
 If you would like to dig deeper into how Docker works, how it isolates code from the host machine, and related ramifications a good place to start are the articles listed below.
 
-* [Official Docker Getiting Started Guide](https://docs.docker.com/get-started/)
-* [Linux Journal Weekend Reading Containers](https://www.linuxjournal.com/content/weekend-reading-containers)
-  * Particularly the articles _Everything You Need to Know about Linux Containers Part I and II_
+- [Official Docker Getiting Started Guide](https://docs.docker.com/get-started/)
+- [Linux Journal Weekend Reading Containers](https://www.linuxjournal.com/content/weekend-reading-containers)
+  - Particularly the articles _Everything You Need to Know about Linux Containers Part I and II_

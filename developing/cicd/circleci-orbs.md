@@ -6,23 +6,21 @@ There is a [registry of CircleCI orbs](https://circleci.com/orbs/registry/) incl
 
 We also have published one of our own: [trussworks/orb-ecr-image-scan-findings](https://circleci.com/orbs/registry/orb/trussworks/orb-ecr-image-scan-findings).
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Concepts](#concepts)
-  * [Command](#command)
-  * [Job](#job)
-  * [Executor](#executor)
-* [Using Orbs](#using-orbs)
-* [Creating Orbs](#creating-orbs)
-  * [Requirements](#requirements)
-  * [GitHub](#github)
-  * [Setting up the orb](#setting-up-the-orb)
-  * [Testing](#testing)
-  * [Publishing](#publishing)
+- [Concepts](#concepts)
+  - [Command](#command)
+  - [Job](#job)
+  - [Executor](#executor)
+- [Using Orbs](#using-orbs)
+- [Creating Orbs](#creating-orbs)
+  - [Requirements](#requirements)
+  - [GitHub](#github)
+  - [Setting up the orb](#setting-up-the-orb)
+  - [Testing](#testing)
+  - [Publishing](#publishing)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Concepts
 
@@ -106,13 +104,13 @@ Unlike using orbs, the process around creating orbs can be tricky. There's plent
 
 ### Requirements
 
-* [CircleCI CLI](https://circleci.com/docs/2.0/orb-author-cli/#configure-the-circleci-cli) is installed and set up on your machine
+- [CircleCI CLI](https://circleci.com/docs/2.0/orb-author-cli/#configure-the-circleci-cli) is installed and set up on your machine
 
   ```sh
   brew install circleci
   ```
 
-* You have the owner role within the Trussworks GitHub org or can snag some time with someone who is an owner
+- You have the owner role within the Trussworks GitHub org or can snag some time with someone who is an owner
 
 ### GitHub
 
@@ -120,12 +118,12 @@ Your orb's source code needs to be housed somewhere. We'll be using GitHub to st
 
 A CircleCI orb repository should
 
-* have the name prefixed with "orb-" (ie. `orb-ecr-image-scan-findings`)
-* add the MIT license
-* be set to public
-* include a README describing what the orb does
-* use pre-commit hooks to check the yaml and lint markdown
-* possess CircleCI configuration for validation
+- have the name prefixed with "orb-" (ie. `orb-ecr-image-scan-findings`)
+- add the MIT license
+- be set to public
+- include a README describing what the orb does
+- use pre-commit hooks to check the yaml and lint markdown
+- possess CircleCI configuration for validation
 
 ### Setting up the orb
 

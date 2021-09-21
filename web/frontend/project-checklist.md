@@ -17,10 +17,10 @@
 ## What are you building?
 
 - Is your web app designed to be:
-  - [ ] a single page application (SPA) -- usually a data-rich, dynamic experience where most of, if not the entire page, is rendered _after_ page-load by JS
-    - [ ] If a SPA, do you need server-side rendering (such as for optimized performance, accessibility, and SEO)?
-  - [ ] primarily static HTML with some isolated JS components that don't need to communicate with each other
-  - [ ] static HTML with no DOM-manipulating JS required at runtime
+  - \[ \] a single page application (SPA) -- usually a data-rich, dynamic experience where most of, if not the entire page, is rendered _after_ page-load by JS
+    - \[ \] If a SPA, do you need server-side rendering (such as for optimized performance, accessibility, and SEO)?
+  - \[ \] primarily static HTML with some isolated JS components that don't need to communicate with each other
+  - \[ \] static HTML with no DOM-manipulating JS required at runtime
 - What browsers and devices do you need to optimize for?
   - Who is your audience? Is this app for a specific organization’s internal use or the general public?
   - What kind of access do they have? Primarily desktop or mobile? Reliable, high speed network access, or offline-first? High or low-end devices?
@@ -33,12 +33,12 @@
 > Even if you answered “static HTML” above, that doesn’t mean you have to write and maintain HTML files by hand. You can still take advantage of tools like JS frameworks and compilers to componentize UI elements, fetch and organize content, and test the DOM output. It may just mean generating static markup at compile time, instead of serving JS directly to users.
 
 - How will the markup (HTML) be rendered?
-  - [ ] Static assets (i.e., HTML/JS files uploaded to a web server)
+  - \[ \] Static assets (i.e., HTML/JS files uploaded to a web server)
     - If static assets, what kind of client-side code will you be writing?
-      - [ ] Native HTML / CSS / JS (including external scripts or libraries loaded into the DOM)
-      - [ ] Code requiring a compile step to be browser-compatible (such as ES6+, TypeScript, and SCSS)
+      - \[ \] Native HTML / CSS / JS (including external scripts or libraries loaded into the DOM)
+      - \[ \] Code requiring a compile step to be browser-compatible (such as ES6+, TypeScript, and SCSS)
         - See "Additional considerations if using a build tool" below
-  - [ ] A server application will be responsible for returning HTML
+  - \[ \] A server application will be responsible for returning HTML
     - How will the server compile markup? Will it use a templating language (i.e., `.erb` in a Rails application)?
     - Do you need to augment server-rendered markup with CSS or client-side JS?
     - Will there be any DOM manipulation after page load?
@@ -48,9 +48,9 @@
 
 ### Additional considerations if using a build tool
 
-- [ ] What tool to use? (webpack, gulp, rollup, parcel, etc.)
-- [ ] What environment to build in (Node version)
-- [ ] Do you need loaders for any or all of HTML, CSS, JS, static files?
+- \[ \] What tool to use? (webpack, gulp, rollup, parcel, etc.)
+- \[ \] What environment to build in (Node version)
+- \[ \] Do you need loaders for any or all of HTML, CSS, JS, static files?
 - For JS:
   - What JS version(s) do you want to write in and target? (i.e., ES6 > ES5)
   - What will you use to transpile JS (i.e., Babel)
@@ -69,13 +69,13 @@
 
 ### Additional considerations if building a SPA
 
-- [ ] Global state management (Redux, context, etc.)
-  - [ ] side effects (sagas, thunks, hooks?)
-- [ ] Client-side routing
-- [ ] Managing head/meta/title tags
-- [ ] XHR/fetch service
+- \[ \] Global state management (Redux, context, etc.)
+  - \[ \] side effects (sagas, thunks, hooks?)
+- \[ \] Client-side routing
+- \[ \] Managing head/meta/title tags
+- \[ \] XHR/fetch service
   - What kind of API(s) do you need to interact with? (REST, GraphQL)
-- [ ] Static asset loading (HTML, CSS, images, fonts, SVGs, etc.)
+- \[ \] Static asset loading (HTML, CSS, images, fonts, SVGs, etc.)
 
 ### User Interaction
 
@@ -96,8 +96,8 @@
 
 ### Maintaining code standards & developer tools
 
-- [ ] Linting/formatting (eslint, prettier, stylelint)
-- [ ] Commit hooks (husky)
+- \[ \] Linting/formatting (eslint, prettier, stylelint)
+- \[ \] Commit hooks (husky)
 - Browser dev tools
 - React developer tools
 - Redux debugger
@@ -141,18 +141,18 @@
 ## Deploying
 
 - How will the front end code fit in with the rest of the application ecosystem, other systems and services?
-  - [ ] Where will front end assets be hosted? Do they need their own CI/CD pipeline?
-  - [ ] Will you use a CDN, and how will you manage caching?
-  - [ ] How will you manage non-code assets, like images and fonts?
-  - [ ] If making API calls to an internal backend, what will the various environments and domains be? Will you need to set up CORS and/or CSRF protection?
+  - \[ \] Where will front end assets be hosted? Do they need their own CI/CD pipeline?
+  - \[ \] Will you use a CDN, and how will you manage caching?
+  - \[ \] How will you manage non-code assets, like images and fonts?
+  - \[ \] If making API calls to an internal backend, what will the various environments and domains be? Will you need to set up CORS and/or CSRF protection?
 
 ## Optimization
 
 - Build tool config/integrations
-  - [ ] an asset manifest
-  - [ ] sourcemaps
-  - [ ] versioning/hashing
-  - [ ] code splitting/chunking/dynamic imports
-  - [ ] absolute imports
-  - [ ] bundle analyzer
-  - [ ] minification
+  - \[ \] an asset manifest
+  - \[ \] sourcemaps
+  - \[ \] versioning/hashing
+  - \[ \] code splitting/chunking/dynamic imports
+  - \[ \] absolute imports
+  - \[ \] bundle analyzer
+  - \[ \] minification

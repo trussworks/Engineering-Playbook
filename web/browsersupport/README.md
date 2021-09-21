@@ -8,9 +8,9 @@ Unless specifically negotiated with the client, we generally support only the la
 
 Suggested browsers to use for development and testing:
 
-* Latest Google Chrome
-* Latest Firefox
-* Latest iOS Safari
-* Latest Chrome
-* Internet Explorer 11
-* Edge
+- Latest Google Chrome
+- Latest Firefox
+- Latest iOS Safari
+- Latest Chrome
+- Internet Explorer 11
+- Edge

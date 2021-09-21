@@ -133,7 +133,7 @@ but to provide a more decorative example that may be encountered in a Truss code
 Interacting with this model is likely going to happen in two ways:
 
 1. marshalling from an outside data source
-2. modifying/viewing the data in Go
+1. modifying/viewing the data in Go
    (ex. executing business logic).
 
 #### Marshalling Models
@@ -302,14 +302,14 @@ and so on.
 
 Some general considerations when organizing query code are:
 
-* If query patterns vary greatly for individual models,
+- If query patterns vary greatly for individual models,
   consider tying them closer to the business logic they mirror
   (such as a service layer).
-* If individual query patterns satisfy multiple models,
+- If individual query patterns satisfy multiple models,
   consider a separate query layer that can abstract/share code.
   When designing something like this,
   be wary of over-abstracting and reinventing a query language/ORM.
-* If models are single use (ie. they are queried and fetched in one way),
+- If models are single use (ie. they are queried and fetched in one way),
   adding query code to the model may make sense.
   Note though, models are often shared across multiple code layers,
   and due to struct field marshalling,
@@ -328,9 +328,9 @@ or state change methods, like above.
 
 #### Model References
 
-* [SQL Standard Library](https://golang.org/pkg/database/sql/)
+- [SQL Standard Library](https://golang.org/pkg/database/sql/)
   and some [helpful examples](https://golang.org/src/database/sql/example_test.go)
-* [Illustrated Guide to SQLX](https://jmoiron.github.io/sqlx/)
+- [Illustrated Guide to SQLX](https://jmoiron.github.io/sqlx/)
 
 ### Services
 
@@ -497,13 +497,13 @@ There  are three patterns worth understanding are:
    This demonstrates the origin of the pattern,
    where single function structs/interfaces
    are used to encapsulate work.
-2. [How to Use Go Interface](https://blog.chewxy.com/2018/03/18/golang-interfaces/).
+1. [How to Use Go Interface](https://blog.chewxy.com/2018/03/18/golang-interfaces/).
    This guide will provide a "Go" styling to interfaces.
    Rather than use global objects (like in Ruby)
    or tightly coupled interfaces/classes (Java),
    we'll keep interfaces close to usage (the handler in this case),
    and implementations will implicitly satisfy those contracts.
-3. [What is a Closure](https://www.calhoun.io/what-is-a-closure/).
+1. [What is a Closure](https://www.calhoun.io/what-is-a-closure/).
    Taking the "one function interface" pattern a step further,
    we can utilize Go's first class functions and closures
    to simply pass the function rather than struct,
@@ -516,6 +516,6 @@ or should be used throughout all of them.
 
 ### Resources
 
-* [GopherCon 2019: Mat Ryer - How I Write HTTP Web Services after Eight Years](https://www.youtube.com/watch?v=rWBSMsLG8po&feature=youtu.be)
-* [Loggers are dependencies](https://peter.bourgon.org/go-best-practices-2016/#top-tip-10)
-* [Context as first argument](https://blog.golang.org/context)
+- [GopherCon 2019: Mat Ryer - How I Write HTTP Web Services after Eight Years](https://www.youtube.com/watch?v=rWBSMsLG8po&feature=youtu.be)
+- [Loggers are dependencies](https://peter.bourgon.org/go-best-practices-2016/#top-tip-10)
+- [Context as first argument](https://blog.golang.org/context)

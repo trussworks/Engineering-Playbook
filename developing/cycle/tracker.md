@@ -57,7 +57,7 @@ Weekly sprints begin with a planning session. It goes like this:
      unlikely it'll be unblocked this week, move it into the "blocked" section
      of the icebox.
 
-2. Go through "blocked" section of the icebox
+1. Go through "blocked" section of the icebox
 
    - If a story is no longer blocked, move it into backlog.
 
@@ -68,7 +68,7 @@ Weekly sprints begin with a planning session. It goes like this:
      prioritize unblocking it: create a new chore to do the work that it will
      take to unblock it and move it to the top of the backlog.
 
-3. Go through the inbox
+1. Go through the inbox
 
    - Read each story and make sure everyone understands what it means. If there
      is missing context, acceptance criteria, etc. then add that in.

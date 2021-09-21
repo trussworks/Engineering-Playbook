@@ -6,5 +6,5 @@ In this book, Michael Nygard popularized the [Circuit Breaker pattern](https://w
 
 ## Links
 
-* [Pragmatic Bookshelf](https://pragprog.com/book/mnee2/release-it-second-edition)
-* [Amazon link](https://www.amazon.com/Release-Design-Deploy-Production-Ready-Software/dp/1680502395)
+- [Pragmatic Bookshelf](https://pragprog.com/book/mnee2/release-it-second-edition)
+- [Amazon link](https://www.amazon.com/Release-Design-Deploy-Production-Ready-Software/dp/1680502395)

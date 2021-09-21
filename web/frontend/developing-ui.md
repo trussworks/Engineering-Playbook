@@ -5,9 +5,9 @@ This is an attempt to document the process of implementing a web UI based on vis
 ## Contents
 
 1. [Start with the markup](#start-with-the-markup)
-2. [Style with CSS (modules)](#style-with-css-modules)
-3. [CSS: less is more](#css-less-is-more)
-4. [Cheatsheet](#cheatsheet)
+1. [Style with CSS (modules)](#style-with-css-modules)
+1. [CSS: less is more](#css-less-is-more)
+1. [Cheatsheet](#cheatsheet)
 
 ## Start with the markup
 
@@ -17,7 +17,7 @@ You can use browser dev tools to inspect elements and view the executed markup f
 
 Some HTML elements have quirks around how the browser renders them (such as [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend)) or strict rules around what child elements are allowed and how they must be structured (such as [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)). It's important to familiarize yourself with elements like these in order to use them effectively. Fortunately, React will usually print out a console error when it detects invalid HTML, and it's important to notice and correct these errors since they can be an indicator of potential browser compatibility issues.
 
-![Image of console error reading "Warning: validateDOMNesting(...): <td> cannot appear as a child of <table>."](./validateDOMNesting_error.png)
+![Image of console error reading "Warning: validateDOMNesting(...):  cannot appear as a child of ."](./validateDOMNesting_error.png)
 
 Ultimately, structuring the markup in a way that corresponds to the content of the page will make implementing a design easier, because it will define patterns and objects that _also_ exist in the language of the design. For instance, if the design indicates a certain margin in between groups of text content, it might make sense to group that content using a `<section>`, `<div>` or other element, even if there's no other visual indication of separation such as a border or background color. Identifying the repeating components and subcomponents of a design will help establish the foundation upon which you can start styling with CSS.
 
@@ -118,6 +118,7 @@ When adding a new UI component, it's easiest to first build it in a component li
 When it comes to adding CSS declarations, here are some guidelines:
 
 - Use existing variables/mixins for colors, spacing units, etc.
+
 - Avoid setting global margins on components. Setting margins on elements inside of components is fine, but use the sibling selectors (`+` and `~`) where appropriate.
 
   - For example, you can control the margin between specific elements. In this snippet, the space between an `h2` and `p` will be 15px, but the space between an `h2` and a `ul` will be 20px:
@@ -141,12 +142,16 @@ Finally, if you are using USWDS, it _does_ expose some [utility classes](https:/
 ## Cheatsheet
 
 - Review the effective HTML in component code and dev tools
+
   - Look for structure that aligns with the content, and no invalid DOM errors
   - Avoid adding extraneous elements (such as `<div>`s that have no purpose)
+
 - Ensure all type elements have the correct sizing and type styles
+
   - Applies to `<p>, <h1>, <h2>`, etc. as well as text inputs and any other elements with text content
   - **Why?** This will affect the resulting spacing, and inform any tweaks to padding & margin that may be needed
   - Always define both `font-size` and `line-height` (unitless, as a factor of `font-size`)
+
 - Know the differences between **padding** and **margin**
 
   - Padding is used to add _internal_ spacing between an element’s content and its border
@@ -165,17 +170,21 @@ Finally, if you are using USWDS, it _does_ expose some [utility classes](https:/
 
   - TODO: Add a diagram that illustrates collapsing margins
 
-- Compare the implementation side-by-side with the design at mobile size (< 600px wide)
+- Compare the implementation side-by-side with the design at mobile size (\< 600px wide)
+
   - Spacing inside of elements (padding inside of a box, margins between child elements)
   - Vertical spacing between elements
   - Background colors and borders of elements
   - Any touch targets (inputs, buttons, etc.) should have a minimum size of 42x42px (this does not apply to inline text links)
+
 - Resize the window up to tablet and desktop sizes (> 800px wide) and compare the implementation side-by-side with the design
+
   - Spacing inside of elements (padding inside of a box, margins between child elements)
   - Vertical spacing between elements
   - Any layout changes as a result of the window size increasing
   - Background colors and borders of elements
   - Responsive type scales up as indicated
+
 - Double-check implementations in different browsers and devices as needed
 
 ### References

@@ -22,24 +22,24 @@ essentially docs that don't exist. If we want to encourage people to
 write good docs, we need to make sure we can model good behavior. Some
 specific tips for accomplishing this goal:
 
-* **Establish strong norms (if not hard and fast rules) about where
+- **Establish strong norms (if not hard and fast rules) about where
   documentation belongs, preferably in no more than two places** (eg, a
   Git repo for technical docs and a Google Drive for design docs). If
   people have to look in too many places to find what they are looking
   for, they will eventually just give up (and it makes it more likely
   you'll have many different inconsistent documents for the same thing).
-* **Make it easy to find documents in those repos without needing to play
+- **Make it easy to find documents in those repos without needing to play
   a guessing game with keywords** (especially since a search for something
   like "terraform" or "docker" is probably going to give you too many
   results to be useful). Provide good tables of contents (they should
   not be too long) and put related documents close to each other
   topologically.
-* **Give documents descriptive, non-generic titles.** Giving a document a
+- **Give documents descriptive, non-generic titles.** Giving a document a
   title like "Docker" or "Alerts" becomes increasingly troublesome the
   larger your project gets -- if you're using Docker for three different
   applications and local development, what does the "Docker" document
   refer to?
-* **Keep in mind the specific restrictions of your repositories.** If you
+- **Keep in mind the specific restrictions of your repositories.** If you
   are using a wiki with a table of contents in the left margin that only
   shows ~20 characters, keep your titles as close to that limit as
   possible. If you are using a Git repo, make sure the filenames for your
@@ -59,16 +59,16 @@ and make sure the type of document is very clear in the title (so you
 could title the document "Runbook: Spacecats DB Alerts," for instance).
 Use an [ADR](./adr.md) to define what these types are -- such as:
 
-* *How-tos* are step-by-step guides to common procedures intended for
+- *How-tos* are step-by-step guides to common procedures intended for
   execution under normal operation. A reader should be able to execute
   these steps safely when following the document.
-* *Runbooks* are documents intended to be used in concert with alerts
+- *Runbooks* are documents intended to be used in concert with alerts
   that guide troubleshooting and mitigation responses and should include
   information on issues that users may expect with upstream and downstream
   services. A reader should be able to perform a quick diagnosis of an
   alert's underlying causes, or at least rule out any common issues, with
   the information provided in the document.
-* *Topical guides* provide a deep dive into how a specific system or
+- *Topical guides* provide a deep dive into how a specific system or
   service works, with references to ADRs that illustrate how technical
   decisions were made on the project. Readers should come away with a
   strong understanding of how the system works, as well as how to gather
@@ -140,16 +140,16 @@ You wouldn't want to put code in production without a thorough code
 review and testing -- you shouldn't expect people to use your documentation
 before it gets a thorough review either. Some tips for reviewing docs:
 
-* Junior members of your team are great people to have review your docs,
+- Junior members of your team are great people to have review your docs,
   since they will likely be using them the most. They *aren't* usually the
   best people to *write* docs though, since they have the least context
   for them.
-* For step-by-step guides, try running the commands. Do they work? Is it
+- For step-by-step guides, try running the commands. Do they work? Is it
   safe to run them? They should *not* use real people's usernames or
   other problems if someone just cut-and-pastes the command!
-* Try reading paragraphs out loud. Does the language feel awkward or
+- Try reading paragraphs out loud. Does the language feel awkward or
   ambiguous?
-* If you're the writer, have the reviewer tell you what they took away
+- If you're the writer, have the reviewer tell you what they took away
   from the document -- is it what you wanted them to know? Did they come
   away with a good mental model of the system you described?
 
@@ -157,13 +157,13 @@ before it gets a thorough review either. Some tips for reviewing docs:
 
 A few other short pieces of advice you may find useful:
 
-* If you use graphics, write the caption first, then make sure that the
+- If you use graphics, write the caption first, then make sure that the
   graphic represents what you want to convey.
-* Lists and tables can be a good way to present information people need
+- Lists and tables can be a good way to present information people need
   in a hurry -- they are easier to digest than paragraphs of text (but
   may not be best for nuanced information).
-* Use active voice instead of passive voice whenever possible ("do this
+- Use active voice instead of passive voice whenever possible ("do this
   thing" not "this thing must be done").
-* Put conditionals *before* imperatives to prevent people from doing
+- Put conditionals *before* imperatives to prevent people from doing
   something without realizing when they shouldn't ("If not Y, do X", not
   "do X if not Y").

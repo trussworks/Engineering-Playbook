@@ -6,13 +6,13 @@ In modern API services, it is not uncommon to build and rely upon Healthcheck en
 
 There are many ways that Healthcheck endpoints can be used in a system:
 
-* Readiness - Upon startup, has my app warmed up any internal caches that are needed before it can respond to traffic?
-* Liveness - Is this app accepting and responding to traffic at all?
-* Versioning - Is the verison of code that is deployed what it is expected to be?
-* Reachability - Can a client reach the service over the network?
-* Catalog - What are the external dependencies to which this app connects?
-* Connectivity - Can the app connect to its external dependencies successfully?
-* Quality - Does this endpoint do all its work and respond in a timely manner?
+- Readiness - Upon startup, has my app warmed up any internal caches that are needed before it can respond to traffic?
+- Liveness - Is this app accepting and responding to traffic at all?
+- Versioning - Is the verison of code that is deployed what it is expected to be?
+- Reachability - Can a client reach the service over the network?
+- Catalog - What are the external dependencies to which this app connects?
+- Connectivity - Can the app connect to its external dependencies successfully?
+- Quality - Does this endpoint do all its work and respond in a timely manner?
 
 Many apps will try to achieve their subset of the above goals via a single endpoint, but as apps grow in sophistication it is not unheard of to tease those responsibilities out to separate endpoints.
 
@@ -22,9 +22,9 @@ Frequently healthcheck endpoints are agnostic about authentication and authoriza
 
 Having heathcheck endpoints be un-authenticated implies several other considerations:
 
-* Any information available in the healthcheck should not be confidential, nor should the information be able to be (ab)used to jeopardize the smooth running of the service.
-* Unsecured healthchecks could open up the system or its checked dependencies to Denial of Service attacks. This may be mitigated by adding some level of caching in the healthchecks.
-* One possible technique for lowering risk is to isolate operational endpoints to a separate port with tighter network ACLs.
+- Any information available in the healthcheck should not be confidential, nor should the information be able to be (ab)used to jeopardize the smooth running of the service.
+- Unsecured healthchecks could open up the system or its checked dependencies to Denial of Service attacks. This may be mitigated by adding some level of caching in the healthchecks.
+- One possible technique for lowering risk is to isolate operational endpoints to a separate port with tighter network ACLs.
 
 ## Reliability
 
@@ -46,5 +46,5 @@ Again, consider the app example from above that uses an email sending service fo
 
 ## Contents
 
-* [von Neuman paper](http://web.mit.edu/6.454/www/papers/pierce_1952.pdf)
-* [Reliability Engineering](https://en.wikipedia.org/wiki/Reliability_engineering)
+- [von Neuman paper](http://web.mit.edu/6.454/www/papers/pierce_1952.pdf)
+- [Reliability Engineering](https://en.wikipedia.org/wiki/Reliability_engineering)

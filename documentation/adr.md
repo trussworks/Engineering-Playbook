@@ -47,11 +47,11 @@ as outlined in the template.
 
 Some command line tools are available that you may find useful for managing (m)ADRs in your project:
 
-* [adr-log](https://adr.github.io/adr-log/): Generates a architectural decision log out of mADRs.
-
-[template]: https://github.com/adr/madr/blob/master/template/template.md
-[mADR]: https://adr.github.io/madr/
+- [adr-log](https://adr.github.io/adr-log/): Generates a architectural decision log out of mADRs.
 
 ## See also
 
-* [Intro to docs](./intro-to-docs.md)
+- [Intro to docs](./intro-to-docs.md)
+
+[madr]: https://adr.github.io/madr/
+[template]: https://github.com/adr/madr/blob/master/template/template.md
