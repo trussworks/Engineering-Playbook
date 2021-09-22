@@ -4,5 +4,5 @@ _Radical Candor_ is basically the Trussel Manager Standard Issue book. It inform
 
 ## Links
 
-* [Radical Candor coaching site](https://www.radicalcandor.com/)
-* [Amazon link](https://www.amazon.com/Radical-Candor-Revised-Kick-Ass-Humanity/dp/1250235375)
+- [Radical Candor coaching site](https://www.radicalcandor.com/)
+- [Amazon link](https://www.amazon.com/Radical-Candor-Revised-Kick-Ass-Humanity/dp/1250235375)

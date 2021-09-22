@@ -32,8 +32,8 @@ Test isolation is a key recommendation from the cypress team. In the [best pract
 
 IE is in the works as is Firefox and mobile safari but no estimated date of release. This can be a hold up depending on the nature of the project. If IE support is critical, there are a couple of different workarounds that Truss has implemented on various projects.
 
-* Manually testing PRs against IE before merging
-* Executing tests via SauceLabs or similar service
+- Manually testing PRs against IE before merging
+- Executing tests via SauceLabs or similar service
 
 ## Other options considered
 
@@ -41,6 +41,6 @@ The main other option for feature/qa tests are selenium based frameworks, which 
 
 ## Additional Resources
 
-* [Why Cypress?](https://docs.cypress.io/guides/overview/why-cypress.html)
-* [Key differences](https://docs.cypress.io/guides/overview/key-differences.html)
-* [Best practices](https://docs.cypress.io/guides/references/best-practices.html)
+- [Why Cypress?](https://docs.cypress.io/guides/overview/why-cypress.html)
+- [Key differences](https://docs.cypress.io/guides/overview/key-differences.html)
+- [Best practices](https://docs.cypress.io/guides/references/best-practices.html)

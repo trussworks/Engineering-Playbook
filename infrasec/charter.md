@@ -95,7 +95,7 @@ creating a stable, secure, and yet responsive environment for applications,
 and building security and robustness into those applications. This comes
 down to a number of different responsibilities on a project:
 
-* **Be an advocate for reliability and security as features.** Regardless
+- **Be an advocate for reliability and security as features.** Regardless
   of whatever else you’re doing, your job is to highlight the importance
   of treating reliability and security as necessary components of the
   software product. If no one can use the application, no one is going to
@@ -103,7 +103,7 @@ down to a number of different responsibilities on a project:
   is safe when using the application, they will be far less likely to use
   it. In a perfect world, these would be values that everyone has
   internalized, but sadly, this is not a perfect world.
-* **Quantify reliability and security risks.** That being said, it is up
+- **Quantify reliability and security risks.** That being said, it is up
   to the business (client and product managers) to ultimately decide what
   to prioritize. No system can be 100% reliable or secure; every decision
   is about tradeoffs. Sometimes, they will need to take a back seat to
@@ -115,13 +115,13 @@ down to a number of different responsibilities on a project:
   the DB fails? What is the tradeoff of incorporating one authentication
   method over another? This also means getting Product Management to
   define their reliability goals and holding them to it.
-* **Be a subject matter expert for reliability and security.** When the
+- **Be a subject matter expert for reliability and security.** When the
   question comes up about the most cost-effective ways to increase
   reliability and security, infrasec team members should be helping
   application developers to answer those questions. This can include
   actually writing application code which enhances the reliability or
   security of the system, or developing processes like incident response.
-* **Build the infrastructure foundations for the application.** In
+- **Build the infrastructure foundations for the application.** In
   practical terms, this also means building out the parts of the
   environment that the application developers will deploy their code on
   top of. At Truss, this usually means AWS infrastructure, CI/CD pipelines,
@@ -132,7 +132,7 @@ down to a number of different responsibilities on a project:
   else depends on it working right, like the foundations of a building.
   However, without the building on top of it, the foundation is just a
   big hole in the ground.
-* **Lead the security review process.** Many of our clients require the
+- **Lead the security review process.** Many of our clients require the
   creation of documentation around security and infrastructure practices
   in order to meet some level of certification. While it is not the
   responsibility of the infrasec team to take care of this exclusively,
@@ -144,7 +144,7 @@ down to a number of different responsibilities on a project:
 In contrast to the above list, here’s some things that are not part
 of the infrasec practice.
 
-* **Being on-call.** In ye olde days of the Internet, there was a
+- **Being on-call.** In ye olde days of the Internet, there was a
   paradigm where the application developers would throw their code over
   the wall to the operations folks, who would deploy it and then be
   on-call if the code blew up. We no longer live in ye olde days of the
@@ -155,7 +155,7 @@ of the infrasec practice.
   to actually understand what is going on so that they can make smart
   decisions about alerting on and diagnosing issues with all aspects of
   the system.
-* **Saying no reflexively.** There is a [particularly toxic
+- **Saying no reflexively.** There is a [particularly toxic
   reputation](https://en.wikipedia.org/wiki/Bastard_Operator_From_Hell)
   that both operations and security used to have (and still have in
   many cases) where there was no trust of developers and they existed to
@@ -168,7 +168,7 @@ of the infrasec practice.
   just saying no all the time, people will try to work around you --
   making them even less likely to incorporate good reliability and
   security practices.
-* **Being the IT group.** There are a lot of functions that usually fall
+- **Being the IT group.** There are a lot of functions that usually fall
   to the infrasec team that are similar to traditional IT work. That can
   include provisioning accounts, working with email, setting up new
   authentication methods, etc. But infrasec is more of a superset of IT

@@ -5,22 +5,20 @@ process of bootstrapping an [AWS Organization](aws-organizations.md).
 This is only intended for cases where we are setting up the AWS account
 structure from scratch.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Naming Conventions](#naming-conventions)
-* [Create Organization Root Account](#create-organization-root-account)
-* [Bootstrap Terraform for org-root Account](#bootstrap-terraform-for-org-root-account)
-* [Terraforming the org-root Account](#terraforming-the-org-root-account)
-  * [Create org-root Admin Users](#create-org-root-admin-users)
-  * [Create AWS Organization](#create-aws-organization)
-    * [A Note on Terraforming Accounts](#a-note-on-terraforming-accounts)
-* [Setting Up the id Account Users and Role Assumption](#setting-up-the-id-account-users-and-role-assumption)
-* [Next Steps](#next-steps)
-  * [Shared Resources](#shared-resources)
+- [Naming Conventions](#naming-conventions)
+- [Create Organization Root Account](#create-organization-root-account)
+- [Bootstrap Terraform for org-root Account](#bootstrap-terraform-for-org-root-account)
+- [Terraforming the org-root Account](#terraforming-the-org-root-account)
+  - [Create org-root Admin Users](#create-org-root-admin-users)
+  - [Create AWS Organization](#create-aws-organization)
+    - [A Note on Terraforming Accounts](#a-note-on-terraforming-accounts)
+- [Setting Up the id Account Users and Role Assumption](#setting-up-the-id-account-users-and-role-assumption)
+- [Next Steps](#next-steps)
+  - [Shared Resources](#shared-resources)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Naming Conventions
 
@@ -71,9 +69,9 @@ git clone git@github.com:trussworks/terraform-aws-bootstrap.git bootstrap
 
 Follow the instructions in the bootstrap README and do the following:
 
-* set up /bin directory with aws-vault-wrapper and symlinks
-* set up .envrc in the top level and run `direnv allow`
-* set up .envrc in the account directory and run `direnv allow`; note
+- set up /bin directory with aws-vault-wrapper and symlinks
+- set up .envrc in the top level and run `direnv allow`
+- set up .envrc in the account directory and run `direnv allow`; note
   that this .envrc should set the `AWS_PROFILE` environment variable
   to match the name of this account.
 
@@ -175,18 +173,18 @@ emergency.
 Now we can begin creating the AWS Organization itself. There are a
 number of standard components that we'll want to create using Terraform:
 
-* the AWS organization itself
-* the initial OU which contains everything except the `suspended` OU
-* a `suspended` OU which will contain accounts quarantined due to
+- the AWS organization itself
+- the initial OU which contains everything except the `suspended` OU
+- a `suspended` OU which will contain accounts quarantined due to
   security concerns
-* a policy which denies use of all AWS resources we can tie to the
+- a policy which denies use of all AWS resources we can tie to the
   `suspended` OU (which will override the default FullAWSAccess policy);
   this is a part of the Truss
   [org-scp](https://registry.terraform.io/modules/trussworks/org-scp/aws)
   module
-* an `id` account (`spacecats-id` in our example) which will contain
+- an `id` account (`spacecats-id` in our example) which will contain
   all of the IAM users we'll be using to interact with this organization
-* an `infra` account where we can put specific infra-only resources; if
+- an `infra` account where we can put specific infra-only resources; if
   you are running Atlantis, this is where you can put the Terraform for
   that deployment, or you might put the root DNS records for your
   project's Route53 domain, etc.

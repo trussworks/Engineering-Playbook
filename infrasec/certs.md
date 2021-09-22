@@ -35,15 +35,16 @@ certificates or update old ones, autorenewal, and a reasonable price for
 one-off certificates. Their documentation is
 [here](https://sslmate.com/help/) but the general process is this:
 
-* Register a new account with SSLMate; save the username and password
+- Register a new account with SSLMate; save the username and password
   to 1Password for your project.
-* Install the SSLMate client:
+
+- Install the SSLMate client:
 
   ```console
   $ brew install sslmate
   ```
 
-* Generate a new certificate. If you just need a cert for a single
+- Generate a new certificate. If you just need a cert for a single
   domain, this should be just:
 
   ```console
@@ -57,7 +58,8 @@ one-off certificates. Their documentation is
   a DNS record you need to create to verify you have access to this
   domain. Create this record (usually via Terraform) and then continue
   this workflow.
-* Once your certificate has been validated, `sslmate` will dump a key,
+
+- Once your certificate has been validated, `sslmate` will dump a key,
   a certificate, an intermediate CA certificate, and a combined server
   chain certificate into your current directory. You will probably only
   need the first two; everything but the key can be later retrieved from
@@ -65,7 +67,8 @@ one-off certificates. Their documentation is
   key* (so, your laptop) -- make sure you put this somewhere safe (like
   the AWS Parameter Store); if you lose it you will need to regenerate
   the key and the certs.
-* The easiest way to pass these certificates to your application is
+
+- The easiest way to pass these certificates to your application is
   likely via the AWS Parameter Store using `chamber`, but it may vary for
   your project. To add it to the Parameter Store with `chamber`, you can
   use a command similar to this one:
@@ -77,4 +80,4 @@ one-off certificates. Their documentation is
 
 ## External resources
 
-* How an SSL/TLS handshake works: <https://www.ssl.com/article/ssl-tls-handshake-overview/>
+- How an SSL/TLS handshake works: <https://www.ssl.com/article/ssl-tls-handshake-overview/>

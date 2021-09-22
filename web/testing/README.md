@@ -6,5 +6,5 @@ This is an area to document usage patterns and various pros and cons of test fra
 
 ## Contents
 
-* [Cypress IO](cypress.md)
-* [Nightwatch/Selenium](nightwatch.md)
+- [Cypress IO](cypress.md)
+- [Nightwatch/Selenium](nightwatch.md)

@@ -153,4 +153,4 @@ resource "aws_s3_bucket" "private_bucket" {
 
 ## Resources
 
-* [Importing Infrastructure](https://www.terraform.io/docs/import/index.html)
+- [Importing Infrastructure](https://www.terraform.io/docs/import/index.html)

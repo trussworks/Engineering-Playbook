@@ -11,9 +11,9 @@ process of creating these certificates becomes slightly more complicated.
 In both the Truss and `terraform-aws-modules` ACM module, the module
 attempts to create three resources:
 
-* the ACM certificate
-* the Route53 DNS entry to validate the certificate
-* the Terraform [`aws_acm_certificate_validation`](https://www.terraform.io/docs/providers/aws/r/acm_certificate_validation.html) resource
+- the ACM certificate
+- the Route53 DNS entry to validate the certificate
+- the Terraform [`aws_acm_certificate_validation`](https://www.terraform.io/docs/providers/aws/r/acm_certificate_validation.html) resource
 
 It's important to note that the `aws_acm_certificate_validation` resource
 does not actually represent a real AWS resource -- it is an internal

@@ -5,17 +5,15 @@ to the way GovCloud interacts (or rather, doesn't interact) with commercial
 AWS accounts. The instructions below will take you through the process of
 getting an organization and its accounts set up properly.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [GovCloud Organization master account](#govcloud-organization-master-account)
-* [Additional GovCloud accounts](#additional-govcloud-accounts)
-* [Adding new GovCloud accounts to the GovCloud Organization](#adding-new-govcloud-accounts-to-the-govcloud-organization)
-* [Handling GovCloud dummy accounts in AWS commercial](#handling-govcloud-dummy-accounts-in-aws-commercial)
-* [Enabling Business Support in GovCloud](#enabling-business-support-in-govcloud)
+- [GovCloud Organization master account](#govcloud-organization-master-account)
+- [Additional GovCloud accounts](#additional-govcloud-accounts)
+- [Adding new GovCloud accounts to the GovCloud Organization](#adding-new-govcloud-accounts-to-the-govcloud-organization)
+- [Handling GovCloud dummy accounts in AWS commercial](#handling-govcloud-dummy-accounts-in-aws-commercial)
+- [Enabling Business Support in GovCloud](#enabling-business-support-in-govcloud)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## GovCloud Organization master account
 
@@ -198,10 +196,10 @@ important to note that as of this writing Business Support needs to be enabled
 on an account by account basis and can't be enabled at the Organization level.
 
 1. If the dummy commercial AWS account is in the `suspended` OU, you will need
-to temporarily remove it from the`suspended` OU first.
-2. Reset the root password for the dummy commercial AWS account tied to your
-GovCloud account. These credentials should be thrown away once you're done.
-3. Log into the AWS account as root and enable Business Support.
-4. Log into the corresponding GovCloud account and confirm you have Business
-Support enabled.
-5. Move the dummy commercial AWS account back into the `suspended` OU.
+   to temporarily remove it from the`suspended` OU first.
+1. Reset the root password for the dummy commercial AWS account tied to your
+   GovCloud account. These credentials should be thrown away once you're done.
+1. Log into the AWS account as root and enable Business Support.
+1. Log into the corresponding GovCloud account and confirm you have Business
+   Support enabled.
+1. Move the dummy commercial AWS account back into the `suspended` OU.

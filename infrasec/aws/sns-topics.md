@@ -14,8 +14,8 @@ The main purpose of the SNS topics are for notifications to teams. The naming co
 
 Sample names:
 
-* app-com-notification
-* infra-gov-alert
+- app-com-notification
+- infra-gov-alert
 
 ### Actions
 

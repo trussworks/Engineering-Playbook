@@ -6,24 +6,24 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 
 ## Contents
 
-* [Semantic Versioning](#semantic-versioning)
-* [Splitting a git repo](#splitting-a-git-repo)
-* [Going public](#going-public)
-* [Publishing a release](#publishing-a-release)
-* [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
-* [Version not appearing in the registry](#version-not-appearing-in-the-registry)
-* [Terraform state mv](#terraform-state-mv)
-* [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
-* [How to test your Terraform code](#how-to-test-your-terraform-code)
+- [Semantic Versioning](#semantic-versioning)
+- [Splitting a git repo](#splitting-a-git-repo)
+- [Going public](#going-public)
+- [Publishing a release](#publishing-a-release)
+- [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
+- [Version not appearing in the registry](#version-not-appearing-in-the-registry)
+- [Terraform state mv](#terraform-state-mv)
+- [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
+- [How to test your Terraform code](#how-to-test-your-terraform-code)
 
 ### Semantic Versioning
 
-* When publishing a module for the first time, if you're uncertain what version to use, use `v1.0.0`
-* Any changes to a module that don't result in a resource being recreated, increment the _patch_ version per [semantic versioning](https://semver.org/) guidelines.
-* Any changes to a module that results in a resource being recreated, increment the _minor_ version per [semantic versioning](https://semver.org/) guidelines.
-* Any changes to support GovCloud that do not result in changes to resources, increment the _minor_ version per [semantic versioning](https://semver.org/) guidelines.
-* Any changes that results in a user having to update the module, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
-* Upgrading a module from <0.12 to 0.12, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
+- When publishing a module for the first time, if you're uncertain what version to use, use `v1.0.0`
+- Any changes to a module that don't result in a resource being recreated, increment the _patch_ version per [semantic versioning](https://semver.org/) guidelines.
+- Any changes to a module that results in a resource being recreated, increment the _minor_ version per [semantic versioning](https://semver.org/) guidelines.
+- Any changes to support GovCloud that do not result in changes to resources, increment the _minor_ version per [semantic versioning](https://semver.org/) guidelines.
+- Any changes that results in a user having to update the module, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
+- Upgrading a module from \<0.12 to 0.12, increment the _major_ version per [semantic versioning](https://semver.org/) guidelines.
 
 ### Starting a module experiment
 
@@ -42,26 +42,26 @@ Before going public, consider sourcing the module from github as described in th
 When you're ready to turn the prototype module into a published one, there are a few things you'll need to do if you haven't already:
 
 1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/github-global/main.tf) managed by our GitHub repo management module.
-2. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
-   * `/github subscribe trussworks/your-repo-here`
-   * `/github unsubscribe trussworks/your-repo-here commits deployments releases`
-3. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
-   * First read through the Terraform docs on [Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html) and make appropriate changes to your repository
-   * Ensure that the module you wish to publish has a SemVer tag attached to it. If not use `v1.0.0`.
-   * Sign into the registry using the trussworks-infra Github credentials (available in 1Password)
-   * In the upper right corner select "Publish" or go directly to the [Publish URL](https://registry.terraform.io/github/create)
-   * Select the repository you wish to publish from the drop down list. If you don't see it hit the refresh icon.
-   * Select the "Publish Module" button.
-   * Verify on the next screen that everything you expect to see is correct.
+1. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
+   - `/github subscribe trussworks/your-repo-here`
+   - `/github unsubscribe trussworks/your-repo-here commits deployments releases`
+1. Wire the repo up to the [terraform module registry](https://registry.terraform.io).
+   - First read through the Terraform docs on [Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html) and make appropriate changes to your repository
+   - Ensure that the module you wish to publish has a SemVer tag attached to it. If not use `v1.0.0`.
+   - Sign into the registry using the trussworks-infra Github credentials (available in 1Password)
+   - In the upper right corner select "Publish" or go directly to the [Publish URL](https://registry.terraform.io/github/create)
+   - Select the repository you wish to publish from the drop down list. If you don't see it hit the refresh icon.
+   - Select the "Publish Module" button.
+   - Verify on the next screen that everything you expect to see is correct.
 
 ### Publishing a release
 
 To publish a release from a terraform module that's already connected to the [terraform module registry](https://registry.terraform.io), all you need to do after your PR merges is:
 
 1. From the releases tab, click the "Draft a release" button.
-2. Add a meaningful description.
-3. Increment the package version per [semantic versioning](https://semver.org/) guidelines.
-4. Click the "Publish release" button.
+1. Add a meaningful description.
+1. Increment the package version per [semantic versioning](https://semver.org/) guidelines.
+1. Click the "Publish release" button.
 
 You don't need to add any binary files. GitHub will do this automatically for you.
 
@@ -78,9 +78,6 @@ In order to preserve the ability to release updates for previous Terraform versi
 1. Add a note to the README in your PR that describes which major version of the module supports which version of Terraform and which branch to submit a PR to for each (e.g., "For Terraform 0.12, pin the module version to `~> 2.0`. Submit pull requests to the default branch. For Terraform 0.11, pin the module version to `~> 1.0`. Submit pull requests to the `terraform011` branch.")
 1. Merge your changes in to the module's default branch.
 1. Cut a new release as described above. Increment the *major* version of the module as you described in the README.
-
-[publish-release]: images/publish-release.png "Screenshot of a published release"
-[draft-release]: images/draft-release.png "Screenshot of a release draft"
 
 ### Version support policy
 
@@ -110,3 +107,6 @@ Refer to the Truss [Terraform Layout Example](https://github.com/trussworks/terr
 ### How to test your Terraform code
 
 Refer to the Truss [Terratest Guide](terratest.md).
+
+[draft-release]: images/draft-release.png "Screenshot of a release draft"
+[publish-release]: images/publish-release.png "Screenshot of a published release"

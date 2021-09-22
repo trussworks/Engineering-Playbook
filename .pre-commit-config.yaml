@@ -1,6 +1,6 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
       - id: check-merge-conflict
       - id: check-yaml
@@ -8,12 +8,19 @@ repos:
       - id: trailing-whitespace
 
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.26.0
+    rev: v0.28.1
     hooks:
       - id: markdownlint
 
-  - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v1.0.1
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.10
     hooks:
-      - id: markdown-toc
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-toc
+
+  - repo: git://github.com/trussworks/pre-commit-hooks
+    rev: v1.1.0
+    hooks:
       - id: circleci-validate

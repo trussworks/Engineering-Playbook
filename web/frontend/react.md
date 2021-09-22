@@ -43,15 +43,18 @@ Style Guides:
 Resources for above tutorials:
 
 - JSX
+
   - [In-depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
   - [Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html)
   - [Official site](https://jsx.github.io/)
 
 - Virtual DOM
+
   - [Disambiguation](http://jbi.sh/what-is-virtual-dom/)
   - [Glossary](https://facebook.github.io/react/docs/glossary.html)
 
 - React Router
+
   - [Github repo](https://github.com/reactjs/react-router)
   - [A Comprehensive Introduction](https://www.themarketingtechnologist.co/react-router-an-introduction/)
 
@@ -107,7 +110,7 @@ A little on [React’s test utilities](https://facebook.github.io/react/docs/tes
 - Does not have instructions or helper code specifically for React/Redux, but does for many other JS libraries. The other instructions may be enough, but we might end up doing more tailoring to work with it than we would with, say, Karma.
   - [However...](http://revelry.co/react-testing-with-jasmine/react-addons-test-utils)
   - And [this repo](https://github.com/tommyh/jasmine-react) lets you use Jasmine with the more typical React syntax for creating components
--Seems to be a pretty standard tool, so we might benefit from using it in learning a more transferrable skill
+    -Seems to be a pretty standard tool, so we might benefit from using it in learning a more transferrable skill
 
 Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [React Using Jasmine and Webpack](https://egghead.io/lessons/react-unit-testing-a-react-component-using-jasmine-and-webpack)
 
@@ -149,7 +152,7 @@ Handy, and also sounds like someone explaining a heist in a Guy Ritchie movie: [
 - Asynchronous testing
 - Access through the terminal
 - Speed tests available for some tests
-before() and after() hooks reminiscent of setup and teardown in Xcode
+  before() and after() hooks reminiscent of setup and teardown in Xcode
 - Nyan reporter (yep)
 
 ## [Chutzpah](http://mmanela.github.io/chutzpah/)

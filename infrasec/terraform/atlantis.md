@@ -153,10 +153,10 @@ Once we've set up the `atlantis-global` namespaces, we can move on to the `atlan
 
 The `atlantis-service` namespace is where we'll build the actual Atlantis service. The bulk of this work is done with the [`atlantis`](https://registry.terraform.io/modules/terraform-aws-modules/atlantis/aws/latest) Terraform module. It creates a number of resources, including:
 
-* a VPC
-* a Fargate service fronted by an ALB
-* an ACM certificate and Route53 DNS entries
-* Parameter Store entries for secrets
+- a VPC
+- a Fargate service fronted by an ALB
+- an ACM certificate and Route53 DNS entries
+- Parameter Store entries for secrets
 
 Aside from this module, we'll also need to create some resources in GitHub for the integration; in GovCloud, we'll also need to create the DNS entries for the ALB and the ACM certificate verification separately, as Route53 is not available for public DNS in GovCloud. There are also two configuration files we'll need to add, one in the `atlantis-service` namespace and one in the root of the Terraform repo.
 
@@ -498,11 +498,11 @@ Once you've set up this file, you should be able to make a pull request and see 
 
 ## Tips and Troubleshooting
 
-* If you update an SSM parameter, be sure to cycle the task (you can kill the running Atlantis task and let AWS restart it); these are read into the container's environment at startup time, so they do not take effect unless you do this.
-* As the module configuration example states, we recommend against using `latest` as the container version, because this will force you to to two steps in order to upgrade the container version; instead, we recommend using the actual git SHA of the container.
+- If you update an SSM parameter, be sure to cycle the task (you can kill the running Atlantis task and let AWS restart it); these are read into the container's environment at startup time, so they do not take effect unless you do this.
+- As the module configuration example states, we recommend against using `latest` as the container version, because this will force you to to two steps in order to upgrade the container version; instead, we recommend using the actual git SHA of the container.
 
 ## Links and other reading
 
-* [Atlantis Official Site](https://runatlantis.io)
-* [Truss's Atlantis blog post](https://truss.works/blog/infrastructure-management-with-atlantis)
-* :lock: [Atlantis setup in Truss's commercial accounts](https://github.com/trussworks/legendary-waddle)
+- [Atlantis Official Site](https://runatlantis.io)
+- [Truss's Atlantis blog post](https://truss.works/blog/infrastructure-management-with-atlantis)
+- :lock: [Atlantis setup in Truss's commercial accounts](https://github.com/trussworks/legendary-waddle)

@@ -7,12 +7,12 @@ experiences and resources you can use when adding testing to your own Ansible ro
 
 These resources will likely come in handy when trying to get Molecule up and running for yourself:
 
-* Molecule Official Docs: <https://molecule.readthedocs.io/en/latest/>
-* Testing Your Ansible Roles with Molecule (Jeff Geerling):
+- Molecule Official Docs: <https://molecule.readthedocs.io/en/latest/>
+- Testing Your Ansible Roles with Molecule (Jeff Geerling):
   <https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule>
-* Test-driven Infrastructure Development with Ansible and Molecule (Jonas Hecht):
+- Test-driven Infrastructure Development with Ansible and Molecule (Jonas Hecht):
   <https://blog.codecentric.de/en/2018/12/test-driven-infrastructure-ansible-molecule/>
-* Continuous Cloud Infrastructure With Ansible, Molecule, and TravisCI on AWS (Jonas Hecht):
+- Continuous Cloud Infrastructure With Ansible, Molecule, and TravisCI on AWS (Jonas Hecht):
   <https://blog.codecentric.de/en/2019/01/ansible-molecule-travisci-aws/>
 
 ## Setup
@@ -21,11 +21,11 @@ You will want to use some sort of virtual environment for Molecule; hopefully yo
 anyway. Using Python 3 as the Python binary is also highly recommended. In addition to what you need for ansible, you
 will need these Python modules as well:
 
-* molecule
-* molecule\[docker\] - For testing with docker containers (the default)
-* molecule\[ec2\] - For testing on ec2 instances
-* docker-py
-* boto
+- molecule
+- molecule\[docker\] - For testing with docker containers (the default)
+- molecule\[ec2\] - For testing on ec2 instances
+- docker-py
+- boto
 
 ## Creating a role or scenario
 
@@ -97,13 +97,13 @@ example:
 You can run Molecule tests all at once or in stages; these are all done with the various subcommands. The ones I ended
 up using the most were:
 
-* `create`: This creates the docker container, EC2 instance, or what have you, to allow for further testing.
-* `converge`: This attempts to converge the playbook against the created test environment.
-* `verify`: This runs the tests you’ve written in, say, Test-infra (more on that a little later). Obviously, if you do
+- `create`: This creates the docker container, EC2 instance, or what have you, to allow for further testing.
+- `converge`: This attempts to converge the playbook against the created test environment.
+- `verify`: This runs the tests you’ve written in, say, Test-infra (more on that a little later). Obviously, if you do
   this without converging first, they will likely fail.
-* `destroy`: This tears down the created test environment; it’s especially important to do in EC2 so you don’t leave
+- `destroy`: This tears down the created test environment; it’s especially important to do in EC2 so you don’t leave
   your instances lying around.
-* `test`: This runs the entire test sequence. This includes everything above plus things like linting and an idempotence
+- `test`: This runs the entire test sequence. This includes everything above plus things like linting and an idempotence
   check (if you run a converge after a converge, is there anything to do?). It will destroy the test environment as its
   last step, so if you want to iterate on an environment, you probably don’t want to use this right away.
 

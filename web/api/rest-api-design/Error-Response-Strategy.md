@@ -6,10 +6,10 @@ Just like an HTML error page shows a useful error message to a visitor, an API s
 
 ## Key Takeaways
 
-* Use a consistent error response strategy.
-* Have a default list of errors, in addition to abiding by the correct HTTP status codes.
-* Your error codes should not change, unlike descriptive messages, which can change.
-* Consider readability by providing a list of errors and using strings for messages instead of integers.
+- Use a consistent error response strategy.
+- Have a default list of errors, in addition to abiding by the correct HTTP status codes.
+- Your error codes should not change, unlike descriptive messages, which can change.
+- Consider readability by providing a list of errors and using strings for messages instead of integers.
 
 ## Terms
 
@@ -61,9 +61,9 @@ For e.g. The types of responses are grouped into the following top level categor
 
 The error codes are 3-digit numbers, and `2xx` below indicates any number from 200-299.
 
-* `2xx` **Success** - This category indicates the action requested by the client was received, understood, and accepted.
-* `4xx` **Client Error** - This category indicate that the error seems to have been caused by the client.
-* `5xx` **Server Error** - This category indicates the server failed to fulfill a request.
+- `2xx` **Success** - This category indicates the action requested by the client was received, understood, and accepted.
+- `4xx` **Client Error** - This category indicate that the error seems to have been caused by the client.
+- `5xx` **Server Error** - This category indicates the server failed to fulfill a request.
 
 **Importance of the Client vs. Server Error Distinction** - `500` server errors signal that something went wrong on the backend *that shouldn't have*.
 
@@ -75,12 +75,12 @@ Why is this important? 500 errors are usually serious enough that a slew of them
 
 Since there are a lot of status codes, it's advisable to pick a well-known subset of HTTP responses and return mainly those. It makes it easier for the client to support.
 
-* `200` **OK** - Response to a successful GET, PUT, PATCH or DELETE. Can also be used for a POST that doesn't result in a creation.
-* `201` **Created** - Response to a POST that results in a creation.
-* `404` **Not Found** - When a non-existent resource is requested.
-* `409` **Conflict** - When we cannot process the request due to the current state of the server.
-* `412` **Precondition Failed** - A precondition like [optimistic locking](./Concurrency-Control.md) has failed.
-* `422` **Unprocessable Entity** - Used for validation errors.
+- `200` **OK** - Response to a successful GET, PUT, PATCH or DELETE. Can also be used for a POST that doesn't result in a creation.
+- `201` **Created** - Response to a POST that results in a creation.
+- `404` **Not Found** - When a non-existent resource is requested.
+- `409` **Conflict** - When we cannot process the request due to the current state of the server.
+- `412` **Precondition Failed** - A precondition like [optimistic locking](./Concurrency-Control.md) has failed.
+- `422` **Unprocessable Entity** - Used for validation errors.
 
 ### Use a constant error code to uniquely identify errors
 
@@ -210,9 +210,9 @@ If an API request could affect multiple “objects”, how are errors handled? A
 From [Rest Api Error Handling](https://alidg.me/blog/2016/9/24/rest-api-error-handling)
 
 1. Define ranges for error codes
-2. Define Resource Based Error Codes.
-That is, we use a string prefix for each error code and that prefix is determined by the resource itself.
-Example:
+1. Define Resource Based Error Codes.
+   That is, we use a string prefix for each error code and that prefix is determined by the resource itself.
+   Example:
 
 ```json
 {
@@ -227,7 +227,7 @@ Example:
 
 ## Todo
 
-* Internationalizing errors
+- Internationalizing errors
 
 ### Resources
 

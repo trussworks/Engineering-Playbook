@@ -289,10 +289,10 @@ This should just be a sanity check that the container "does the right thing".
 
 If you are not building a Docker container, you must remove these steps in the release job:
 
-* `setup_remote_docker`
-* `Login to Docker Hub`
-* `Check Docker container`
-* `Docker push`
+- `setup_remote_docker`
+- `Login to Docker Hub`
+- `Check Docker container`
+- `Docker push`
 
 ```yml
 version: 2.1
@@ -399,6 +399,6 @@ docker run -it trussworks/tool-name:v0.0.0 version
 
 Be sure you let other folks know you broke this out for them to use and contribute to! Consider doing one of these to help get more eyes on your new tool repo:
 
-* Add the people you worked with on this tool to your PRs on this repo.
-* Add some documentation to your repo and send the repo to Trussels in Slack!
-* Do a demo for your team or other teams or as an OTT.
+- Add the people you worked with on this tool to your PRs on this repo.
+- Add some documentation to your repo and send the repo to Trussels in Slack!
+- Do a demo for your team or other teams or as an OTT.

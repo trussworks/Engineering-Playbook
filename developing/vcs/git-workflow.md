@@ -31,9 +31,6 @@ authentication. However, if you’re just pulling a public repo, HTTPS is more
 convenient since you don’t need to authenticate anything (unlike SSH for
 read-only repos).
 
-[SSH]: https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-[HTTPS]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
-
 ## Working locally
 
 Pick either `rebase` or `merge` to incorporate changes from the default branch onto your
@@ -89,31 +86,31 @@ more negative than those of squashing.
 Below are the most common consequences of not squashing chosen by survey
 respondents:
 
-* hard to read the Git history
-* hard to link individual commits back to the GitHub PR
-* hard to understand the reason behind a change
+- hard to read the Git history
+- hard to link individual commits back to the GitHub PR
+- hard to understand the reason behind a change
 
 Conversely, the most common (90%) consequence of squashing chosen was:
 
-* It was hard to understand or work with big commits that had too many unrelated
-changes
+- It was hard to understand or work with big commits that had too many unrelated
+  changes
 
 And the most common reason for having big commits was:
 
-* Keeping PRs small and focused was not enforced during code reviews
+- Keeping PRs small and focused was not enforced during code reviews
 
 We feel this is much easier to address through team norms and communication, and
 is one of the guidelines in this document. See [PR size](#pr-size) above.
 
 Additional benefits of squashing mentioned by survey respondents include:
 
-* Keeping a clean commit history with detailed commit messages serves as
-documentation for our future selves and for future folks who will work on the repo
+- Keeping a clean commit history with detailed commit messages serves as
+  documentation for our future selves and for future folks who will work on the repo
 
-* It makes it easier to revert commits or PRs
+- It makes it easier to revert commits or PRs
 
-* It allows us to update the final commit message to incorporate any relevant
-discussion from the PR review
+- It allows us to update the final commit message to incorporate any relevant
+  discussion from the PR review
 
 ## Commit messages
 
@@ -122,12 +119,12 @@ For each meaningful commit, write a
 seven rules:
 
 1. Separate subject from body with a blank line
-2. Limit the subject line to 50 characters
-3. Capitalize the subject line
-4. Do not end the subject line with a period
-5. Use the [imperative mood] in the subject line
-6. Wrap the body at 72 characters
-7. Use the body to explain what and why vs. how
+1. Limit the subject line to 50 characters
+1. Capitalize the subject line
+1. Do not end the subject line with a period
+1. Use the [imperative mood] in the subject line
+1. Wrap the body at 72 characters
+1. Use the body to explain what and why vs. how
 
 Example:
 
@@ -146,4 +143,6 @@ versioning locally and in Circle CI.
 Resolves #123
 ```
 
+[https]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 [imperative mood]: https://en.wikipedia.org/wiki/Imperative_mood
+[ssh]: https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent

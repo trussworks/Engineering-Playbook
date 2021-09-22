@@ -12,47 +12,47 @@ provides some specifics to web development.
 
 ### References
 
-* [The Go Programming Language Official Website](https://golang.org/)
-* [Effective Go](https://golang.org/doc/effective_go.html) (how to do things “the Go way”)
-* [Go Pointer Primer](https://github.com/trussworks/go-pointer-primer)
-* [pkg.go.dev](https://pkg.go.dev/) (where you can read the docs for nearly any Go package)
-* [Go wiki](https://github.com/golang/go/wiki/Learn)
-* _Book_: [The Go Programming Language](http://www.gopl.io/)
-* Advanced Testing with Go
+- [The Go Programming Language Official Website](https://golang.org/)
+- [Effective Go](https://golang.org/doc/effective_go.html) (how to do things “the Go way”)
+- [Go Pointer Primer](https://github.com/trussworks/go-pointer-primer)
+- [pkg.go.dev](https://pkg.go.dev/) (where you can read the docs for nearly any Go package)
+- [Go wiki](https://github.com/golang/go/wiki/Learn)
+- _Book_: [The Go Programming Language](http://www.gopl.io/)
+- Advanced Testing with Go
   [Video](https://www.youtube.com/watch?v=yszygk1cpEc)
   and [Article](https://about.sourcegraph.com/go/advanced-testing-in-go) (great overview of useful techniques, useful for all Go programmers)
-* [Go Proverbs](https://go-proverbs.github.io/)
-* [Line of Sight Go](https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88)
-* [Go for Industrial Programming](https://peter.bourgon.org/go-for-industrial-programming/)
+- [Go Proverbs](https://go-proverbs.github.io/)
+- [Line of Sight Go](https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88)
+- [Go for Industrial Programming](https://peter.bourgon.org/go-for-industrial-programming/)
 
 ### Tours/Lessons
 
-* [A Tour of Go](https://tour.golang.org) (in-browser interactive language tutorial)
-* [How to Write Go Code](https://golang.org/doc/code.html) (info about the Go environment, testing, etc.)
-* [Go by Example](https://gobyexample.com)
-* [Go Track on Exercism](https://exercism.io/tracks/go)
-* _Article_: [Copying data from S3 to EBS 30x faster using Golang](https://medium.com/@venks.sa/copying-data-from-s3-to-ebs-30x-faster-using-go-e2cdb1093284)
+- [A Tour of Go](https://tour.golang.org) (in-browser interactive language tutorial)
+- [How to Write Go Code](https://golang.org/doc/code.html) (info about the Go environment, testing, etc.)
+- [Go by Example](https://gobyexample.com)
+- [Go Track on Exercism](https://exercism.io/tracks/go)
+- _Article_: [Copying data from S3 to EBS 30x faster using Golang](https://medium.com/@venks.sa/copying-data-from-s3-to-ebs-30x-faster-using-go-e2cdb1093284)
 
 ## Testing
 
 ### General
 
-* Use [table-driven tests](https://dave.cheney.net/2019/05/07/prefer-table-driven-tests) where appropriate.
-* Make judicious use of helper functions so that the intent of a test is not lost in a sea of error checking and boilerplate.
-* Comments delineating the [3](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80) or [4](https://thoughtbot.com/blog/four-phase-test) phases of your tests can help with comprehension.
-* Use [`t.Helper()`](https://golang.org/pkg/testing/#T.Helper) in your test helper functions to keep stack traces clean.
-* Use [`t.Parallel()`](https://rakyll.org/parallelize-test-tables/) to speed up tests.
-* Trend away from using [`testify/suite`](https://pkg.go.dev/github.com/stretchr/testify/suite). (It used to address some shortcomings in the standard library `testing` tools that have since been addressed.)
-* Lightweight assertion packages can help with expressiveness. Consider using [`testify/assert`](https://pkg.go.dev/github.com/stretchr/testify@v1.7.0/assert) or [`is`](https://pkg.go.dev/github.com/matryer/is)
+- Use [table-driven tests](https://dave.cheney.net/2019/05/07/prefer-table-driven-tests) where appropriate.
+- Make judicious use of helper functions so that the intent of a test is not lost in a sea of error checking and boilerplate.
+- Comments delineating the [3](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80) or [4](https://thoughtbot.com/blog/four-phase-test) phases of your tests can help with comprehension.
+- Use [`t.Helper()`](https://golang.org/pkg/testing/#T.Helper) in your test helper functions to keep stack traces clean.
+- Use [`t.Parallel()`](https://rakyll.org/parallelize-test-tables/) to speed up tests.
+- Trend away from using [`testify/suite`](https://pkg.go.dev/github.com/stretchr/testify/suite). (It used to address some shortcomings in the standard library `testing` tools that have since been addressed.)
+- Lightweight assertion packages can help with expressiveness. Consider using [`testify/assert`](https://pkg.go.dev/github.com/stretchr/testify@v1.7.0/assert) or [`is`](https://pkg.go.dev/github.com/matryer/is)
 
 ### Coverage
 
-* Always test exported functions.
+- Always test exported functions.
   Exported functions should be treated as an API layer for other packages.
   Cover the expected behavior and error scenarios as a user of that API.
-  * Consider using the [`_test` package suffix](https://golang.org/cmd/go/#hdr-Test_packages)
+  - Consider using the [`_test` package suffix](https://golang.org/cmd/go/#hdr-Test_packages)
     to simulate calling the package under test from an external package
-* Try not to test unexported functions.
+- Try not to test unexported functions.
   Unexported functions are implementation details of exported ones
   and should not change the intended usage.
   If you find that an unexported function is complex and needs testing,
@@ -158,9 +158,9 @@ else, YMMV.)
 
 ### Dependency Management
 
-* [Go Modules](https://blog.golang.org/v2-go-modules) has become the standard way to manage your dependencies
-* Before Go Modules were solidified, `dep` was frequently used for dependency management.
-  * This might be helpful if you are dealing with an older project: [Daily Dep documentation](https://golang.github.io/dep/docs/daily-dep.html) (common tasks you’ll encounter with the dependency manager)
+- [Go Modules](https://blog.golang.org/v2-go-modules) has become the standard way to manage your dependencies
+- Before Go Modules were solidified, `dep` was frequently used for dependency management.
+  - This might be helpful if you are dealing with an older project: [Daily Dep documentation](https://golang.github.io/dep/docs/daily-dep.html) (common tasks you’ll encounter with the dependency manager)
 
 ### Prefer Standard Libraries
 
@@ -196,9 +196,9 @@ along with a rollback plan.
 
 Some examples of third party packages we've found to be helpful and stable are:
 
-* [sqlx](https://github.com/jmoiron/sqlx)
+- [sqlx](https://github.com/jmoiron/sqlx)
   for SQL querying and struct marshalling.
-* [cobra/pflag/viper](https://github.com/spf13/cobra)
+- [cobra/pflag/viper](https://github.com/spf13/cobra)
   for writing command line utilities.
 
 If you're exploring a new package,
@@ -251,8 +251,8 @@ or maybe your birthday!
 In this clock package,
 there are two clocks.
 
-* The real clock where `clock.Now()` will call `time.Now()`.
-* A mock clock where `clock.Now()` always returns epoch time.
+- The real clock where `clock.Now()` will call `time.Now()`.
+- A mock clock where `clock.Now()` always returns epoch time.
   We'll show later how to change that!
 
 Let's look at the example above with the `clock` package.

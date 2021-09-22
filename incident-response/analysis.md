@@ -94,13 +94,13 @@ people talking about what they experienced to highlight important events
 during the incident. Here's some guidelines for the types of questions
 you want to ask:
 
-* Do not ask questions that could be answered by a "yes" or a "no". These
+- Do not ask questions that could be answered by a "yes" or a "no". These
   are not going to create discussion.
-* Don't ask "why" someone did something. Especially in English, "why" is
+- Don't ask "why" someone did something. Especially in English, "why" is
   heavily associated with blamefulness. Instead, ask *how* they made the
   decision to take action. This is more likely to get you an interesting
   answer about how people make decisions and expose hidden factors.
-* If two people had different perceptions about the same event, this is
+- If two people had different perceptions about the same event, this is
   often a key point to dig in to. What experiences or knowledge did they
   have to create different views of the incident?
 
@@ -147,17 +147,17 @@ people to come up with them on their own going forward.
 
 Other tips for running this retrospective:
 
-* Be wary of any people dominating the conversation, *especially* managers
+- Be wary of any people dominating the conversation, *especially* managers
   or other authority figures. This can intimidate people and makes it far
   less likely to get honest assessments of the events of the incident. If
   you haven't heard from people, try asking them questions directly.
-* Steer the conversation away from blame or any notion of 'human error'.
+- Steer the conversation away from blame or any notion of 'human error'.
   It's extremely rare that someone involved in an incident isn't trying
   to do their best -- 'human error' is almost always a symptom of a larger
   systemic or organizational problem. These tend to be the biggest -- and
   hardest to fix -- problems that contribute to incidents, which makes it
   especially important to highlight them.
-* Be extremely careful about anyone (including you) trying to decide on a
+- Be extremely careful about anyone (including you) trying to decide on a
   narrative for the incident during this meeting. Incidents are not linear
   progressions of events; they are filled with dead ends, tangents, and
   feedback loops. Resist the temptation to try and guide the discussion

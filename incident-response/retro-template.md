@@ -1,6 +1,6 @@
-# [Short Title of Incident]
+# \[Short Title of Incident\]
 
-Date(s) of Incident: [YYYY-MM-DD date or date range of incident]
+Date(s) of Incident: \[YYYY-MM-DD date or date range of incident\]
 
 ## Summary
 
@@ -24,13 +24,13 @@ Date(s) of Incident: [YYYY-MM-DD date or date range of incident]
 >
 > When writing this narrative, be sure to highlight:
 >
-> * when the incident started, stopped, or changed its nature and/or
+> - when the incident started, stopped, or changed its nature and/or
 >   severity
-> * when and how people made realizations about the nature of the incident
-> * when and how people made hypotheses (right or wrong) about the nature
+> - when and how people made realizations about the nature of the incident
+> - when and how people made hypotheses (right or wrong) about the nature
 >   of the incident
-> * anything that surprised people during the incident
-> * any point where people had contradictory perceptions about the
+> - anything that surprised people during the incident
+> - any point where people had contradictory perceptions about the
 >   incident
 
 ## Timeline
@@ -50,9 +50,9 @@ Date(s) of Incident: [YYYY-MM-DD date or date range of incident]
 >
 > All times CDT (GMT -0500).
 >
-> * **08:17** - spacecats-fe begins logging messages about being unable to
+> - **08:17** - spacecats-fe begins logging messages about being unable to
 >   contact spacecats-api
-> * **08:21** - cblkwell receives alert that spacecats-fe failed ping test
+> - **08:21** - cblkwell receives alert that spacecats-fe failed ping test
 >
 > This timeline should be curated; you don't need every individual message
 > or event cataloged here. However, **do not edit out so much that context

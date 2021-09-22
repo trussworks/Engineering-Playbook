@@ -6,5 +6,5 @@ There are several versions available, one of the most interesting is done as a "
 
 ## Links
 
-* [Amazon link - 2014](https://www.amazon.com/Goal-Process-Ongoing-Improvement/dp/0884271951/)
-* [Amazon link - graphic novel version](https://www.amazon.com/Goal-Business-Graphic-Novel/dp/0884272079/)
+- [Amazon link - 2014](https://www.amazon.com/Goal-Process-Ongoing-Improvement/dp/0884271951/)
+- [Amazon link - graphic novel version](https://www.amazon.com/Goal-Business-Graphic-Novel/dp/0884272079/)

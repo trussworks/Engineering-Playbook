@@ -10,5 +10,5 @@ Similarly, to add a new Subject Area, copy the `subject` directory to the contai
 
 ## Contents
 
-* [Topic](./topic.md)
-* [Subject Area](./subject/README.md)
+- [Topic](./topic.md)
+- [Subject Area](./subject/README.md)

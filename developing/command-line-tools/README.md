@@ -88,7 +88,7 @@ You may also be interested in these other pages from the Truss Engineering Playb
 
 ## Document format conversion
 
-- [dos2unix](https://waterlan.home.xs4all.nl/dos2unix.html) Efficient conversion of line terminators between DOS <-> Unix format
+- [dos2unix](https://waterlan.home.xs4all.nl/dos2unix.html) Efficient conversion of line terminators between DOS \<-> Unix format
 - [pandoc](https://pandoc.org/) Swiss-Army Knife of rich text document format conversion
 
 ## Plain text search tools

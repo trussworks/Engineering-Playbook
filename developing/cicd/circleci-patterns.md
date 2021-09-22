@@ -15,75 +15,75 @@ job for each repository.
 <details>
   <summary>Build/Push Config Pattern</summary>
 
-  ```yaml
-  commands:
-    build_image:
-      parameters:
-        dockerfile:
-          type: string
-        image_name:
-          type: string
-        tag:
-          type: string
-      steps:
-        - run:
-            name: 'Build docker image'
-            command: |
-              docker build -f << parameters.dockerfile >> -t << parameters.image_name >>:<< parameters.tag >> .
-              mkdir -p workspace
-              docker save -o workspace/<< parameters.image_name >> << parameters.image_name >>:<< parameters.tag >>
-        - persist_to_workspace:
-            root: workspace
-            paths:
-              - << parameters.image_name >>
+```yaml
+commands:
+  build_image:
+    parameters:
+      dockerfile:
+        type: string
+      image_name:
+        type: string
+      tag:
+        type: string
+    steps:
+      - run:
+          name: 'Build docker image'
+          command: |
+            docker build -f << parameters.dockerfile >> -t << parameters.image_name >>:<< parameters.tag >> .
+            mkdir -p workspace
+            docker save -o workspace/<< parameters.image_name >> << parameters.image_name >>:<< parameters.tag >>
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - << parameters.image_name >>
 
-    push_image:
-      parameters:
-        image_name:
-          type: string
-        tag:
-          type: string
-        repo:
-          type: string
-      steps:
-        - attach_workspace:
-            at: /tmp/workspace
-        - run:
-            name: 'Retrieve docker image from workspace'
-            command: |
-              docker load -i /tmp/workspace/<< parameters.image_name >>
-        - run:
-            name: 'Tag and push docker image'
-            command: |
-              bash -c "$(aws ecr get-login --no-include-email --region $AWS_REGION)"
-              docker tag << parameters.image_name >>:<< parameters.tag >> ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/<< parameters.repo >>:git-commit-${CIRCLE_SHA1}
-              docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/<< parameters.repo >>:git-commit-${CIRCLE_SHA1}
+  push_image:
+    parameters:
+      image_name:
+        type: string
+      tag:
+        type: string
+      repo:
+        type: string
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: 'Retrieve docker image from workspace'
+          command: |
+            docker load -i /tmp/workspace/<< parameters.image_name >>
+      - run:
+          name: 'Tag and push docker image'
+          command: |
+            bash -c "$(aws ecr get-login --no-include-email --region $AWS_REGION)"
+            docker tag << parameters.image_name >>:<< parameters.tag >> ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/<< parameters.repo >>:git-commit-${CIRCLE_SHA1}
+            docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/<< parameters.repo >>:git-commit-${CIRCLE_SHA1}
 
-  jobs:
-    build:
-      executor: main
-      steps:
-        - checkout
-        - setup_remote_docker:
-            # You can set docker_layer_caching to true if you have a paid plan
-            docker_layer_caching: false
-        - make bin_linux/my_app
-        - build_image:
-            dockerfile: Dockerfile
-            image_name: my_app
-            tag: latest
+jobs:
+  build:
+    executor: main
+    steps:
+      - checkout
+      - setup_remote_docker:
+          # You can set docker_layer_caching to true if you have a paid plan
+          docker_layer_caching: false
+      - make bin_linux/my_app
+      - build_image:
+          dockerfile: Dockerfile
+          image_name: my_app
+          tag: latest
 
-    push:
-      executor: main
-      steps:
-        - setup_remote_docker:
-            # You can set docker_layer_caching to true if you have a paid plan
-            docker_layer_caching: false
-        - push_image:
-            image_name: my_app
-            tag: latest
-            repo: app-my_app
-  ```
+  push:
+    executor: main
+    steps:
+      - setup_remote_docker:
+          # You can set docker_layer_caching to true if you have a paid plan
+          docker_layer_caching: false
+      - push_image:
+          image_name: my_app
+          tag: latest
+          repo: app-my_app
+```
 
 </details>
 
@@ -100,43 +100,43 @@ code below:
 <details>
   <summary>Multiple AWS Account Credentials Pattern</summary>
 
-  ```yaml
-    commands:
-      aws_vars_dev:
-        steps:
-          - run:
-              name: 'Setting up AWS environment variables for dev'
-              command: |
-                echo "export AWS_REGION=$DEV_REGION" >> $BASH_ENV
-                echo "export AWS_ACCOUNT_ID=$DEV_ACCOUNT_ID" >> $BASH_ENV
-                echo "export AWS_ACCESS_KEY_ID=$DEV_ACCESS_KEY" >> $BASH_ENV
-                echo "export AWS_SECRET_ACCESS_KEY=$DEV_SECRET_ACCESS_KEY" >> $BASH_ENV
+```yaml
+  commands:
+    aws_vars_dev:
+      steps:
+        - run:
+            name: 'Setting up AWS environment variables for dev'
+            command: |
+              echo "export AWS_REGION=$DEV_REGION" >> $BASH_ENV
+              echo "export AWS_ACCOUNT_ID=$DEV_ACCOUNT_ID" >> $BASH_ENV
+              echo "export AWS_ACCESS_KEY_ID=$DEV_ACCESS_KEY" >> $BASH_ENV
+              echo "export AWS_SECRET_ACCESS_KEY=$DEV_SECRET_ACCESS_KEY" >> $BASH_ENV
 
-      aws_vars_prod:
-        steps:
-          - run:
-              name: 'Setting up AWS environment variables for prod'
-              command: |
-                echo "export AWS_REGION=$PROD_REGION" >> $BASH_ENV
-                echo "export AWS_ACCOUNT_ID=$PROD_ACCOUNT_ID" >> $BASH_ENV
-                echo "export AWS_ACCESS_KEY_ID=$PROD_ACCESS_KEY" >> $BASH_ENV
-                echo "export AWS_SECRET_ACCESS_KEY=$PROD_SECRET_ACCESS_KEY" >> $BASH_ENV
+    aws_vars_prod:
+      steps:
+        - run:
+            name: 'Setting up AWS environment variables for prod'
+            command: |
+              echo "export AWS_REGION=$PROD_REGION" >> $BASH_ENV
+              echo "export AWS_ACCOUNT_ID=$PROD_ACCOUNT_ID" >> $BASH_ENV
+              echo "export AWS_ACCESS_KEY_ID=$PROD_ACCESS_KEY" >> $BASH_ENV
+              echo "export AWS_SECRET_ACCESS_KEY=$PROD_SECRET_ACCESS_KEY" >> $BASH_ENV
 
-    jobs:
-      do_thing_dev:
-        executor: main
-        steps:
-          - aws_vars_dev
-          - do_thing:
-              environment: dev
+  jobs:
+    do_thing_dev:
+      executor: main
+      steps:
+        - aws_vars_dev
+        - do_thing:
+            environment: dev
 
-      do_thing_prod:
-        executor: main
-        steps:
-          - aws_vars_prod
-          - do_thing:
-              environment: prod
-  ```
+    do_thing_prod:
+      executor: main
+      steps:
+        - aws_vars_prod
+        - do_thing:
+            environment: prod
+```
 
 </details>
 

@@ -12,13 +12,13 @@ You are automatically alerted if someone uses your `@slackname` but sometimes it
 
 #### 1. Open Slack app preferences
 
-  ![Slack team menu | Preferences](imgs/slack_preferences.png)
+![Slack team menu | Preferences](imgs/slack_preferences.png)
 
 #### 2. Add a comma separated list of keywords
 
-  Simply add a comma separated list of case insensitive keywords. `githubusername, last name` are a good start
+Simply add a comma separated list of case insensitive keywords. `githubusername, last name` are a good start
 
-  ![Notifications | My keywords](imgs/slack_keywords.png)
+![Notifications | My keywords](imgs/slack_keywords.png)
 
 #### 3. Close preferences
 
@@ -28,12 +28,12 @@ Turning off work when you are done can be a challenge in distributed teams. One 
 
 #### 1. Open Slack app preferences
 
-  ![Slack team menu | Preferences](imgs/slack_preferences.png)
+![Slack team menu | Preferences](imgs/slack_preferences.png)
 
 #### 2. Enable Auto Do Not Disturb
 
-  Turn on _Automatically disable notifications from:_ and select the times you are typically off from work.
+Turn on _Automatically disable notifications from:_ and select the times you are typically off from work.
 
-  ![Notifications | Do Not Disturb](imgs/slack_auto_do_not_disturb.png)
+![Notifications | Do Not Disturb](imgs/slack_auto_do_not_disturb.png)
 
 #### 3. Close preferences

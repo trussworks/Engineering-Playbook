@@ -28,11 +28,11 @@ The incident commander runs the incident response. This *does not* mean
 that they are leading the investigation; in fact, they should not be
 investigating at all directly. Their responsiblities are:
 
-* Keep track of the current state of the incident response; what is the
+- Keep track of the current state of the incident response; what is the
   impact to the service and users? What is the state of any mitigations
   or attempted fixes? How are the other members of the incident response
   team holding up?
-* Make any final decisions about incident response. No one should put in
+- Make any final decisions about incident response. No one should put in
   place any mitigations, attempted solutions, or active diagnostic
   measures *without* running it by the IC first. This is imperative to
   ensure no one is working at cross purposes and that the current state
@@ -79,12 +79,12 @@ recorded (such as Slack), parsing through hundreds or thousands of Slack
 messages to find the one that is important can be difficult. The scribe
 should highlight notable events in the incident process, such as:
 
-* when the incident is first noticed
-* when the incident response begins and ends
-* when the impact of the incident changes (for the better or worse, or
+- when the incident is first noticed
+- when the incident response begins and ends
+- when the impact of the incident changes (for the better or worse, or
   new symptoms appear)
-* when mitigations or attempted fixes are applied
-* any other events that have a significant impact on the progress of the
+- when mitigations or attempted fixes are applied
+- any other events that have a significant impact on the progress of the
   incident
 
 These should be recorded somewhere easily available to the rest of the
@@ -99,15 +99,15 @@ basis, since clients may have specific reporting requirements around
 certain incident severities. In general, the severity index should look
 something like this:
 
-* SEV1 - Complete service outage or major security incident. Requires an
+- SEV1 - Complete service outage or major security incident. Requires an
   immediate response at the highest priority.
   *Example: Service containers stuck in a crash loop, PII data known to
   have leaked.*
-* SEV2 - Significant service degradation or severe known security
+- SEV2 - Significant service degradation or severe known security
   vulnerability. Requires an immediate response at high priority.
   *Example: 20% HTTP error rate, library with known remote exploit in
   use.*
-* SEV3 - Service is in a degraded state but is not currently impacting
+- SEV3 - Service is in a degraded state but is not currently impacting
   users. If further issues occur, is in danger of reaching SEV1 or SEV2.
   Should be addressed promptly, but not necessarily immediately.
   *Example: One member of a database replica pair is down.*
@@ -142,30 +142,30 @@ link to the document available to responders.
 The incident response team's priorities during the incident should be
 as follows:
 
-* Assess the impact of the incident (affecting random 10% of users, the
+- Assess the impact of the incident (affecting random 10% of users, the
   us-west-2 region, users whose accounts were created today, etc)
-* Mitigate the impact to the service (failing over to another region,
+- Mitigate the impact to the service (failing over to another region,
   placing the service into read-only mode, rolling back to a previous
   known good version, etc)
-* Attempt to diagnose the problem via passive measures (reading logs,
+- Attempt to diagnose the problem via passive measures (reading logs,
   probing read-only endpoints, examining metrics, etc)
-* Take active measures to diagnose the problem (pushing config or code
+- Take active measures to diagnose the problem (pushing config or code
   changes, submitting data to see how the system responds, etc)
-* Take action in an attempt to resolve the problem.
+- Take action in an attempt to resolve the problem.
 
 The response process during the incident should basically be a 15-20
 minute loop that looks something like this:
 
-* The technical lead or investigators report to the incident commander
+- The technical lead or investigators report to the incident commander
   on the current state of the service. Special attention should be paid
   to changes in status (it is getting better or worse, affecting a new
   set of users, spreading to another region, etc).
-* The team reviews the status of any mitigation or solution efforts that
+- The team reviews the status of any mitigation or solution efforts that
   were put in place during the previous iteration of the loop.
-* If the incident is not yet resolved, the team determines what their
+- If the incident is not yet resolved, the team determines what their
   course of action will be for the next 15-20 minutes; any new active
   measures need to be approved by incident commander.
-* Team members go back and take their appropriate actions, and start
+- Team members go back and take their appropriate actions, and start
   the loop over again in 15-20 minutes.
 
 In general, you do not want to repeat this loop in more often than once

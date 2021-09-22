@@ -8,17 +8,17 @@ While Truss may have opinions on particular languages and strategic reasons for 
 
 ## Languages Trussels are proficient in
 
-* [Go](./GO.md)
-* JavaScript (including TypeScript/FlowScript)
-* Swift
-* Rust
-* Kotlin
-* [Ruby](./ruby/README.md)
-* [Python](./python/README.md)
-* Java
-* C/C++
-* [bash](./BASH.md)
-* SQL
+- [Go](./GO.md)
+- JavaScript (including TypeScript/FlowScript)
+- Swift
+- Rust
+- Kotlin
+- [Ruby](./ruby/README.md)
+- [Python](./python/README.md)
+- Java
+- C/C++
+- [bash](./BASH.md)
+- SQL
 
 ## Language Resources
 
@@ -34,39 +34,39 @@ JSON APIs.
 
 Some things to consider:
 
-* Swagger/OpenAPI specs are intended to be JSON (or YAML), so whether you're
-coming from Python (`snake_case`) or BASIC (`CAPITAL_CASE`) or Go
-(`PascalCase`), prefer to output JSON with idiomatic `camelCase` identifiers.
-* Structured logging usually uses JSON as the destination structure, so when
-creating log attributes/names, prefer JSON idiomatic identifiers in
-`camelCase` where possible.
-* Go's idiomatic "acronyms should be capitalized" is actually lossy when it
-comes to acronym/word boundaries, so carefully consider where you apply that
-capitalization rule. For example, some code generators might turn the
-identifier `ExampleHTTPID` into a filename that looks like
-`example_h_t_t_p_i_d.txt`, but if you use `ExampleHttpId` the generator has
-a much better chance of spitting out something reasonable like
-`example_http_id.txt`.
+- Swagger/OpenAPI specs are intended to be JSON (or YAML), so whether you're
+  coming from Python (`snake_case`) or BASIC (`CAPITAL_CASE`) or Go
+  (`PascalCase`), prefer to output JSON with idiomatic `camelCase` identifiers.
+- Structured logging usually uses JSON as the destination structure, so when
+  creating log attributes/names, prefer JSON idiomatic identifiers in
+  `camelCase` where possible.
+- Go's idiomatic "acronyms should be capitalized" is actually lossy when it
+  comes to acronym/word boundaries, so carefully consider where you apply that
+  capitalization rule. For example, some code generators might turn the
+  identifier `ExampleHTTPID` into a filename that looks like
+  `example_h_t_t_p_i_d.txt`, but if you use `ExampleHttpId` the generator has
+  a much better chance of spitting out something reasonable like
+  `example_http_id.txt`.
 
 ### JavaScript
 
 Important JS patterns and features to understand:
 
-* Destructuring Assignment
-  * [A Dead Simple Intro to Destructuring JavaScript Objects](http://wesbos.com/destructuring-objects/)
-* Fat Arrow Functions
-  * [ES5 Functions vs ES6 Fat Arrow Functions](https://medium.com/@thejasonfile/es5-functions-vs-es6-fat-arrow-functions-864033baa1a)
-* Higher Order Components
-  * [Higher Order Components: A React Application Design Pattern](https://www.sitepoint.com/react-higher-order-components/)
-* Promises
-  * [An incremental tutorial on promises](https://www.sohamkamani.com/blog/2016/08/28/incremenal-tutorial-to-promises/)
-* Spread Operator/Rest Params
-  * [JavaScript & The Spread Operator](https://codeburst.io/javascript-the-spread-operator-a867a71668ca)
-  * [How Three Dots Changed JavaScript](https://dmitripavlutin.com/how-three-dots-changed-javascript/)
-* Template Literals
-  * [Template Literals](https://css-tricks.com/template-literals/)
-* React and Typescript
-  * [Truss resources for React, Typescript, and front end tooling](https://github.com/trussworks/Engineering-Playbook/tree/master/web/frontend)
+- Destructuring Assignment
+  - [A Dead Simple Intro to Destructuring JavaScript Objects](http://wesbos.com/destructuring-objects/)
+- Fat Arrow Functions
+  - [ES5 Functions vs ES6 Fat Arrow Functions](https://medium.com/@thejasonfile/es5-functions-vs-es6-fat-arrow-functions-864033baa1a)
+- Higher Order Components
+  - [Higher Order Components: A React Application Design Pattern](https://www.sitepoint.com/react-higher-order-components/)
+- Promises
+  - [An incremental tutorial on promises](https://www.sohamkamani.com/blog/2016/08/28/incremenal-tutorial-to-promises/)
+- Spread Operator/Rest Params
+  - [JavaScript & The Spread Operator](https://codeburst.io/javascript-the-spread-operator-a867a71668ca)
+  - [How Three Dots Changed JavaScript](https://dmitripavlutin.com/how-three-dots-changed-javascript/)
+- Template Literals
+  - [Template Literals](https://css-tricks.com/template-literals/)
+- React and Typescript
+  - [Truss resources for React, Typescript, and front end tooling](https://github.com/trussworks/Engineering-Playbook/tree/master/web/frontend)
 
 ### SQL
 
@@ -78,8 +78,8 @@ Did you know that SQL dialects have provisions for leaving comments within their
 
 Some relevant docs:
 
-* [Postgres](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS)
-* [MySQL](https://dev.mysql.com/doc/refman/8.0/en/comments.html)
+- [Postgres](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS)
+- [MySQL](https://dev.mysql.com/doc/refman/8.0/en/comments.html)
 
 Additionally, if you have a request-scoped identifier (e.g. a `requestID` or `traceID`), you might be able to weave that into a built SQL query to give even finer-grained visibility.
 

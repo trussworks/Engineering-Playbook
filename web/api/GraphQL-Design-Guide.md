@@ -4,8 +4,8 @@ This guide was heavily influenced by [https://graphql.org/learn/best-practices/]
 
 ## Overview
 
-* Who is the audience for this guide
-* Who is the audience for the API
+- Who is the audience for this guide
+- Who is the audience for the API
 
 ## Principles
 
