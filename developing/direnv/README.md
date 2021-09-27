@@ -9,7 +9,7 @@
 Via homebrew:
 
 ```
- brew install direnv
+brew install direnv
 ```
 
 ## Getting started

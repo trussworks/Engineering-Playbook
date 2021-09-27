@@ -31,7 +31,7 @@ development as in CI and production.
 You should install via homebrew
 
 ```
- brew cask install docker
+brew cask install docker
 ```
 
 ### Configuration of Shared Folders
