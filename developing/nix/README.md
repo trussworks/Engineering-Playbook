@@ -106,7 +106,7 @@ PATH.
 
 ### Quick HOWTO
 
-For a template for how to set up a project see [./HOWTO.md](HOWTO).
+For a template for how to set up a project see [./HOWTO.md](HOWTO.md).
 
 ### Extra Setup (Only Fish Shell Users)
 
