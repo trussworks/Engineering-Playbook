@@ -11,13 +11,13 @@ need to set up your own.
 
 <!-- toc -->
 
-* [GitHub and Git Repos](#github-and-git-repos)
-* [1Password](#1password)
-* [AWS Organization and Accounts](#aws-organization-and-accounts)
-  * [GovCloud](#govcloud)
-  * [Atlantis](#atlantis)
-  * [Placeholder service modules](#placeholder-service-modules)
-* [CI/CD Pipeline](#cicd-pipeline)
+- [GitHub and Git Repos](#github-and-git-repos)
+- [1Password](#1password)
+- [AWS Organization and Accounts](#aws-organization-and-accounts)
+  - [GovCloud](#govcloud)
+  - [Atlantis](#atlantis)
+  - [Placeholder service modules](#placeholder-service-modules)
+- [CI/CD Pipeline](#cicd-pipeline)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
@@ -30,7 +30,7 @@ a number of GitHub repos and possibly a new GitHub organization. This
 is the prerequisite for nearly everything else you need to do to set
 up your infrastructure, so doing it as early as possible is a good idea.
 
-* If your client does not have an organization for you to do this in,
+- If your client does not have an organization for you to do this in,
   or if they would prefer you create a new one, then you will need to
   create a new GitHub organization. GitHub has
   [docs](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch)
@@ -39,25 +39,25 @@ up your infrastructure, so doing it as early as possible is a good idea.
   also a good idea to make sure the leads for your project are owners,
   and probably your contact at the client organization as well. This
   will allow them to easily add or remove new members if necessary.
-* Once you have a GitHub organization, you will need to create a number
+- Once you have a GitHub organization, you will need to create a number
   of repositories:
-  * `myproject-infra` - This is a repo which you will use to hold the
+  - `myproject-infra` - This is a repo which you will use to hold the
     Terraform code used to configure your project's AWS (or other cloud
     service) account(s).
-  * application repo(s) - You should talk to the AppEng lead to see how
+  - application repo(s) - You should talk to the AppEng lead to see how
     they would like to organize the application and create repos they
     can use early on. Some projects, like MyMove, may want a single repo
     for all the application code, but other projects may want separate
     repos for the frontend and backend, for instance. Neither of these
     is inherently correct, so consult with the AppEng lead (if you have
     one) to make this decision.
-  * `myproject-infra-gov` - If your project is going to need to have
+  - `myproject-infra-gov` - If your project is going to need to have
     resources in GovCloud, as many of ours do, you will need another repo
     for the Terraform used for that. This is for two reasons; one, we
     generally want tighter permissions on who has access to this repo, and
     second, if we want to have [Atlantis](https://runatlantis.io) handling
     the infrastructure in these accounts, we need a separate repo.
-* If at all possible, you should be using Terraform to maintain the users,
+- If at all possible, you should be using Terraform to maintain the users,
   teams, and repos for your project. The catch being that you'll need your
   `myproject-infra` repo first.
 
@@ -100,18 +100,18 @@ the Truss admin card as the billing information. This account will be your
 should bootstrap Terraform in it and set up the `admin-global` namespace.
 Things you will want to set up in the `org-root` account:
 
-* AWS logs S3 bucket
-* IAM users for org-root users (infra users only)
-* AWS Config for the organization
-* AWS Cloudtrail for the organization
-* AWS GuardDuty for the organization
+- AWS logs S3 bucket
+- IAM users for org-root users (infra users only)
+- AWS Config for the organization
+- AWS Cloudtrail for the organization
+- AWS GuardDuty for the organization
 
 Once that is done, you'll also need to set up some other accounts using
 Terraform in the `org-root` account:
 
-* `-id` account for handling all your IAM users
-* `-infra` account for project-wide infrastructure
-* `-dev` account for your dev deployment of the application
+- `-id` account for handling all your IAM users
+- `-infra` account for project-wide infrastructure
+- `-dev` account for your dev deployment of the application
 
 You may want to set up others as well (`-staging` or `-prod` for instance),
 but these are probably the ones you want as soon as possible.
@@ -120,7 +120,7 @@ but these are probably the ones you want as soon as possible.
 
 If you will need to be using GovCloud for this project, you should set
 up the parallel organization in GovCloud as well. See the (GovCloud
-Organization)[./aws/govcloud/gov-orgs.md] docs for an explanation of how
+Organization)\[./aws/govcloud/gov-orgs.md\] docs for an explanation of how
 to set this up.
 
 If you will be working entirely in GovCloud, you will not need the `-dev`
@@ -179,9 +179,9 @@ deployment into the dev environment at the very least as close to the
 beginning of the project as possible. This means that your pipeline
 should at least do the following:
 
-* run pre-commit checks on the repo for each PR
-* run tests (and possibly output code coverage metrics as well)
-* build a docker image and push it to ECR
-* attempt to deploy the application, usually by updating the ECS task
+- run pre-commit checks on the repo for each PR
+- run tests (and possibly output code coverage metrics as well)
+- build a docker image and push it to ECR
+- attempt to deploy the application, usually by updating the ECS task
   definition, and if at all possible, ensure that the correct version
   comes up and stays up, rolling back if it does not
