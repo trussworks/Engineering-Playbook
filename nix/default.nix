@@ -15,26 +15,26 @@ in buildEnv {
 
     (import (builtins.fetchGit {
       # Descriptive name to make the store path easier to identify
-      name = "nodejs-12.16.3";
+      name = "nodejs-14.17.5";
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixpkgs-unstable";
-      rev = "528d35bec0cb976a06cc0e8487c6e5136400b16b";
-    }) {}).nodejs-12_x
+      rev = "6a8e8b46152c13cd7ae8a072d36aaee943c2f795";
+    }) {}).nodejs-14_x
 
     (import (builtins.fetchGit {
       # Descriptive name to make the store path easier to identify
-      name = "circleci-cli-0.1.11540";
+      name = "circleci-cli-0.1.15663";
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixpkgs-unstable";
-      rev = "559cf76fa3642106d9f23c9e845baf4d354be682";
+      rev = "23cedc3088a628e1f5454cab6864f9b1a059e1ba";
     }) {}).circleci-cli
 
     (import (builtins.fetchGit {
       # Descriptive name to make the store path easier to identify
-      name = "pre-commit-2.7.1";
+      name = "pre-commit-2.14.0";
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixpkgs-unstable";
-      rev = "559cf76fa3642106d9f23c9e845baf4d354be682";
+      rev = "9c3de9dd586506a7694fc9f19d459ad381239e34";
     }) {}).pre-commit
   ];
 
