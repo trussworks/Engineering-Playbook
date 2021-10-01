@@ -6,10 +6,6 @@ Within Truss we have much experience of and opinions regarding engineering tools
 
 This collection of documents is intended to be simple and searchable, each one containing the essence of Truss opinions on a particular topic. Whilst any Trussel is free to edit these documents, there is some expectation that these are to be curated by the broad engineering community at Truss. To that end, proposed changes should be submitted via a PR and  SMEs will be identified to act as curators for particular areas of knowledge.
 
-### Public repo
-
-One question we might ask is whether or not this repo should be public? My inclination is to say yes and use it as a way of demonstrating to customers and potential hires what to expect from working with or for Truss.
-
 ## Contents
 
 - [Developer Tools & Practice](./developing/README.md) - Opinions and resources relating to the tools we use to do our work
