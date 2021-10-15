@@ -97,11 +97,12 @@ This HOWTO assumes you already have nix installed.
    fi
    ```
 
-1. Use
-   [nix-package-search](https://ahobson.github.io/nix-package-search/#/)
-   to find your package versions and add them to your
-   `nix/default.nix` in the `paths` section. Your new `default.nix`
-   might look something like (with NAME replaced with your project)
+1. Use [nix-package-search][ahobson-nix-package-search] to find your package
+   versions and add them to your `nix/default.nix` in the `paths` section. Your
+   new `default.nix` might look something like (with NAME replaced with your
+   project)
+
+   [ahobson-nix-package-search]: https://ahobson.github.io/nix-package-search/#/
 
    ```
    let
