@@ -123,7 +123,7 @@ This HOWTO assumes you already have nix installed.
    }
    ```
    <details>
-   <summary>📝 <h4 style="display:inline;">Click here to open a note about the <code>ref="refs/head/nixpkgs-unstable";</code> line from the step above</h4></summary>
+   <summary><h4>📝 Click here to open a note about the <code>ref="refs/head/nixpkgs-unstable";</code> line from the step above</h4></summary>
 
    In the step above, you may need to modify the `ref="{BRANCH_NAME}";` line
    with a different branch for the [NixOS/nixpkgs repository][gh-nixpkgs] if you
