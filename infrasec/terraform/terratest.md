@@ -11,6 +11,7 @@ It executes the defined Terraform and then validates things you're asserting.
 - [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
   - [Configure CircleCi Job](#configure-circleci-job)
   - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
+  - [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
   - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
 - [Documentation links](#documentation-links)
 
@@ -151,6 +152,14 @@ aws-vault exec trussworks-id -- rotator rotate -f ./rotate.yaml -y
 ```
 
 Instructions to install rotator can be found [here](https://github.com/chanzuckerberg/rotator).
+
+### Alternative: Configure AWS Keys for the CircleCI project
+
+These tests are running as the `circleci` user account configured in the `trussworks-id` account.
+
+To add the access keys go to the project settings page `https://circleci.com/gh/trussworks/<PROJECT NAME>/edit#env-vars`.
+Set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to the current values.
+These keys are rotated daily.
 
 ### Access test metadata stored in CircleCI
 
