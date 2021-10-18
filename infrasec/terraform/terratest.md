@@ -11,7 +11,7 @@ It executes the defined Terraform and then validates things you're asserting.
 - [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
   - [Configure CircleCi Job](#configure-circleci-job)
   - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
-  - [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
+  - [Alternative: Configure AWS Keys for the CircleCI project](#alternative-configure-aws-keys-for-the-circleci-project)
   - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
 - [Documentation links](#documentation-links)
 
