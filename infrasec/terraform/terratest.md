@@ -10,7 +10,6 @@ It executes the defined Terraform and then validates things you're asserting.
 - [Run manually](#run-manually)
 - [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
   - [Configure CircleCi Job](#configure-circleci-job)
-  - [Configure AWS Keys for the CircleCI project](#configure-aws-keys-for-the-circleci-project)
   - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
   - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
 - [Documentation links](#documentation-links)
@@ -145,7 +144,8 @@ Update the `rotate.yaml` file in [Legendary Waddle](https://github.com/trusswork
 
 You can run the rotator script manually in your local environment to populate the keys to your repository. To do so, you will need a personal API token set up in a `.envrc.local` file in your local environment. See the [CircleCI Documentation](https://circleci.com/docs/2.0/managing-api-tokens/) on creating a personal API token.
 
-Rotate the keys via 
+Rotate the keys via
+
 ```
 aws-vault exec trussworks-id -- rotator rotate -f ./rotate.yaml -y
 ```
