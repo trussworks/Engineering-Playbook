@@ -93,47 +93,40 @@ Add a job to the `.circleci/config` file in the repository:
 
 ```yaml
 terratest:
-  docker:
-    - image: *circleci_docker_primary
+    docker:
+    - auth:
+        password: $DOCKER_PASSWORD
+        username: $DOCKER_USERNAME
+      image: *circleci_docker
       environment:
         - TEST_RESULTS: /tmp/test-results
-  steps:
+    steps:
     - checkout
     - restore_cache:
         keys:
-          - pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
-          - go-mod-sources-v1-{{ checksum "go.sum" }}
+        - pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
+        - go-mod-sources-v1-{{ checksum "go.sum" }}
     - run:
-        name: Assume role, run pre-commit and run terratest
         command: |
-          temp_role=$(aws sts assume-role \
-                  --role-arn arn:aws:iam::313564602749:role/circleci \
-                  --role-session-name circleci)
-          export AWS_ACCESS_KEY_ID=$(jq --raw-output .Credentials.AccessKeyId <<< "$temp_role")"
-          export AWS_SECRET_ACCESS_KEY=$(jq --raw-output .Credentials.SecretAccessKey <<< "$temp_role")"
-          export AWS_SESSION_TOKEN=$(jq --raw-output .Credentials.SessionToken <<< "$temp_role")"
+          temp_role=$(aws sts assume-role --role-arn arn:aws:iam::313564602749:role/circleci --role-session-name circleci)
+          export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs)
+          export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs)
+          export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs)
           make test
+        name: Assume role, run pre-commit and run terratest
     - save_cache:
         key: pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
         paths:
-          - "~/.cache/pre-commit"
+        - ~/.cache/pre-commit
     - save_cache:
         key: go-mod-sources-v1-{{ checksum "go.sum" }}
         paths:
-          - "~/go/pkg/mod"
+        - ~/go/pkg/mod
     - store_test_results:
-          path: /tmp/test-results/gotest
+        path: /tmp/test-results/gotest
 ```
 
 You'll either create a new workflow or add this job to an existing `workflow` definition to be run on every commit/push etc.
-
-### Configure AWS Keys for the CircleCI project
-
-These tests are running as the `circleci` user account configured in the `trussworks-id` account.
-
-To add the access keys go to the project settings page `https://circleci.com/gh/trussworks/<PROJECT NAME>/edit#env-vars`.
-Set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to the current values.
-These keys are rotated daily.
 
 ### Update the Key rotator configuration
 
@@ -149,6 +142,15 @@ Update the `rotate.yaml` file in [Legendary Waddle](https://github.com/trusswork
         account: trussworks
         repo: <REPO NAME>
 ```
+
+You can run the rotator script manually in your local environment to populate the keys to your repository. To do so, you will need a personal API token set up in a `.envrc.local` file in your local environment. See the [CircleCI Documentation](https://circleci.com/docs/2.0/managing-api-tokens/) on creating a personal API token.
+
+Rotate the keys via 
+```
+aws-vault exec trussworks-id -- rotator rotate -f ./rotate.yaml -y
+```
+
+Instructions to install rotator can be found [here](https://github.com/chanzuckerberg/rotator).
 
 ### Access test metadata stored in CircleCI
 
@@ -182,7 +184,7 @@ Save this script with a filename like `make-test` and make it executable using `
 test: bin/make-test
 ```
 
-Finally we update our `.circleci/config` by adding two steps - one to `go get` the package and another to access our shiny new executable:
+Finally we update our `.circleci/config` by adding two steps prior to running terratest - one to `go get` the package and another to access our shiny new executable:
 
 ```yaml
     - run:
