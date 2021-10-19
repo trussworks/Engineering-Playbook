@@ -2,13 +2,17 @@
 
 This HOWTO assumes you already have nix installed.
 
-## Setting up a new project
+## Nix Channels
 
-<details>
-<summary><b>📝 Click here to open a note about Nix Channels i.e. <code>ref="refs/head/nixpkgs-unstable";</code>.<br>You will want to read this if you've run into Git-related errors.</b></summary>
+We currently recommend using the [Nix Unstable channel][hydra-nixpkgs-unstable]
+by default as it contains the latest tested updates on a rolling basis. This
+means that the branch for the [NixOS/nixpkgs repository][gh-nixpkgs] that is
+used is the `nixpkg-unstable` branch.
+
+### Troubleshooting Git-related errors
 
 In the step above, you may need to modify the `ref="{BRANCH_NAME}";` line
-with a different branch for the [NixOS/nixpkgs repository][gh-nixpkgs] if you
+with the `master` branch for the [NixOS/nixpkgs repository][gh-nixpkgs] if you
 encounter any Git-related errors.
 
 Trussels using Nix for package management have run into issues related to
@@ -26,7 +30,7 @@ the Import statement to point to `master` to upgrade or downgrade a single
 package in order to maintain our obligations to keep our dependencies
 up-to-date.
 
-</details>
+## Setting up a new project
 
 1. Create a `nix` directory
 
@@ -160,3 +164,4 @@ up-to-date.
 [ahobson-nix-package-search]: https://ahobson.github.io/nix-package-search/#/
 [docs-nix-channels]: https://nixos.wiki/wiki/Nix_channels
 [gh-nixpkgs]: https://github.com/NixOS/nixpkgs
+[hydra-nixpkgs-unstable]: https://hydra.nixos.org/job/nixpkgs/trunk/unstable
