@@ -9,4 +9,4 @@ At Truss, we prefer to open source our code whenever possible; there are a varie
 
 This extends even beyond the code for our software; we make our Engineering Playbook and the Trussels’ Guide public for the same reasons.
 
-[This TDR](https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit) describes the open source licenses we prefer for our code and non-code projects.
+Truss prefers to use the [Apache License v2.0](https://www.apache.org/licenses/LICENSE-2.0) for software projects, the [GNU Affero GPL](https://www.gnu.org/licenses/agpl-3.0.en.html) for bids or tech challenges (but MUST NOT use this for client work), and the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/legalcode) for non-software projects. [This TDR](https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit) (Truss internal link) discusses how we came to these conclusions and any exceptions.
