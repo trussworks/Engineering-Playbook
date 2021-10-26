@@ -22,8 +22,11 @@ As with all naming schemes (and other stylistic things such as casing and commen
     * [IAM users](#iam-users)
 * [Unique per region](#unique-per-region)
   * [SNS topics](#sns-topics)
+  * [Slackbot](#slackbot)
   * [VPC](#vpc)
   * [Subnets](#subnets)
+  * [ECR](#ecr)
+  * [Container images](#container-images)
 * [Terraform modules](#terraform-modules)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
@@ -103,6 +106,17 @@ Sample names:
 * app-com-notification
 * infra-gov-alert
 
+### Slackbot
+
+When you are creating a bot in Slack to alert team members to issues, you should include team to alert and app name the alert is coming from.
+
+* *{team}-${application}*
+
+e.g.
+
+* app-eclkc
+* hosting-ipd
+
 ### VPC
 
 VPCs are unique by region but they should indicate which application and environment level they contain.
@@ -119,9 +133,9 @@ VPCs are unique by region but they should indicate which application and environ
 
 Although they are unique by region, we also want subnets to be descriptively named according to their AZs and public/private status.
 
-*${VPC name}-${public/private}-${AZ}* - is the general form
+*${VPC name}-${public/private/db}-${AZ}* - is the general form
 
-* *$public/private* - can be used to distinguish whether the subnet is a private or a public subnet
+* *$public/private/db* - can be used to distinguish whether the subnet is a private, public, or db subnet
 * *$AZ* - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
 
 In a VPC named "eec-prod":
@@ -129,9 +143,29 @@ In a VPC named "eec-prod":
 * eec-prod-public-us-east-1a
 * eec-prod-private-us-west-2c
 
+### ECR
+
+Elastic Container Repositories are unique by region within your account. They should be named according to the united principal of what they will contain. For example, if all the images in the repo will be related to a specific app team, then you can name the repo after the app team. If, on the other hand, they will all be images with variations of a set of software, you could name it after the software.
+
+e.g.:
+
+* eclkc
+* php-nginx
+
+### Container images
+
+Container images such as Docker or ECR images should include the date as a way to version. Although the convention is to name the latest version `latest`, this can become a sticky situation when folks are trying to refresh a build in terraform and they end up not pulling the latest because the name `latest` hasn't changed.
+
+*${date}-${application}* - is the general form
+
+* *$date* - YYYY-MM-DD - disambiguates between other images for the same application
+* *$application* - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+
+e.g. 2020-07-20-eclkc
+
 ## Terraform modules
 
-Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should follow the following convention.
+Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should follow the following convention, which is required to add the module to the Terraform registry.
 
 *terraform-${provider}-${purpose}* - is the general form
 
