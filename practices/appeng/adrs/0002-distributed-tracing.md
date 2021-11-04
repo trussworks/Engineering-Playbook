@@ -6,7 +6,7 @@
 
 **Date Accepted:**
 
-**Reviewers:** @reggieriser \<tag yourself!>
+**Reviewers:** @jim @reggieriser @rogeruiz \<tag yourself!>
 
 ## Context
 
@@ -58,16 +58,16 @@ help answer.
 
 ### ADR Goals and Anti-goals
 
-- Goal: Choose which set of libraries to use at callsites (across programming
-  languages) within the codebase, which will be used to generate
-  distributed tracing data
+- Goal: Choose which set of libraries for generating
+  distributed tracing data to use at callsites (across programming
+  languages) within the codebase
 - Anti-goal: Committing to a specific "backend", i.e. platform or service for
   gathering, exploring, and displaying trace information
   - Sub-goal: Leaving open as many options as possible for the backend
 
 ## Decision
 
-## Use OpenTelemetry
+### Use OpenTelemetry
 
 - OpenTelemetry is an emerging industry standard
   - vendors find benefit of being in the OpenTelemetry ecosystem because they
@@ -99,13 +99,28 @@ help answer.
 
 ## Why is this Applicable to the Practice as a Whole
 
-TODO: What makes this decision generally applicable
-to Truss projects?
+Most applications will benefit from instrumentation once they are accepting
+production traffic. For many systems, the amount of work required to add
+tracing calls to the code is non-trivial and needs to be done preemptively.
+
+Projects should identify what types of calls need to be traced as a part of
+discovery and document these decisions in a project-level ADR. For example,
+a web backend might add tracing to HTTP requests, service invocations,
+database calls, and any network requests made by the backend.
 
 ## When to Not Implement This Decision
 
-TODO: What are some use cases to not implement this
-on a specific project?
+Don't use OpenTelemetry if:
+
+- the ecosystem you are working in doesn't have a mature instrumentation
+  library
+- the project already has a working instrumentation solution using a
+  proprietary hosted service that is satisfying the project's needs
+- the project is too small to support the effort required to implement
+  tracing. If this is the case, it is probably worth investigating if there
+  are other implementation options for the project, potentially in
+  higher-level languages or batteries-included frameworks.
+- it isn't possible to setup a backend to collect data
 
 ## Alternatives Considered
 
@@ -136,5 +151,6 @@ on a specific project?
 
 ## Links
 
-TODO: Link to external resources
-and project implementations of this decision.
+- [Modern Observability with OpenTelemetry](https://youtu.be/_OXYCzwFd1Y) (YouTube video, 12 minutes)
+- [Ted Young on Observability and the Release of OpenTelemetry 1.0](https://player.fm/series/the-infoq-podcast-2896265/ted-young-on-observability-and-the-release-of-opentelemetry-10) (The InfoQ Podcast, 33 minutes)
+- [How Distributed Tracing Solves One of the Worst Microservices Problems](https://petabridge.com/blog/why-use-distributed-tracing/) (article)
