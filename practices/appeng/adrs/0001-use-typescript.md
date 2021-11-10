@@ -8,13 +8,13 @@
 
 ## Context
 
-When in the business of building software for the web, JavaScript is largely unavoidable. It is virtually the only language option for interacting with browser APIs in order to enhance user experience & interfaces, and implement features to meet the high expectations of users today. It is also rapidly gaining popularity as a backend language, with the advent of Node.JS, web frameworks such as Express and Next.js, and the growing need to better optimize UI code by rendering it on the server first.
+When in the business of building software for the web, JavaScript is largely unavoidable. It is virtually the only language option for interacting with browser APIs in order to enhance user experience & interfaces, and implement modern features that meet the high expectations of users today. It is also rapidly gaining popularity as a backend language, with the advent of Node.JS, web frameworks such as Express and Next.js, and the growing need to better optimize UI code by rendering it on the server first.
 
-However, JavaScript has more than its share of quirks, and because it runs natively in browsers, it can be too easy to introduce bugs and errors that aren't realized until encountered by an end user. These days it is crucial to accompany JavaScript code with development tools such as linters and automated tests in order to avoid those scenarios. TypeScript is another such tool, [introduced by Microsoft](https://www.typescriptlang.org/why-create-typescript) as a superset of JavaScript that adds [type safety](https://en.wikipedia.org/wiki/Type_safety) to the language. By writing code in TypeScript instead of JavaScript, engineers can avoid entire categories of errors that will be caught well ahead of code being deployed to production.
+However, JavaScript has more than its share of quirks, and because it runs natively in browsers, it can be too easy to introduce bugs and errors that aren't realized until encountered by an end user. These days it is crucial to accompany JavaScript code with development tools such as linters and automated tests in order to avoid those scenarios. TypeScript is another such tool, [introduced by Microsoft](https://www.typescriptlang.org/why-create-typescript) as a superset of JavaScript that adds [type safety](https://en.wikipedia.org/wiki/Type_safety) to the language. By writing code in TypeScript instead of JavaScript, engineers can avoid entire categories of errors that would be caught well ahead of code being deployed to production.
 
 ### Why type safety?
 
-The decision to use TypeScript also assumes a consensus that type safety is better than no type safety. Below are some reasons for this:
+The decision to use TypeScript assumes a consensus that type safety in a programming language is better than no type safety. Below are some reasons for this:
 
 - A strong static typing system can help reduce the possibility of bugs at runtime, since type errors are captured earlier, during compilation.
 - _[...more reasons here?]_
@@ -40,10 +40,10 @@ As stated above, many of the projects Truss works on use JavaScript to some exte
 
 TypeScript is not the only option available for adding static type checking to JavaScript. Below are some of the reasons why we’ve landed on TypeScript above the alternatives:
 
-- TypeScript code can be somewhat self-documenting, since it is annotated with [static typing](https://www.typescriptlang.org/docs/handbook/basic-types.html) and [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html). This is particularly useful when integrating with third-party dependencies that have type definitions.
-- TypeScript is widely used to the point that it is supported out-of-the-box with common frameworks such as [Create React App](https://github.com/facebook/create-react-app) and [NextJS](https://nextjs.org/).
+- TypeScript code is somewhat self-documenting, by way of [type](https://www.typescriptlang.org/docs/handbook/basic-types.html) and [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) annotations. This is particularly useful when integrating with third-party dependencies that have type definitions.
+- TypeScript is widely used to the point that it is supported out-of-the-box with common frameworks such as [Create React App](https://create-react-app.dev/docs/adding-typescript/) and [NextJS](https://nextjs.org/docs/basic-features/typescript).
 - TypeScript has many helpful autocomplete and snippet generation features for IDEs such as [VSCode](https://code.visualstudio.com/Docs/languages/typescript) that can speed up development.
-- Built & maintained by Microsoft, TypeScript has a steady and reliable release history, and its documentation and community support are well-established. It has been the [most popular JavaScript "flavor" since 2017](https://2020.stateofjs.com/en-US/technologies/javascript-flavors/), and was ranked second most loved programming language in the [2020 Stack Overflow developer survey](https://insights.stackoverflow.com/survey/2020#most-loved-dreaded-and-wanted).
+- Built & maintained by Microsoft, TypeScript has a steady and reliable release history, and its documentation and community support are well-established. It has been the [most popular JavaScript “flavor” since 2017](https://2020.stateofjs.com/en-US/technologies/javascript-flavors/), and was ranked second most loved programming language in the [2020 Stack Overflow developer survey](https://insights.stackoverflow.com/survey/2020#most-loved-dreaded-and-wanted).
 - TypeScript implements [object-oriented concepts](https://levelup.gitconnected.com/typescript-object-oriented-concepts-in-a-nutshell-cb2fdeeffe6e) to a stronger level than [ES6 classes](https://www.sitepoint.com/object-oriented-javascript-deep-dive-es6-classes/) in vanilla JavaScript, making it a useful environment within which to learn object-oriented programming.
 
 It is also worth noting the potential pitfalls and impacts of the decision to use TypeScript:
@@ -52,9 +52,9 @@ It is also worth noting the potential pitfalls and impacts of the decision to us
 - TypeScript is typically compiled at build time, so run-time type errors (due to external data, user input, etc.) are not eliminated and should still be tested for.
 - TypeScript requires specific changes and/or configuration to the build pipeline (such as compiling types used for local development), and the `tsconfig` file needs to be maintained. However, most widely used tools have clear docs or libraries that assist with this.
 - The decision to convert existing code to TypeScript can be time consuming, and should be considered carefully. Often the decision to use TypeScript on a project is best made earlier rather than later.
-- There may be a financial & time cost to training engineers to learn how to use TypeScript.
+- There may be a financial & time cost for training engineers on how to use TypeScript.
 
-## Alternatives Considered
+## Alternatives considered
 
 ### Use framework-specific validation methods (e.g. React PropTypes)
 
