@@ -47,7 +47,9 @@ as outlined in the template.
 
 Some command line tools are available that you may find useful for managing (m)ADRs in your project:
 
-- [adr-log](https://adr.github.io/adr-log/): Generates a architectural decision log out of mADRs.
+- [adr-log](https://adr.github.io/adr-log/): Generates an architectural decision log out of mADRs.
+- [log4brains](https://github.com/thomvaill/log4brains): Log ADRs right from
+  your IDE and publish them automatically as a static website
 
 ## See also
 
