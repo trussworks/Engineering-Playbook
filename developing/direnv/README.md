@@ -17,7 +17,7 @@ brew install direnv
 Create an `.envrc` file in a directory with some environment variables your project needs:
 
 ```console
-cat <<ENVRC > .envrc
+$ cat <<ENVRC > .envrc
 export DB_HOST=localhost
 export DB_PORT=5432
 export DB_USER=postgres
@@ -25,15 +25,18 @@ export DB_PASSWORD=mysecretpassword
 export DB_NAME=dev_db
 CLIENT_AUTH_SECRET_KEY=$(<client_auth_secret.key)
 ENVRC
+$
 ```
 
 On first run, you should get a message indicating that you will have to explicitly authorize `direnv` to load the file:
 
 ```console
+$ cd ./projectdir
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
 $ direnv allow
 direnv: loading .envrc
 direnv: export +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER -PS2
+$
 ```
 
 Your local environment variables should be updated now. Any time the `.envrc` file is changed, you will need to re-approve the file, but it will load automatically otherwise.
@@ -48,8 +51,8 @@ $ pwd
 $ tree -n -L 2
 .
 ├── me
-│   ├── pwstore
-│   └── python-chess-annotator
+│   ├── personal_toy_project_1
+│   └── personal_toy_project_2
 ├── client
 │   └── client_project
 └── truss
@@ -63,6 +66,7 @@ export GIT_COMITTER_EMAIL="ryan.delaney@clientdomain.com"
 $ cat truss/.envrc
 export GIT_AUTHOR_EMAIL="ryan@truss.works"
 export GIT_COMITTER_EMAIL="ryan@truss.works"
+$
 ```
 
 ### Language-specific settings
