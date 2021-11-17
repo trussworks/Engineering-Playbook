@@ -8,7 +8,7 @@
 
 Via homebrew:
 
-```
+```console
 brew install direnv
 ```
 
@@ -16,7 +16,7 @@ brew install direnv
 
 Create an `.envrc` file in a directory with some environment variables your project needs:
 
-```
+```console
 cat <<ENVRC > .envrc
 export DB_HOST=localhost
 export DB_PORT=5432
@@ -29,7 +29,7 @@ ENVRC
 
 On first run, you should get a message indicating that you will have to explicitly authorize `direnv` to load the file:
 
-```
+```console
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
 $ direnv allow
 direnv: loading .envrc
@@ -42,7 +42,7 @@ Your local environment variables should be updated now. Any time the `.envrc` fi
 
 Some Trussels develop on projects where they must use a client email address. `direnv` can automate the process of changing the email address displayed in your git commits appropriately. For example, consider the following directory structure:
 
-```
+```console
 $ pwd
 /User/trussel/src/
 $ tree -n -L 2
@@ -132,7 +132,7 @@ If using `pipenv`, add `layout_pipenv` to the `.envrc` and the virtualenv will b
 
 Sometimes, we want to put the `.envrc` in source control but also use direnv to store secrets that should not be source controlled. With this bit of code, we can separate local secrets into `.envrc.local`:
 
-```
+```console
 $ cat << EOF >> .envrc
 if [[ -s .envrc.local ]] ; then
   source_env .envrc.local
