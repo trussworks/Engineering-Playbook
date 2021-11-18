@@ -2,6 +2,34 @@
 
 This HOWTO assumes you already have nix installed.
 
+## Nix Channels
+
+We currently recommend using the [Nix Unstable channel][hydra-nixpkgs-unstable]
+by default as it contains the latest tested updates on a rolling basis. This
+means that the branch for the [NixOS/nixpkgs repository][gh-nixpkgs] that is
+used is the `nixpkg-unstable` branch.
+
+### Troubleshooting Git-related errors
+
+In the step above, you may need to modify the `ref="{BRANCH_NAME}";` line
+with the `master` branch for the [NixOS/nixpkgs repository][gh-nixpkgs] if you
+encounter any Git-related errors.
+
+Trussels using Nix for package management have run into issues related to
+commits not being found on that specific `nixpkgs-unstable` branch. The
+[nix-package-search][ahobson-nix-package-search] will report the `ref` to be
+`nixpkgs-unstable` but the actual commit may not exist on that branch due to
+integration errors within the [NixOS/nixpkgs repository][gh-nixpkgs] that
+eventually may correct itself.
+
+To read up on Nix Channels, see [their documentation][docs-nix-channels].
+While the branch `nixpkgs-unstable` specifically lags behind `master` to
+thoroughly test things, some of our Truss projects are required to be
+up-to-date. This means that we may need to update some `ref="";` sections of
+the Import statement to point to `master` to upgrade or downgrade a single
+package in order to maintain our obligations to keep our dependencies
+up-to-date.
+
 ## Setting up a new project
 
 1. Create a `nix` directory
@@ -97,11 +125,10 @@ This HOWTO assumes you already have nix installed.
    fi
    ```
 
-1. Use
-   [nix-package-search](https://ahobson.github.io/nix-package-search/#/)
-   to find your package versions and add them to your
-   `nix/default.nix` in the `paths` section. Your new `default.nix`
-   might look something like (with NAME replaced with your project)
+1. Use [nix-package-search][ahobson-nix-package-search] to find your package
+   versions and add them to your `nix/default.nix` in the `paths` section. Your
+   new `default.nix` might look something like (with NAME replaced with your
+   project)
 
    ```
    let
@@ -133,3 +160,8 @@ This HOWTO assumes you already have nix installed.
 1. You can then update `nix/default.nix` when you need to add/update
    packages and then `direnv` will let you know your packages are out
    of date and you need to run `./nix/update.sh`
+
+[ahobson-nix-package-search]: https://ahobson.github.io/nix-package-search/#/
+[docs-nix-channels]: https://nixos.wiki/wiki/Nix_channels
+[gh-nixpkgs]: https://github.com/NixOS/nixpkgs
+[hydra-nixpkgs-unstable]: https://hydra.nixos.org/job/nixpkgs/trunk/unstable
