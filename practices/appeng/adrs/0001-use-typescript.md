@@ -16,8 +16,9 @@ However, JavaScript has more than its share of quirks, and because it runs nativ
 
 The decision to use TypeScript assumes a consensus that type safety in a programming language is better than no type safety. Below are some reasons for this:
 
-- A strong static typing system can help reduce the possibility of bugs at runtime, since type errors are captured earlier, during compilation.
-- _[...more reasons here?]_
+- A strong static typing system can help to reduce the possibility of bugs at runtime, since type errors are captured earlier, during compilation.
+- Type checking significantly reduces the need to write tests or runtime logic that check for unexpected types, since we can be sure that functions are called with the correct argument types. The scope of these errors are largely narrowed down to dealing with unvalidated user input or external data, such as from a 3rd party API.
+- Type checking can also be used to define whether a variable or field is required or possibly undefined. The [billion-dollar mistake](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions) was due to an insufficienlty expressive type system.
 
 ## Decision
 
@@ -56,44 +57,51 @@ It is also worth noting the potential pitfalls and impacts of the decision to us
 
 ## Alternatives considered
 
-### Use framework-specific validation methods (e.g. React PropTypes)
+### Rely on [React PropTypes](https://github.com/facebook/prop-types) (or other framework-specific validation)
 
 **Pros:**
 
-- `+` No need for developers to learn a new language
-- `+` No need to add TypeScript dependency to build toolchain
-- `+` Compile-time build failures can be frustrating
+- `+` Just a JavaScript dependency, so no need to learn a new language
+- `+` No configuration or changes needed to the build toolchain
+- `+` Performs runtime checking in addition to during compilation & test
+- `+` Can be used in addition to TypeScript, not instead of
+- `+` PropTypes surfaces warnings and does not prevent code from compiling or running
 
 **Cons:**
 
-- `-` Likely, less code editor/linting integration than TypeScript
-- `-` Typing coverage limited to specific problem domains
-- `-` Unlikely to cover interaction between problem domains
-- `-` Each validation method has a different style/method of reporting errors, which all need to be accounted for separately
-- `-` Custom linting and reporting may implement framework/tool-specific validation inconsistently and idiosyncratically
+- `-` Type checking is limited to a very specific scope (i.e., React component props and similar objects)
+- `-` Doesn’t cover checking types of data used between concerns (i.e., arguments passed to a function)
+- `-` Fewer editor/linting integration tools available than TypeScript
+- `-` Locks us into a given framework, each of which have their own method of validating types and reporting errors
+- `-` Because PropTypes just surfaces warnings, it's easy to ignore
 
-**Impact of this decision:**
+### Use [Flow](https://flow.org/en/)
 
-### Use JavaScript with Flow for type-checking
+**Pros:**
 
-- `+` Very similar to JavaScript with special sauce
-- `-` Have had negative experience with unclear error messages and limited
-  support
-- `-` Reported issues of sluggish activity across IDE/editors hogging
-  bandwidth on machine's (YMMV)
-- `-` Requires a flow declaration (`// @flow`) at the top of every file
+- `+` Very similar to JavaScript with type annotations, less of a learning curve than TypeScript
+- `+` Easier to adopt over time using flow declarations per each file
 
-### Don’t use TypeScript and continue using JavaScript
+**Cons:**
+
+- `-` Less adoption and momentum than the TypeScript community
+- `-` Requires incorporating into the build toolchain
+- `-` Less IDE integration & debugging support than TypeScript
+- `-` Some have had negative experiences with unclear error messages and limited support
+- `-` Reported issues of sluggish activity across IDE, background process hogging bandwidth on machines
+- `-` Fewer engineers at Truss are experienced with Flow
+
+### Don’t use type checking
 
 **Pros:**
 
 - `+` Less learning overhead
-- `+` JS has heavier usage and community support compared to TypeScript
+- `+` Removes a layer of complexity from writing JavaScript code in general
+- `+` Vanilla JavaScript has broader usage and community support compared to TypeScript
 
 **Cons:**
 
-- `-` No static type checking
-
-**Impact of this decision:**
-
-## Links
+- `-` We lose the aforementioned benefits of static type checking
+- `-` It is easier to write less maintainable, less testable code
+- `-` It is easier to introduce bugs that will make their way to end users
+- `-` It necessitates writing more test cases to check for unexpected type errors
