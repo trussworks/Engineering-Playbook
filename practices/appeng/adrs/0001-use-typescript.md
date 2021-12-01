@@ -1,10 +1,10 @@
 # 0001 - Preference to use TypeScript in place of JavaScript
 
-**Status:** In progress
+**Status:** Accepted
 
-**Date Accepted:** TBD
+**Date Accepted:** 12/1/2021
 
-**Reviewers:** @suzubara @jim @rswerve <tag yourself!>
+**Reviewers:** @suzubara @jim @rswerve @macrael @gidjin @jenniferlynparsons @kylehilltruss
 
 ## Context
 
