@@ -34,7 +34,7 @@ As stated above, many of the projects Truss works on use JavaScript to some exte
 
 - If the project has no reason to use JavaScript, there may be no reason to use TypeScript. However, this decision does not preclude the option to use TypeScript as a server language if otherwise appropriate.
 - It can be very challenging and time consuming to introduce TypeScript to an existing JavaScript code base, especially if there are many dependencies and/or integrations that may or may not have TypeScript support. In this case it might not be feasible to spend time configuring TypeScript, although the option of introducing TypeScript incrementally (such as only to new code) should also be considered.
-- TypeScript can have a notoriously high learning curve, and may be too costly to adopt by certain projects with tight timing and/or staffing circumstances. However, that overhead in this situation should still be weighed carefully against the payoff of using TypeScript to prevent errors and reduce the need for writing tests later on.
+- TypeScript can have a notoriously high learning curve, and may be too costly to adopt by certain projects with tight timing and/or staffing circumstances. However, that overhead in this situation should still be weighed carefully against the payoff of using TypeScript to prevent errors and reduce the need for writing certain kinds of tests later on.
 - For the same reason, the handoff cost may be too high for a client to maintain continuity of the project, if the incoming engineering team is not experienced with TypeScript. As consultants, Truss should be well-positioned to recommend TypeScript as a best practice, but there may be scenarios where this recommendation is not acted upon.
 
 ## Why TypeScript?
