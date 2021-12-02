@@ -92,11 +92,10 @@ MacOS requires that we add an argument to the installation command. We also want
 do the single user installation. So to install, run:
 
 ```shell
-sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
 See the [macOS installation](https://nixos.org/manual/nix/stable/#sect-macos-installation)
-and [single user installation](https://nixos.org/manual/nix/stable/#sect-single-user-installation)
 instructions for more details.
 
 ## Getting started
