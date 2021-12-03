@@ -2,18 +2,17 @@
 
 **Status:** In Progress
 
-**Date Superseded:** (if applicable)
-
 **Date Accepted:**
 
-**Reviewers:** @jim @reggieriser @rogeruiz \<tag yourself!>
+**Reviewers:** @felipe-lee @jim @mikena-truss @reggieriser @rogeruiz
 
 ## Context
 
 ### Objective
 
 _Give developers and operators an easier way to understand the behavior and
-structure of running systems by instrumenting code for distributed tracing._
+structure of running systems by instrumenting code for distributed tracing,
+leading to a more consistent experience for the systems' users._
 
 ### Why Distributed Tracing?
 
@@ -21,7 +20,7 @@ structure of running systems by instrumenting code for distributed tracing._
 > be determined by its external outputs.
 
 There are several established techniques for gaining observability into complex
-software systems.
+software systems:
 
 - Logging
   - helpful for known knowns
@@ -34,8 +33,9 @@ software systems.
   - e.g. "What was the execution context for User X that caused their
     interaction to timeout last Tuesday?"
 
-Some of the benefits of distributed tracing, as outlined in
-[this](https://petabridge.com/blog/why-use-distributed-tracing/) article are:
+Some of the benefits of distributed tracing as outlined in
+[*How Distributed Tracing Solves One of the Worst Microservices Problems*](https://petabridge.com/blog/why-use-distributed-tracing/)
+are:
 
 - radically improves developer productivity and output
 - works across multiple applications, programming languages, and transports
@@ -43,7 +43,7 @@ Some of the benefits of distributed tracing, as outlined in
 - facilitates excellent cross-team communication and cooperation
 
 Here are several example scenarios or questions that distributed tracing can
-help answer.
+help answer:
 
 - As a new engineer on the team, I want to understand how many separate systems
   are involved when a certain user type logs in and the first page is rendered.
@@ -91,8 +91,8 @@ help answer.
     environment
   - e.g. can swap in AWS X-Ray for use in GovCloud hosted environments
 - Cons
-  - as an abstraction layer, OpenTelemetry may prohibit usage of vendor-
-    specific capabilities
+  - as an abstraction layer, OpenTelemetry may prohibit usage of vendor-specific
+    capabilities
   - some OpenTelemetry libraries and tools may trail their vendor-supported
     counterparts
   - instrumentation for tracing may be a vector for performance overhead
@@ -139,8 +139,8 @@ Don't use OpenTelemetry if:
     Honeycomb does not have FedRAMP (nor do most of their peers), the distributed
     tracing could not be enabled in the GovCloud deployed environments
   - example - using an open source tool (e.g. OpenZipkin) can scale down to
-    local development, but would require more infrastructure support to self-
-    host the data storage and UI tools in the GovCloud environments
+    local development, but would require more infrastructure support to self-host
+    the data storage and UI tools in the GovCloud environments
 
 ### Do not instrument
 
