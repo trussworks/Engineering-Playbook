@@ -59,7 +59,7 @@ help answer:
 ### ADR Goals and Anti-goals
 
 - Goal: Choose which set of libraries for generating
-  distributed tracing data to use at callsites (across programming
+  distributed tracing data to use at call sites (across programming
   languages) within the codebase
 - Anti-goal: Committing to a specific "backend", i.e. platform or service for
   gathering, exploring, and displaying trace information
