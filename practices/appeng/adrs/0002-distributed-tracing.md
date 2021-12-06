@@ -4,7 +4,7 @@
 
 **Date Accepted:**
 
-**Reviewers:** @felipe-lee @jim @mikena-truss @reggieriser @rogeruiz
+**Reviewers:** @felipe-lee @gidjin @jim @mikena-truss @reggieriser @rogeruiz
 
 ## Context
 
@@ -100,8 +100,10 @@ help answer:
 ## Why is this Applicable to the Practice as a Whole
 
 Most applications will benefit from instrumentation once they are accepting
-production traffic. For many systems, the amount of work required to add
-tracing calls to the code is non-trivial and needs to be done preemptively.
+production traffic. For many systems, a significant amount of work is required
+to add tracing calls to the code after substantial development has been
+completed. Therefore, instrumentation needs to be part of the development
+process early in a project.
 
 Projects should identify what types of calls need to be traced as a part of
 discovery and document these decisions in a project-level ADR. For example,
