@@ -45,7 +45,7 @@ and ultimately better serve our clients.
 
 While sensitive data could potentially be shared through public repositories,
 modern security practices,
-such secret storage separate of code,
+such as secret storage separate of code,
 can mitigate this risk.
 
 Truss has had great success with this in the past,
