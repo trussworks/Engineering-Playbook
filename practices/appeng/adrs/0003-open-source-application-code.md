@@ -27,7 +27,7 @@ allows for the free sharing and modification of code
 and provides a number of benefits to software teams
 and the outside community.
 
-Open Sourcing application code,
+Open Sourcing application code
 provides wins on many surfaces.
 On an organizational level,
 it increases technology transparency
