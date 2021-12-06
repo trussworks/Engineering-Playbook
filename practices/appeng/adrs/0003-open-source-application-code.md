@@ -4,9 +4,9 @@
 
 **Date Superseded:** n/a
 
-**Date Accepted:**
+**Date Accepted:** 12/6/2021
 
-**Reviewers:**
+**Reviewers:** @sarboc, @jim, @pkarman
 
 ## Context
 
@@ -19,6 +19,11 @@ we're referring to *just* the application code.
 This does not refer to the infrastructure code
 that is used to manage production environments
 and cloud services.
+
+[More information on our Open Source Statement of Intent](../../../developing/open-source/intent.md)
+and
+[This TDR](https://docs.google.com/document/d/12UYIN3XfRPdKQV87_0ILa9-z6eWRBcLqtwP9fCyR6Tg/edit)
+outlines or preferred licenses.
 
 ## Decision
 
