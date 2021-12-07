@@ -13,7 +13,7 @@ repos:
       - id: markdownlint
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.10
+    rev: 0.7.11
     hooks:
       - id: mdformat
         additional_dependencies:
