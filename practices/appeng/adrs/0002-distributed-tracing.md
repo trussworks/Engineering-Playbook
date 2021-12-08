@@ -4,7 +4,7 @@
 
 **Date Accepted:** 12/8/2021
 
-**Reviewers:** @ahobson @felipe-lee @gidjin @jim @mikena-truss @reggieriser @rogeruiz
+**Reviewers:** @ahobson @felipe-lee @gidjin @jim @macrael @mikena-truss @reggieriser @rogeruiz
 
 ## Context
 
@@ -95,6 +95,8 @@ help answer:
   - some OpenTelemetry libraries and tools may trail their vendor-supported
     counterparts
   - instrumentation for tracing may be a vector for performance overhead
+  - the specification is relatively new so you may have to use pre-1.0
+    versions of some libraries
 
 ## Why is this Applicable to the Practice as a Whole
 
