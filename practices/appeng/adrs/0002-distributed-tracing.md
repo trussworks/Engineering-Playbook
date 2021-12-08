@@ -1,6 +1,6 @@
 # 0002 - Use OpenTelemetry to instrument code for distributed tracing
 
-**Status:** In Progress
+**Status:** Accepted
 
 **Date Accepted:** 12/8/2021
 
