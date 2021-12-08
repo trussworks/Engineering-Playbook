@@ -8,12 +8,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.29.0
+    rev: v0.30.0
     hooks:
       - id: markdownlint
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.10
+    rev: 0.7.11
     hooks:
       - id: mdformat
         additional_dependencies:
