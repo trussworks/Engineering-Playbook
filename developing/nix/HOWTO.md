@@ -87,11 +87,7 @@ up-to-date.
    if [ ! -r .nix-disable  ] && has nix-env; then
      # set NIX_PROFILE so nix-env operations don't need to manually
      # specify the profile path
-     if [ -w "/nix/var/nix/profiles/per-user/${LOGNAME}" ]; then
-       export NIX_PROFILE="/nix/var/nix/profiles/per-user/${LOGNAME}/_YOUR_PROJECT_NAME_"
-     else
-       log_error "Cannot determine writable location for your NIX_PROFILE"
-     fi
+     export NIX_PROFILE="/nix/var/nix/profiles/per-user/${LOGNAME}/_YOUR_PROJECT_NAME_"
 
      # Having NIX_SSL_CERT_FILE set means go won't use macOS keychain
      # based certs
