@@ -15,6 +15,14 @@ in buildEnv {
 
     (import (builtins.fetchGit {
       # Descriptive name to make the store path easier to identify
+      name = "bash-5.1-p4";
+      url = "https://github.com/NixOS/nixpkgs/";
+      ref = "refs/heads/nixpkgs-unstable";
+      rev = "253aecf69ed7595aaefabde779aa6449195bebb7";
+    }) {}).bash_5
+
+    (import (builtins.fetchGit {
+      # Descriptive name to make the store path easier to identify
       name = "nodejs-14.17.5";
       url = "https://github.com/NixOS/nixpkgs/";
       ref = "refs/heads/nixpkgs-unstable";
