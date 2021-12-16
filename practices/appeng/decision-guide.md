@@ -151,14 +151,14 @@ here's how we might write a decision.
 
 ### Usable
 
-> Postgres internal types align well with common API level types
+> ..Postgres internal types align well with common API level types
 > allowing us to easily build consumable APIs
 > using either OpenAPI or GraphQL.
 > Whether the end user is interfacing directly through the API
 > or through a frontend framework consuming that data,
 > we're better able to support their needs with a common vocabulary.
 
-#### Learnable
+### Learnable
 
 > ... Postgres has one of the largest documentation sources
 > and accessible community driven learning resources.
@@ -167,7 +167,7 @@ here's how we might write a decision.
 > meaning supporting software (such as ORMs)
 > are often beginner friendly.
 
-#### Maintainable
+### Maintainable
 
 > ... Postgres has long standing support
 > and regular receives bugfixes,
