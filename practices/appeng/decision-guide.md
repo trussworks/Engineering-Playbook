@@ -74,7 +74,7 @@ organized,
 or fast
 our software is underneath the hood,
 if a user can't access it
-and perform its intented purpose with ease,
+and perform its intended purpose with ease,
 we have not built good software.
 This includes making our software accessible
 to our users,
@@ -91,7 +91,7 @@ In order to facilitate these changes smoothly
 we must build software that is easily understood
 and modified.
 In addition,
-to be a succesful organization in the long term,
+to be a successful organization in the long term,
 and to support our craft,
 we must teach and grow engineers
 throughout their careers.
@@ -108,7 +108,7 @@ to our clients and users.
 In order to do so,
 we must build maintainable software,
 which remains modern from a user perspective
-and maleable by an engineer.
+and malleable by an engineer.
 
 This means seeking tools with active long support,
 choosing design patterns that allow for change,
@@ -140,7 +140,7 @@ and not deliver value.
 Consistently used tools and tasks
 should be easy to deploy and operate,
 and require little user interaction
-(past custmization and improvement)
+(past customization and improvement)
 to manage.
 
 ## Examples
@@ -165,7 +165,7 @@ here's how we might write a decision.
 #### Learnable
 
 > ... Postgres has one of the largest documentation sources
-> and accessibile community driven learning resources.
+> and accessible community driven learning resources.
 > In addition,
 > it's widely used and supported,
 > meaning supporting software (such as ORMs)
