@@ -37,24 +37,20 @@ decisions will affect the following groups:
 Here is an example drawing back to those groups
 in an ADR focused on picking a new database:
 
-```
-Currently, the org's database isn't easily learnable,
-causing difficult onboarding for developers
-and slow releases for database related features
-and bugfixes
-to users.
-```
+> Currently, the org's database isn't easily learnable,
+> causing difficult onboarding for developers
+> and slow releases for database related features
+> and bugfixes
+> to users.
 
 And for the practice:
 
-```
-Most (if not all) of our projects use a database,
-and commonly they are relational.
-So to make onboarding between projects easier
-and to generate better shared learning resources,
-deciding on a common relational database for the practice
-will increase effeciency delivering on all projects.
-```
+> Most (if not all) of our projects use a database,
+> and commonly they are relational.
+> So to make onboarding between projects easier
+> and to generate better shared learning resources,
+> deciding on a common relational database for the practice
+> will increase effeciency delivering on all projects.
 
 ## Engineering Values and Decision Factors
 
