@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if [ ! -v NIX_PROFILE ]; then
+if [ -z "${NIX_PROFILE+x}" ]; then
   echo "NIX_PROFILE not set, not installing globally"
   echo "Try running 'direnv allow'"
   exit 1
