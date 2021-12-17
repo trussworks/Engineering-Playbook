@@ -2,14 +2,17 @@
 
 set -euo pipefail
 
-if [ ! -v NIX_PROFILE ]; then
+if [ -z "${NIX_PROFILE+x}" ]; then
   echo "NIX_PROFILE not set, not installing globally"
   echo "Try running 'direnv allow'"
   exit 1
 fi
 
-# make sure this is set, as we unset it for most projects
-export NIX_SSL_CERT_FILE=$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt
+# Having NIX_SSL_CERT_FILE set means go won't use macOS keychain
+# based certs
+# MOST projects can leave this alone, but if you unset it in `.envrc`
+# be sure to uncomment the following line
+#export NIX_SSL_CERT_FILE=$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # install packages
