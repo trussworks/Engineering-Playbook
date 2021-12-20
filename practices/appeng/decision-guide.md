@@ -32,7 +32,8 @@ decisions will affect the following groups:
    we're adding in one more group to focus on:
    the AppEng practice.
    This is mentioned in the
-   "What makes this decision generally applicable" section.
+   "What makes this decision generally applicable" section
+   of the [template](./adrs/template.md).
 
 Here is an example drawing back to those groups
 in an ADR focused on picking a new database:
