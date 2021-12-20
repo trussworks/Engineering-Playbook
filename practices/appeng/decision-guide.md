@@ -59,9 +59,9 @@ Now that we've established a clear context and user group,
 we can apply a set of common values
 to aid in making a decision.
 
-Note that these values won't always apply--
-they're simply a common set of core values
-that we've established as a guide for our work.
+Note that these values won't always apply.
+They're outlined as a guide for our work,
+not an exhaustive list.
 A single decision likely won't tick all these boxes.
 In addition,
 client or individual use case may have different needs.
