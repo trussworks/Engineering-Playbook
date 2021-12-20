@@ -48,7 +48,7 @@ And for the practice:
 
 > Most (if not all) of our projects use a database,
 > and commonly they are relational.
-> So to make onboarding between projects easier
+> To make onboarding between projects easier
 > and to generate better shared learning resources,
 > deciding on a common relational database for the practice
 > will increase effeciency delivering on all projects.
