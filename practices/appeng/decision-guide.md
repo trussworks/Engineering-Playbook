@@ -58,6 +58,25 @@ Now that we've established a clear context and user group,
 we can apply a set of common values
 to aid in making a decision.
 
+Note that these values won't always apply--
+they're simply a common set of core values
+that we've established as a guide for our work.
+A single decision likely won't tick all these boxes.
+In addition,
+client or individual use case may have different needs.
+Rely on these as a default
+and be sure to review the context for your decision
+for making exceptions.
+
+Keeping with the above example
+(choosing a relational store),
+we'll follow an example for each value,
+prefacing with this statement:
+
+> We chose to standardize on PostgreSQL
+> as a default relational database for the practice.
+> ...
+
 ### User Friendly
 
 Drawing from our team charter,
@@ -76,6 +95,15 @@ This includes making our software accessible
 to our users,
 stakeholders,
 and team.
+
+> ..Postgres internal types align well with common API level types
+> and tooling --
+> such as OpenAPI and GraphQL.
+> This allows us to build easily consumable and readable
+> APIs for end users.
+> It also allows us to use commonly used data translation packages
+> that save us time
+> so we can focus more on how we're displaying data to our users.
 
 ### Learnable
 
@@ -96,6 +124,13 @@ This means using tools that
 can have easily accessible knowledge bases
 and can be supported throughout the org.
 
+> ... Postgres has one of the largest documentation sources
+> and accessible community driven learning resources.
+> In addition,
+> it's widely used and supported,
+> meaning supporting software (such as ORMs)
+> are often beginner friendly.
+
 ### Maintainable
 
 While software can be short lived,
@@ -111,6 +146,15 @@ choosing design patterns that allow for change,
 and avoiding locking into experimental/cutting edge libraries
 that may become obsolete.
 
+> ... Postgres has long standing support
+> and regular receives bugfixes,
+> language integration support,
+> and feature updates.
+> This makes it easier for us
+> to keep our code up to date
+> and adapt with more modern features
+> without using a new database in the future.
+
 ### Shareable
 
 [Open source](../../developing/open-source)
@@ -123,6 +167,14 @@ and beyond.
 This means, reusing past code,
 teaching best practices,
 and sharing our experiments with each other.
+
+> ... Postgres is widely used
+> and open source,
+> making it easier to write third party extensions
+> when our work is applicable to the community at large.
+> It also means third parties will more easily understand
+> our open source code
+> allowing for better collaboration.
 
 ### Automatable
 
@@ -138,57 +190,6 @@ should be easy to deploy and operate,
 and require little user interaction
 (past customization and improvement)
 to manage.
-
-## Examples
-
-Keeping with the above example
-(choosing a relational store),
-here's how we might write a decision.
-
-> We chose to standardize on PostgreSQL
-> as a default relational database for the practice.
-> ...
-
-### Usable
-
-> ..Postgres internal types align well with common API level types
-> allowing us to easily build consumable APIs
-> using either OpenAPI or GraphQL.
-> Whether the end user is interfacing directly through the API
-> or through a frontend framework consuming that data,
-> we're better able to support their needs with a common vocabulary.
-
-### Learnable
-
-> ... Postgres has one of the largest documentation sources
-> and accessible community driven learning resources.
-> In addition,
-> it's widely used and supported,
-> meaning supporting software (such as ORMs)
-> are often beginner friendly.
-
-### Maintainable
-
-> ... Postgres has long standing support
-> and regular receives bugfixes,
-> language integration support,
-> and feature updates.
-> This makes it easier for us
-> to keep our code up to date
-> and adapt with more modern features
-> without using a new database in the future.
-
-### Shareable
-
-> ... Postgres is widely used
-> and open source,
-> making it easier to write third party extensions
-> when our work is applicable to the community at large.
-> It also means third parties will more easily understand
-> our open source code
-> allowing for better collaboration.
-
-### Automatable
 
 > ... Postgres is well supported by many popular ORMs
 > allowing us to reduce repetitive work of
