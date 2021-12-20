@@ -97,7 +97,7 @@ to our users,
 stakeholders,
 and team.
 
-> ..Postgres internal types align well with common API level types
+> ... Postgres internal types align well with common API level types
 > and tooling --
 > such as OpenAPI and GraphQL.
 > This allows us to build easily consumable and readable
