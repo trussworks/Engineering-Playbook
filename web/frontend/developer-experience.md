@@ -2,10 +2,9 @@
 
 ## Debugging Tools
 
-The following browser extensions can be installed to assist with debugging React and Redux applications:
+The following browser extensions can be installed to assist with debugging React:
 
 - [React Developer Tools](https://github.com/facebook/react-devtools#installation)
-- [Redux DevTools Extension](http://extension.remotedev.io/#redux-devtools-extension)
 
 ## Style and Formatting
 
