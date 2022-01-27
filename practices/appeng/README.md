@@ -20,5 +20,6 @@ Tools we use to organize our people and projects
 
 Tools and process for how we set technical direction and make decisions
 
-- [Decision Process](decision-process.txt)--how to commit and revise practice level decisions
+- [Decision Process](decision-process.md)--how to commit and revise practice level decisions
+- [Decision Values](decision-values.md)--a guide on how to make ADR decisions
 - [Records](./adrs)--the outcomes we've come to
