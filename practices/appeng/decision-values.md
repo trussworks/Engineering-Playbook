@@ -196,7 +196,7 @@ Remember,
 it's not a checklist,
 but general guidance.
 In this case,
-Postgres may not be a shining example of how to imporve accessibility,
+Postgres may not be a shining example of how to improve accessibility,
 so you may choose to include/remove an example such as this:
 
 > ... Postgres default internal types align well with common API level types
