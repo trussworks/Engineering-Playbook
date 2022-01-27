@@ -78,34 +78,6 @@ prefacing with this statement:
 > as a default relational database for the practice.
 > ...
 
-### User Friendly
-
-Drawing from our team charter,
-"Software is only as valuable as the people it helps".
-We seek to make decisions and use tools
-that drive end user value
-and usability.
-Regardless of how cutting edge,
-organized,
-or fast
-our software is underneath the hood,
-if a user can't access it
-and perform its intended purpose with ease,
-we have not built good software.
-This includes making our software accessible
-to our users,
-stakeholders,
-and team.
-
-> ... Postgres internal types align well with common API level types
-> and tooling --
-> such as OpenAPI and GraphQL.
-> This allows us to build easily consumable and readable
-> APIs for end users.
-> It also allows us to use commonly used data translation packages
-> that save us time
-> so we can focus more on how we're displaying data to our users.
-
 ### Learnable
 
 Due to the nature of contracting,
@@ -198,3 +170,40 @@ to manage.
 > There are also many SAS tools (like RDS)
 > and Terraform libraries
 > to reduce manual orchestration of the DB
+
+### User Friendly
+
+Drawing from our team charter,
+"Software is only as valuable as the people it helps".
+We seek to make decisions and use tools
+that drive end user value
+and usability.
+Regardless of how cutting edge,
+organized,
+or fast
+our software is underneath the hood,
+if a user can't access it
+and perform its intended purpose with ease,
+we have not built good software.
+This includes making our software accessible
+to our users,
+stakeholders,
+and team.
+
+Often,
+not all the values will fit a decision perfectly.
+Remember,
+it's not a checklist,
+but general guidance.
+In this case,
+Postgres may not be a shining example of how to imporve accessibility,
+so you may choose to include/remove an example such as this:
+
+> ... Postgres default internal types align well with common API level types
+> and tooling --
+> such as OpenAPI and GraphQL.
+> This allows us to build easily consumable and readable
+> APIs for end users.
+> It also allows us to use commonly used data translation packages
+> that save us time
+> so we can focus more on how we're displaying data to our users.
