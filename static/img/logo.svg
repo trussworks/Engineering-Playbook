@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>milmove-logo</title>
+    <g id="milmove-logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo" fill="#FFBE2E">
+            <polygon id="Triangle" transform="translate(19.282759, 7.655765) rotate(3.000000) translate(-19.282759, -7.655765) " points="18.697623 1.03507536 23.4206897 14.2764547 15.1448277 10.1660677"></polygon>
+            <polygon id="Triangle" points="23.1724138 14.5904046 11.5862069 23.1724138 13.0214198 14.0689655"></polygon>
+            <polygon id="Triangle" points="11.5862069 23.1724138 0 14.7997363 9.05465776 13.2413793"></polygon>
+            <polygon id="Triangle" points="0.165517241 14.8965517 4.20451501 0.827586207 8.44137931 9.3314977"></polygon>
+            <polygon id="Triangle" transform="translate(11.586207, 4.137931) rotate(2.000000) translate(-11.586207, -4.137931) " points="4.13793103 1.18191837 19.0344828 0.827586207 12.2026562 7.44827586"></polygon>
+        </g>
+    </g>
+</svg>

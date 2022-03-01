@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+configure_shell_file_for_nodenv() {
+  if [[ $SHELL == *fish ]]; then
+    append_to_file "$shell_file" 'status --is-interactive; and source (nodenv init -|psub)'
+  else
+    # shellcheck disable=SC2016
+    append_to_file "$shell_file" 'eval "$(nodenv init -)"'
+  fi
+}
+
+fancy_echo "Running your customizations from fresh-brew.local ..."
+
+if [ -f "Brewfile.local" ]; then
+  if brew bundle --file="Brewfile.local"; then
+    fancy_echo "All items in Brewfile.local were installed successfully."
+  else
+    fancy_echo "Some items in Brewfile.local were not installed successfully."
+  fi
+fi
+
+node_version="$(cat < ".node-version")"
+
+fancy_echo "Installing node $node_version ..."
+if nodenv versions | grep "$node_version"; then
+  fancy_echo "node $node_version already installed."
+else
+  brew upgrade node-build
+  nodenv install "$node_version"
+fi
+fancy_echo "Configuring Nodenv..."
+configure_shell_file_for_nodenv
+
+fancy_echo "Installing dependencies with Yarn..."
+yarn install
+
+fancy_echo "Launching the website..."
+yarn start

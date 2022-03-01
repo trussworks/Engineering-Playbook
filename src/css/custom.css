@@ -1,0 +1,28 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #D26048;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'Work Sans';
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='light'] .docusaurus-highlight-code-line {
+  background-color: rgb(226, 226, 226);
+}
