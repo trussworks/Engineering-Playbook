@@ -18,6 +18,12 @@ response](../incident-response/README.md), and a number of other fields.
 - [Terraform](terraform/README.md) — Our primary infrastructure as code (IaC) tool.
 - [Ansible](ansible/README.md) — For when we have to build non-container based images (e.g., AMIs).
 
+### Education recommendations
+
+Things to help you level up your skills.
+
+- [Professional development recommendations](pro-dev.md)
+
 ### Useful Repo Templates
 
 To get you up and running faster, we have created a few template repos. Please feel free to submit PRs and help us stay up to date!
