@@ -4,4 +4,4 @@ _Crucial Conversations_ "gives you the tools to prepare for high-stakes conversa
 
 ## Links
 
-* [Amazon link](https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Second/dp/0071771328)
+- [Amazon link](https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Second/dp/0071771328)

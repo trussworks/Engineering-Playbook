@@ -2,29 +2,27 @@
 
 While the tools, techniques, and patterns we use to build our solutions are important, they often don't help us design and architect new things. What follows are some opinions about how to think about the work we do at a high level.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Human factors](#human-factors)
-  * [Empathy](#empathy)
-  * [Operator first](#operator-first)
-* [Minimalism](#minimalism)
-  * [Avoid state](#avoid-state)
-  * [Embrace immutability](#embrace-immutability)
-  * [Use managed services](#use-managed-services)
-  * [Codify entire stacks](#codify-entire-stacks)
-* [Delivery](#delivery)
-  * [Infrastructure as code](#infrastructure-as-code)
-  * [Automation](#automation)
-  * [Delivery pipeline](#delivery-pipeline)
-    * [Build](#build)
-    * [Accept](#accept)
-    * [Release](#release)
-* [Immutability](#immutability)
-* [The Twelve-Factor App](#the-twelve-factor-app)
+- [Human factors](#human-factors)
+  - [Empathy](#empathy)
+  - [Operator first](#operator-first)
+- [Minimalism](#minimalism)
+  - [Avoid state](#avoid-state)
+  - [Embrace immutability](#embrace-immutability)
+  - [Use managed services](#use-managed-services)
+  - [Codify entire stacks](#codify-entire-stacks)
+- [Delivery](#delivery)
+  - [Infrastructure as code](#infrastructure-as-code)
+  - [Automation](#automation)
+  - [Delivery pipeline](#delivery-pipeline)
+    - [Build](#build)
+    - [Accept](#accept)
+    - [Release](#release)
+- [Immutability](#immutability)
+- [The Twelve-Factor App](#the-twelve-factor-app)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Human factors
 
@@ -58,9 +56,9 @@ Minimalist infrastructure is the practice of building only what you need with th
 
 When designing your system, avoid storing additional state. Often the data you want to store is already available in the system. Using the system as the source of truth can avoid the difficult business of ensuring data consistency.
 
-| Practical Example
-| ---
-| Let's say you want to be able to rollback a Fargate deploy if the new task definition results in a service that won't become healthy. One option would be store the working task definition in something like DynamoDB (or git or any number of bad choices). However, your ECS service already has this information: the previous, healthy service is still running. Instead of managing a DynamoDB resource as well as writing code for maintaining that state record, query the ECS service itself to get what you want. This avoids managing the DynamoDB resource as well as the unfortunate scenario where the data stored is wrong.
+| Practical Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Let's say you want to be able to rollback a Fargate deploy if the new task definition results in a service that won't become healthy. One option would be store the working task definition in something like DynamoDB (or git or any number of bad choices). However, your ECS service already has this information: the previous, healthy service is still running. Instead of managing a DynamoDB resource as well as writing code for maintaining that state record, query the ECS service itself to get what you want. This avoids managing the DynamoDB resource as well as the unfortunate scenario where the data stored is wrong. |
 
 ### Embrace immutability
 
@@ -74,9 +72,9 @@ Manage only what you must. There are lot of services out there that solve infras
 
 Examples:
 
-* Parameter Store instead of Hashicorp Vault
-* Fargate instead of EC2
-* SaaS instead of on-premise
+- Parameter Store instead of Hashicorp Vault
+- Fargate instead of EC2
+- SaaS instead of on-premise
 
 ### Codify entire stacks
 
@@ -100,9 +98,9 @@ One of the primary goals of creating infrastructure as code is enabling automati
 
 Like other mechanisms, the automation must be run regularly to ensure it's functional. This can usually be achieved via CI/CD. For automation that's expensive (in time, in money, etc.) and infrequently used, you could setup an automated, scheduled test, to ensure functionality.
 
-| Practical Example
-| ---
-| We should be able to spin up additional environments without much fanfare. Since these environments can require resources which take a long time to become available (e.g., an RDS) it may not be feasible to include creating a new environment as part of the CI/CD pipeline. An alternative would be to setup a daily (or weekly) job that spins up a new environment. This attempts to strike the balance between fast (enough) feedback about that process with keeping the pipeline (and getting other feedback) fast.[^1]
+| Practical Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| We should be able to spin up additional environments without much fanfare. Since these environments can require resources which take a long time to become available (e.g., an RDS) it may not be feasible to include creating a new environment as part of the CI/CD pipeline. An alternative would be to setup a daily (or weekly) job that spins up a new environment. This attempts to strike the balance between fast (enough) feedback about that process with keeping the pipeline (and getting other feedback) fast.\[^1\] |
 
 ### Delivery pipeline
 
@@ -130,8 +128,8 @@ The artifact produced by the build stage should be deployed and have acceptance 
 
 As much as possible, reduce your dependence on manual acceptance testing. Automated tests can be run at anytime. Manual testing introduces a significant delay to your feedback loop, reducing the speed of development:
 
-* More context switching — While changes wait for validation, folks switch tasks. These switches are expensive as context has to be rebuilt, causing each task to take longer, and impacting team velocity.
-* More complex debugging — Changes are batched until the next manual test session. Instead of being able to pinpoint a bug to a small set of changes, there are now many changes and their interactions to consider. This increases the time it takes to debug a problem and creates an opportunity for incompatible changes to land together.
+- More context switching — While changes wait for validation, folks switch tasks. These switches are expensive as context has to be rebuilt, causing each task to take longer, and impacting team velocity.
+- More complex debugging — Changes are batched until the next manual test session. Instead of being able to pinpoint a bug to a small set of changes, there are now many changes and their interactions to consider. This increases the time it takes to debug a problem and creates an opportunity for incompatible changes to land together.
 
 #### Release
 
@@ -149,7 +147,7 @@ In more sophisticated systems, where possible (e.g., web services), the code dep
 
 Our systems tend to disorder over time. Worse, they do this in non-uniform ways. There are various mechanisms for helping long-lived systems stay in their expected states (e.g., orchestration), but it is somewhat of a fools errand since there's always parts you aren't tracking and stateful bits which are necessarily different. Include the will of an adversary to purposely change the system in a non-detectable way and you may begin questioning your career choices (or worse, stop caring).
 
-As these systems drift, random errors occur which are difficult to reproduce. They were the result of complex set of factors which arose over time.[^2] More insidious, your environments (prod, ci, dev) will behave different from one another due to having different uptimes, deployment dates, patch schedules, etc. This leads to losing faith in your automated tests, slows down the delivery pipeline, and impacts work velocity.
+As these systems drift, random errors occur which are difficult to reproduce. They were the result of complex set of factors which arose over time.\[^2\] More insidious, your environments (prod, ci, dev) will behave different from one another due to having different uptimes, deployment dates, patch schedules, etc. This leads to losing faith in your automated tests, slows down the delivery pipeline, and impacts work velocity.
 
 Taking an immutable approach to your infrastructure helps limit the scope of changes that build up.
 
@@ -157,9 +155,9 @@ When we say a resource is immutable, we mean instead of updating it in place, we
 
 Immutability is not a binary notion. Some amount of state (e.g., memory) must be changing in the system in order for it to run. We strive to find a balance around a usable system and the least amount of state.
 
-| Practical Example
-| ---
-| We consider short-lived containers to be table stakes. These boot from a known state (the container image), run a single process (or few), and are replaced often. A way to increase the immutability would be to use a read-only disk. This removes an entire class of system modification and brings awareness to the kind of data landing on disk.
+| Practical Example                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| We consider short-lived containers to be table stakes. These boot from a known state (the container image), run a single process (or few), and are replaced often. A way to increase the immutability would be to use a read-only disk. This removes an entire class of system modification and brings awareness to the kind of data landing on disk. |
 
 An effect of adopting an immutable architecture is being guided toward more minimal systems. Using the example above, since we boot frequently, we want fast boot times. Since we want fast boot times, we want small disk images that can transfer quickly over the network. The way to make the disk smaller is to remove as much as possible and we end up with distroless images which contain almost nothing besides a static binary. The more minimal, the less opportunity for drift.
 
@@ -167,6 +165,6 @@ An effect of adopting an immutable architecture is being guided toward more mini
 
 Build infrastructure in the spirit of and to support [⎋the Twelve-Factor methodology](https://12factor.net/). We should be architecting our delivery and deployment pipelines with this view and pushing back against changes which undermine this methodology.
 
-[^1]: There's no single strategy. Managing slow tests is complicated topic. You need to weigh the risks of getting slow feedback for each component to arrive at a place that feels comfortable.
+\[^1\]: There's no single strategy. Managing slow tests is complicated topic. You need to weigh the risks of getting slow feedback for each component to arrive at a place that feels comfortable.
 
-[^2]: This hints at the limitations of doing "root cause analysis".
+\[^2\]: This hints at the limitations of doing "root cause analysis".

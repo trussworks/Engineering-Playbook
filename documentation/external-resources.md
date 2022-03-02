@@ -6,15 +6,15 @@ especially interested in this topic.
 
 ## Articles
 
-* [10 Tips For Making Your Documentation Crystal Clear](https://opensource.com/life/16/11/tips-for-clear-documentation), Ben Cotton
-* [A Primer on Documentation Content Strategy](https://increment.com/documentation/primer-on-documentation-content-strategy/), Stephanie Blotner
-* [What to Write](https://jacobian.org/writing/what-to-write/) and [Technical Style](https://jacobian.org/writing/technical-style/), Jacob Kaplan-Moss
-* [Yelp Production Engineering Documentation Style Guide](https://engineeringblog.yelp.com/2018/10/yelp-production-engineering-documentation-style-guide.html), Chastity Blackwell
-* [Content debt: What it is, where to find it, and how to prevent it in the first place](https://18f.gsa.gov/2016/05/19/content-debt-what-it-is-where-to-find-it-and-how-to-prevent-it-in-the-first-place/), Melody Kramer
-* [Keep Refining](https://content-guide.18f.gov/our-approach/keep-refining/), 18F
+- [10 Tips For Making Your Documentation Crystal Clear](https://opensource.com/life/16/11/tips-for-clear-documentation), Ben Cotton
+- [A Primer on Documentation Content Strategy](https://increment.com/documentation/primer-on-documentation-content-strategy/), Stephanie Blotner
+- [What to Write](https://jacobian.org/writing/what-to-write/) and [Technical Style](https://jacobian.org/writing/technical-style/), Jacob Kaplan-Moss
+- [Yelp Production Engineering Documentation Style Guide](https://engineeringblog.yelp.com/2018/10/yelp-production-engineering-documentation-style-guide.html), Chastity Blackwell
+- [Content debt: What it is, where to find it, and how to prevent it in the first place](https://18f.gsa.gov/2016/05/19/content-debt-what-it-is-where-to-find-it-and-how-to-prevent-it-in-the-first-place/), Melody Kramer
+- [Keep Refining](https://content-guide.18f.gov/our-approach/keep-refining/), 18F
 
 ## Talks
 
-* [The 7 Deadly Sins of Documentation](https://www.usenix.org/conference/srecon18europe/presentation/blackwell), Chastity Blackwell
-* [Scalable Meatfrastructure](https://www.usenix.org/conference/lisa15/conference-program/presentation/goldfuss), Alice Goldfuss
-* [Traps and Cookies: A Mystery Package From Your Former Self](https://www.usenix.org/conference/lisa16/workshop-program/presentation/reilly), Tanya Reilly
+- [The 7 Deadly Sins of Documentation](https://www.usenix.org/conference/srecon18europe/presentation/blackwell), Chastity Blackwell
+- [Scalable Meatfrastructure](https://www.usenix.org/conference/lisa15/conference-program/presentation/goldfuss), Alice Goldfuss
+- [Traps and Cookies: A Mystery Package From Your Former Self](https://www.usenix.org/conference/lisa16/workshop-program/presentation/reilly), Tanya Reilly

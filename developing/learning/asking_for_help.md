@@ -23,22 +23,24 @@ I am trying to capture the output of the "ls" command.
 
 I am trying to run this program:
 
-    package main
+```
+package main
 
-    import (
-        "fmt"
-        "os"
-        "os/exec"
-    )
+import (
+    "fmt"
+    "os"
+    "os/exec"
+)
 
-    func main() {
-        out, err := exec.Command("ls").Output()
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Error running ls: %s\n", err)
-            os.Exit(1)
-        }
-        fmt.Println(out)
+func main() {
+    out, err := exec.Command("ls").Output()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error running ls: %s\n", err)
+        os.Exit(1)
     }
+    fmt.Println(out)
+}
+```
 
 I invoke it with `go run prog.go`
 

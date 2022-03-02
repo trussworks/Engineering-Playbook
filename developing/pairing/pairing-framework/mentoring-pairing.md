@@ -24,15 +24,15 @@
 
 (Add at least one goal and ensure the work you're doing is focused on your goals.)
 
-- [ ] Goal #1
-- [ ] Goal #2
-- [ ] Goal #3
+- \[ \] Goal #1
+- \[ \] Goal #2
+- \[ \] Goal #3
 
 ### Context
 
 (Can you summarize what you’d like to learn in this session?)
 
----
+______________________________________________________________________
 
 ## Session process
 

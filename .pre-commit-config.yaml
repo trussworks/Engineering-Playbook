@@ -1,19 +1,26 @@
 repos:
-  - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
     hooks:
       - id: check-merge-conflict
       - id: check-yaml
       - id: detect-private-key
       - id: trailing-whitespace
 
-  - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.26.0
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.30.0
     hooks:
       - id: markdownlint
 
-  - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v1.0.1
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.11
     hooks:
-      - id: markdown-toc
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-toc
+
+  - repo: https://github.com/trussworks/pre-commit-hooks
+    rev: v1.1.0
+    hooks:
       - id: circleci-validate

@@ -4,30 +4,28 @@ Ideally our infrastructure is flawless and impenetrable, but much of our work re
 
 Our intent is to have a system which notifies regarding GuardDuty events on two integration channels (PagerDuty and Slack), depending on the kind of alert.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Information Flow](#information-flow)
-* [GuardDuty Organizational Setup](#guardduty-organizational-setup)
-* [SNS Topics](#sns-topics)
-* [SNS Subscriptions](#sns-subscriptions)
-  * [Special consideration for email protocol (07/2020)](#special-consideration-for-email-protocol-072020)
-  * [SSM Parameters](#ssm-parameters)
-* [Slack Integration](#slack-integration)
-  * [Special consideration for broken lambdas (07/2020)](#special-consideration-for-broken-lambdas-072020)
-* [PagerDuty Organizational Setup](#pagerduty-organizational-setup)
-* [PagerDuty Integration](#pagerduty-integration)
-  * [Integration](#integration)
-  * [Subscription](#subscription)
-* [PagerDuty Slack Integration](#pagerduty-slack-integration)
-  * [Extension](#extension)
-* [GuardDuty Tie-In](#guardduty-tie-in)
-* [A note about root login notification](#a-note-about-root-login-notification)
-* [Testing your work](#testing-your-work)
-* [How to Resolve/Respond to GuardDuty Findings](#how-to-resolverespond-to-guardduty-findings)
+- [Information Flow](#information-flow)
+- [GuardDuty Organizational Setup](#guardduty-organizational-setup)
+- [SNS Topics](#sns-topics)
+- [SNS Subscriptions](#sns-subscriptions)
+  - [Special consideration for email protocol (07/2020)](#special-consideration-for-email-protocol-072020)
+  - [SSM Parameters](#ssm-parameters)
+- [Slack Integration](#slack-integration)
+  - [Special consideration for broken lambdas (07/2020)](#special-consideration-for-broken-lambdas-072020)
+- [PagerDuty Organizational Setup](#pagerduty-organizational-setup)
+- [PagerDuty Integration](#pagerduty-integration)
+  - [Integration](#integration)
+  - [Subscription](#subscription)
+- [PagerDuty Slack Integration](#pagerduty-slack-integration)
+  - [Extension](#extension)
+- [GuardDuty Tie-In](#guardduty-tie-in)
+- [A note about root login notification](#a-note-about-root-login-notification)
+- [Testing your work](#testing-your-work)
+- [How to Resolve/Respond to GuardDuty Findings](#how-to-resolverespond-to-guardduty-findings)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Information Flow
 
@@ -311,7 +309,7 @@ resource "pagerduty_extension" "slack-v2-service" {
 }
 ```
 
-You're not quite done yet. PagerDuty does not actually authorize the link between the extension and Slack until you manually create it. Sign into PagerDuty and [visit the extensions page](https://movemil.pagerduty.com/extensions). Locate your new extension in the Service Extensions table and click on the gear button on the bottom right of the far-right Details cell for your extension. Select either the Re-authorize/Authorize or Edit option (they do the same thing) from the drop-down. Scroll down and select the channel you prefer under `Where should PagerDuty post?` then click "Allow". You should see a notification appear in the channel you've selected in Slack that says "[your name] added an integration to this channel: PagerDuty". Make sure to record that you've done this in your Manual Operations log. Note: You only need to create one extension per service rather than per environment.
+You're not quite done yet. PagerDuty does not actually authorize the link between the extension and Slack until you manually create it. Sign into PagerDuty and [visit the extensions page](https://movemil.pagerduty.com/extensions). Locate your new extension in the Service Extensions table and click on the gear button on the bottom right of the far-right Details cell for your extension. Select either the Re-authorize/Authorize or Edit option (they do the same thing) from the drop-down. Scroll down and select the channel you prefer under `Where should PagerDuty post?` then click "Allow". You should see a notification appear in the channel you've selected in Slack that says "\[your name\] added an integration to this channel: PagerDuty". Make sure to record that you've done this in your Manual Operations log. Note: You only need to create one extension per service rather than per environment.
 
 ## GuardDuty Tie-In
 

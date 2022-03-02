@@ -5,34 +5,32 @@ frequent updates, good testing, consistent builds, and prompt deploys.
 Additionally issues with code should be found quickly and addressed before
 it is released to customers.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Delivery Pipeline Basics](#delivery-pipeline-basics)
-  * [Build](#build)
-    * [Notes about Versioning](#notes-about-versioning)
-      * [Semantic Versioning](#semantic-versioning)
-      * [Commit Hash](#commit-hash)
-      * [Other versioning strategies](#other-versioning-strategies)
-  * [Test](#test)
-  * [Deployment](#deployment)
-  * [Release](#release)
-* [Continuous (Integration | Delivery | Deployment)](#continuous-integration--delivery--deployment)
-  * [Continuous Integration](#continuous-integration)
-  * [Continuous Delivery](#continuous-delivery)
-  * [Continuous Deployment](#continuous-deployment)
+- [Delivery Pipeline Basics](#delivery-pipeline-basics)
+  - [Build](#build)
+    - [Notes about Versioning](#notes-about-versioning)
+      - [Semantic Versioning](#semantic-versioning)
+      - [Commit Hash](#commit-hash)
+      - [Other versioning strategies](#other-versioning-strategies)
+  - [Test](#test)
+  - [Deployment](#deployment)
+  - [Release](#release)
+- [Continuous (Integration | Delivery | Deployment)](#continuous-integration--delivery--deployment)
+  - [Continuous Integration](#continuous-integration)
+  - [Continuous Delivery](#continuous-delivery)
+  - [Continuous Deployment](#continuous-deployment)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Delivery Pipeline Basics
 
 There are usually four conceptual steps in a delivery pipeline:
 
 1. `Build`: Where you build the code into a binary or other artifacts to eventually distribute.
-2. `Test`: Where you validate or test the artifacts built in the previous step.
-3. `Deploy`: Where you configure and deploy the artifacts to an environment. Could be a pre-prod or prod.
-4. `Release`: Where you finally allow users access to that version of code you've configured and built.
+1. `Test`: Where you validate or test the artifacts built in the previous step.
+1. `Deploy`: Where you configure and deploy the artifacts to an environment. Could be a pre-prod or prod.
+1. `Release`: Where you finally allow users access to that version of code you've configured and built.
 
 In many cases you can merge or swap the steps `Release` and `Deploy`.
 
@@ -97,9 +95,9 @@ However, how much has changed is opaque to your users and it is difficult to det
 
 These are other versioning strategies we've seen. We do not recommend them.
 
-* _Feature branch related names._ These should be short lived and maintained for no more than a few days. Most users will not find these useful.
-* _Build id related names._ These are opaque to a user and harder to dig up history on when debugging.
-* _Build date related names._ These are also opaque to a user and difficult to dig up history on when debugging. You at least get a sense of when these changes went in but are hard to tie to a commit in mainline.
+- _Feature branch related names._ These should be short lived and maintained for no more than a few days. Most users will not find these useful.
+- _Build id related names._ These are opaque to a user and harder to dig up history on when debugging.
+- _Build date related names._ These are also opaque to a user and difficult to dig up history on when debugging. You at least get a sense of when these changes went in but are hard to tie to a commit in mainline.
 
 ### Test
 

@@ -6,8 +6,8 @@ Web Development is a really broad area. Topics range from languages and high lev
 
 ## Contents
 
-* [API Design](api/)
-* [Front End Guide](frontend/)
-* [Server Guide](server/)
-* [Browser Support](browsersupport/)
-* [Testing](testing/)
+- [API Design](api/)
+- [Front End Guide](frontend/)
+- [Server Guide](server/)
+- [Browser Support](browsersupport/)
+- [Testing](testing/)

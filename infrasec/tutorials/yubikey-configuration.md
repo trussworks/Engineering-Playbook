@@ -1,47 +1,45 @@
 # [InfraSec](../README.md) / YubiKey Configuration Guide
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Introduction](#introduction)
-* [Purchasing and Distribution](#purchasing-and-distribution)
-* [Prerequisites](#prerequisites)
-  * [Hardware Requirements](#hardware-requirements)
-  * [Software Requirements](#software-requirements)
-* [Configuring Your Environment](#configuring-your-environment)
-  * [Using pinentry (optional)](#using-pinentry-optional)
-* [Verifying Your YubiKey](#verifying-your-yubikey)
-* [Setting the YubiKey User and Admin PIN codes](#setting-the-yubikey-user-and-admin-pin-codes)
-* [Key Generation](#key-generation)
-  * [Generating a GPG Private Key](#generating-a-gpg-private-key)
-  * [Add a (S) signing subkey](#add-a-s-signing-subkey)
-  * [Add an (A) authentication subkey](#add-an-a-authentication-subkey)
-* [Check Your Keys](#check-your-keys)
-* [Deleting a secret key](#deleting-a-secret-key)
-* [Creating Backups](#creating-backups)
-  * [Create a backup of your secret keys (optional)](#create-a-backup-of-your-secret-keys-optional)
-  * [Create a backup of your public key (optional)](#create-a-backup-of-your-public-key-optional)
-  * [Create a revocation certificate (optional)](#create-a-revocation-certificate-optional)
-* [Configuring the YubiKey](#configuring-the-yubikey)
-  * [Importing the keys to your YubiKey](#importing-the-keys-to-your-yubikey)
-* [Adding Additional Email Addresses](#adding-additional-email-addresses)
-  * [UIDs and the primary key](#uids-and-the-primary-key)
-* [Configuring SSH](#configuring-ssh)
-* [Configuring git commit Signing](#configuring-git-commit-signing)
-* [Configuring Github](#configuring-github)
-  * [Using Github Desktop](#using-github-desktop)
-* [Verifying your configuration](#verifying-your-configuration)
-  * [Deleting local secret key material](#deleting-local-secret-key-material)
-  * [Subkey stubs](#subkey-stubs)
-* [Using The YubiKey](#using-the-yubikey)
-  * [Signing git commits](#signing-git-commits)
-  * [Enabling touch-only mode (optional)](#enabling-touch-only-mode-optional)
-  * [Disabling OTP (One Time Password)](#disabling-otp-one-time-password)
-* [GitHub Apps](#github-apps)
-* [Troubleshooting](#troubleshooting)
+- [Introduction](#introduction)
+- [Purchasing and Distribution](#purchasing-and-distribution)
+- [Prerequisites](#prerequisites)
+  - [Hardware Requirements](#hardware-requirements)
+  - [Software Requirements](#software-requirements)
+- [Configuring Your Environment](#configuring-your-environment)
+  - [Using pinentry (optional)](#using-pinentry-optional)
+- [Verifying Your YubiKey](#verifying-your-yubikey)
+- [Setting the YubiKey User and Admin PIN codes](#setting-the-yubikey-user-and-admin-pin-codes)
+- [Key Generation](#key-generation)
+  - [Generating a GPG Private Key](#generating-a-gpg-private-key)
+  - [Add a (S) signing subkey](#add-a-s-signing-subkey)
+  - [Add an (A) authentication subkey](#add-an-a-authentication-subkey)
+- [Check Your Keys](#check-your-keys)
+- [Deleting a secret key](#deleting-a-secret-key)
+- [Creating Backups](#creating-backups)
+  - [Create a backup of your secret keys (optional)](#create-a-backup-of-your-secret-keys-optional)
+  - [Create a backup of your public key (optional)](#create-a-backup-of-your-public-key-optional)
+  - [Create a revocation certificate (optional)](#create-a-revocation-certificate-optional)
+- [Configuring the YubiKey](#configuring-the-yubikey)
+  - [Importing the keys to your YubiKey](#importing-the-keys-to-your-yubikey)
+- [Adding Additional Email Addresses](#adding-additional-email-addresses)
+  - [UIDs and the primary key](#uids-and-the-primary-key)
+- [Configuring SSH](#configuring-ssh)
+- [Configuring git commit Signing](#configuring-git-commit-signing)
+- [Configuring Github](#configuring-github)
+  - [Using Github Desktop](#using-github-desktop)
+- [Verifying your configuration](#verifying-your-configuration)
+  - [Deleting local secret key material](#deleting-local-secret-key-material)
+  - [Subkey stubs](#subkey-stubs)
+- [Using The YubiKey](#using-the-yubikey)
+  - [Signing git commits](#signing-git-commits)
+  - [Enabling touch-only mode (optional)](#enabling-touch-only-mode-optional)
+  - [Disabling OTP (One Time Password)](#disabling-otp-one-time-password)
+- [GitHub Apps](#github-apps)
+- [Troubleshooting](#troubleshooting)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Introduction
 
@@ -61,8 +59,8 @@ If ordering a YubiKey for a project, check with your project on how to categoriz
 
 You should purchase a YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/))
 
-* **5Ci** supports both USB C and Lighting ports, which is good if you have an iPhone.
-* **5C** and **5C Nano** only support USB C and come in different form factors.
+- **5Ci** supports both USB C and Lighting ports, which is good if you have an iPhone.
+- **5C** and **5C Nano** only support USB C and come in different form factors.
 
 If you have a YubiKey Series 4 or a YubiKey 5 NEO, you _should_ upgrade to a 5 Series, unless you have a specific need for the older model. The YubiKey 5 series will provide stronger security and can support larger encryption keys.
 
@@ -70,8 +68,8 @@ If you have a YubiKey Series 4 or a YubiKey 5 NEO, you _should_ upgrade to a 5 S
 
 ### Hardware Requirements
 
-* YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/))
-* YubiKey 4 Series and 5 NEO are acceptable, but not preferred. Keys are limited to 2048 bits
+- YubiKey 5 Series ([5C](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBCTYP1/), [5C Nano](https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBTBJ5S/), [5ci](https://www.amazon.com/Yubico-YubiKey-5Ci-Authentication-Connectors/dp/B07WGJ1DNJ/))
+- YubiKey 4 Series and 5 NEO are acceptable, but not preferred. Keys are limited to 2048 bits
 
 _FIPS based YubiKeys ship with security vulnerabilities. Do not purchase a FIPS based YubiKey for work performed at Truss. FIPS YubiKey models are specifically called YubiKey FIPS and not part of the 5 series listed above._
 
@@ -79,18 +77,18 @@ _FIPS based YubiKeys ship with security vulnerabilities. Do not purchase a FIPS 
 
 ### Software Requirements
 
-* brew
-  * ykman
-  * ykpers
-* brew cask
-  * gpg-suite-no-mail
+- brew
+  - ykman
+  - ykpers
+- brew cask
+  - gpg-suite-no-mail
 
 Configure your environment with:
 
 ```console
 brew install ykman ykpers
 brew cask install gpg-suite-no-mail
-````
+```
 
 If xcode is not up to date, you will be prompted to install it with: `xcode-select --install`
 
@@ -206,8 +204,8 @@ This will generate the secret key.
 1. Enter the GPG command: `gpg --expert --full-gen-key`
 1. When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter
 1. Specify the size of key you want to generate. This key size will also apply to subkey size. Do one of the following:
-   * For a YubiKey 4 series, enter 2048 and press Enter
-   * For a YubiKey 5 series, enter 4096 and press Enter
+   - For a YubiKey 4 series, enter 2048 and press Enter
+   - For a YubiKey 5 series, enter 4096 and press Enter
 1. Specify an indefinite expiration date of the key by pressing press Enter. Verify the expiration date when prompted
 1. Now you will enter your user information. Enter your Real Name and press Enter. Be sure to enter both your first and last name
 1. Enter your `@truss.works` Email Address and press Enter. If you do not perform commits with your @truss.works email address, we’ll add your GitHub email address to the key in a later step.
@@ -227,11 +225,11 @@ This will be used for git commit and tag signing.
 1. Enter the command: `addkey`
 1. You are prompted to specify the type of key. Enter 4 for RSA (sign only)
 1. Specify the size of the key that you want to generate. Do one of the following:
-   * For a YubiKey 4 series, enter 2048 and press Enter
-   * For a YubiKey 5 series, enter 4096 and press Enter
+   - For a YubiKey 4 series, enter 2048 and press Enter
+   - For a YubiKey 5 series, enter 4096 and press Enter
 1. Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
 1. When prompted to save your changes, enter y (yes)
-   * If prompted to replace the existing key, select no.
+   - If prompted to replace the existing key, select no.
 1. Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
 
 ### Add an (A) authentication subkey
@@ -239,8 +237,11 @@ This will be used for git commit and tag signing.
 This subkey will be used to pull private git repos via SSH and may be used to authenticate to any SSH host.
 
 1. Enter the GPG command: `gpg --expert --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+
 1. Enter the command: `addkey`
+
 1. You are prompted to specify the type of key. Enter 8 for RSA
+
 1. To add an authentication key, toggle all options until Authenticate is the only selection, and then Q if you are finished.
 
    This is interface has a unique design where you need to toggle things on and off to get the desired result.
@@ -253,12 +254,18 @@ This subkey will be used to pull private git repos via SSH and may be used to au
    <img src="images/yubikey-select-authenticate.png" alt="authenticate" width="400" />
 
 1. Hit `Q` to finish.
+
 1. Specify the size of the key that you want to generate. Do one of the following:
-   * For a YubiKey 4 series, enter 2048 and press Enter
-   * For a YubiKey 5 series, enter 4096 and press Enter
+
+   - For a YubiKey 4 series, enter 2048 and press Enter
+   - For a YubiKey 5 series, enter 4096 and press Enter
+
 1. Specify the expiration of the authentication key (this should be the same expiration as the key). Unless you have a specific need, this should be set to indefinite
+
 1. When prompted to save your changes, enter y (yes)
-   * If prompted to replace the existing key, select no.
+
+   - If prompted to replace the existing key, select no.
+
 1. Enter the passphrase for the key. Note that this is the passphrase, and not the User PIN or Admin PIN
 
 ## Check Your Keys
@@ -323,8 +330,11 @@ This will allow you to revoke the key should your secret key becomes lost or com
 This will _destructively_ move the secret key as well as the three subkeys to the YubiKey from the local keystore, via the `keytocard` command. In this case, _destructively_ is a good thing because it will require the YubiKey to be inserted to perform any of these functions.
 
 1. Insert the YubiKey into the USB port
+
 1. Enter the GPG command: `gpg --edit-key 1234ABC` (where 1234ABC is the key ID of your key)
+
 1. Enter the command: `toggle` to switch to the public key listing (there will be no visible output)
+
 1. Enter the command: `key 1` (to select subkey 1)
 
    _The interface is not intuitive here. Typing `key 1` will select the first subkey (ssb). An * next to the key will indicate that it has been selected:_
@@ -332,15 +342,25 @@ This will _destructively_ move the secret key as well as the three subkeys to th
    <img src="images/yubikey-key-import.png" alt="check import" width="500" />
 
 1. Enter the command: `keytocard`
+
 1. When prompted where to store the key, select `2`. This will move the _encryption_ subkey to the YubiKey
+
 1. Enter the command: `key 1` (to deselect subkey 1)
+
 1. Enter the command: `key 2` (to select subkey 2)
+
 1. Enter the command: `keytocard`
+
 1. When prompted where to store the key, select 1. This will move the _signing_ subkey to the YubiKey
+
 1. Enter the command: `key 2` (to deselect subkey 2)
+
 1. Enter the command: `key 3` (to select subkey 3)
+
 1. Enter the command: `keytocard`
+
 1. When prompted where to store the key, select 3. This will move the _authentication_ subkey to the YubiKey
+
 1. Enter the command: `save` to save the configuration and exit to the CLI.
 
 ## Adding Additional Email Addresses
@@ -405,12 +425,14 @@ General key info..: sub  rsa4096/3456CDE 2020-10-14 Human Person <noreply@truss.
 1. This should verify that the SSH key is available on your yubikey. If the string ends in `cardno:000YXXXXXXXX`, then it is on the YubiKey.
 1. Restart the SSH services if necessary with the following commands: source ~/.bash_profile or  source ~/.bashrc
 1. When connecting via SSH, you should be prompted for your YubiKey User PIN
-   * On first use, it may also prompt for the YubiKey passphrase.
+   - On first use, it may also prompt for the YubiKey passphrase.
 
 ## Configuring git commit Signing
 
 1. Insert the YubiKey into the USB port
+
 1. Enter the GPG command: `gpg --export --armor 1234ABC` (where 1234ABC is the key ID of your secret key)
+
 1. This will export your public key, which is derived from the secret key. Copy this entire key including the lines:
 
    ```plaintext
@@ -420,9 +442,13 @@ General key info..: sub  rsa4096/3456CDE 2020-10-14 Human Person <noreply@truss.
    ```
 
 1. Add this key into GitHub
+
 1. Add the key into your git config with the following command: `git config --global user.signingkey 1234ABC` (where 1234ABC is the key ID of your key)
+
 1. Add your name to your git config with the following command: `git config --global user.name “your name”` (this should match the name provided when you generate your certificate)
+
 1. Add your email to your git config with the following command: `git config --global user.email youremail@truss.works` (this should match the email that you push commits with)
+
 1. Configure Git client to always sign commits: `git config --global commit.gpgsign true`
 
 ## Configuring Github
@@ -446,7 +472,9 @@ To verify that you have both GPG and SSH properly configured, perform the follow
 
 1. Close out of all terminals. This is to ensure that any terminal/shell configuration you made is
    saved to disk rather than only configured for a shell session. Re-open your terminal of choice.
+
 1. Remove your YubiKey.
+
 1. Verify that the only data from your key in your GPG keyring is public key information. If you
    see `sec` (secret) next to your primary key and/or `ssb` (secret subkey), then you still have
    secret key material in your keyring and/or on your system. Follow the instructions in the
@@ -474,18 +502,18 @@ To verify that you have both GPG and SSH properly configured, perform the follow
 
    1. GPG will not ask for your passphrase. If secret key material was present, it would have asked
       for a passphrase so that it could decrypt the secret key material.
-   1. You have no output. If you had output, it would look something like `skey[2]: [v4
-      protected]`. If you do have `skey` in your output, then you have secret key material on your
+   1. You have no output. If you had output, it would look something like `skey[2]: [v4 protected]`. If you do have `skey` in your output, then you have secret key material on your
       local system. If no secret key material is on your local system, then you should only have
       `pkey` values (if you remove the `grep` command).
-      * skey: secret key
-      * pkey: public key
+      - skey: secret key
+      - pkey: public key
 
 1. Re-insert your YubiKey.
+
 1. Initialize your YubiKey in whatever way you configured it. If you made a separate script, run
    that. If you need to open a new terminal, do that. Whatever approach you take, it should be the
-   thing that does a `killall` on gpg-agent and ssh-agent, followed by `gpg --card-status all &>
-   /dev/null`.
+   thing that does a `killall` on gpg-agent and ssh-agent, followed by `gpg --card-status all &> /dev/null`.
+
 1. Verify that the secret key data is now available to GPG. This is what it looks like when the key
    material only exists on the YubiKey (not loaded from secret material stored on your system):
 
@@ -518,6 +546,7 @@ To verify that you have both GPG and SSH properly configured, perform the follow
    If you do not see the `#` and `>` characters after `sec` and `ssb`, then the secret key material
    needs to be removed from your local system. See the [deleting local secret key
    material](#deleting-local-secret-key-material) section if this is the case.
+
 1. Verify that the SSH agent can use the subkey used for authentication. If you do not see an entry
    with `cardno` near the end, then the SSH agent is not correctly configured to use the
    authentication subkey on your YubiKey.
@@ -585,6 +614,7 @@ YubiKey), this is not always the case despite what the documentation indicates. 
 have to manually remove the secret keys from your system. To do that, follow this procedure:
 
 1. Remove the YubiKey from the computer.
+
 1. Delete the **secret** key material from your system. _Do not remove your **public** key material
    or else your GPG agent will not be able to identify the correct secret keys to use on your
    YubiKey._
@@ -625,6 +655,7 @@ have to manually remove the secret keys from your system. To do that, follow thi
    ```
 
 1. Insert YubiKey back into the computer.
+
 1. Ensure that the signature key, encryption key, and authentication key are set. Ensure that each
    of these keys have a `card-no` entry next to them.
 
@@ -670,6 +701,7 @@ secret key material. Instead, it indicates that the secret key material is on yo
 ### Signing git commits
 
 1. Insert the YubiKey into the USB port
+
 1. To manually sign a git commit (commits should already be signed automatically if you've enabled it in your git config):
 
    ```console
@@ -683,6 +715,7 @@ secret key material. Instead, it indicates that the secret key material is on yo
    ```
 
 1. When signing, you should be prompted to enter your YubiKey User PIN
+
 1. If you’ve enabled touch mode, touch the YubiKey to complete the operation
 
 ### Enabling touch-only mode (optional)

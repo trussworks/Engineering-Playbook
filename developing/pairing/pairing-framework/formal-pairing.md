@@ -26,9 +26,9 @@
 
 (Add at least one goal and ensure the work you're doing is focused on your goals.)
 
-- [ ] Goal #1
-- [ ] Goal #2
-- [ ] Goal #3
+- \[ \] Goal #1
+- \[ \] Goal #2
+- \[ \] Goal #3
 
 ### Branch and setup notes
 
@@ -38,7 +38,7 @@
 
 (Record any information you have about the issue you're facing. Debugging steps taken, error messages, where you're blocked, etc.)
 
----
+______________________________________________________________________
 
 ## Session process
 
@@ -58,7 +58,7 @@
 
 (Include links to any documentation, slack messages, etc. you use while working. This can be filled in at the end of the session.)
 
----
+______________________________________________________________________
 
 ## Session wrap up
 

@@ -4,34 +4,32 @@
 
 Things are further complicated in AWS because there are different uniqueness constraints in play:
 
-| Uniqueness constraint | Example resources
-| --- | ---
-| Global (the entirety of AWS) | S3 buckets
-| Per account | IAM resources (users, groups, roles, policies, …)
-| Per region | Most everything else (ALB, ECS, RDS, …)
+| Uniqueness constraint        | Example resources                                 |
+| ---------------------------- | ------------------------------------------------- |
+| Global (the entirety of AWS) | S3 buckets                                        |
+| Per account                  | IAM resources (users, groups, roles, policies, …) |
+| Per region                   | Most everything else (ALB, ECS, RDS, …)           |
 
 As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Globally unique](#globally-unique)
-  * [S3 Buckets](#s3-buckets)
-* [Unique per account](#unique-per-account)
-  * [IAM resources](#iam-resources)
-    * [IAM policies](#iam-policies)
-    * [IAM users](#iam-users)
-* [Unique per region](#unique-per-region)
-  * [SNS topics](#sns-topics)
-  * [Slackbot](#slackbot)
-  * [VPC](#vpc)
-  * [Subnets](#subnets)
-  * [ECR](#ecr)
-  * [Container images](#container-images)
-* [Terraform modules](#terraform-modules)
+- [Globally unique](#globally-unique)
+  - [S3 Buckets](#s3-buckets)
+- [Unique per account](#unique-per-account)
+  - [IAM resources](#iam-resources)
+    - [IAM policies](#iam-policies)
+    - [IAM users](#iam-users)
+- [Unique per region](#unique-per-region)
+  - [SNS topics](#sns-topics)
+  - [Slackbot](#slackbot)
+  - [VPC](#vpc)
+  - [Subnets](#subnets)
+  - [ECR](#ecr)
+  - [Container images](#container-images)
+- [Terraform modules](#terraform-modules)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Globally unique
 
@@ -39,14 +37,14 @@ As with all naming schemes (and other stylistic things such as casing and commen
 
 *${account.alias}-${application.name}\[-${environment}\]\[-${region}\]* - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
 
-* *$account-alias* - is a prefix for the account, e.g. "truss", "client-name"
-* *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
-* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
-* *$region* - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
+- *$account-alias* - is a prefix for the account, e.g. "truss", "client-name"
+- *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
+- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- *$region* - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
 
 e.g.
 
-* truss-aws-logs-us-east-1
+- truss-aws-logs-us-east-1
 
 ## Unique per account
 
@@ -56,44 +54,44 @@ IAM resource names are account unique (i.e., visible across all regions), e.g. f
 
 *${service/realm}\[-${role}\]-${project/application}-${environment}* - is the general form
 
-* *$service/realm* - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
-* *$role* - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
-* *$project/application* - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
-* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- *$service/realm* - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
+- *$role* - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
+- *$project/application* - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
+- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
 
-* lambda-rds-snapshot-cleaner-app-experimental
-* ecs-task-role-app-client-tls-experimental
+- lambda-rds-snapshot-cleaner-app-experimental
+- ecs-task-role-app-client-tls-experimental
 
 #### IAM policies
 
 Where the details of an IAM role are in an associated policy (usually the case) they are named after the associated role, but with `-policy` appended, e.g.
 
-* lambda-rds-snapshot-cleaner-app-experimental-policy
-* ecs-task-role-app-client-tls-experimental-policy
+- lambda-rds-snapshot-cleaner-app-experimental-policy
+- ecs-task-role-app-client-tls-experimental-policy
 
 #### IAM users
 
 When you create a new user, you should follow a first initial last name format (firstinitialLastName), e.g.
 
-* eeady for Elizabeth Eady
-* rkilberg for Rebecca Kilberg
+- eeady for Elizabeth Eady
+- rkilberg for Rebecca Kilberg
 
 ## Unique per region
 
 Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
 
-*${purpose}[-${application}]-${environment}* - is the general form
+*${purpose}\[-${application}\]-${environment}* - is the general form
 
-* *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
-* *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
-* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
 
-* slack-pivotal-tracker-bot-test
-* rds-log-cleaner-webapp-prod
+- slack-pivotal-tracker-bot-test
+- rds-log-cleaner-webapp-prod
 
 ### SNS topics
 
@@ -103,31 +101,33 @@ The main purpose of the SNS topics are for notifications to teams. The naming co
 
 Sample names:
 
-* app-com-notification
-* infra-gov-alert
+- app-com-notification
+- infra-gov-alert
 
 ### Slackbot
 
 When you are creating a bot in Slack to alert team members to issues, you should include team to alert and app name the alert is coming from.
 
-* *{team}-${application}*
+- *{team}-${application}*
 
 e.g.
 
-* app-eclkc
-* hosting-ipd
+- app-eclkc
+- hosting-ipd
 
 ### VPC
 
 VPCs are unique by region but they should indicate which application and environment level they contain.
 
-[*${application}-]${environment}* - is the general form
+\[*${application}-\]${environment}* - is the general form
 
-* *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
-* *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
-* eec-prod
-* staging
+- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+
+- eec-prod
+
+- staging
 
 ### Subnets
 
@@ -135,13 +135,13 @@ Although they are unique by region, we also want subnets to be descriptively nam
 
 *${VPC name}-${public/private/db}-${AZ}* - is the general form
 
-* *$public/private/db* - can be used to distinguish whether the subnet is a private, public, or db subnet
-* *$AZ* - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
+- *$public/private/db* - can be used to distinguish whether the subnet is a private, public, or db subnet
+- *$AZ* - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
 
 In a VPC named "eec-prod":
 
-* eec-prod-public-us-east-1a
-* eec-prod-private-us-west-2c
+- eec-prod-public-us-east-1a
+- eec-prod-private-us-west-2c
 
 ### ECR
 
@@ -149,8 +149,8 @@ Elastic Container Repositories are unique by region within your account. They sh
 
 e.g.:
 
-* eclkc
-* php-nginx
+- eclkc
+- php-nginx
 
 ### Container images
 
@@ -158,8 +158,8 @@ Container images such as Docker or ECR images should include the date as a way t
 
 *${date}-${application}* - is the general form
 
-* *$date* - YYYY-MM-DD - disambiguates between other images for the same application
-* *$application* - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- *$date* - YYYY-MM-DD - disambiguates between other images for the same application
+- *$application* - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
 e.g. 2020-07-20-eclkc
 
@@ -169,10 +169,10 @@ Typically when building resources and services in terraform, you will follow the
 
 *terraform-${provider}-${purpose}* - is the general form
 
-* *$provider* - the terraform provider, e.g. "aws", "pagerduty", "github"
-* *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- *$provider* - the terraform provider, e.g. "aws", "pagerduty", "github"
+- *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
 
 e.g.
 
-* terraform-aws-rds-log-cleaner
-* terraform-aws-cloudtrail-alarms
+- terraform-aws-rds-log-cleaner
+- terraform-aws-cloudtrail-alarms

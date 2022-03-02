@@ -17,11 +17,11 @@ or at a different stage.
 
 ## Contents
 
-* [Guide to Great Code Reviews](./great-code-reviews.md)
-* [Best Practices for Submitting a Pull Request](./pull-request-best-practices.md)
+- [Guide to Great Code Reviews](./great-code-reviews.md)
+- [Best Practices for Submitting a Pull Request](./pull-request-best-practices.md)
 
 ## Resources
 
-* [11 Proven Practices for Peer Review | IBM](https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/)
-* [Best Kept Secrets of Code Review | SmartBear](https://smartbear.com/SmartBear/media/pdfs/Best-Kept-Secrets-of-Peer-Code-Review_Redirected.pdf)
-* [Of Tracked Changes and Diffs | Truss Blog](https://truss.works/blog/2018/1/5/of-tracked-changes-and-diffs-moving-from-editorial-to-engineering)
+- [11 Proven Practices for Peer Review | IBM](https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/)
+- [Best Kept Secrets of Code Review | SmartBear](https://smartbear.com/SmartBear/media/pdfs/Best-Kept-Secrets-of-Peer-Code-Review_Redirected.pdf)
+- [Of Tracked Changes and Diffs | Truss Blog](https://truss.works/blog/2018/1/5/of-tracked-changes-and-diffs-moving-from-editorial-to-engineering)

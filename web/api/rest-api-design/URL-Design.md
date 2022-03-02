@@ -79,4 +79,4 @@ In case of an error, you return a consistent error payload. In case of success, 
 
   OR the URL may specify a specific resournce `api/v1/shipments/shipmentID` in which case the response payload will be that specific shipment.
 
-These guidelines were adapted from the [Australian Digital Service's API Design Guide](https://apiguide.readthedocs.io/en/latest/build_and_publish/use_RESTful_urls.html#).
+These guidelines were adapted from the [Australian Digital Service's API Design Guide](https://apiguide.readthedocs.io/en/latest/build_and_publish/use_RESTful_urls.html).

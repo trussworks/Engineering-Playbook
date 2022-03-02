@@ -3,21 +3,19 @@
 These instructions will help moving repos from using the default branch name `master` and modify it to be
 `main`.
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 
-* [Prereqs](#prereqs)
-* [Instructions to change default branch name](#instructions-to-change-default-branch-name)
-* [Future proofing](#future-proofing)
-* [Github](#github)
-* [CircleCI Changes](#circleci-changes)
-* [Terraform Registry](#terraform-registry)
-* [IDE Changes](#ide-changes)
-* [Tooling Changes](#tooling-changes)
-* [References](#references)
+- [Prereqs](#prereqs)
+- [Instructions to change default branch name](#instructions-to-change-default-branch-name)
+- [Future proofing](#future-proofing)
+- [Github](#github)
+- [CircleCI Changes](#circleci-changes)
+- [Terraform Registry](#terraform-registry)
+- [IDE Changes](#ide-changes)
+- [Tooling Changes](#tooling-changes)
+- [References](#references)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## Prereqs
 
@@ -106,8 +104,8 @@ should be required.
 
 When things don't work there are steps to re-sync the project that should be used as a last resort:
 
-* [VCP Default Branch Isn't Reflected on CircleCI](https://support.circleci.com/hc/en-us/articles/360040969693-VCS-Default-Branch-Isn-t-Reflected-on-CircleCI)
-* [CircleCI Doesn't Notice when github default branch is updated](https://discuss.circleci.com/t/circleci-doesnt-notice-when-github-default-branch-is-updated/10469/6)
+- [VCP Default Branch Isn't Reflected on CircleCI](https://support.circleci.com/hc/en-us/articles/360040969693-VCS-Default-Branch-Isn-t-Reflected-on-CircleCI)
+- [CircleCI Doesn't Notice when github default branch is updated](https://discuss.circleci.com/t/circleci-doesnt-notice-when-github-default-branch-is-updated/10469/6)
 
 ## Terraform Registry
 
@@ -123,11 +121,11 @@ branches if your editor allows for that.
 
 As a quick reference for some tools that need to be updated here is a non-exhaustive list:
 
-* [DangerJS](https://danger.systems/js/) should be updated to at least `v10.3.0` (see the [PR](https://github.com/danger/danger-js/issues/1057))
-* [git](https://git-scm.com/) should be updated to at least `v2.28.0` (see the [Release Notes](https://github.blog/2020-07-27-highlights-from-git-2-28/#introducing-init-defaultbranch))
+- [DangerJS](https://danger.systems/js/) should be updated to at least `v10.3.0` (see the [PR](https://github.com/danger/danger-js/issues/1057))
+- [git](https://git-scm.com/) should be updated to at least `v2.28.0` (see the [Release Notes](https://github.blog/2020-07-27-highlights-from-git-2-28/#introducing-init-defaultbranch))
 
 ## References
 
 References:
 
-* [Git Renaming the master branch](https://dev.to/rhymu8354/git-renaming-the-master-branch-137b)
+- [Git Renaming the master branch](https://dev.to/rhymu8354/git-renaming-the-master-branch-137b)

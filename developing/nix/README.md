@@ -92,17 +92,20 @@ MacOS requires that we add an argument to the installation command. We also want
 do the single user installation. So to install, run:
 
 ```shell
-sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
 See the [macOS installation](https://nixos.org/manual/nix/stable/#sect-macos-installation)
-and [single user installation](https://nixos.org/manual/nix/stable/#sect-single-user-installation)
 instructions for more details.
 
 ## Getting started
 
 After installing `nix`, you should have `~/.nix-profile/bin` in your
 PATH.
+
+### Quick HOWTO
+
+For a template for how to set up a project see [./HOWTO.md](HOWTO.md).
 
 ### Extra Setup (Only Fish Shell Users)
 
@@ -111,7 +114,9 @@ If you're using the fish shell, check out
 
 Add this to your `~/.config/fish/config.sh`
 
-    set -g fish_user_paths "/Users/[your_os_username]/.nix-profile/bin" $fish_user_paths
+```
+set -g fish_user_paths "/Users/[your_os_username]/.nix-profile/bin" $fish_user_paths
+```
 
 ### Working With Packages
 
@@ -243,19 +248,22 @@ file has changes, you will need to re-approve the file, but it will load
 automatically otherwise.
 
 Nix installations are immutable, so by default you cannot make changes
-like installing additional global software via `go get` or `npm
-install -g`.
+like installing additional global software via `go get` or `npm install -g`.
 
 To use a local directory for installing go binaries, add to your
 `.envrc`:
 
-    export GOPATH=$PWD/.gopath
-    PATH_add ./.gopath/bin
+```
+export GOPATH=$PWD/.gopath
+PATH_add ./.gopath/bin
+```
 
 To use a local directory for installing npm binaries:
 
-    export NPM_CONFIG_PREFIX=$PWD/.npmglobal
-    PATH_add ./.npmglobal/bin
+```
+export NPM_CONFIG_PREFIX=$PWD/.npmglobal
+PATH_add ./.npmglobal/bin
+```
 
 ## Learn More About Nix
 

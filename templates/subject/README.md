@@ -6,5 +6,5 @@ Use this space to give an overview of the Subject Area. Include the scope, conte
 
 ## Contents
 
-* [Topic](./topic.md) - links to a topic within the Subject Area
-* [Child Subject Area](./child_subject/README.md) - Links to a Subject Area contained within this one.
+- [Topic](./topic.md) - links to a topic within the Subject Area
+- [Child Subject Area](./child_subject/README.md) - Links to a Subject Area contained within this one.

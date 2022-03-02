@@ -16,45 +16,45 @@ code for GitHub repositories looks like, you can look in the
 
 ## Repo Maintenance and Hygiene
 
-* Avoid including files in source control that are specific to your development
-machine or process. For example, your editor or OS might generate files that are
-not pertinent to your project. Since those types of files will need to be
-[ignored](https://help.github.com/en/github/using-git/ignoring-files) from all
-the repos you work on, it's more convenient to set them once in a global
-`.gitignore` file (typically named `~/.gitignore_global`), as opposed to in each
-repo's `.gitignore`. Once you create your file and add rules to it, you can tell
-Git to use it:
+- Avoid including files in source control that are specific to your development
+  machine or process. For example, your editor or OS might generate files that are
+  not pertinent to your project. Since those types of files will need to be
+  [ignored](https://help.github.com/en/github/using-git/ignoring-files) from all
+  the repos you work on, it's more convenient to set them once in a global
+  `.gitignore` file (typically named `~/.gitignore_global`), as opposed to in each
+  repo's `.gitignore`. Once you create your file and add rules to it, you can tell
+  Git to use it:
 
   ```
   git config --global core.excludesfile ~/.gitignore_global
   ```
 
-* Delete local and remote feature branches after merging. This allows us to
-reuse branch names, and makes it easier for you to differentiate between
-your branches that are done and those that are still being worked on. To turn
-this on in GitHub, check the "Automatically delete head branches" box under
-the "Merge button" heading in the Options settings for your repo. If you're
-maintaining the repo with our
-[terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
-module, it will turn this on automatically.
+- Delete local and remote feature branches after merging. This allows us to
+  reuse branch names, and makes it easier for you to differentiate between
+  your branches that are done and those that are still being worked on. To turn
+  this on in GitHub, check the "Automatically delete head branches" box under
+  the "Merge button" heading in the Options settings for your repo. If you're
+  maintaining the repo with our
+  [terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
+  module, it will turn this on automatically.
 
 Locally, you can add an alias to your `~/.gitconfig` file. Example:
 
-  ```
-  [alias]
-    fresh = "!git co main && git pull && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D"
-  ```
+```
+[alias]
+  fresh = "!git co main && git pull && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D"
+```
 
-  Then instead of doing the typical `git checkout main && git pull`, you would
-  only run `git fresh`.
+Then instead of doing the typical `git checkout main && git pull`, you would
+only run `git fresh`.
 
 ## GitHub Repo Settings
 
-* [Protect the default branch](https://help.github.com/en/articles/configuring-protected-branches) by turning on the following settings at a minimum:
+- [Protect the default branch](https://help.github.com/en/articles/configuring-protected-branches) by turning on the following settings at a minimum:
 
-  * Require pull request reviews before merging
-  * Require status checks to pass before merging
-  * Include administrators
+  - Require pull request reviews before merging
+  - Require status checks to pass before merging
+  - Include administrators
 
   If you're maintaining the repo with our [terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
   module, it will turn this on automatically.

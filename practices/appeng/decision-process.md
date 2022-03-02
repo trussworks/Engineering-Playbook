@@ -18,12 +18,12 @@ and highlight when certain applications make sense.
 At it's core decision making process is as follows:
 
 1. Identify a decision made on a project that is applicable to the whole practice.
-2. Write an Architectural Decision Record (ADR) justifying it.
-3. Workshop the ADR with a [Domain Group](#domain-groups)
-  and create a final draft.
-4. Propose it in Slack for all of AppEng for review.
-5. (Optional) Hold a [meeting](#review-meeting) for review.
-6. Commit the [ADR](./adrs) and create [implementation documentation](#output).
+1. Write an Architectural Decision Record (ADR) justifying it.
+1. Workshop the ADR with a [Domain Group](#domain-groups)
+   and create a final draft.
+1. Propose it in Slack for all of AppEng for review.
+1. (Optional) Hold a [meeting](#review-meeting) for review.
+1. Commit the [ADR](./adrs) and create [implementation documentation](#output).
 
 ## Writing an ADR
 
@@ -57,13 +57,13 @@ we've established domain groups
 that have responsibility over a certain part of the stack.
 Currently these are broken up into:
 
-* **Frontend** - For decisions around browser technology,
+- **Frontend** - For decisions around browser technology,
   frontend frameworks,
   and client side data modeling.
-* **Server** - For decisions that deal with database modeling,
+- **Server** - For decisions that deal with database modeling,
   processing,
   and general API building.
-* **General**(better name please) - For decisions that fall outside of the other two groups
+- **General**(better name please) - For decisions that fall outside of the other two groups
   or heavily incorporate both.
   This will likely be broken out into other groups
   as we discover what topics come up.
@@ -129,8 +129,8 @@ Once a decision is made,
 there are three follow ups required:
 
 1. Commit the ADR.
-2. Announce the decision in #appeng.
-3. Write implementation documentation in this playbook.
+1. Announce the decision in #appeng.
+1. Write implementation documentation in this playbook.
 
 ADRs authors are responsible for the corresponding documentation.
 Practice leadership will check in on recent ADRs

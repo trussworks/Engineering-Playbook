@@ -46,7 +46,7 @@ The PATCH method is used to partially update a resource.
 Example: This request updates two fields on a shipment that exists on the server.
 
 ```
-PUT /v1/shipments/01b9671e-b268 HTTP/1.1
+PATCH /v1/shipments/01b9671e-b268 HTTP/1.1
 Host: api.move.mil
 Content-Type: application/json
 Body:
