@@ -131,7 +131,7 @@ VPCs are unique by region but they should indicate which application and environ
 
 ### Subnets
 
-Although they are unique by region, we also want subnets to be descriptively named according to their AZs and public/private status.
+For non-db subnets: Although they are unique by region, we also want subnets to be descriptively named according to their AZs and public/private status.
 
 *${VPC name}-${public/private/db}-${AZ}* - is the general form
 
@@ -157,15 +157,17 @@ e.g.:
 Container images such as Docker or ECR images should include the date as a way to version. Although the convention is to name the latest version `latest`, this can become a sticky situation when folks are trying to refresh a build in terraform and they end up not pulling the latest because the name `latest` hasn't changed.
 
 *${date}-${application}* - is the general form
+*${git commit hash}-${application}* - for applications that build new images on main and therefore may have multiple images per day
 
 - *$date* - YYYY-MM-DD - disambiguates between other images for the same application
+- *{git commit hash}* - disambiguates between other images for the same application taken on the same day
 - *$application* - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
 e.g. 2020-07-20-eclkc
 
 ## Terraform modules
 
-Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should follow the following convention, which is required to add the module to the Terraform registry.
+Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should use the following convention, which is [required to add the module to the Terraform registry](https://www.terraform.io/docs/registry/modules/publish.html).
 
 *terraform-${provider}-${purpose}* - is the general form
 
