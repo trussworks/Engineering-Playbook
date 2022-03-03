@@ -1,8 +1,8 @@
 # Engineering Playbook
 
-![Build](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml/badge.svg)
+[![Build](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml/badge.svg)](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml)
 
-![Deployment](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/deploy.yaml/badge.svg)
+[![Deployment](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/deploy.yaml/badge.svg)](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/deploy.yaml)
 
 ## Purpose
 
