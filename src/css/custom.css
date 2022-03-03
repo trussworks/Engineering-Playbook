@@ -11,6 +11,9 @@
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: 'Work Sans';
   --ifm-heading-font-weight: 700;
+}
+
+html[data-theme='light']:root {
   --ifm-navbar-link-color: #58585A;
 }
 
