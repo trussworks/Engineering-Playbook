@@ -28,8 +28,6 @@ Guidance and resources for Application Engineering Leads.
     - [Decision Making Best Practices from KBase 🔒](https://docs.google.com/document/d/1E-ChpTosRcX_h17eXRcw0c8rMymDSmZS7Ur-HZwiNkw/)
     - [Tech Roles and Decision Making Practices on KBase (presentation)🔒](https://docs.google.com/presentation/d/1FOVJQC03WVLiIL2SV-IATg_Na_ES2i9bwqkYXquRq70/edit#slide=id.g7781eb1f6c_0_4)
 - Measuring Quality
-  - Example: [MilMove Quality Measures 🔒](https://docs.google.com/document/d/1-YMSTj6keTS6zYgvq3lTY0PDqO09z-hbY8MMrVRjwdU/)
 - Managing the Backlog
-  - Example: [MyMove: Balancing the Backlog 🔒](https://docs.google.com/document/d/1vDZWJfjEZKLWZhtANYfmGk4M89_wGFYD/edit)
 - List of technical requirements
   - Example (UNDER REVIEW): [Technical Requirements Checklist 🔒](https://docs.google.com/document/d/1ozaXs8FiI6tqRWS_mEmEx_PothTioJsOxHoYlJF0b3I/)
