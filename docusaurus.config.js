@@ -6,13 +6,12 @@ module.exports = {
   title: 'Truss Engineering Playbook',
   tagline: '',
   url: 'https://trussworks.github.io',
-  baseUrl: '/engineering-playbook/',
+  baseUrl: '/Engineering-Playbook/',
   organizationName: 'trussworks',
   trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'TrussWorks, Inc',
   projectName: 'Engineering-Playbook',
   themeConfig: {
     navbar: {
