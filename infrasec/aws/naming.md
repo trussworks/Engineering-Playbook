@@ -35,12 +35,12 @@ As with all naming schemes (and other stylistic things such as casing and commen
 
 ### S3 Buckets
 
-*${account.alias}-${application.name}\[-${environment}\]\[-${region}\]* - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
+`${account.alias}-${application.name}[-${environment}][-${region}]` - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
 
-- *$account-alias* - is a prefix for the account, e.g. "truss", "client-name"
-- *$application-name* - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
-- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
-- *$region* - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
+- `$account-alias` - is a prefix for the account, e.g. "truss", "client-name"
+- `$application-name` - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
+- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `$region` - when an app can or will be distributed across AWS regions with distinct instances in each region, this postfix distinguishes between them
 
 e.g.
 
@@ -52,12 +52,12 @@ e.g.
 
 IAM resource names are account unique (i.e., visible across all regions), e.g. for roles:
 
-*${service/realm}\[-${role}\]-${project/application}-${environment}* - is the general form
+`${service/realm}[-${role}]-${project/application}-${environment}` - is the general form
 
-- *$service/realm* - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
-- *$role* - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
-- *$project/application* - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
-- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `$service/realm` - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
+- `$role` - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
+- `$project/application` - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
+- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
 
@@ -82,11 +82,11 @@ When you create a new user, you should follow a first initial last name format (
 
 Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
 
-*${purpose}\[-${application}\]-${environment}* - is the general form
+`${purpose}[-${application}]-${environment}` - is the general form
 
-- *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
-- *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
-- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- `$application` - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
 
@@ -97,7 +97,7 @@ e.g.
 
 The main purpose of the SNS topics are for notifications to teams. The naming convention reflects that, closely followed by the AWS account type (Gov or Com) and action.
 
-*${team}-${account_type}-${action}* - is the general form
+`${team}-${account_type}-${action}` - is the general form
 
 Sample names:
 
@@ -108,7 +108,7 @@ Sample names:
 
 When you are creating a bot in Slack to alert team members to issues, you should include team to alert and app name the alert is coming from.
 
-- *{team}-${application}*
+- `{team}-${application}`
 
 e.g.
 
@@ -119,11 +119,11 @@ e.g.
 
 VPCs are unique by region but they should indicate which application and environment level they contain.
 
-\[*${application}-\]${environment}* - is the general form
+`[${application}-]${environment}` - is the general form
 
-- *$application* - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- `$application` - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
-- *$environment* - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 - eec-prod
 
@@ -133,10 +133,10 @@ VPCs are unique by region but they should indicate which application and environ
 
 For non-db subnets: Although they are unique by region, we also want subnets to be descriptively named according to their AZs and public/private status.
 
-*${VPC name}-${public/private/db}-${AZ}* - is the general form
+`${VPC name}-${public/private/db}-${AZ}` - is the general form
 
-- *$public/private/db* - can be used to distinguish whether the subnet is a private, public, or db subnet
-- *$AZ* - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
+- `$public/private/db` - can be used to distinguish whether the subnet is a private, public, or db subnet
+- `$AZ` - Availability Zone (AZ) are within a region and are ordered initials (i.e. `us-east-2b`).
 
 In a VPC named "eec-prod":
 
@@ -156,12 +156,12 @@ e.g.:
 
 Container images such as Docker or ECR images should include the date as a way to version. Although the convention is to name the latest version `latest`, this can become a sticky situation when folks are trying to refresh a build in terraform and they end up not pulling the latest because the name `latest` hasn't changed.
 
-*${date}-${application}* - is the general form
-*${git commit hash}-${application}* - for applications that build new images on main and therefore may have multiple images per day
+`${date}-${application}` - is the general form
+`${git commit hash}-${application}` - for applications that build new images on main and therefore may have multiple images per day
 
-- *$date* - YYYY-MM-DD - disambiguates between other images for the same application
-- *{git commit hash}* - disambiguates between other images for the same application taken on the same day
-- *$application* - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- `$date` - YYYY-MM-DD - disambiguates between other images for the same application
+- `$git commit hash` - disambiguates between other images for the same application taken on the same day
+- `$application` - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
 e.g. 2020-07-20-eclkc
 
@@ -169,10 +169,10 @@ e.g. 2020-07-20-eclkc
 
 Typically when building resources and services in terraform, you will follow the naming conventions described above for AWS resources. However, when creating a standalone module, you should use the following convention, which is [required to add the module to the Terraform registry](https://www.terraform.io/docs/registry/modules/publish.html).
 
-*terraform-${provider}-${purpose}* - is the general form
+`terraform-${provider}-${purpose}` - is the general form
 
-- *$provider* - the terraform provider, e.g. "aws", "pagerduty", "github"
-- *$purpose* - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- `$provider` - the terraform provider, e.g. "aws", "pagerduty", "github"
+- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
 
 e.g.
 
