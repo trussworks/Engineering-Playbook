@@ -9,7 +9,7 @@ module.exports = {
   baseUrl: '/engineering-playbook/',
   organizationName: 'trussworks',
   trailingSlash: false,
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'TrussWorks, Inc',
