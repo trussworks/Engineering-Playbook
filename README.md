@@ -34,16 +34,18 @@ We build and deploy these docs using [Docusaurus](https://docusaurus.io/), a Rea
 ### Clone the repo
 
 1. Open your terminal/command line.
-2. Clone the repo onto your machine and `cd` into it:
+
+1. Clone the repo onto your machine and `cd` into it:
+
    ```
    git clone https://github.com/trussworks/Engineering-Playbook.git && cd Engineering-Playbook
    ```
 
 ### Install Dependencies
 
-Use one of the following methods:
+Choose one of the following methods to install the dependencies.
 
-#### Manually:
+#### Manually
 
 ```
 brew update
@@ -53,7 +55,7 @@ brew install pre-commit
 pre-commit install
 ```
 
-#### With `fresh-brew`:
+#### With `fresh-brew`
 
 ```shell
 bash <(curl -s https://raw.githubusercontent.com/trussworks/fresh-brew/main/fresh-press)
@@ -70,7 +72,7 @@ if you already have it. It will also install or update `git` and the GitHub CLI,
 as well as the dependencies that are specific to this project, as defined in
 `fresh-brew.local` and `Brewfile.local`. Finally, it will launch the MilMove docs
 website for you. Read more about the script by visiting the repo:
-https://github.com/trussworks/fresh-brew.
+[trussworks/fresh-brew](https://github.com/trussworks/fresh-brew).
 
 If the script fails, pay attention to any errors or warnings from Homebrew in
 the terminal. Homebrew usually provides detailed instructions for fixing things,
@@ -93,31 +95,34 @@ Alternatively, manually download them from:
 If you see this, follow the instructions, then quit and restart your terminal
 once the Command Line Tools are installed, and run the setup script above again.
 
-#### With Nix:
+#### With Nix
 
 1. Install or update Homebrew using the same script as in the previous section,
-but without running the `*.local` scripts:
+   but without running the `*.local` scripts:
+
 ```shell
 export SKIP_LOCAL=true
 bash <(curl -s https://raw.githubusercontent.com/trussworks/fresh-brew/main/fresh-press)
 ```
 
 For Fish shell:
+
 ```shell
 export SKIP_LOCAL=true
 bash (curl -s https://raw.githubusercontent.com/trussworks/fresh-brew/main/fresh-press | psub)
 ```
 
-2. Install Nix if you don't already have it:
+1. Install Nix if you don't already have it:
+
 ```
 sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
 ```
 
 Note: if you're using the Fish shell, you'll need to [complete an extra step](https://github.com/trussworks/Engineering-Playbook/tree/main/developing/nix#extra-setup-only-fish-shell-users).
 
-3. Quit and restart your terminal
-4. Run `direnv allow`
-5. Run `nix/update.sh`
+1. Quit and restart your terminal
+1. Run `direnv allow`
+1. Run `nix/update.sh`
 
 ### Run the server
 
@@ -138,6 +143,6 @@ yarn serve
 
 ## Deployment
 
-This site is currently deployed using GitHub pages: https://trussworks.github.io/Engineering-Playbook/. We're using GitHub actions to redeploy whenever changes are merged to the main branch, which includes all commits that are made and saved directly in GitHub.
+This site is currently deployed using GitHub pages: [https://trussworks.github.io/Engineering-Playbook/](https://trussworks.github.io/Engineering-Playbook/). We're using GitHub actions to redeploy whenever changes are merged to the main branch, which includes all commits that are made and saved directly in GitHub.
 
 Be aware that GitHub pages has a _soft_ limit of 10 deploys per hour, and it is possible we could run up against this (read more about the limitations of pages here: [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#usage-limits)). It should not have a significant affect on our day-to-day activities, however, and may never become a noticeable issue.

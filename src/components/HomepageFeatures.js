@@ -13,7 +13,7 @@ const FeatureList = [
     ),
     callout: (
       <>
-        <a href="https://github.com/trussworks/Engineering-Playbook/blob/main/CONTRIBUTING.md"> 
+        <a href="https://github.com/trussworks/Engineering-Playbook/blob/main/CONTRIBUTING.md">
             Read about how to contribute to this documentation.
         </a>
       </>
@@ -34,7 +34,7 @@ const FeatureList = [
     title: 'Powered by Docusaurus',
     description: (
       <>
-        Extend or customize the layout and integrations by using React. 
+        Extend or customize the layout and integrations by using React.
         Docusaurus can be extended while reusing the same header and footer.
       </>
     ),
