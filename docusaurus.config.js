@@ -5,8 +5,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Truss Engineering Playbook',
   tagline: '',
-  url: 'https://trussworks.github.io/',
+  url: 'https://trussworks.github.io',
   baseUrl: '/engineering-playbook/',
+  organizationName: 'trussworks',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
