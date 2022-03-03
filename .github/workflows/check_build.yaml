@@ -13,3 +13,4 @@ jobs:
         run: npm install yarn
 
       - name: Install dependencies
+        run: yarn install
