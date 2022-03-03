@@ -1,6 +1,12 @@
 # MilMove Documentation
 
+<<<<<<< HEAD
 [![GitHub pages deployment](https://github.com/transcom/mymove-docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/transcom/mymove-docs/actions/workflows/deploy.yml)
+=======
+![Build](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml/badge.svg)
+
+## Purpose
+>>>>>>> main
 
 ## Overview
 
