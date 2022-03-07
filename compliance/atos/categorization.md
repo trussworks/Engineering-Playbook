@@ -1,3 +1,5 @@
+# Security Categorization
+
 ## Overview
 
 The impact level of your project is very important, and affects the process you'll follow to launch your project. At first you'll be making a prediction of your project impact level. As you enter the ATO assessment process the impact level will be determined with the help of your AO.

@@ -1,3 +1,5 @@
+# Tips
+
 ## General
 
 - As soon as you have a stable server that isn’t changing its security boundary (talk to the project developers about this, but it can be very early on), you should start this process. As long as there aren’t those significant changes, the tests will run periodically on any updates you make. At the very latest, start this process at least two months before launch. Do not commit to a launch date without coordinating with your AO on this first.
@@ -26,7 +28,7 @@
     - User Roles
     - Software Components
 - Refer to specific User Roles and Software Components in Title Case.
-- Only include information about your [soon-to-be] production system. Other environments (development/staging) are out of scope.
+- Only include information about your \[soon-to-be\] production system. Other environments (development/staging) are out of scope.
 
 ## System/network diagrams
 

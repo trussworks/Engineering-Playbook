@@ -1,3 +1,5 @@
+# Framework
+
 Government information systems must follow a risk management framework described by the National Institute of Standards and Technology (NIST). The framework is a cycle of activities that an agency needs to perform on all information security systems:
 
 1. [**Categorize:**](../categorize/) Define the level of risk the system presents — low, moderate, or high — based on a worst case scenario.

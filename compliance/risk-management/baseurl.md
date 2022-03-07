@@ -1,3 +1,5 @@
+# Understanding the `baseurl:` property
+
 __It isn't necessary to update `baseurl:` yourself in most cases. This
 section is not necessary to follow through with the reset of the
 instructions.__
