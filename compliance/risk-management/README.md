@@ -6,16 +6,16 @@ Placeholder text about RMF
 
 - [Adopting the Risk Management Framework](adopting-framework.md) - RMF
 - [Assess](assess.md) - RMF
-- [Authorize](authorize.md) - RMF
-- [baseurl](baseurl.md) - RMF
-- [Categorize](categorize.md) - RMF
+- [Risk Management Framework - Step 5: Authorize](authorize.md) - RMF
+- [Understanding the `baseurl:` property](baseurl.md) - RMF
+- [Risk Management Framework - Step 1: Categorize](categorize.md) - RMF
 - [Framework](ramework.md) - RMF
 - [Goals](goals.md) - RMF
 - [Implement](implement.md) - RMF
-- [Monitor](monitor.md) - RMF
-- [Problems](problems-assessment-authorization.md) - RMF
-- [Reports-Audits](reports-audits.md) - RMF
-- [Requirements](requirements.md) - RMF
-- [Select](select.md) - RMF
+- [Risk Management Framework - Step 6: Monitor](monitor.md) - RMF
+- [Problems of the Assessment and Authorization](problems-assessment-authorization.md) - RMF
+- [Reports and Audits](reports-audits.md) - RMF
+- [NIST Requirements](requirements.md) - RMF
+- [Risk Management Framework - Step 2: Select](select.md) - RMF
 - [Tools](tools.md) - RMF
 - [Write Framework](write-framework.md) - RMF
