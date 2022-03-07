@@ -6,7 +6,7 @@ Placeholder text about RMF
 
 - [Adopting the Risk Management Framework](adopting-framework.md) - RMF
 - [Assess](assess.md) - RMF
-- [Aauthorize](authorize.md) - RMF
+- [Authorize](authorize.md) - RMF
 - [baseurl](baseurl.md) - RMF
 - [Categorize](categorize.md) - RMF
 - [Framework](ramework.md) - RMF
