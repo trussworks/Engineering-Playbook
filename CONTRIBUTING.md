@@ -27,23 +27,6 @@ Pivotal board, which is managed by folks on Reserve.
 
 ## How
 
-Contributing is as easy as submitting a PR. Please request a review from one or
-more of these Trussels we have identified as curators for particular areas of
-knowledge:
-
-- Bash - TBD
-- Django - TBD
-- Docker - TBD
-- General Backend - TBD
-- General Frontend - TBD
-- Go - TBD
-- Infra - TBD
-- Python - TBD
-- Rails - TBD
-- React - TBD
-- Ruby - TBD
-- Security - TBD
-
 If you are adding new content, please follow our
 [templates](./templates/README.md). If you are updating existing content, and
 you notice that it does not adhere to our templates format, please update the
