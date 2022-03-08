@@ -1,0 +1,29 @@
+jobs:
+  validate:
+    docker:
+    - auth:
+        password: $DOCKER_PASSWORD
+        username: $DOCKER_USERNAME
+      image: trussworks/circleci:03d0d0dcd05dad6cc03b570e5128c735ea90c80f
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
+    - run:
+        command: pre-commit run --all-files --show-diff-on-failure
+        name: Run pre-commit tests
+    - save_cache:
+        key: pre-commit-dot-cache-{{ checksum ".pre-commit-config.yaml" }}
+        paths:
+        - ~/.cache/pre-commit
+references:
+  circleci: trussworks/circleci:03d0d0dcd05dad6cc03b570e5128c735ea90c80f
+version: 2
+workflows:
+  validate:
+    jobs:
+    - validate:
+        context:
+        - org-global
+  version: 2
