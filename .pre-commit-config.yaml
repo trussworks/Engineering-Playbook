@@ -19,6 +19,3 @@ repos:
         additional_dependencies:
           - mdformat-gfm
           - mdformat-toc
-
-  - repo: https://github.com/trussworks/pre-commit-hooks
-    rev: v1.1.0
