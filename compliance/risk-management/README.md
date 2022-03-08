@@ -1,13 +1,12 @@
-# [Compliance](../README.md) / Risk Management Framework
+# Risk Management Framework
 
-Placeholder text about RMF
+For all federal agencies, the Risk Management Framework (RMF) describes the process that must be followed to secure, authorize, and manage information systems. The RMF defines a process cycle that is used for initially securing the protection of systems through an ATO and integrating ongoing monitoring.
 
 ## Contents
 
 - [Adopting the Risk Management Framework](adopting-framework.md) - RMF
 - [Assess](assess.md) - RMF
 - [Risk Management Framework - Step 5: Authorize](authorize.md) - RMF
-- [Understanding the `baseurl:` property](baseurl.md) - RMF
 - [Risk Management Framework - Step 1: Categorize](categorize.md) - RMF
 - [Framework](ramework.md) - RMF
 - [Goals](goals.md) - RMF

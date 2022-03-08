@@ -1,4 +1,4 @@
-# [ATOs](README.md) / Tips
+# General Tips
 
 ## General
 

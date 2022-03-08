@@ -1,4 +1,4 @@
-# [ATOs](README.md) / Security Categorization
+# Security Categorization
 
 ## Overview
 
