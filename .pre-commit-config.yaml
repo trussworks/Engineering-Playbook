@@ -1,9 +1,11 @@
+---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
       - id: check-merge-conflict
       - id: check-yaml
+      - id: check-json
       - id: detect-private-key
       - id: trailing-whitespace
 
