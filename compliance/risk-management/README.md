@@ -5,29 +5,12 @@ For all federal agencies, the Risk Management Framework (RMF) describes the proc
 ## Contents
 
 - [Adopting the Risk Management Framework](adopting-framework.md) - An overview of the Risk Management Framework
-
-- [Risk Management Framework - Step 1: Categorize](categorize.md) - An overview of RMF Categorization.
-
+- [Risk Management Framework](framework.md) - The six steps of the Risk Management Framework
+- [Risk Management Framework - Step 1: Categorize](categorize.md) - An overview of RMF Categorization
 - [Risk Management Framework - Step 2: Select](select.md) - An overview of RMF Section
-
 - [Risk Management Framework - Step 2: Implement](implement.md) - An overview of RMF Implenetation
-
 - [Risk Management Framework - Step 4: Assessment](assess.md) - An overview of RMF Assessment
-
 - [Risk Management Framework - Step 5: Authorize](authorize.md) - An overview of RMF Authorization
-
 - [Risk Management Framework - Step 6: Monitor](monitor.md) - An overview of RMF Monitoring
-
-- [Framework](ramework.md) - RMF
-
-- [Goals](goals.md) - RMF
-
-- [Problems of the Assessment and Authorization](problems-assessment-authorization.md) - RMF
-
-- [Reports and Audits](reports-audits.md) - RMF
-
-- [NIST Requirements](requirements.md) - RMF
-
-- [Tools](tools.md) - RMF
-
-- [Write Framework](write-framework.md) - RMF
+- [Authorization Package](package.md) - An overview of what is included in the Authorization package used to request an ATO
+- [Assessment and Authorization problems](problems.md) - Potential problems that could be encountered during the Authorization and Assessment
