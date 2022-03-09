@@ -1,15 +1,3 @@
-This license covers the documentation (non-software) components of this project
-and not the software components of this project.
-
-The non-software components of this project mostly exist in the `docs/`
-directory but include other documentation files within the repository. A list of
-non-software components outside of the `docs/` directory will be referenced in
-this file by file path.
-
-- ./README.md
-- ./CODE_OF_CONDUCT.md
-- ./CONTRIBUTING.md
-
 Creative Commons Attribution 4.0 International Public License
 
 By exercising the Licensed Rights (defined below), You accept and agree to be

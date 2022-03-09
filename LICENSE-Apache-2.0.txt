@@ -1,11 +1,3 @@
-This license covers the software components of this project and not the
-documentation (non-software) components of this project.
-
-This license only references software components written by TrussWorks, LLC to
-customize or modify the Docusaurus documentation framework. A list of software
-components that fall under this license will be referenced in this file by file
-path.
-
 Copyright 2022 TrussWorks, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");

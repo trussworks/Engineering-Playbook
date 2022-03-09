@@ -146,3 +146,36 @@ yarn serve
 This site is currently deployed using GitHub pages: [https://trussworks.github.io/Engineering-Playbook/](https://trussworks.github.io/Engineering-Playbook/). We're using GitHub actions to redeploy whenever changes are merged to the main branch, which includes all commits that are made and saved directly in GitHub.
 
 Be aware that GitHub pages has a _soft_ limit of 10 deploys per hour, and it is possible we could run up against this (read more about the limitations of pages here: [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#usage-limits)). It should not have a significant affect on our day-to-day activities, however, and may never become a noticeable issue.
+
+## Licenses
+
+This project uses two licenses. One is for the software components written by
+TrussWorks, such as but not limited to plugins, modifications, and scripts to
+integrate and deliver the Docusaurus repository. This license the is the
+Apache-2.0 license. The other license is for non-software components such as
+documentation which mostly reside in the `docs/` directory. This license is the
+CCA-4.0 license.
+
+### Apache License, Version 2.0
+
+This license covers the software components of this project and not the
+documentation (non-software) components of this project.
+
+This license only references software components written by TrussWorks, LLC to
+customize or modify the Docusaurus documentation framework. A list of software
+components that fall under this license will be referenced in this file by file
+path.
+
+### Creative Commons Attribution 4.0 International Public License
+
+This license covers the documentation (non-software) components of this project
+and not the software components of this project.
+
+The non-software components of this project mostly exist in the `docs/`
+directory but include other documentation files within the repository. A list of
+non-software components outside of the `docs/` directory will be referenced in
+this file by file path.
+
+- ./README.md
+- ./CODE_OF_CONDUCT.md
+- ./CONTRIBUTING.md
