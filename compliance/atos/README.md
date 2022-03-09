@@ -4,15 +4,9 @@ The official management decision given by a senior organizational official to au
 
 ## Contents
 
-- [Home](index.md) - An introduction to working with ATOs.
+- [ATO Types](ato-types.md) - An overview of the types of ATOs.
+- [Document Templates](templates.md) - ATO document templates.
 - [Overview](overview.md) - A brief overview of what's included in the ATO process.
 - [Steps of the ATO Process](steps.md) - What's involved in an ATO.
 - [Security Categorization](categorization.md) - Helps determine the amount of work required for an ATO.
 - [Tips](tips.md) - Some general tips to help get you started.
-
-## Future Content
-
-Types of ATOs
-Civilian Government vs DOD
-ATO Document Templates
-FEDRamp
