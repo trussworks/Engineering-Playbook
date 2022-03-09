@@ -4,17 +4,30 @@ For all federal agencies, the Risk Management Framework (RMF) describes the proc
 
 ## Contents
 
-- [Adopting the Risk Management Framework](adopting-framework.md) - RMF
-- [Assess](assess.md) - RMF
-- [Risk Management Framework - Step 5: Authorize](authorize.md) - RMF
-- [Risk Management Framework - Step 1: Categorize](categorize.md) - RMF
+- [Adopting the Risk Management Framework](adopting-framework.md) - An overview of the Risk Management Framework
+
+- [Risk Management Framework - Step 1: Categorize](categorize.md) - An overview of RMF Categorization.
+
+- [Risk Management Framework - Step 2: Select](select.md) - An overview of RMF Section
+
+- [Risk Management Framework - Step 2: Implement](implement.md) - An overview of RMF Implenetation
+
+- [Risk Management Framework - Step 4: Assessment](assess.md) - An overview of RMF Assessment
+
+- [Risk Management Framework - Step 5: Authorize](authorize.md) - An overview of RMF Authorization
+
+- [Risk Management Framework - Step 6: Monitor](monitor.md) - An overview of RMF Monitoring
+
 - [Framework](ramework.md) - RMF
+
 - [Goals](goals.md) - RMF
-- [Implement](implement.md) - RMF
-- [Risk Management Framework - Step 6: Monitor](monitor.md) - RMF
+
 - [Problems of the Assessment and Authorization](problems-assessment-authorization.md) - RMF
+
 - [Reports and Audits](reports-audits.md) - RMF
+
 - [NIST Requirements](requirements.md) - RMF
-- [Risk Management Framework - Step 2: Select](select.md) - RMF
+
 - [Tools](tools.md) - RMF
+
 - [Write Framework](write-framework.md) - RMF

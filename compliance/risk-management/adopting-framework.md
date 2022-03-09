@@ -1,4 +1,4 @@
-# [Risk Management Framework](README.md) / Adopting the Risk Management Framework
+# Adopting the Risk Management Framework
 
 The risk management framework is a framework, not a policy. Frameworks have to be implemented. The way we implement needs to overcome issues with point-in-time ATO documentation while maintaining its strengths.
 
@@ -18,7 +18,7 @@ The solution an agency adopts should:
 
 Among the requirements is whole-organization involvement:
 
-> Maintaining an up-to-date view of information security risks across an organization is a complex, multifaceted undertaking. It requires the involvement of the entire organization, from senior leaders providing governance and strategic vision to individuals developing, implementing, and operating individual information systems in support of the organization’s core missions and business functions.
+Maintaining an up-to-date view of information security risks across an organization is a complex, multifaceted undertaking. It requires the involvement of the entire organization, from senior leaders providing governance and strategic vision to individuals developing, implementing, and operating individual information systems in support of the organization’s core missions and business functions.
 
 NIST uses three tiers to describe how the organization should integrate monitoring into their systems. In Tier 1, the agency should set its risk tolerance, governance, policies, and strategies. In Tier 2, the agency should set business processes that can support these organizational goals. In Tier 3, the agency needs information systems that provide the data for these processes. Data moves from the systems into the processes into the organization. Tools and capabilities flow from the organization into the processes into the systems.
 
@@ -27,7 +27,3 @@ NIST uses three tiers to describe how the organization should integrate monitori
 A modern implementation of the risk management framework needs to support this movement of information. To do this, agencies need to integrate the development of secure systems with how that security is documented. To keep data moving from systems to the organization, the agency needs to produce consistently up-to-date documentation that is reliable. To make tools available to systems at the right time, the agency needs to restrict pace of development as little as possible.
 
 If documentation of security controls is _part of_ documenting how the system itself works,
-
-## A flexible interface
-
-...
