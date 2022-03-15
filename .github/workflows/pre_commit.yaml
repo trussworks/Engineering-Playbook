@@ -17,7 +17,7 @@ jobs:
       - name: cache
         uses: actions/cache@v2
         with:
-          key: pre-commit-dot-cache-${{ hashFiles(".pre-commit-config.yaml") }}
+          key: pre-commit-dot-cache-${{ hashFiles('.pre-commit-config.yaml') }}
           path: ~/.cache/pre-commit
       - name: Pre-commit checks
         run: pre-commit run --all-files --show-diff-on-failure
