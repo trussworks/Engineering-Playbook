@@ -15,7 +15,7 @@ jobs:
       - name: Install pre-commit
         run: pip install pre-commit
       - name: cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           key: pre-commit-dot-cache-${{ hashFiles('.pre-commit-config.yaml') }}
           path: ~/.cache/pre-commit
