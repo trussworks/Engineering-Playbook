@@ -10,4 +10,4 @@ A risk-based approach provides an insight into the best investment in time and r
 
 ## Risk Management Framework
 
-- [RMF](risk-management-framework/README.md) — Risk Management Framework
+- [RMF](risk-management/README.md) — Risk Management Framework
