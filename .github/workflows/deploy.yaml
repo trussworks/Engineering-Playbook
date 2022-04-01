@@ -1,0 +1,33 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+  # enables manual runs
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2  # $GITHUB_WORKSPACE
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x  # openapi requires node >= 12
+
+      - name: Install yarn
+        run: npm install yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build the Docusaurus app
+        run: yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages  # the branch for the deployment
+          folder: build  # the folder getting deployed
