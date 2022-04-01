@@ -4,9 +4,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Truss Engineering Playbook',
-  tagline: '',
-  url: 'https://trussworks.github.io',
-  baseUrl: '/Engineering-Playbook/',
+  tagline: 'Repository of documentation on how we do Software Engineering at TrussWorks.',
+  url: 'https://playbook.truss.dev',
+  baseUrl: '/',
   organizationName: 'trussworks',
   trailingSlash: false,
   onBrokenLinks: 'warn',
