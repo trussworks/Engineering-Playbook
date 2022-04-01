@@ -1,0 +1,43 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "automerge": true,
+      "description": "Automerge all updates without review",
+      "matchUpdateTypes": [
+        "patch",
+        "pin",
+        "digest",
+        "minor",
+        "major"
+      ],
+      "reviewers": []
+    },
+    {
+      "description": "Group minor updates into a single PR",
+      "groupName": "dependencies",
+      "managers": [
+        "pre-commit",
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "pin",
+        "digest",
+        "minor"
+      ]
+    }
+  ],
+  "prConcurrentLimit": 2,
+  "schedule": [
+    "after 10pm every weekday",
+    "before 5am every weekday",
+    "every weekend"
+  ],
+  "timezone": "America/Los_Angeles"
+}
