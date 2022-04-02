@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Vale linter
-        uses: errata-ai/vale-action@v1.4.3
+        uses: errata-ai/vale-action@v1.5.0
         with:
           files: __onlyModified
           onlyAnnotateModifiedLines: true
