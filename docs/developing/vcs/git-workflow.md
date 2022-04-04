@@ -34,8 +34,7 @@ read-only repos).
 ## Working locally
 
 Pick either `rebase` or `merge` to incorporate changes from the default branch onto your
-local branch. Use the same method every time for consistency. Most people
-use `rebase`.
+local branch. Use the same method every time for consistency.
 
 ## PR Size
 
@@ -53,64 +52,6 @@ Once a branch has been pushed to GitHub and a PR has been submitted for review,
 any changes should be made via individual new commits. Never force push while
 a PR is under review. This avoids issues such as merge conflicts or accidental
 overwriting of code when others are using your branch.
-
-## Merging an approved PR
-
-The recommendations below are based on a survey we sent out both internally and
-outside Truss, although we only received 41 responses.
-
-### PR with multiple commits
-
-Once a PR has been approved, we recommend squashing commits so that the only
-ones that remain are meaningful ones that pertain to the overall goal of the PR.
-For example, if a PR is focused on a small specific task, and along the way you
-created commits that fixed typos or broken tests, those deserve to be squashed.
-It's easier to understand a PR when there aren't distracting commmits.
-
-We don't require any particular way to squash commits, but we recommend using
-GitHub's `squash and merge` button as it's the safest option. We do not
-encourage nor require force pushing, but if you have experience using force push
-responsibly, and prefer using interactive rebase to squash locally, you may use
-it.
-
-Take time to write a good commit message (as described in the
-[Commit messages](#commit-messages) section below), and add any relevant
-information from the PR review.
-
-#### Rationale
-
-Although most survey respondents stated they don't typically squash commits, we
-still recommend squashing because the consequences of **not** squashing are
-more negative than those of squashing.
-
-Below are the most common consequences of not squashing chosen by survey
-respondents:
-
-- hard to read the Git history
-- hard to link individual commits back to the GitHub PR
-- hard to understand the reason behind a change
-
-Conversely, the most common (90%) consequence of squashing chosen was:
-
-- It was hard to understand or work with big commits that had too many unrelated
-  changes
-
-And the most common reason for having big commits was:
-
-- Keeping PRs small and focused was not enforced during code reviews
-
-We feel this is much easier to address through team norms and communication, and
-is one of the guidelines in this document. See [PR size](#pr-size) above.
-
-Additional benefits of squashing mentioned by survey respondents include:
-
-- Keeping a clean commit history with detailed commit messages serves as
-  documentation for our future selves and for future folks who will work on the repo
-
-- It makes it easier to revert commits or PRs
-
-- It allows us to update the final commit message to incorporate any relevant
-  discussion from the PR review
 
 ## Commit messages
 
