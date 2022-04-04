@@ -38,16 +38,6 @@ code for GitHub repositories looks like, you can look in the
   [terraform-github-repo](https://registry.terraform.io/modules/trussworks/repo/github)
   module, it will turn this on automatically.
 
-Locally, you can add an alias to your `~/.gitconfig` file. Example:
-
-```
-[alias]
-  fresh = "!git co main && git pull && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D"
-```
-
-Then instead of doing the typical `git checkout main && git pull`, you would
-only run `git fresh`.
-
 ## GitHub Repo Settings
 
 - [Protect the default branch](https://help.github.com/en/articles/configuring-protected-branches) by turning on the following settings at a minimum:
