@@ -1,3 +1,9 @@
+⚠️❗ __The deployed version of the engineering playbook is now on [Docusaurus](https://playbook.truss.dev/).
+Links and formatting from the old layout may be broken.
+Known problems are reported to [GitHub issues](https://github.com/trussworks/Engineering-Playbook/issues).
+Feel free to open a PR if you see something that can be fixed.
+Thanks for your patience!__ ❗⚠️
+
 # Engineering Playbook
 
 [![Build](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml/badge.svg)](https://github.com/TrussWorks/Engineering-Playbook/actions/workflows/pre_commit.yaml)
