@@ -8,7 +8,7 @@ The steps in the process are as follows:
 
 ## Step 1: Categorize Information System
 
-The information systems' owner, working with the AO, categorizes the system based on the potential impact on the organization if the information system, or the information within it, is jeopardized. The system will end up with a category of _low_, _moderate_ or _high_, based on criteria described [here](../categorization/).
+The information systems' owner, working with the AO, categorizes the system based on the potential impact on the organization if the information system, or the information within it, is jeopardized. The system will end up with a category of _low_, _moderate_ or _high_, based on criteria described [here](categorization/).
 
 If your system will be providing novel or risky functions, or handling extremely sensitive data, do this as early as possible.
 
