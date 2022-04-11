@@ -1,4 +1,4 @@
-# [Incident Response](./README.md) / Security Incidents
+# Security Incidents
 
 While security incidents are similar to service-impacting incidents
 in many ways, they also have a unique set of challenges that we need

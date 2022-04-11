@@ -1,4 +1,4 @@
-# [Engineering Playbook](../README.md) / Incident Response
+# Incident Response
 
 ## Overview
 

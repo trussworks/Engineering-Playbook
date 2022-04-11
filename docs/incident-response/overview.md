@@ -1,4 +1,4 @@
-# [Incident Response](./README.md) / Overview
+# Overview
 
 Incident response for production systems owes a great deal to the incident
 response process developed by the National Forest Service and later

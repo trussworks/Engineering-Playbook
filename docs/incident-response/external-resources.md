@@ -1,4 +1,4 @@
-# [Incident Response](./README.md) / External Resources
+# External Resources
 
 This is a collection of external resources that may be useful for learning
 more about elements of incident response. Please feel free to submit PRs
