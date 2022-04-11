@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../README.md) / [Web Development](../README.md) / [Front End](./README.md) / Frontend Architecture
+# Frontend Architecture
 
 ## Selecting a version of Node.js
 

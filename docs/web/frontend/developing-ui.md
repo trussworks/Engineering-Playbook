@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../README.md) / [Web Development](../README.md) / [Front End](./README.md) / Implementing UI
+# Implementing UI
 
 This is an attempt to document the process of implementing a web UI based on visual assets, functional requirements, and content specifications. Hopefully the steps below provide a framework for accomplishing work with a high fidelity to the original designs, but they are not a substitute for attention to detail and thorough understanding of HTML and CSS.
 

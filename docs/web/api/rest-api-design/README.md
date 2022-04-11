@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../../README.md) / [Web Development](../../README.md) / [API Guide](../README.md) / REST API Design
+# REST API Design
 
 Most of this structure was pulled from [https://apiguide.readthedocs.io/en/latest/index.html](https://apiguide.readthedocs.io/en/latest/index.html) which is an API guide written by the AusDTO which appears to be the Aussie version of the U.S. Digital Services.
 

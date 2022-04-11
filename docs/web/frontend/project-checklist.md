@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../README.md) / [Web Development](../README.md) / [Front End](./README.md) / Project Checklist
+# Project Checklist
 
 ## A Front End Application Lifecycle
 
