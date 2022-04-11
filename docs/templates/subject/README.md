@@ -1,4 +1,8 @@
-# [Parent Subject Area](../README.md) / Subject Area
+---
+title: Template subject
+---
+
+# Subject Area
 
 ## Overview
 

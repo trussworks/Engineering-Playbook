@@ -1,4 +1,4 @@
-# [Engineering Playbook](../README.md) / Templates
+# Templates
 
 ## Overview
 
