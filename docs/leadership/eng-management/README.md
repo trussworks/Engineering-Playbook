@@ -1,4 +1,4 @@
-# [Leadership](../README.md) / Engineering Management
+# Engineering Management
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# [Leadership](../README.md) / Engineering Lead
+# Engineering Lead
 
 ## Overview
 
