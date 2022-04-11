@@ -1,4 +1,4 @@
-# [Learning Resources](./README.md) / "Release It!"
+# Release It
 
 _Release It!_ was originally published in 2007 and was one of the most influential books at the beginning of the DevOps movement. The second edition, published in 2018, refreshes the content and practices for use in modern environments where DevOps and microservices are accepted norms.
 

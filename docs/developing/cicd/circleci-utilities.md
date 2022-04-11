@@ -1,4 +1,4 @@
-# [CI/CD](README.md) / CircleCI Utilities
+# CircleCI Utilities
 
 There are common tasks that may be useful to build into CircleCI commands and jobs to inform more complex build pipeline logic. Since CircleCI does not support orbs designed to return values which can be passed into other commands as parameters, it can be difficult to create reusable orbs for these purposes.
 

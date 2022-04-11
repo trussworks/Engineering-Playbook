@@ -1,4 +1,4 @@
-# [Ruby](./README.md) / Installation
+# Installation
 
 ## Context
 

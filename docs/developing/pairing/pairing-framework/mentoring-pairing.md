@@ -1,4 +1,4 @@
-# [A Pairing Framework](../README.md) / Mentoring Pairing Template
+# Mentoring Pairing Template
 
 ## Session details
 

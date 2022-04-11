@@ -1,4 +1,4 @@
-# [OpenSource](./README.md) / Open Source Statement of Intent
+# Open Source Statement of Intent
 
 At Truss, we prefer to open source our code whenever possible; there are a variety of reasons for this:
 

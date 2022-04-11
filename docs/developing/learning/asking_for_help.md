@@ -1,4 +1,4 @@
-# [Learning Resources](./README.md) / "Asking For Help"
+# Asking For Help
 
 When learning, it is expected one will encounter situations where you
 need help. *How* you ask for help is an important skill to develop.

@@ -1,4 +1,4 @@
-# [CI/CD](README.md) / CircleCI Orbs
+# CircleCI Orbs
 
 As defined by CircleCI, orbs are "a reusable package of YAML configuration that condenses repeated pieces of config into a single line of code." You can think of them as libraries you can import into the CircleCI configuration.
 

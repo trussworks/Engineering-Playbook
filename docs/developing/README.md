@@ -1,4 +1,4 @@
-# [Engineering Playbook](../README.md) / Tools and Practice
+# Tools and Practice
 
 ## Overview
 

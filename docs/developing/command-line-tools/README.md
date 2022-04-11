@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Command Line Tools
+# Command Line Tools
 
 ## Overview
 

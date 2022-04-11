@@ -1,4 +1,4 @@
-# [Source Control](./README.md) / Git Repos
+# Git Repos
 
 This page provides guidance on how to set up and manage your Git repos.
 For Truss, most of these will be kept in [GitHub](https://github.com),

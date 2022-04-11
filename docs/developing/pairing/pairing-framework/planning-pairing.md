@@ -1,4 +1,4 @@
-# [A Pairing Framework](../README.md) / Planning & Info Sharing Pairing Template
+# Planning & Info Sharing Pairing Template
 
 ## Session details
 

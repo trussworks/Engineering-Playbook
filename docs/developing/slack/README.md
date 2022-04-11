@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Slack Best Practices
+# Slack Best Practices
 
 ## Overview
 

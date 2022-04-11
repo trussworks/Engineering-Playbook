@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Building internal tools with GoReleaser
+# Building internal tools with GoReleaser
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Programming Languages
+# Programming Languages
 
 ## Overview
 

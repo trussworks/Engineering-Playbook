@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Technical Design
+# Technical Design
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Editors, IDEs and Debuggers
+# Editors, IDEs and Debuggers
 
 ## Overview
 

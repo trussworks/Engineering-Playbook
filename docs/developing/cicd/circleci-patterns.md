@@ -1,4 +1,4 @@
-# [Intro to CI/CD](README.md) / CircleCI Config Patterns
+# CircleCI Config Patterns
 
 At Truss, CircleCI tends to be our CI/CD tool of choice. In order to help
 developers and infrastructure engineers get their pipelines working quickly,

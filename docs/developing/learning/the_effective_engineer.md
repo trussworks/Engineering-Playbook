@@ -1,4 +1,4 @@
-# [Learning Resources](./README.md) / "The Effective Engineer"
+# The Effective Engineer
 
 Edmond Lau's _The Effective Engineer_ is an excellent book that covers many
 aspects of engineering. The package ($249), available on Edmond's site, is

@@ -1,4 +1,4 @@
-# [Source Control](./README.md) / Master to Main branch rename
+# Master to Main branch rename
 
 These instructions will help moving repos from using the default branch name `master` and modify it to be
 `main`.

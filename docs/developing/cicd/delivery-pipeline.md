@@ -1,4 +1,4 @@
-# [CI/CD](README.md) / Standard Delivery Pipeline
+# Standard Delivery Pipeline
 
 The following is a standardized workflow for developing and deploying our
 code using CI/CD. This is meant to be an example, not a prescriptive

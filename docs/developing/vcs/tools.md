@@ -1,4 +1,4 @@
-# [Source Control](./README.md) / Tools
+# Tools
 
 This page provides a summary of tools we commonly use for source control
 at Truss.
