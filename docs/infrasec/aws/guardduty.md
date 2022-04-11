@@ -1,4 +1,4 @@
-# [AWS](README.md) / GuardDuty for Organizations
+# GuardDuty for Organizations
 
 [GuardDuty](https://aws.amazon.com/guardduty/) is an anomaly detection
 system that can alert you via SNS when it detects unusual activity within

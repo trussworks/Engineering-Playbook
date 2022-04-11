@@ -1,4 +1,4 @@
-# [Ansible](README.md) / Ansible Primer
+# Ansible Primer
 
 Ansible is a Python-based configuration management tool owned and supported by Red Hat; while it is essentially a
 remote-execution tool originally designed to orchestrate a wider environment, it can also be used as a provisioning tool

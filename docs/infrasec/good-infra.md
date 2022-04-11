@@ -1,4 +1,4 @@
-# [InfraSec](README.md) / Good Infrastructure - A Philosophy
+# Good Infrastructure - A Philosophy
 
 While the tools, techniques, and patterns we use to build our solutions are important, they often don't help us design and architect new things. What follows are some opinions about how to think about the work we do at a high level.
 

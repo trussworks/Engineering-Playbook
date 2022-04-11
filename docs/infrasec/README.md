@@ -1,4 +1,4 @@
-# [Engineering Playbook](../README.md) / InfraSec
+# InfraSec
 
 Infrastructure and security engineering (infrasec) is the practice of
 building secure, robust systems that are foundational to having reliable

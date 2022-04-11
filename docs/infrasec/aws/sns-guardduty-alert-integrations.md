@@ -1,4 +1,4 @@
-# [AWS](README.md) / Using SNS, GuardDuty, and External Integrations with AWS Organizations
+# Using SNS, GuardDuty, and External Integrations with AWS Organizations
 
 Ideally our infrastructure is flawless and impenetrable, but much of our work requires us to be aware of unexpected occurrences. We rely on a system using a number of AWS resources and services such as SNS, GuardDuty, and CloudWatch with external integrations such as Slack and PagerDuty to allow us to stay alert and aware of unforeseen or suspicious activity. This primer should describe our recommended current set up and allow you to set up your own system to achieve similar results. Please familiarize yourself with [Truss' conception of AWS Organizations](aws-organizations.md) before proceeding.
 

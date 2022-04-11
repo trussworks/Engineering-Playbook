@@ -1,4 +1,4 @@
-# [Ansible](README.md) / Molecule Primer
+# Molecule Primer
 
 Molecule is the officially supported testing framework for Ansible. For now, this is mostly just a collection of
 experiences and resources you can use when adding testing to your own Ansible roles; take these with a grain of salt.

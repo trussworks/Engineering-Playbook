@@ -1,4 +1,4 @@
-# [AWS](README.md) / Naming
+# Naming
 
 *Naming* is one of the [hard problems in computing](https://martinfowler.com/bliki/TwoHardThings.html). Naming instances in a shared name space, such as AWS, is especially rife with problems. Often a company uses a single AWS account across multiple projects and so the projects have to negotiate how to share the namespace for resources. There are a number of different axes of belonging we might want to include in the name: to which project does a resource belong, to which environment (dev, prod, staging), which function within the environment. Then there are entities which exist only in terms of their relationship to other objects, e.g. roles associated with a particular lambda function.
 

@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / One-Time Passwords
+# One-Time Passwords
 
 One-Time Passwords (aka OTPs or TOPTs) are exactly what they sound like. They are randomly generated passwords that can only be used once. They are often used for two-factor or multi-factor authentication.
 

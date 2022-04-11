@@ -1,4 +1,4 @@
-# [AWS](../README.md) / Working in GovCloud
+# Working in GovCloud
 
 Many of our government clients will want to have at least their production
 infrastructure in [AWS GovCloud](https://aws.amazon.com/govcloud-us/), which

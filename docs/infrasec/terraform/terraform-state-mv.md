@@ -1,4 +1,4 @@
-# [Terraform](README.md) / `terraform state mv` in Delicate Circumstances
+# `terraform state mv` in Delicate Circumstances
 
 Sometimes you have a preexisting resource that you'd like to replace with another version. That's why the `terraform state mv` command exists. The [Terraform documentation](https://www.terraform.io/docs/commands/state/mv.html) will give you an outline of the different circumstances in which you can use it (including when moving resource between state files).
 

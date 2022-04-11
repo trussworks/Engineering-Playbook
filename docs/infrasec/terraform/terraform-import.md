@@ -1,4 +1,4 @@
-# [Terraform](README.md) / `terraform import`
+# `terraform import`
 
 If you're adding Terraform to an environment where Terraform was not being
 used, often you'll need to import existing resources into your Terraform

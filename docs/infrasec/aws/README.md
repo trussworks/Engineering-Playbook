@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / AWS
+# AWS
 
 AWS is the most popular cloud provider, accounting for about ⅓ of all cloud spend. Almost all our infrastructure client discoveries find they are already using or want to use AWS.
 

@@ -1,4 +1,4 @@
-# [Terraform](README.md) / Atlantis
+# Atlantis
 
 [Atlantis](https://runatlantis.io) is a Terraform automation tool which integrates with GitHub pull requests to automatically generate Terraform plans, hold them for approval, and then apply the Terraform changes and merge the branch. It also manages locks on namespaces, preventing conflicts between PRs on in the same Terraform namespace. Using Atlantis (or a similar tool like Terraform Cloud) is a way to ensure safe and auditable Terraform changes, something which is important for many Truss projects.
 

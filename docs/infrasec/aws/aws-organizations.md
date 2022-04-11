@@ -1,4 +1,4 @@
-# [AWS](README.md) / AWS Organizations
+# AWS Organizations
 
 [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 provide a native way to manage multiple AWS accounts.  They provide
