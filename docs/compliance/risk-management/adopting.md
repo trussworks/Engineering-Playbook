@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Adopting the Risk Management Framework
 
 The risk management framework is a framework, not a policy. Frameworks have to be implemented. The way we implement needs to overcome issues with point-in-time ATO documentation while maintaining its strengths.

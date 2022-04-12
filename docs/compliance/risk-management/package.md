@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Authorization package
 
 In order to satisfy an agency’s requirements for a completed ATO, a team must complete a set of documents called the “authorization package” that fully describe the security controls that are in place to protect the information system. NIST SP 800-37 defines the authorization package as:
