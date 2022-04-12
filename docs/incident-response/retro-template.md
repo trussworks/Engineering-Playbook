@@ -1,6 +1,10 @@
-# \[Short Title of Incident\]
+---
+title: Template retrospective
+---
 
-Date(s) of Incident: \[YYYY-MM-DD date or date range of incident\]
+# Short Title of Incident
+
+Date(s) of Incident: YYYY-MM-DD date or date range of incident
 
 ## Summary
 
