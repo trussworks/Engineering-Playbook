@@ -1,6 +1,6 @@
 # Great Code Reviews Bring Happiness to my Heart
 
-So you’ve put together the perfect changeset. You use your favorite tool to share your changes and ask politely for a code review.
+So you've put together the perfect changeset. You use your favorite tool to share your changes and ask politely for a code review.
 
 How do you make that code review great?
 
