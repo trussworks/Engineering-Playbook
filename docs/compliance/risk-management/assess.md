@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Risk Management Framework - Step 4: Assessment
 
 The purpose of assessing security controls is to ensure they were implemented correctly, operate as intended, and successfully meet the security requirements for the information system. Assessments are required prior to system authorization and annually to ensure that the security measures are working effectively.

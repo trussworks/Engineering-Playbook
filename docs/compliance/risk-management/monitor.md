@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Risk Management Framework - Step 6: Monitor
 
 Risk management is a continuous process. Information systems are in a constant state of change with upgrades to hardware, software, or firmware and modifications to the surrounding environments where the systems reside and operate. A structured approach to managing, controlling, and documenting changes to an information system or its environment of operation is an essential element of an effective monitoring program. Strict configuration management and control processes are established by the agency to support such monitoring activities.

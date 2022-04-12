@@ -8,7 +8,7 @@ For all federal agencies, the Risk Management Framework (RMF) describes the proc
 - [Risk Management Framework](./framework.md) - The six steps of the Risk Management Framework
   - [Risk Management Framework - Step 1: Categorize](./categorize.md) - An overview of RMF Categorization
   - [Risk Management Framework - Step 2: Select](./select.md) - An overview of RMF Selection
-  - [Risk Management Framework - Step 2: Implement](./implement.md) - An overview of RMF Implementation
+  - [Risk Management Framework - Step 3: Implement](./implement.md) - An overview of RMF Implementation
   - [Risk Management Framework - Step 4: Assessment](./assess.md) - An overview of RMF Assessment
   - [Risk Management Framework - Step 5: Authorize](./authorize.md) - An overview of RMF Authorization
   - [Risk Management Framework - Step 6: Monitor](./monitor.md) - An overview of RMF Monitoring

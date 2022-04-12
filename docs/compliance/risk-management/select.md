@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Risk Management Framework - Step 2: Select
 
 Controls are the management, operational, and technical safeguards or countermeasures employed within an organizational information system that protect the confidentiality, integrity, and availability of the system and its information. The specific controls required to protect the system are based on the categorization of the system.

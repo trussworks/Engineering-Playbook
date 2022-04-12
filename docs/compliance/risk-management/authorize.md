@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Risk Management Framework - Step 5: Authorize
 
 While agencies have a lot of flexibility in how they implement the risk management framework, all of them need to include formal authorization of the system before it is operational. This is as true for continuous monitoring as it was for point-in-time documentation.

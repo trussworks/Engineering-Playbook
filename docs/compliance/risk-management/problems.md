@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Problems of the Assessment and Authorization
 
 Many agencies have created strong processes for creating an ATO document, which describes a system and its controls at a single point in time. This is useful as a compliance check, but point-in-time documentation is insufficient to modern information security needs.

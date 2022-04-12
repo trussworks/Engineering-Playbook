@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Risk Management Framework - Step 1: Categorize
 
 Categorization is based on an impact analysis and is performed to determine the types of information included within the authorization boundary, security requirements for the information type, and potential impact resulting from a security compromise. Agencies are required to categorize their information systems as low-impact, moderate-impact, or high-impact for the security objectives of confidentiality, integrity, and availability and to select appropriate security controls.
