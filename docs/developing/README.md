@@ -11,7 +11,7 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 ## Note on Default Branches
 
 Where possible the documents here should refer to the Default Branch instead of using the word `master`. Where this
-is not possible try to use the default branch name `main`. In links to repos in github please also attempt to get
+is not possible try to use the default branch name `main`. In links to repos in GitHub please also attempt to get
 the reference to `main` and not to `master`.
 
 ## Contents
@@ -30,7 +30,7 @@ the reference to `main` and not to `master`.
 - [Slack Best Practices](./slack/README.md)
 - [Growth on Client](./growth/README.md)
 - [Learning Resources](./learning/README.md)
-- [Building and Releasing Go CLI tools with goreleaser](./command-line-tools/HOW2GORELEASER.md)
-- [Healthchecks](./healthcheck/README.md)
+- [Building and Releasing Go CLI tools with `goreleaser`](./command-line-tools/HOW2GORELEASER.md)
+- [Health Checks](./healthcheck/README.md)
 - [Pair Programming](./pairing/README.md)
 - [Open Source](./open-source/README.md)
