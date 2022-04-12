@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / nix
+# nix
 
 ## EXPERIMENT
 

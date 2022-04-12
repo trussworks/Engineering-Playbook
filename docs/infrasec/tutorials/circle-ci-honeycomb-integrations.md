@@ -1,4 +1,4 @@
-# [InfraSec](./README.md) / CircleCi Honeycomb Integration
+# CircleCi Honeycomb Integration
 
 [Honeycomb](https://www.honeycomb.io/) provides CI integrations allowing better instrumentation of builds. One such integration is for CircleCi via an [Orb](https://github.com/honeycombio/buildevents-orb). This document provides a guide for adding Honeycomb instrumentation to CircleCi builds.
 

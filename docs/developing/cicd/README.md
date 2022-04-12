@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / CI/CD
+# CI/CD
 
 The release process is one of the most important parts of development
 for obvious reasons: without a release, your code is never going to

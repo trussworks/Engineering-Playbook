@@ -1,4 +1,4 @@
-# [AWS](README.md) / VPC Configuration
+# VPC Configuration
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 

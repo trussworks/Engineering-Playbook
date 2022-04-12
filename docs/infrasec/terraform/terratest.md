@@ -1,4 +1,4 @@
-# [Terraform](README.md) / Terratest Guide
+# Terratest Guide
 
 Terratest is a Go framework that is used to test Terraform infrastructure code.
 It executes the defined Terraform and then validates things you're asserting.

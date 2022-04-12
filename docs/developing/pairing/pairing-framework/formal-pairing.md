@@ -1,4 +1,4 @@
-# [A Pairing Framework](../README.md) / Formal Pairing Template
+# Formal Pairing Template
 
 ## Session details
 

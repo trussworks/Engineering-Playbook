@@ -1,4 +1,4 @@
-# [InfraSec](README.md) / book-club
+# Book Club
 
 __First rule of Book Club is tell everyone about Book Club!__
 

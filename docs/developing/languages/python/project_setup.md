@@ -1,4 +1,4 @@
-# [Python](./README.md) / Project Setup
+# Project Setup
 
 ## Layout
 

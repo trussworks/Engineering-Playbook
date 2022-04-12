@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / Deploying your first AWS Lambda Function with Go and Terraform
+# Deploying your first AWS Lambda Function with Go and Terraform
 
 This tutorial focuses on deploying a "Hello, World" Go program as a Lambda function using Terraform. The first section will cover creating the program in Go and the second section will cover writing the Terraform script that will deploy the program into AWS. As a bonus, we'll cover how you can configure AWS CloudWatch to invoke your Lambda function on a recurring schedule.
 

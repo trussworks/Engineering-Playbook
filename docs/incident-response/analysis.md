@@ -1,4 +1,4 @@
-# [Incident Response](./README.md) / Incident Analysis and Retrospectives
+# Incident Analysis and Retrospectives
 
 This documentation is not intended to be a complete guide to incident
 analysis; this is a complicated field and trying to sum this up in a

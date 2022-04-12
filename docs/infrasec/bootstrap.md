@@ -1,4 +1,4 @@
-# [InfraSec](README.md) / Project Bootstrap Guide
+# Project Bootstrap Guide
 
 When we're starting up a new project, often there is a period of time
 where the design and research team is doing their initial work, we don't

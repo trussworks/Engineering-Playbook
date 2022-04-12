@@ -1,4 +1,4 @@
-# [Documentation](./README.md) / External Resources
+# External Resources
 
 This is a list of articles and talks that have influenced the advice in
 this section; you may find it useful to read or view these if you're

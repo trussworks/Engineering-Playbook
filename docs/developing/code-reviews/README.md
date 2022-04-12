@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Code Reviews
+# Code Reviews
 
 ## Overview
 

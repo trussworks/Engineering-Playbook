@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../../../README.md) / [Web Development](../../../README.md) / [API Guide](../../README.md) / [REST API Design](../README.md) / Concurrency Control
+# Concurrency Control
 
 When you have more than one client using your API, you might want to think about concurrency control.
 

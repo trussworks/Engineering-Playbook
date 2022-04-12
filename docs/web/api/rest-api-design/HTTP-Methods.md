@@ -1,4 +1,4 @@
-# [Engineering Playbook](../../../../README.md) / [Web Development](../../../README.md) / [API Guide](../../README.md) / [REST API Design](../README.md) / HTTP Methods
+# HTTP Methods
 
 When using HTTP methods like PUT or GET in your REST API, it's important to comply with their definitions under the [HTTP/1.1 Standard](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 

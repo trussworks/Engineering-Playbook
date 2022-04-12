@@ -1,4 +1,4 @@
-# [GovCloud](README.md) / Setting Up a GovCloud Organization
+# Setting Up a GovCloud Organization
 
 Setting up organizations in GovCloud requires some additional steps due
 to the way GovCloud interacts (or rather, doesn't interact) with commercial

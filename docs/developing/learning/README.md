@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Learning Resources
+# Learning Resources
 
 ## Overview
 

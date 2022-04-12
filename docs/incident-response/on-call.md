@@ -1,4 +1,4 @@
-# [Incident Response](../README.md) / On-Call Best Practices
+# On-Call Best Practices
 
 ## Overview
 

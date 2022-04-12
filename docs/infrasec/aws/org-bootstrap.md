@@ -1,4 +1,4 @@
-# [AWS](README.md) / Bootstrapping an AWS Organization
+# Bootstrapping an AWS Organization
 
 The purpose of this document is to take you step by step through the
 process of bootstrapping an [AWS Organization](aws-organizations.md).

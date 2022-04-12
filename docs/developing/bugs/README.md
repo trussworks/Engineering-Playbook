@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / Defects/Bugs
+# Defects/Bugs
 
 ## Overview
 

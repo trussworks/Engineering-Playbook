@@ -1,4 +1,4 @@
-# [CI/CD](README.md) / Dependabot
+# Dependabot
 
 [Dependabot](https://dependabot.com/) is a tool to automatically find updates to dependencies in our repos.
 

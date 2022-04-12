@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / YubiKey Configuration Guide
+# YubiKey Configuration Guide
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
 

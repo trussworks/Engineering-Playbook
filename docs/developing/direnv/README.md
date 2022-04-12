@@ -1,4 +1,4 @@
-# [Tools and Practice](../README.md) / direnv
+# direnv
 
 ## Overview
 

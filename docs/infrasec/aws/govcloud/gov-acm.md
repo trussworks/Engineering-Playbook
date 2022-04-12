@@ -1,4 +1,4 @@
-# [GovCloud](README.md) / ACM in GovCloud
+# ACM in GovCloud
 
 AWS Certificate Manager (ACM) is our preferred way to handle certificates
 in AWS whenever possible. Unfortunately, due to the fact that Route53

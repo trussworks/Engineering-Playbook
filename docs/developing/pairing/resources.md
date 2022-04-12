@@ -1,4 +1,4 @@
-# [Pairing](../README.md) / Resources for Pairing
+# Resources for Pairing
 
 - [On Pair Programming](https://martinfowler.com/articles/on-pair-programming.html)
 - [Tuple’s Pair Programming Guide](https://tuple.app/pair-programming-guide)

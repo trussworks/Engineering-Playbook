@@ -1,4 +1,4 @@
-# [CI/CD](README.md) / Intro to CI/CD
+# Intro to CI/CD
 
 The goal of CI/CD practice is to provide a workflow that can support
 frequent updates, good testing, consistent builds, and prompt deploys.

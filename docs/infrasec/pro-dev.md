@@ -1,4 +1,4 @@
-# [InfraSec](README.md) / Professional Development
+# Professional Development
 
 Trussels are allocated $1000 per year to spend on professional development.
 InfraSec Managers have noticed that some folks just don't know what to use this budget for.

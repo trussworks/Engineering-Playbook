@@ -1,4 +1,4 @@
-# [Documentation](./README.md) / Introduction to Documentation
+# Introduction to Documentation
 
 Documentation is a key part of any software project, but it's often
 something that many engineers struggle with even if we recognize its

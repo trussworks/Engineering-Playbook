@@ -1,4 +1,4 @@
-# [Pairing](../README.md) / A Pairing Framework
+# A Pairing Framework
 
 There is a tendency during pairing to get lost in the weeds, chasing down bugs or going down various rabbit holes. By using these templates, pairs can keep on track to solve the specific goal at hand.
 

@@ -1,4 +1,4 @@
-# [Source Control](./README.md) / Git Workflow
+# Git Workflow
 
 At Truss, we've tried to come up with some standardized workflows for
 working with Git. This page hopes to capture them so that new Trussels

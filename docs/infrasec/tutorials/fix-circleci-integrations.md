@@ -1,4 +1,4 @@
-# [InfraSec](../README.md) / Fix CircleCI Integrations
+# Fix CircleCI Integrations
 
 It's happened time to time that the CircleCI integration in GitHub decides to peace out. What this looks like is the lack of a CircleCI status check next to a commit hash.
 

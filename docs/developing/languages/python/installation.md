@@ -1,4 +1,4 @@
-# [Python](./README.md) / Installation
+# Installation
 
 ## Python
 

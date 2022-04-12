@@ -1,4 +1,4 @@
-# [InfraSec](README.md) / SSL Certificates
+# SSL Certificates
 
 SSL Certificates are most commonly used to verify a server's identity and
 encrypt HTTP traffic. Usually, we try to use offerings like Amazon's
