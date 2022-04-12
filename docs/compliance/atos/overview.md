@@ -1,6 +1,6 @@
 # Overview
 
-Every federal information system must go through NIST's [Risk Management Framework](../steps/) before it can be used to process federal information. This process culminates in a signed Authority to Operate (ATO) being issued. Because the ATO process is a complex, multi-step process which will constrain the design and implementation of your system, you should start thinking about how it applies to your system _before_ you begin designing and implementing it.
+Every federal information system must go through NIST's [Risk Management Framework](./steps.md) before it can be used to process federal information. This process culminates in a signed Authority to Operate (ATO) being issued. Because the ATO process is a complex, multi-step process which will constrain the design and implementation of your system, you should start thinking about how it applies to your system _before_ you begin designing and implementing it.
 
 ## Definitions
 
@@ -20,7 +20,7 @@ For a full list, see the [NIST Glossary](https://csrc.nist.gov/Glossary).
 
 Roles in ATO processes typically include:
 
-- **Assessor**: Responsible for checking the compliance of systems; sit in an agency's Security team. Validates and verifies that the documented controls (see [Step 3](../steps/#step-3-implement-security-controls)) actually work, using the assessment cases (see [Step 4](../steps/#step-4-assess-security-controls)).
+- **Assessor**: Responsible for checking the compliance of systems; sit in an agency's Security team. Validates and verifies that the documented controls (see [Step 3](./steps#step-3-implement-security-controls)) actually work, using the assessment cases (see [Step 4](./steps#step-4-assess-security-controls)).
 - **Authorizing Official (AO)**: Responsible for overall impact categorization and risk acceptance. The AO is ultimately responsible for determining if the risk of operating the system is acceptable, and if so, issuing an Authority to Operate (ATO) for that system. They often Designate this responsibility to one or more other people.
 - **Information System Security Officer (ISSO)**: Supports the information security system, consults on control selection, organizes scanning process. Reports to the Information System Security Manager (ISSM).
 - **Penetration tester(s)**: Conducts the penetration test after terms are agreed to as documented in the Rules of Engagement (RoE).
@@ -41,7 +41,7 @@ Your system may need to be reassessed and re-authorized if your application team
 
 - Encryption methodologies
 - Administrative functionality within the application
-- The kinds of information you store (for example, [personally identifiable information (PII)](../categorization/#pii))
+- The kinds of information you store (for example, [personally identifiable information (PII)](./categorization.md#PII))
 - The external services used or how/what data flows to/from them
 - Anything that will requires an update to the System Security Plan, system diagram, etc.
 
