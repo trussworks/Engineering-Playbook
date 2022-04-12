@@ -66,3 +66,4 @@ callables
 (?i)Makefile
 (?i)enum
 (?i)subclassing
+(?i)changeset
