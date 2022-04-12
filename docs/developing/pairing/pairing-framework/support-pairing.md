@@ -6,7 +6,7 @@
 
 (Miro, Google Doc, Zoom, Tuple, CodeTogether, etc.)
 
-### [Ticket number](ticket_url)
+### [Ticket number](#)
 
 ### Goals for the session
 
