@@ -1,3 +1,7 @@
+---
+title: Template ADR
+---
+
 # Number - Title
 
 **Status:** Accepted/Superseded by:

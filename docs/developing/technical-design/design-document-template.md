@@ -1,3 +1,7 @@
+---
+title: Template Technical Design Document
+---
+
 # Title
 
 - Contributors:
