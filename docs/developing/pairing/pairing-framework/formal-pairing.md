@@ -20,7 +20,7 @@
 
 (How often will you take breaks? Do you want to use Pomodoro?)
 
-### [Ticket number](ticket_url)
+### [Ticket number](#)
 
 ### Goals for the session
 

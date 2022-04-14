@@ -64,7 +64,7 @@ Find subject experts and stakeholders early to vet proposals.
 
 Once a design document is accepted,
 it becomes a resource for the Development Cycle.
-The [Development Cycle Guide](../../cycle/README.md)
+The [Development Cycle Guide](../cycle/README.md)
 provides a more in depth view of how Truss iterates on work
 and should be consulted for implementation.
 However, a design doc can be helpful with starting that process.
