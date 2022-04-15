@@ -4,7 +4,7 @@
 
 **Date Accepted:** TBD
 
-**Reviewers:** @reggieriser @mikena-truss
+**Reviewers:** @reggieriser @mikena-truss @sandy-wright @felipe-lee @ferlatte
 
 ## Context
 
@@ -16,7 +16,7 @@ reasoning behind our recommendation of a preferred DBMS.
 
 ## Decision
 
-Use PostgreSQL when you need a relational store.
+Use [PostgreSQL](https://www.postgresql.org) when you need a relational store.
 
 ## Why is this Applicable to the Practice as a Whole
 
@@ -25,8 +25,13 @@ on one DBMS across the practice. Benefits include:
 
 - ability to transfer knowledge across projects
 - reduced ramp-up time when switching projects
-- reuse of infrasec practices
+- support by cloud providers, allowing reuse of infrasec practices
 - norming on a common SQL/DDL dialect
+
+Historically, most Truss projects deploy a database on AWS. Note that AWS provides two PostgreSQL options:
+RDS PostgreSQL and Aurora PostgreSQL. The typical Truss project will likely use RDS PostgreSQL since Aurora targets
+very large or high-availability sites. That said, evaluate the features and pricing for each against your project's
+needs.
 
 ## When to Not Implement This Decision
 
@@ -43,8 +48,9 @@ on one DBMS across the practice. Benefits include:
 - `+` Mature and full-featured DBMS with a 25-year history
 - `+` Free and open-source
 - `+` Good documentation and user community
-- `+` Advanced JSON support so flexible enough for some unstructured data
+- `+` Advanced JSON support, so flexible enough for some unstructured data
 - `+` Supported by most database tools and ORMs
+- `+` Most Truss projects have used PostgreSQL for a relational store, so we already have experience we can build upon
 
 #### Cons
 
@@ -81,6 +87,8 @@ on one DBMS across the practice. Benefits include:
 - `-` Licensing fees and support can be very expensive
 - `-` Not open source so you are reliant on company for fixes
 - `-` Support by ORMs can be spotty
+- `-` Differences in SQL syntax and error codes can make it difficult to get help compared to more popular
+  open-source options
 
 ## Links
 
