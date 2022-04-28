@@ -1,10 +1,10 @@
-# 0005 - Use PostgreSQL as a relational store
+# 0004 - Use PostgreSQL as a relational store
 
-**Status:** In Progress
+**Status:** Accepted
 
-**Date Accepted:** TBD
+**Date Accepted:** 4/29/2022
 
-**Reviewers:** @reggieriser @mikena-truss @sandy-wright @felipe-lee @ferlatte
+**Reviewers:** @felipe-lee @ferlatte @JasonLin0991 @mikena-truss @reggieriser @sandy-wright
 
 ## Context
 
@@ -89,7 +89,3 @@ needs.
 - `-` Support by ORMs can be spotty
 - `-` Differences in SQL syntax and error codes can make it difficult to get help compared to more popular
   open-source options
-
-## Links
-
-TBD
