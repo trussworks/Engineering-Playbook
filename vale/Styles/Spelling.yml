@@ -1,0 +1,4 @@
+# Uses the built-in dictionary and filters.
+extends: spelling
+message: "'%s' seems to be spelled incorrectly."
+level: suggestion
