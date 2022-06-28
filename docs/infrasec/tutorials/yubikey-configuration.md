@@ -103,6 +103,10 @@ echo enable-ssh-support >> ~/.gnupg/gpg-agent.conf
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
 ```bash
+# allow GPG to sign in the terminal
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # Expose the SSH agent to the GPG agent.
 SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 export SSH_AUTH_SOCK
@@ -583,6 +587,18 @@ To verify that you have both GPG and SSH properly configured, perform the follow
    hrWMtDgZrBwtz9oklxMfnQMWq+4lCEVuxT6nMJ8FeqxxAnmhVUc=
    =7pFx
    -----END PGP SIGNATURE-----
+   ```
+
+   If this errors out like this be sure that the environment var `GPG_TTY` is set. See [Configuring Your Environment](#configuring-your-environment)
+
+   ```console
+   0 ❯ echo "test" | gpg --clearsign
+   -----BEGIN PGP SIGNED MESSAGE-----
+   Hash: SHA256
+
+   test
+   gpg: signing failed: Inappropriate ioctl for device
+   gpg: [stdin]: clear-sign failed: Inappropriate ioctl for device
    ```
 
 1. Verify that the GPG agent can use the subkey used for encryption. This command will create
