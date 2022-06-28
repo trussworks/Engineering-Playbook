@@ -217,7 +217,7 @@ This will generate the secret key.
 1. Review the information you entered, make any changes if necessary. If all information is correct, enter O (for Okay) and press Enter
 1. A dialog box is displayed so you can enter the passphrase for your key. While the key is being generated, move your mouse around or type on the keyboard to gain enough entropy. When the key has been generated, you will see several messages displayed. Make a note of the key ID, that is displayed in the message such as `gpg: key 1234ABC marked as ultimately trusted`. The key ID in this case is 1234ABC and you will need this key ID to perform other operations.
 
-If at any point you forget the key ID, enter `gpg --list-signatures` to display it.
+If at any point you forget the key ID, enter `gpg --list-signatures` to display it. If the key ID isn't displayed during the previous command it will be when you run `gpg --list-signatures`.
 
 It’s time to add the subkeys. Some of these may already be created. You can check what’s been created by checking your keys.
 
