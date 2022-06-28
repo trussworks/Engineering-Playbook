@@ -87,7 +87,7 @@ Configure your environment with:
 
 ```console
 brew install ykman ykpers
-brew cask install gpg-suite-no-mail
+brew install --cask gpg-suite-no-mail
 ```
 
 If xcode is not up to date, you will be prompted to install it with: `xcode-select --install`
@@ -103,6 +103,10 @@ echo enable-ssh-support >> ~/.gnupg/gpg-agent.conf
 Add the following to your shell profile `.bashrc`, `.zshrc`, etc.
 
 ```bash
+# allow GPG to sign in the terminal
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # Expose the SSH agent to the GPG agent.
 SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 export SSH_AUTH_SOCK
@@ -202,7 +206,7 @@ If at any point you make a mistake and need to reset your YubiKey PIN(s), you ca
 This will generate the secret key.
 
 1. Enter the GPG command: `gpg --expert --full-gen-key`
-1. When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter
+1. When prompted to specify the key type, enter 1 (for "RSA and RSA") and press Enter
 1. Specify the size of key you want to generate. This key size will also apply to subkey size. Do one of the following:
    - For a YubiKey 4 series, enter 2048 and press Enter
    - For a YubiKey 5 series, enter 4096 and press Enter
@@ -213,7 +217,7 @@ This will generate the secret key.
 1. Review the information you entered, make any changes if necessary. If all information is correct, enter O (for Okay) and press Enter
 1. A dialog box is displayed so you can enter the passphrase for your key. While the key is being generated, move your mouse around or type on the keyboard to gain enough entropy. When the key has been generated, you will see several messages displayed. Make a note of the key ID, that is displayed in the message such as `gpg: key 1234ABC marked as ultimately trusted`. The key ID in this case is 1234ABC and you will need this key ID to perform other operations.
 
-If at any point you forget the key ID, enter `gpg --list-signatures` to display it.
+If at any point you forget the key ID, enter `gpg --list-signatures` to display it. If the key ID isn't displayed during the previous command it will be when you run `gpg --list-signatures`.
 
 It’s time to add the subkeys. Some of these may already be created. You can check what’s been created by checking your keys.
 
@@ -300,8 +304,8 @@ These steps are optional and will help to configure a new YubiKey should yours b
 This will create a backup of the secret key and subkeys.
 
 1. Insert the YubiKey into the USB port
-1. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC >> /path/to/secret.key` (where 1234ABC is the key ID of your key)
-1. Enter the GPG command: `gpg --export-secret-subkeys >> /path/to/secret.sub.key --armor 1234ABC` (where 1234ABC is the key ID of your key)
+1. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC > /path/to/secret.key` (where 1234ABC is the key ID of your key)
+1. Enter the GPG command: `gpg --export-secret-subkeys --armor 1234ABC > /path/to/secret.sub.key` (where 1234ABC is the key ID of your key)
 1. Store these files in 1Password and delete them from your system.
 
 ### Create a backup of your public key (optional)
@@ -583,6 +587,18 @@ To verify that you have both GPG and SSH properly configured, perform the follow
    hrWMtDgZrBwtz9oklxMfnQMWq+4lCEVuxT6nMJ8FeqxxAnmhVUc=
    =7pFx
    -----END PGP SIGNATURE-----
+   ```
+
+   If this errors out like this be sure that the environment var `GPG_TTY` is set. See [Configuring Your Environment](#configuring-your-environment)
+
+   ```console
+   0 ❯ echo "test" | gpg --clearsign
+   -----BEGIN PGP SIGNED MESSAGE-----
+   Hash: SHA256
+
+   test
+   gpg: signing failed: Inappropriate ioctl for device
+   gpg: [stdin]: clear-sign failed: Inappropriate ioctl for device
    ```
 
 1. Verify that the GPG agent can use the subkey used for encryption. This command will create
