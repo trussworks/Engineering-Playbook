@@ -206,7 +206,7 @@ If at any point you make a mistake and need to reset your YubiKey PIN(s), you ca
 This will generate the secret key.
 
 1. Enter the GPG command: `gpg --expert --full-gen-key`
-1. When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter
+1. When prompted to specify the key type, enter 1 (for "RSA and RSA") and press Enter
 1. Specify the size of key you want to generate. This key size will also apply to subkey size. Do one of the following:
    - For a YubiKey 4 series, enter 2048 and press Enter
    - For a YubiKey 5 series, enter 4096 and press Enter
