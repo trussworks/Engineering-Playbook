@@ -87,7 +87,7 @@ Configure your environment with:
 
 ```console
 brew install ykman ykpers
-brew cask install gpg-suite-no-mail
+brew install --cask gpg-suite-no-mail
 ```
 
 If xcode is not up to date, you will be prompted to install it with: `xcode-select --install`
