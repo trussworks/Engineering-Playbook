@@ -304,8 +304,8 @@ These steps are optional and will help to configure a new YubiKey should yours b
 This will create a backup of the secret key and subkeys.
 
 1. Insert the YubiKey into the USB port
-1. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC >> /path/to/secret.key` (where 1234ABC is the key ID of your key)
-1. Enter the GPG command: `gpg --export-secret-subkeys >> /path/to/secret.sub.key --armor 1234ABC` (where 1234ABC is the key ID of your key)
+1. Enter the GPG command: `gpg --export-secret-key --armor 1234ABC > /path/to/secret.key` (where 1234ABC is the key ID of your key)
+1. Enter the GPG command: `gpg --export-secret-subkeys --armor 1234ABC > /path/to/secret.sub.key` (where 1234ABC is the key ID of your key)
 1. Store these files in 1Password and delete them from your system.
 
 ### Create a backup of your public key (optional)
