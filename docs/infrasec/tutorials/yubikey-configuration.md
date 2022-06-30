@@ -776,3 +776,13 @@ _The YubiKey appears to hang when performing operations and then the operations 
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
 
 <img src="images/yubikey-otp-error.png" alt="otp error" width="450" />
+
+_SSH commands like `ssh -T git@github.com` do not ask for pin_
+
+```console
+0 ❯ ssh -T git@github.com
+sign_and_send_pubkey: signing failed for RSA "cardno:000YXXXXXXXX" from agent: agent refused operation
+git@github.com: Permission denied (publickey).
+```
+
+Make sure that `GPG_TTY` is set. If so you may need to also run `gpg-connect-agent updatestartuptty /bye` to force the agent to uppdate the tty
