@@ -162,7 +162,7 @@ for commits.
 
 ```console
 brew install pinentry-mac
-echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
+echo 'pinentry-program /opt/homebrew/bin/pinentry-mac' >> \
     ~/.gnupg/gpg-agent.conf
 gpgconf --kill gpg-agent
 gpg --card-status all &> /dev/null
