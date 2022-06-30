@@ -162,6 +162,18 @@ for commits.
 
 ```console
 brew install pinentry-mac
+echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
+    ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+gpg --card-status all &> /dev/null
+```
+
+If you use this, you do not need to set `GPG_TTY`.
+
+If you are on an **M1 based Macbook** then your homebrew path will likely be different for pinentry-mac. You can confirm it with `which pinentry-mac`
+
+```console
+brew install pinentry-mac
 echo 'pinentry-program /opt/homebrew/bin/pinentry-mac' >> \
     ~/.gnupg/gpg-agent.conf
 gpgconf --kill gpg-agent
