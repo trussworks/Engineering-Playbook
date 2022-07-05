@@ -74,12 +74,12 @@ checking in changes to source control.
 
 ```yml
 repos:
-  - repo: git://github.com/golangci/golangci-lint
+  - repo: https://github.com/golangci/golangci-lint
     rev: v1.21.0
     hooks:
       - id: golangci-lint
 
-  - repo: git://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
       - id: check-json
@@ -91,12 +91,12 @@ repos:
           - --autofix
       - id: trailing-whitespace
 
-  - repo: git://github.com/igorshubovych/markdownlint-cli
+  - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.21.0
     hooks:
       - id: markdownlint
 
-  - repo: git://github.com/trussworks/pre-commit-hooks
+  - repo: https://github.com/trussworks/pre-commit-hooks
     rev: v0.0.4
     hooks:
       - id: circleci-validate
