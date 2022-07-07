@@ -154,3 +154,4 @@ resource "aws_s3_bucket" "private_bucket" {
 ## Resources
 
 - [Importing Infrastructure](https://www.terraform.io/docs/import/index.html)
+- [Importing Existing Infrastructure into Terraform – Step by Step](https://spacelift.io/blog/importing-exisiting-infrastructure-into-terraform)
