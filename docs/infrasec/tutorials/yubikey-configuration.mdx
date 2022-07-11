@@ -1,3 +1,10 @@
+---
+title: YubiKey Configuration Guide
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # YubiKey Configuration Guide
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
@@ -160,6 +167,11 @@ Instead of prompting you in a terminal, you can have gpg-agent use an
 external program.  This might be useful if you want to use your editor
 for commits.
 
+<Tabs groupID="pinentry-mac">
+<TabItem value="intel" label="Intel Based Mac">
+
+Your homebrew path may be different for pinentry-mac than below. You can confirm it with `which pinentry-mac`
+
 ```console
 brew install pinentry-mac
 echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
@@ -168,7 +180,8 @@ gpgconf --kill gpg-agent
 gpg --card-status all &> /dev/null
 ```
 
-If you use this, you do not need to set `GPG_TTY`.
+</TabItem>
+<TabItem value="m1-mac" label="M1 Based Mac">
 
 If you are on an **M1 based Macbook** then your homebrew path will likely be different for pinentry-mac. You can confirm it with `which pinentry-mac`
 
@@ -179,6 +192,9 @@ echo 'pinentry-program /opt/homebrew/bin/pinentry-mac' >> \
 gpgconf --kill gpg-agent
 gpg --card-status all &> /dev/null
 ```
+
+</TabItem>
+</Tabs>
 
 If you use this, you do not need to set `GPG_TTY`.
 
