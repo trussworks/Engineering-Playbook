@@ -12,10 +12,6 @@ for several reasons:
   should be assumed that everything under `/System/Library` is part of macOS and
   is administered by Apple. Files in those directories should not be modified.
 
-## For quick scripts
-
-It's possible to install Ruby using `homebrew`, however, it's difficult to install precise versions. For one-off uses, though, it's a reasonable approach.
-
 ## The Trussel Way
 
 We recommend installing and managing Ruby using asdf.
