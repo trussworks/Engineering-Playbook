@@ -23,10 +23,12 @@ It's also possible to use Docker, instructions for which are at the bottom of th
 You'll need to know if the project you are running requires a specific version of Ruby. The convention is for this to be defined in a project's `Gemfile`. Look for a line that looks like this:
 
 ```ruby
-ruby "~> 2.7.2"
+ruby "~> 3.1.2"
 ```
 
-In the above example, any version of Ruby in the range `2.7.2` to `2.7.99999` will suffice.
+In the above example, any version of Ruby in the range `3.1.2` to `3.1.99999` will suffice.
+
+If you don't have a specific project in mind, install the [latest version that has been released](https://www.ruby-lang.org/en/news/).
 
 #### Install Prerequisites
 
@@ -73,17 +75,16 @@ To add support for Ruby to asdf, add the plugin:
 $ asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 ```
 
-Then ensure that you have a build environment setup to install Ruby:
+Then ensure that you have a build environment setup to install Ruby. We're using the pre-built OpenSSL from homebrew as it more reliably installs than other options:
 
 ```console
-$ brew install openssl@1.1 readline
 $ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 ```
 
 Then you can install the specific version of Ruby you identified earlier:
 
 ```console
-$ asdf install ruby 2.7.2
+$ asdf install ruby 3.1.2
 ```
 
 This command will install the [ruby-build](https://github.com/rbenv/ruby-build) tool, which it will then use to compile and setup the version of Ruby specified. This will take a few minutes. If you have issues, [the ruby-build documentation](https://github.com/rbenv/ruby-build/wiki#troubleshooting) has some helpful tips.
@@ -97,13 +98,13 @@ Once you have installed a version of Ruby, you'll want to set that as the versio
 To set the version to use within the current directory (which will be stored in a `.tool-versions` file):
 
 ```console
-$ asdf local ruby 2.7.2
+$ asdf local ruby 3.1.2
 ```
 
 To set the version to use globally by default:
 
 ```console
-$ asdf global ruby 2.7.2
+$ asdf global ruby 3.1.2
 ```
 
 #### Verify that it worked
@@ -121,7 +122,7 @@ Check that you have the correct Ruby installed:
 
 ```console
 $ ruby --version
-ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin21]
+ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]
 ```
 
 #### Install bundler
