@@ -20,15 +20,15 @@ It's also possible to use Docker, instructions for which are at the bottom of th
 
 ### Setup Instructions
 
-You'll need to know if the project you are running requires a specific version of Ruby. The convention is for this to be defined in a project's `Gemfile`. Look for a line that looks like this:
+If you don't have a specific project in mind, install the [latest version that has been released](https://www.ruby-lang.org/en/news/) and then configure that to be the global default version.
+
+If you are planning to work on a specific project, you'll need to know what version of Ruby that project requires. The convention is for this to be defined in a project's `Gemfile`. Look for a line that looks like this:
 
 ```ruby
 ruby "~> 3.1.2"
 ```
 
 In the above example, any version of Ruby in the range `3.1.2` to `3.1.99999` will suffice.
-
-If you don't have a specific project in mind, install the [latest version that has been released](https://www.ruby-lang.org/en/news/).
 
 #### Install Prerequisites
 
@@ -101,7 +101,7 @@ To set the version to use within the current directory (which will be stored in 
 $ asdf local ruby 3.1.2
 ```
 
-To set the version to use globally by default:
+To set the version to use globally by default (handy for ad-hoc use):
 
 ```console
 $ asdf global ruby 3.1.2
