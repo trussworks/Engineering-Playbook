@@ -1,0 +1,342 @@
+---
+title: 0005 - JavaScript dependency management
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 0005 - JavaScript dependency management
+
+**Status:** WIP (_initial draft_)
+
+**Date Accepted:** n/a for now
+
+**Reviewers:** #g-frontend
+
+:::info
+This ADR uses Tabs to separate specific code or documentation between the
+`npm-cli` and the `classic yarn-cli`.
+:::
+
+## Context
+
+Truss leverages both _NPM_ and _Yarn_ for dependency management for JavaScript
+projects. While these tools accomplish similar tasks, there are different in
+ways they operate. Teams who choose one tool over the other, must have
+documentation related to managing dependencies specific for their that team.
+
+Truss can provide best practices for how to manage JavaScript dependencies that
+can be used as a starting point for a team's or project's specific tooling
+around dependency management. This ADR seeks to do just that.
+
+The specific areas this ADR covers are the following:
+
+- dependency resolution
+    - version locking
+- updating dependencies
+- working with files such as: `package.json`, `package-lock.json`, and
+  `yarn.lock`.
+
+### JavaScript Dependency Management Tool
+
+Truss recommends that projects use _NPM_ instead of _Yarn_ as it is included with
+Node and has commercial support. Projects that leverage _Yarn_ or any other
+**JavaScript Dependency Management Tool** (JDMT from now on) will need to
+document this in ways outside of the scope of this ADR.
+
+This ADR is not meant to endorse one JDMT over the other and ultimately places the
+decision on engineering teams using these tools. There are certain ways these
+tools work together and this document will aim to cover those scenarios
+equitably.
+
+## Decision
+
+When dealing with JavaScript dependencies and JDMT, there are certain files that
+are always in-play. These files include a package file and a lock file which
+stores the version installed of these packages. This decision covers some of the
+ways to do this in either _Yarn_ or _NPM_.
+
+### Dependency resolution
+
+Regardless of the JDMT being used, there will always be a `package.json` file
+which will contain the three different sections for dependencies. When it comes
+to installing dependencies in these sections, ensure that any commands for the
+JDMT leverage the exact version that you are trying to install.
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+```shell title="installing all dependencies in NPM"
+>_ npm install
+```
+
+</TabItem>
+<TabItem value="yarn" label="classic yarn-cli">
+
+```shell title="installing all dependencies in Yarn"
+>_ yarn
+```
+
+</TabItem>
+</Tabs>
+
+#### Dependencies
+
+- listed in `"dependencies": {}` in `package.json`
+- needed for the site work
+- example: the site won't work in production without React
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+```shell title="installing react version 1.0.1 exactly using NPM as a dependency"
+>_ npm install --save-exact react@1.0.1
+```
+
+</TabItem>
+<TabItem value="yarn" label="classic yarn-cli">
+
+```shell title="installing react version 1.0.1 exactly using Yarn as a dependency"
+>_ yarn add react@1.0.1
+```
+
+</TabItem>
+</Tabs>
+
+#### Development Dependencies
+
+- listed in `"devDependencies": {}` in `package.json`.
+- used in development, but not production
+- example: we use Prettier to format code
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+```shell title="installing prettier version 1.0.1 exactly using NPM as a development dependency"
+>_ npm install --save-exact --save-dev prettier@1.0.1
+```
+
+</TabItem>
+<TabItem value="yarn" label="classic yarn-cli">
+
+```shell title="installing prettier version 1.0.1 exactly using Yarn as a development dependency"
+>_ yarn add --dev prettier@1.0.1
+```
+
+</TabItem>
+</Tabs>
+
+#### Peer Dependencies
+
+- listed in `"peerDependencies": {}` in `package.json`
+- used to express the compatibility of your package with a host tool or library
+    - typically only found in packages intended to be published to _NPM_
+- works with or alongside another library
+- example: `@material-ui/icons` works with `@material-ui/core`
+
+#### Version locking
+
+You will notice that all of the packages listed are set to specific versions
+(instead of a range using the `^` or `~` characters). This is to help ensure
+that installing dependencies is deterministic and it also means we are in full
+control of all version updates.
+
+By default, JDMT will use the `^` caret character for the version which does not
+lead to control of what version get installed when running the JDMT installation
+command. Avoid using semantic version ranges when install dependencies by using
+some of the commands listed above around installation.
+
+### Updating dependencies
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+There is currently no way to accomplish this at the command-line in an
+interactive manner.
+
+</TabItem>
+
+<TabItem value="yarn" label="classic yarn-cli">
+
+The `yarn upgrade-interactive` CLI is incredibly useful when updating
+dependencies on a regular basis. Since we are version locking all dependencies,
+run with the `--latest` flag to update everything to the most recent version:
+
+```shell title="Using Yarn to upgrade dependencies interactively"
+>_ yarn upgrade-interactive --latest
+```
+
+This will list all direct dependencies that have new versions, color-coded by
+the update type (major, minor, patch), as well as a link to the package
+homepage. You can navigate up/down the list using the up/down arrow keys, select
+which packages to update with the SPACE bar, and hit ENTER to install the new
+versions of the selected packages.
+
+</TabItem>
+
+</Tabs>
+
+It's a good idea to start with low-risk updates and work your way up from there.
+The goal of doing this on a regular basis is _not_ to update all packages to
+their most recent versions all the time. Most likely you will not be able to do
+this! The goal should be instead to update as many as possible with as little
+effort as possible. That means starting with packages that are only used during
+development (`devDependencies`), that have minor or patch updates (which should
+in theory mean no breaking changes), and that can be easily tested with
+automated checks. This might mean starting with low hanging fruit such as
+testing tools, linting plugins, type definitions, etc. Gradually work your way
+towards dependencies used by the application itself & in production.
+
+Part of deciding whether or not to update a package should probably involve
+actually looking for the changelog of what the update includes. Depending on the
+library, this can be easy or not to find. Some libraries use GitHub releases to
+track versions and changes; others will publish upgrade guides on their
+websites; some might stick changes in a `CHANGELOG.md` file, and others might
+not publish changes at all. But knowing _what_ is actually changing in the code
+when you update a package can help immensely with having the confidence that
+nothing will break, as well as knowing what part of the code might be affected
+and what to test.
+
+Another tip is to update related packages together. For example, it's often the
+case that all `@storybook` packages will need to be updated at the same time to
+maintain compatibility. `react` and `react-dom` have the same requirement. This
+is where having a reasonable understanding of _what_ the packages are and
+how/why they're used comes into play.
+
+An example update path might look like:
+
+- Update all eslint related packages/plugins
+  - Run the linter to make sure there are no new issues
+- Update all Jest/testing-library related packages
+  - Run the tests to make sure there are no new test failures
+- Update packages related to the compilation/build config (such as Babel,
+  TypeScript, etc.)
+  - Run the build to make sure it still compiles without errors
+- Update all Storybook packages
+  - Run Storybook to make sure the build still works
+- Update production dependencies grouped by feature/function/runtime
+  - i.e., `next, @opentelemetry, apollo-server`, etc.
+  - Run the application in both development & production modes, test manually
+  - Run automated tests
+
+#### What about code changes?
+
+What happens when a package update requires code changes? In theory, if
+following strict semantic versioning, patch & minor updates never should.
+However, not all packages follow semantic versioning, and also all packages are
+(probably) maintained by humans, who make mistakes. Required changes might fall
+under any of the following categories:
+
+- Small, semantic or not functionally different, documented code/API changes
+- More substantial, documented changes that might have a functional impact
+- Undocumented changes needed because of unexpected issues or edge cases
+
+When & how you make these changes can be a gut feeling based on the situation.
+If an update requires making a small change in a handful of places, that could
+be easily completed as part of the regular update cadence. If an update requires
+an easy change but one that will cause a diff in many files (such as a renamed
+import), it might make sense to isolate that on a separate branch. If an update
+requires upgrading several packages at once, and/or also making substantial code
+changes, that should probably also be done on its own.
+
+Ultimately, the goal is to minimize risk by ensuring that whatever changes you
+do make can be easily tested, and if an issue is found it's straightforward to
+either debug or roll back from. That all comes down to identifying what
+package introduced the issue, and how to resolve it. If a change involves
+updating many packages _and_ making many code changes at once, that will be
+much more difficult.
+
+### Working with files used and generated by JDMT
+
+When working with either _Yarn_ or _NPM_, there are Lock files that are
+generated by the JDMT. These files should be checked into version control. The
+Lock files should never be edited directly. If merge conflicts occur, run the
+JDMT command to regenerate the Lock file to resolve conflicts.
+
+Lock files prevent updates to both top-level dependencies and the dependencies
+of those dependencies as well. This is one of the main reasons for making sure
+that these files remain in your version control system.
+
+#### Dealing with Lock files as binaries
+
+Since Lock files should not be edited by hand, it's a good idea to have Git treat them as binary files so that they don't produce any visual diffs. You can achieve this by having a `.gitattributes` file define that they are binary files rather than plain text.
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+```ini title=".gitattributes"
+package-lock.json binary
+```
+
+</TabItem>
+
+<TabItem value="yarn" label="classic yarn-cli">
+
+```ini title=".gitattributes"
+yarn.lock binary
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Enforcing a particular JDMT
+
+It's important to outline in the project documentation which JDMT is being
+leveraged by the project. Mixing both _Yarn_ and _NPM_ is not a good idea. One
+of many ways to enforce one over the other is to have the generated file of the
+JDMT that you want to ignore in the `.gitignore` file. This way if someone uses
+the incorrect JDMT they won't be able to commit the generated Lock file.
+
+<Tabs groupID="JDMT">
+<TabItem value="npm" label="npm-cli">
+
+```ini title=".gitignore"
+# other gitignore directives
+
+yarn.lock
+
+# other gitignore directives
+```
+
+</TabItem>
+
+<TabItem value="yarn" label="classic yarn-cli">
+
+```ini title=".gitignore"
+# other gitignore directives
+
+package-lock.json
+
+# other gitignore directives
+```
+
+</TabItem>
+
+</Tabs>
+
+## Why is this Applicable to the Practice as a Whole
+
+This is applicable to the whole practice because JavaScript is a popular
+language with many ways to manage dependencies. With this guidance, Truss teams
+will be in a much stronger place regarding dependency management and documenting
+that process within the context of their own projects.
+
+## When to Not Implement This Decision
+
+There's no need to implement this decision if the project isn't being managed by
+a JDMT or doesn't contain any JavaScript.
+
+## Alternatives Considered
+
+A main option here is to use the defaults that JDMT contain around versioning
+and tooling. This isn't always ideal.
+
+## Links
+
+This ADR heavily borrows from the following links:
+
+- [Gist by Suz on dependency management using _Yarn_
+  ](https://gist.github.com/suzubara/73443debac60ab64c319b7a6ee16aa24)
+- [Gist by Maz on dependency management using
+  _NPM_](https://gist.github.com/rswerve/c43d952845b9acc8b7546364aa69cc88)
