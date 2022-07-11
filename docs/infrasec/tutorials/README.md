@@ -12,5 +12,5 @@
 ## Security
 
 - [One-Time Passwords](./one-time-passwords.md) — How to set up one-time passwords for GitHub with 1Password.
-- [YubiKey Configuration Guide](./yubikey-configuration.md) — How to get and configure a YubiKey for use in commit signing.
+- [YubiKey Configuration Guide](./yubikey-configuration.mdx) — How to get and configure a YubiKey for use in commit signing.
 - [YubiKey SSO](./yubikey-sso.md) — How to configure a Google Account to use YubiKey (for GSuite admins).
