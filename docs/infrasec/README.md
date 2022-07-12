@@ -46,7 +46,7 @@ To get you up and running faster, we have created a few template repos. Please f
 #### Security
 
 - [One-Time Passwords](tutorials/one-time-passwords.md) — How to set up one-time passwords for GitHub with 1Password.
-- [YubiKey Configuration Guide](tutorials/yubikey-configuration.md) — How to get and configure a YubiKey for use in commit signing.
+- [YubiKey Configuration Guide](tutorials/yubikey-configuration.mdx) — How to get and configure a YubiKey for use in commit signing.
 - [YubiKey SSO](tutorials/yubikey-sso.md) — How to configure a Google Account to use YubiKey (for GSuite admins).
 
 ### Other topics

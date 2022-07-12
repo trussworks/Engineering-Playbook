@@ -1,3 +1,10 @@
+---
+title: YubiKey Configuration Guide
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # YubiKey Configuration Guide
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
@@ -160,6 +167,11 @@ Instead of prompting you in a terminal, you can have gpg-agent use an
 external program.  This might be useful if you want to use your editor
 for commits.
 
+<Tabs groupID="pinentry-mac">
+<TabItem value="intel" label="Intel Based Mac">
+
+Your homebrew path may be different for pinentry-mac than below. You can confirm it with `which pinentry-mac`
+
 ```console
 brew install pinentry-mac
 echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
@@ -167,6 +179,22 @@ echo 'pinentry-program /usr/local/bin/pinentry-mac' >> \
 gpgconf --kill gpg-agent
 gpg --card-status all &> /dev/null
 ```
+
+</TabItem>
+<TabItem value="m1-mac" label="M1 Based Mac">
+
+If you are on an **M1 based Macbook** then your homebrew path will likely be different for pinentry-mac. You can confirm it with `which pinentry-mac`
+
+```console
+brew install pinentry-mac
+echo 'pinentry-program /opt/homebrew/bin/pinentry-mac' >> \
+    ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+gpg --card-status all &> /dev/null
+```
+
+</TabItem>
+</Tabs>
 
 If you use this, you do not need to set `GPG_TTY`.
 
@@ -776,3 +804,13 @@ _The YubiKey appears to hang when performing operations and then the operations 
 Touch-only has been enabled. There is no prompt that the YubiKey is waiting to be touched. Run the operation again and touch the YubiKey when the operation hangs. You may see something similar to this:
 
 <img src="images/yubikey-otp-error.png" alt="otp error" width="450" />
+
+_SSH commands like `ssh -T git@github.com` do not ask for pin_
+
+```console
+0 ❯ ssh -T git@github.com
+sign_and_send_pubkey: signing failed for RSA "cardno:000YXXXXXXXX" from agent: agent refused operation
+git@github.com: Permission denied (publickey).
+```
+
+Make sure that `GPG_TTY` is set. If so you may need to also run `gpg-connect-agent updatestartuptty /bye` to force the agent to uppdate the tty
