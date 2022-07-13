@@ -52,14 +52,14 @@ significant CPU. Running the same code outside the container is
 sometimes 25-50% faster and that penalty is hard to swallow.
 
 Using Docker for development also complicates committing code. When
-using [pre-commit](../vcs/tools.md) you need access to the development
+using [pre-commit](../../vcs/tools.md) you need access to the development
 environment when committing code. This means either running git inside
 docker or trying to find a way to run your pre-commit hooks inside
 docker.
 
 Running git inside docker has problems because it makes using a hardware
 device for code signing like a
-[yubikey](../../infrasec/tutorials/yubikey-configuration.mdx) much more
+[yubikey](../../../infrasec/tutorials/yubikey-configuration.mdx) much more
 complicated and difficult.
 
 Running pre-commit inside docker is not a supported configuration by

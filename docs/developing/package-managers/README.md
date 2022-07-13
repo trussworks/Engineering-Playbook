@@ -35,7 +35,7 @@ If a project needs to connect to a running service (such as a database), we reco
 
 Additionally, Docker is a useful way to run specific versions of software that doesn't share an ecosystem with the rest of a project. We've done this successfully to leverage [Flyway](https://flywaydb.org), a Java-based database migration system, within a project that didn't otherwise use Java.
 
-## Project-specific Software
+## Other Project-specific Software
 
 Any software that doesn't described by one of the above categories belongs to this one. It's difficult to manage this kind of software because it tends to not neatly fit within the domain of one of the tools covered in earlier sections.
 
@@ -43,6 +43,6 @@ As a general rule of thumb, minimize the dependencies of your project that can't
 
 :::note
 
-If you find yourself needing a lot of this kind of software, you might benefit from using [nix](../nix/README.md).
+If you find yourself needing a lot of this kind of software, you might benefit from using [nix](./nix/README.md).
 
 :::
