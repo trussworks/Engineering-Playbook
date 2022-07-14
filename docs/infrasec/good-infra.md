@@ -30,7 +30,7 @@ While the tools, techniques, and patterns we use to build our solutions are impo
 
 > Without establishing shared expectations and coherent communication frameworks, your tools will be instruments of chaos.
 >
-> -- [Truss Distributed Playbook: Tools Last](https://guide.truss.works/distributed#tools-last)
+> -- [Truss Distributed Playbook: Tools Last](https://guide.truss.works/docs/distributed/#tools-last)
 
 InfraSec work is first and foremost a human endeavour. Every aspect of what we do is for other people. We build software for other developers. We deliver reliable infrastructure to meet the needs of the users. We automate systems and write documentation to ease the burden on our future selves and those who come after.
 
