@@ -28,14 +28,14 @@ We build and deploy these docs using [Docusaurus](https://docusaurus.io/), a Rea
 
 ## Contents
 
-- [ATOs & Risk Management Framework](./compliance/README.md) - A high level overview of Federal compliance requirements.
-- [Developer Tools & Practice](./developing/README.md) - Opinions and resources relating to the tools we use to do our work.
-- [Documentation](./documentation/README.md) - How to write effective documentation your users will read.
-- [Web Development](./web/README.md) - Languages, frameworks and tools used to develop web applications
-- [InfraSec](./infrasec/README.md) - Infrastructure and security are foundational disciplines for building and maintaining stable systems.
-- [Leadership](./leadership/README.md) - Guidance and resources around being an Engineering Lead or Manager at Truss.
-- [Templates](./templates/README.md) - "Ooh, ooh... I have a thing to add." Here's how to add to this Playbook.
-- [Practices](./practices/README.md) - Resources on how the Truss Engineering practices organize.
+- [ATOs & Risk Management Framework](./docs/compliance/README.md) - A high level overview of Federal compliance requirements.
+- [Developer Tools & Practice](./docs/developing/README.md) - Opinions and resources relating to the tools we use to do our work.
+- [Documentation](./docs/documentation/README.md) - How to write effective documentation your users will read.
+- [Web Development](./docs/web/README.md) - Languages, frameworks and tools used to develop web applications
+- [InfraSec](./docs/infrasec/README.md) - Infrastructure and security are foundational disciplines for building and maintaining stable systems.
+- [Leadership](./docs/leadership/README.md) - Guidance and resources around being an Engineering Lead or Manager at Truss.
+- [Templates](./docs/templates/README.md) - "Ooh, ooh... I have a thing to add." Here's how to add to this Playbook.
+- [Practices](./docs/practices/README.md) - Resources on how the Truss Engineering practices organize.
 
 ## Initial Setup (on MacOS)
 
