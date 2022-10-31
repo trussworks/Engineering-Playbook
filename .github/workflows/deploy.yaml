@@ -19,6 +19,9 @@ jobs:
 
       - name: Install yarn
         run: npm install yarn
+        
+      - name: Remove package lock
+        run: rm package-lock.json
 
       - name: Install dependencies
         run: yarn
