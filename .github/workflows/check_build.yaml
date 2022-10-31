@@ -9,11 +9,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Install yarn
-        run: npm install yarn
-
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Build Docusaurus from source
-        run: yarn build
+        run: npm run build
