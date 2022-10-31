@@ -135,8 +135,8 @@ Note: if you're using the Fish shell, you'll need to [complete an extra step](ht
 ### Run the server
 
 ```
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 The site should load automatically in your browser at
@@ -145,8 +145,8 @@ The site should load automatically in your browser at
 If you would like to enable the local search, use the production build instead:
 
 ```
-yarn build
-yarn serve
+npm run build
+npm run serve
 ```
 
 ## Deployment

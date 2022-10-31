@@ -17,14 +17,11 @@ jobs:
         with:
           node-version-file: '.node-version'
 
-      - name: Install yarn
-        run: npm install yarn
-
       - name: Install dependencies
-        run: yarn
+        run: npm install
 
       - name: Build the Docusaurus app
-        run: yarn build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.3.4
