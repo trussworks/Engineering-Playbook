@@ -22,3 +22,8 @@ repos:
           - mdformat-gfm
           - mdformat-toc
           - mdformat-frontmatter
+
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.10.3
+    hooks:
+      - id: markdown-link-check
