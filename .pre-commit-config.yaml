@@ -27,3 +27,4 @@ repos:
     rev: v3.10.3
     hooks:
       - id: markdown-link-check
+        args: [--quiet]
