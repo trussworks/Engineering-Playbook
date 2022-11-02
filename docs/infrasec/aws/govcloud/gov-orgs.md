@@ -5,16 +5,6 @@ to the way GovCloud interacts (or rather, doesn't interact) with commercial
 AWS accounts. The instructions below will take you through the process of
 getting an organization and its accounts set up properly.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [GovCloud Organization master account](#govcloud-organization-master-account)
-- [Additional GovCloud accounts](#additional-govcloud-accounts)
-- [Adding new GovCloud accounts to the GovCloud Organization](#adding-new-govcloud-accounts-to-the-govcloud-organization)
-- [Handling GovCloud dummy accounts in AWS commercial](#handling-govcloud-dummy-accounts-in-aws-commercial)
-- [Enabling Business Support in GovCloud](#enabling-business-support-in-govcloud)
-
-<!-- mdformat-toc end -->
-
 ## GovCloud Organization master account
 
 To set up a new GovCloud AWS Organization, you must log in as root to the

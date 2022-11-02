@@ -1,24 +1,5 @@
 # Docker
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Overview](#overview)
-- [Installation](#installation)
-  - [Configuration of Shared Folders](#configuration-of-shared-folders)
-  - [Configuration of Storage Driver](#configuration-of-storage-driver)
-  - [Configuration of Disk Image](#configuration-of-disk-image)
-  - [Configuration of Resources](#configuration-of-resources)
-- [Volume Mount Performance](#volume-mount-performance)
-- [Inspecting the Docker Virtual Machine](#inspecting-the-docker-virtual-machine)
-- [Inspecting Container Resources](#inspecting-container-resources)
-- [Cleaning Up](#cleaning-up)
-- [Docker Configuration](#docker-configuration)
-  - [Keybindings](#keybindings)
-  - [Credentials Store](#credentials-store)
-- [Additional Resources](#additional-resources)
-
-<!-- mdformat-toc end -->
-
 ## Overview
 
 Docker is useful because it allows you to both package and run

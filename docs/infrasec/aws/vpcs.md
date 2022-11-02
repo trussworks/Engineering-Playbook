@@ -1,20 +1,5 @@
 # VPC Configuration
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [VPC basics](#vpc-basics)
-  - [Subnets](#subnets)
-  - [Route tables](#route-tables)
-  - [Network ACLs](#network-acls)
-  - [Security Groups](#security-groups)
-  - [Gateways](#gateways)
-  - [VPC endpoints](#vpc-endpoints)
-  - [Flow logs](#flow-logs)
-- [Default VPC configuration](#default-vpc-configuration)
-- [Reference links](#reference-links)
-
-<!-- mdformat-toc end -->
-
 ## VPC basics
 
 A VPC is a "Virtual Private Cloud".

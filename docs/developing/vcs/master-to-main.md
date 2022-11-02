@@ -3,20 +3,6 @@
 These instructions will help moving repos from using the default branch name `master` and modify it to be
 `main`.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Prereqs](#prereqs)
-- [Instructions to change default branch name](#instructions-to-change-default-branch-name)
-- [Future proofing](#future-proofing)
-- [Github](#github)
-- [CircleCI Changes](#circleci-changes)
-- [Terraform Registry](#terraform-registry)
-- [IDE Changes](#ide-changes)
-- [Tooling Changes](#tooling-changes)
-- [References](#references)
-
-<!-- mdformat-toc end -->
-
 ## Prereqs
 
 First, ensure that the version of `git` that you have installed is at least v2.28.0. This is important to ensure

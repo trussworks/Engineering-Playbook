@@ -12,25 +12,6 @@ Things are further complicated in AWS because there are different uniqueness con
 
 As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Globally unique](#globally-unique)
-  - [S3 Buckets](#s3-buckets)
-- [Unique per account](#unique-per-account)
-  - [IAM resources](#iam-resources)
-    - [IAM policies](#iam-policies)
-    - [IAM users](#iam-users)
-- [Unique per region](#unique-per-region)
-  - [SNS topics](#sns-topics)
-  - [Slackbot](#slackbot)
-  - [VPC](#vpc)
-  - [Subnets](#subnets)
-  - [ECR](#ecr)
-  - [Container images](#container-images)
-- [Terraform modules](#terraform-modules)
-
-<!-- mdformat-toc end -->
-
 ## Globally unique
 
 ### S3 Buckets

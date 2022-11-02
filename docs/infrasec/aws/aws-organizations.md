@@ -9,18 +9,6 @@ As security best practices prefer account boundaries over IAM policies
 as a way to limit resource access, AWS Organizations are becoming a
 standard part of any AWS deployment.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Truss Patterns](#truss-patterns)
-  - [The Organization Root Account](#the-organization-root-account)
-  - [The ID Account](#the-id-account)
-  - [The Infra Account](#the-infra-account)
-  - [Other Accounts](#other-accounts)
-- [Best Practices](#best-practices)
-- [External links](#external-links)
-
-<!-- mdformat-toc end -->
-
 ## Truss Patterns
 
 As Truss has begun adopting AWS Organizations for most of our new

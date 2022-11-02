@@ -4,18 +4,6 @@ Trussels are allocated $1000 per year to spend on professional development.
 InfraSec Managers have noticed that some folks just don't know what to use this budget for.
 InfraSec Managers would like to use this page as a repository of courses, workshops, and classes InfraSec engineers can spend this budget on.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Truss Policy](#truss-policy)
-- [How to use this document](#how-to-use-this-document)
-- [THE LIST](#the-list)
-  - [Suggested courses for L2+](#suggested-courses-for-l2)
-  - [Suggested courses for L3+](#suggested-courses-for-l3)
-- [Course Summaries](#course-summaries)
-  - [Effective 1:1s Eady](#effective-11s-eady)
-
-<!-- mdformat-toc end -->
-
 ## Truss Policy
 
 Like mentioned above, Trussels are allocated $1000 per year to spend on professional development.
