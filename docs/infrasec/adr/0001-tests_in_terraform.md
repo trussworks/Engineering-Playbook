@@ -1,18 +1,3 @@
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Context and Problem Statement](#context-and-problem-statement)
-- [Decision Drivers](#decision-drivers)
-- [Considered Options](#considered-options)
-- [Decision Outcome](#decision-outcome)
-- [Validation](#validation)
-- [Pros and Cons of the Options](#pros-and-cons-of-the-options)
-  - [Do nothing](#do-nothing)
-  - [Assign dedicated staff to maintain CI in the modules](#assign-dedicated-staff-to-maintain-ci-in-the-modules)
-  - [Remove branch protection requiring tests pass before merging](#remove-branch-protection-requiring-tests-pass-before-merging)
-  - [Remove tests from the Terraform modules](#remove-tests-from-the-terraform-modules)
-
-<!-- mdformat-toc end -->
-
 # Remove tests from our open-source Terraform modules
 
 ## Context and Problem Statement
