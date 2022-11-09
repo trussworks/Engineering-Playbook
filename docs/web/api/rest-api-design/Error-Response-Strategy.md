@@ -13,11 +13,11 @@ Just like an HTML error page shows a useful error message to a visitor, an API s
 
 ## Terms
 
-__Error Code__        — A unique, machine readable, identifier for the error.\
-__Status Code__ — The status code on the HTTP response. \
-__Message__           — A brief human-readable message.\
-__Detail__            — A lengthier explanation of the error.\
-__Parameters / Path__ — a description of which part of the request triggered the error.
+**Error Code**        — A unique, machine readable, identifier for the error.\
+**Status Code** — The status code on the HTTP response. \
+**Message**           — A brief human-readable message.\
+**Detail**            — A lengthier explanation of the error.\
+**Parameters / Path** — a description of which part of the request triggered the error.
 
 ### Use a consistent error format across the API
 
@@ -65,7 +65,7 @@ The error codes are 3-digit numbers, and `2xx` below indicates any number from 2
 - `4xx` **Client Error** - This category indicate that the error seems to have been caused by the client.
 - `5xx` **Server Error** - This category indicates the server failed to fulfill a request.
 
-**Importance of the Client vs. Server Error Distinction** - `500` server errors signal that something went wrong on the backend *that shouldn't have*.
+**Importance of the Client vs. Server Error Distinction** - `500` server errors signal that something went wrong on the backend _that shouldn't have_.
 
 If a client sends a request and it has a bad value, the source of the error is the client. That is a known error that should be detected and returned with a `4xx`. Most known errors should be a `4xx`. Some can even be fixed by the client.
 

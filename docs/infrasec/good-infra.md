@@ -86,7 +86,7 @@ _[:eyes: See the Intro to CI/CD](../developing/cicd/intro.md) for a deeper dive 
 
 An effective delivery pipeline is important for creating a successful — organization-wide — delivery culture. This mechanism brings code from development into production, ties together the (technical and non-technical) teams, and enables the company to iterate quickly.
 
-To achieve *continuous delivery* means you are always comfortable releasing the artifacts that have made it through the pipeline. To achieve *continuous deployment* means you have the utmost confidence in your automated processes.
+To achieve _continuous delivery_ means you are always comfortable releasing the artifacts that have made it through the pipeline. To achieve _continuous deployment_ means you have the utmost confidence in your automated processes.
 
 At its barest, a delivery pipeline has three stages:
 
