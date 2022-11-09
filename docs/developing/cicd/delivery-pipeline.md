@@ -6,14 +6,6 @@ ideal; if your project needs to use a different workflow, that's fine.
 Your goal should still be to provide a workflow that can support frequent
 updates, good testing, and prompt deploys.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Developing Your Code](#developing-your-code)
-- [Unit Testing](#unit-testing)
-- [Deploying Our Code](#deploying-our-code)
-
-<!-- mdformat-toc end -->
-
 ## Developing Your Code
 
 Here at Truss, we generally use Git for our code repository, and Github

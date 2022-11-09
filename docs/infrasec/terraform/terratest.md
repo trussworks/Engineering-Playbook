@@ -3,20 +3,6 @@
 Terratest is a Go framework that is used to test Terraform infrastructure code.
 It executes the defined Terraform and then validates things you're asserting.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Basic Terratest example of a module](#basic-terratest-example-of-a-module)
-  - [Other Examples](#other-examples)
-- [Run manually](#run-manually)
-- [Configure CircleCi to run the tests automatically](#configure-circleci-to-run-the-tests-automatically)
-  - [Configure CircleCi Job](#configure-circleci-job)
-  - [Update the Key rotator configuration](#update-the-key-rotator-configuration)
-  - [Alternative: Configure AWS Keys for the CircleCI project](#alternative-configure-aws-keys-for-the-circleci-project)
-  - [Access test metadata stored in CircleCI](#access-test-metadata-stored-in-circleci)
-- [Documentation links](#documentation-links)
-
-<!-- mdformat-toc end -->
-
 ## Basic Terratest example of a module
 
 The most basic Terratest test you can write brings up an example in your `examples` directory, tears it down, and will only test that it runs.

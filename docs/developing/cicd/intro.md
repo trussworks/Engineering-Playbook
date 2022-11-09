@@ -5,24 +5,6 @@ frequent updates, good testing, consistent builds, and prompt deploys.
 Additionally issues with code should be found quickly and addressed before
 it is released to customers.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Delivery Pipeline Basics](#delivery-pipeline-basics)
-  - [Build](#build)
-    - [Notes about Versioning](#notes-about-versioning)
-      - [Semantic Versioning](#semantic-versioning)
-      - [Commit Hash](#commit-hash)
-      - [Other versioning strategies](#other-versioning-strategies)
-  - [Test](#test)
-  - [Deployment](#deployment)
-  - [Release](#release)
-- [Continuous (Integration | Delivery | Deployment)](#continuous-integration--delivery--deployment)
-  - [Continuous Integration](#continuous-integration)
-  - [Continuous Delivery](#continuous-delivery)
-  - [Continuous Deployment](#continuous-deployment)
-
-<!-- mdformat-toc end -->
-
 ## Delivery Pipeline Basics
 
 There are usually four conceptual steps in a delivery pipeline:
