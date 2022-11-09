@@ -27,3 +27,12 @@ repos:
     rev: v1.1.0
     hooks:
       - id: circleci-validate
+
+  - repo: local
+    hooks:
+      - id: no-mdformat-toc
+        name: Block mdformat TOCs
+        description: This hook prevents introducing mdformat TOCs, since Docusaurus generates its own.
+        entry: mdformat-toc start
+        language: pygrep
+        types: [markdown]
