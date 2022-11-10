@@ -17,7 +17,7 @@ repositories have become stale. Dependencies and tests themselves grow out of
 date, and we have no monitoring or health checks that alert us to build
 failures so they can be actioned. In turn, neglected and broken CI pipelines
 block automated dependency updates from auto-merging, so these updates languish
-as well.
+as well. ([Example])
 
 We remain committed to the value of, and need for, tests in software
 engineering overall. However, the value Truss has realized from our experiment
@@ -114,5 +114,6 @@ should be re-visited and/or how the decision is validated. Links to other
 decisions and resources might here appear as well.}
 -->
 
+[example]: https://github.com/trussworks/terraform-module-template/pull/96
 [modules]: https://github.com/orgs/trussworks/repositories?q=terraform+in%3Aname&type=all
 [trussworks-ci]: https://github.com/trussworks/legendary-waddle/tree/main/trussworks-ci
