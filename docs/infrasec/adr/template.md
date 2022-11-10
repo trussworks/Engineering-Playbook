@@ -1,18 +1,3 @@
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Context and Problem Statement](#context-and-problem-statement)
-- [Decision Drivers](#decision-drivers)
-- [Considered Options](#considered-options)
-- [Decision Outcome](#decision-outcome)
-  - [Consequences](#consequences)
-- [Validation](#validation)
-- [Pros and Cons of the Options](#pros-and-cons-of-the-options)
-  - [{title of option 1}](#title-of-option-1)
-  - [{title of other option}](#title-of-other-option)
-- [More Information](#more-information)
-
-<!-- mdformat-toc end -->
-
 # {short title of solved problem and solution}
 
 ## Context and Problem Statement
