@@ -4,7 +4,7 @@ title: Template topic
 
 # Topic
 
-*Topic* is _add a brief description of what the topic means in the context of this subject area_. E.g. Authentication is the process of establishing whether or not we can trust that the person or entity interacting with an application is who they claim to be. Login is an example of a user giving a password as credentials to authenticate that they are the rightful owner of the username they claim. *Authentication* should be distinguished from [Authorization](#) which is the process of determining whether or not a person/entity is entitled to perform a particular action.
+**Topic** is _add a brief description of what the topic means in the context of this subject area_. E.g. Authentication is the process of establishing whether or not we can trust that the person or entity interacting with an application is who they claim to be. Login is an example of a user giving a password as credentials to authenticate that they are the rightful owner of the username they claim. _Authentication_ should be distinguished from [Authorization](#) which is the process of determining whether or not a person/entity is entitled to perform a particular action.
 
 ## Context
 

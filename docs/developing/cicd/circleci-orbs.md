@@ -6,22 +6,6 @@ There is a [registry of CircleCI orbs](https://circleci.com/orbs/registry/) incl
 
 We also have published one of our own: [trussworks/orb-ecr-image-scan-findings](https://circleci.com/orbs/registry/orb/trussworks/orb-ecr-image-scan-findings).
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Concepts](#concepts)
-  - [Command](#command)
-  - [Job](#job)
-  - [Executor](#executor)
-- [Using Orbs](#using-orbs)
-- [Creating Orbs](#creating-orbs)
-  - [Requirements](#requirements)
-  - [GitHub](#github)
-  - [Setting up the orb](#setting-up-the-orb)
-  - [Testing](#testing)
-  - [Publishing](#publishing)
-
-<!-- mdformat-toc end -->
-
 ## Concepts
 
 Before reading the rest of this doc, I recommend reviewing what [concepts](https://circleci.com/docs/2.0/using-orbs/) exist with orbs.

@@ -4,29 +4,6 @@ Ideally our infrastructure is flawless and impenetrable, but much of our work re
 
 Our intent is to have a system which notifies regarding GuardDuty events on two integration channels (PagerDuty and Slack), depending on the kind of alert.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Information Flow](#information-flow)
-- [GuardDuty Organizational Setup](#guardduty-organizational-setup)
-- [SNS Topics](#sns-topics)
-- [SNS Subscriptions](#sns-subscriptions)
-  - [Special consideration for email protocol (07/2020)](#special-consideration-for-email-protocol-072020)
-  - [SSM Parameters](#ssm-parameters)
-- [Slack Integration](#slack-integration)
-  - [Special consideration for broken lambdas (07/2020)](#special-consideration-for-broken-lambdas-072020)
-- [PagerDuty Organizational Setup](#pagerduty-organizational-setup)
-- [PagerDuty Integration](#pagerduty-integration)
-  - [Integration](#integration)
-  - [Subscription](#subscription)
-- [PagerDuty Slack Integration](#pagerduty-slack-integration)
-  - [Extension](#extension)
-- [GuardDuty Tie-In](#guardduty-tie-in)
-- [A note about root login notification](#a-note-about-root-login-notification)
-- [Testing your work](#testing-your-work)
-- [How to Resolve/Respond to GuardDuty Findings](#how-to-resolverespond-to-guardduty-findings)
-
-<!-- mdformat-toc end -->
-
 ## Information Flow
 
 ![SNS Information Flow](images/sns-info-flow.png)

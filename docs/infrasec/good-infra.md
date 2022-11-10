@@ -2,28 +2,6 @@
 
 While the tools, techniques, and patterns we use to build our solutions are important, they often don't help us design and architect new things. What follows are some opinions about how to think about the work we do at a high level.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Human factors](#human-factors)
-  - [Empathy](#empathy)
-  - [Operator first](#operator-first)
-- [Minimalism](#minimalism)
-  - [Avoid state](#avoid-state)
-  - [Embrace immutability](#embrace-immutability)
-  - [Use managed services](#use-managed-services)
-  - [Codify entire stacks](#codify-entire-stacks)
-- [Delivery](#delivery)
-  - [Infrastructure as code](#infrastructure-as-code)
-  - [Automation](#automation)
-  - [Delivery pipeline](#delivery-pipeline)
-    - [Build](#build)
-    - [Accept](#accept)
-    - [Release](#release)
-- [Immutability](#immutability)
-- [The Twelve-Factor App](#the-twelve-factor-app)
-
-<!-- mdformat-toc end -->
-
 ## Human factors
 
 ### Empathy
@@ -108,7 +86,7 @@ _[:eyes: See the Intro to CI/CD](../developing/cicd/intro.md) for a deeper dive 
 
 An effective delivery pipeline is important for creating a successful — organization-wide — delivery culture. This mechanism brings code from development into production, ties together the (technical and non-technical) teams, and enables the company to iterate quickly.
 
-To achieve *continuous delivery* means you are always comfortable releasing the artifacts that have made it through the pipeline. To achieve *continuous deployment* means you have the utmost confidence in your automated processes.
+To achieve _continuous delivery_ means you are always comfortable releasing the artifacts that have made it through the pipeline. To achieve _continuous deployment_ means you have the utmost confidence in your automated processes.
 
 At its barest, a delivery pipeline has three stages:
 

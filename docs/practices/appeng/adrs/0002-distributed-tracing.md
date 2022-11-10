@@ -34,7 +34,7 @@ software systems:
     interaction to timeout last Tuesday?"
 
 Some of the benefits of distributed tracing as outlined in
-[*How Distributed Tracing Solves One of the Worst Microservices Problems*](https://petabridge.com/blog/why-use-distributed-tracing/)
+[_How Distributed Tracing Solves One of the Worst Microservices Problems_](https://petabridge.com/blog/why-use-distributed-tracing/)
 are:
 
 - radically improves developer productivity and output

@@ -7,16 +7,6 @@ guide is intended to provide a step-by-step procedure for tearing down
 infrastructure we've created for a project and highlight any potential
 sources of trouble.
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=6 --minlevel=2 -->
-
-- [Terraform and AWS](#terraform-and-aws)
-- [SSL certificates](#ssl-certificates)
-- [CircleCI](#circleci)
-- [GitHub](#github)
-- [1Password](#1password)
-
-<!-- mdformat-toc end -->
-
 ## Terraform and AWS
 
 Your first task should be shutting down all the AWS infrastructure
