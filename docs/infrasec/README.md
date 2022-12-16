@@ -16,6 +16,7 @@ response](../incident-response/README.md), and a number of other fields.
 
 - [AWS](aws/README.md) — Our primary cloud provider.
 - [Terraform](terraform/README.md) — Our primary infrastructure as code (IaC) tool.
+- [CI/CD at Truss](./ci_cd.md) — Guiding stars for building CI/CD, the Truss way.
 - [Ansible](ansible/README.md) — For when we have to build non-container based images (e.g., AMIs).
 
 ### Education recommendations
