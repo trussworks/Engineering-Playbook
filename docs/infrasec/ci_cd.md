@@ -39,20 +39,20 @@ you.
 
 - DO: Use [Github Actions] (GHA).
 
-*Especially* on FedGov projects, due to the FedRAMP status (or lack
-thereof) for the alternatives.
+*Especially* on FedGov projects, due to the FedRAMP status (or lack thereof)
+for the alternatives.
 
-GHA has good documentation, and a rich ecosystem for shared Actions.
-Deployment orchestration is solid. Support for self-hosted runners is
-there. Parallelization is good.
+GHA has good documentation, and a rich ecosystem for shared Actions. Deployment
+orchestration is solid. Support for self-hosted runners is there.
+Parallelization is good.
 
-Using the same service for source control and CI/CD makes for a clearer
-access control story.
+Using the same service for source control and CI/CD makes for a clearer access
+control story.
 
 - DON'T: Use [CircleCI] on Federal government projects.
 
-CircleCI is not FedRAMP'd. That means you must use their self-hosted
-offering, which always lags far behind on features and documentation.
+CircleCI is not FedRAMP'd. That means you must use their self-hosted offering,
+which always lags far behind on features and documentation.
 
 We have had good experiences with CircleCI's cloud service. If a commercial
 client wants it, then we should consider it.
@@ -74,13 +74,14 @@ reliability and run time of these processes requires setting boundaries up
 front and then doggedly sticking to them.
 
 - DO: Maintain focus on how the run time for build and deploy workflows impacts
-  developer effectiveness iterating on the app. If a workflow increases the
-  overhead on developers trying to iterate on the software, it should be
-  *removed* until it can be fixed.
+  developer effectiveness iterating on the app.
 
-This often shows up as: "We don't know how to make it faster, but that's on
-our roadmap." No. Make the time now, or get rid of the slow thing until you
-can do it right.
+If a workflow increases the overhead on developers trying to iterate on the
+software, it should be *removed* until it can be fixed.
+
+This often shows up as: "We don't know how to make it faster, but that's on our
+roadmap." No. Make the time now, or get rid of the slow thing until you can do
+it right.
 
 - DON'T: Lose sight of how long build and deploy workflows *will* inhibit fixes
   during an incident. Slow CI/CD is a security and availability risk to your
@@ -93,9 +94,9 @@ See above.
 Flaky tests in CI are even worse than a slow build because they add routine
 toil for developers monitoring and re-running their builds.
 
-"That test is flaky, just re-run it!" No. Remove the flaky test, or
-configure it to run locally only. If it can be re-engineered later to fix
-the flakiness, *then* it can be restored to CI.
+"That test is flaky, just re-run it!" No. Remove the flaky test, or configure
+it to run locally only. If it can be re-engineered later to fix the flakiness,
+*then* it can be restored to CI.
 
 - DO: Get buy-in from product management on these points early.
 
@@ -112,19 +113,19 @@ parallelized.
 
 - DON'T: Gate deploy steps on any kind of human intervention.
 
-A merge to the main branch should be the final human action required to
-deploy to production.
+A merge to the main branch should be the final human action required to deploy
+to production.
 
-If you need blue/green deploys or such to avoid unplanned downtime with
-this model, then you need blue/green deploys.
+If you need blue/green deploys or such to avoid unplanned downtime with this
+model, then you need blue/green deploys.
 
 - DON'T: Accept the introduction of manual testing.
 
-Manual tests are time consuming and tedious. They are a drag on the
-development cycle like flaky or slow tests, except far worse.
+Manual tests are time consuming and tedious. They are a drag on the development
+cycle like flaky or slow tests, except far worse.
 
-It is not temporary, no matter what anyone says. Our experience shows
-clearly that once there are any manual tests, you are on a slippery slope.
+It is not temporary, no matter what anyone says. Our experience shows clearly
+that once there are any manual tests, you are on a slippery slope.
 
 ## Runners
 
@@ -134,43 +135,46 @@ This avoids complex credential management solutions.
 
 - DO: Have separate runners following the principle of least privilege.
 
-For example, a runner that only runs pre-commit doesn't need to have the
-same access as a runner that deploys to a test environment, which doesn't
-need the same access as a runner that deploys to production.
+For example, a runner that only runs pre-commit doesn't need to have the same
+access as a runner that deploys to a test environment, which doesn't need the
+same access as a runner that deploys to production.
 
-If you are dealing with an ATO process, your security officer will
-appreciate this. If you don't have one, it's still best practice.
+If you are dealing with an ATO process, your security officer will appreciate
+this. If you don't have one, it's still best practice.
 
 ## Builds
 
 - DO: Pin the version of everything using deterministic, calculated tags, like
   the git commit digest, a unix timestamp, or a combination.[^1]
+
 - DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
+
 - DO: Use distroless base images in docker, and build everything on top of
-  those. <!--  - TODO: Explain why. -->
+  those.
 
 ## Artifact storage
 
 - DO: Get money for [artifact storage] into the budget ASAP.
 
-Budget amendments are hard, especially if they require contract
-modifications. So get the paperwork in line well before you want artifact
-storage (and you'll want artifact storage early).
+Budget amendments are hard, especially if they require contract modifications.
+So get the paperwork in line well before you want artifact storage (and you'll
+want artifact storage early).
 
-Artifact storage is extremely cheap compared to the engineering time you
-will bill the client later trying to work around not having it.
+Artifact storage is extremely cheap compared to the engineering time you will
+bill the client later trying to work around not having it.
 
 - DO: Set up artifact storage for caching builds.
 
 Whether it's uploading a zip file to S3 or pushing a built image to ECR,
 artifact caching and storage enables later optimizations for automated
-vulnerability scanning, build promotion, sharing artifacts (e.g. docker
-layers) between builds to accelerate build and deploy times, getting
-visibility into failed builds, and more.
+vulnerability scanning, build promotion, sharing artifacts (e.g. docker layers)
+between builds to accelerate build and deploy times, getting visibility into
+failed builds, and more.
 
 - DON'T: Fragment your artifact storage repositories.
 
-For example, you need *one* ECR repo shared across AWS accounts. <!--  TODO: Explain why. -->
+For example, you need *one* ECR repo shared across AWS accounts.
+    <!--  TODO: Explain why. -->
 
 ## Alerting
 
@@ -184,8 +188,8 @@ A broken main branch is a fire drill.
 
 - DON'T: Put alerts in their own Slack channel.
 
-If there are so many alerts from CI/CD that you feel tempted to put them in
-a separate channel, then you have too many alerts.
+If there are so many alerts from CI/CD that you feel tempted to put them in a
+separate channel, then you have too many alerts.
 
 ## Other
 
