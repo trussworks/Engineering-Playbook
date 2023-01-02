@@ -39,27 +39,33 @@ you.
 
 - DO: Use [Github Actions] (GHA).
 
-  - *Especially* on FedGov projects, due to the FedRAMP status (or lack
-    thereof) for the alternatives.
-  - GHA has good documentation, and a rich ecosystem for shared Actions.
-  - Deployment orchestration is solid. Support for self-hosted runners is
-    there. Parallelization is good.
-  - Using the same service for source control and CI/CD makes for a clearer
-    access control story.
+*Especially* on FedGov projects, due to the FedRAMP status (or lack
+thereof) for the alternatives.
+
+GHA has good documentation, and a rich ecosystem for shared Actions.
+Deployment orchestration is solid. Support for self-hosted runners is
+there. Parallelization is good.
+
+Using the same service for source control and CI/CD makes for a clearer
+access control story.
 
 - DON'T: Use [CircleCI] on Federal government projects.
 
-  - CircleCI is not FedRAMP'd. That means you must use their self-hosted
-    offering, which always lags far behind on features and documentation.
-  - We have had good experiences with CircleCI's cloud service. If a commercial
-    client wants it, then we should consider it.
-  - However, using GHA means you have a smaller stack, so lean that way anyhow.
+CircleCI is not FedRAMP'd. That means you must use their self-hosted
+offering, which always lags far behind on features and documentation.
+
+We have had good experiences with CircleCI's cloud service. If a commercial
+client wants it, then we should consider it.
+
+However, using GHA means you have a smaller stack, so lean that way anyhow.
 
 - DON'T: Use [Bitbucket Pipelines], at all.
 
-  - Documentation is wholly inadequate.
-  - It does not have feature parity with GHA or CircleCI, by a long shot.
-  - The API is poorly implemented.
+Documentation is wholly inadequate.
+
+It does not have feature parity with GHA or CircleCI, by a long shot.
+
+The API is poorly implemented.
 
 ## Run time
 
@@ -72,23 +78,24 @@ front and then doggedly sticking to them.
   overhead on developers trying to iterate on the software, it should be
   *removed* until it can be fixed.
 
-  - This often shows up as: "We don't know how to make it faster, but that's on
-    our roadmap." No. Make the time now, or get rid of the slow thing until you
-    can do it right.
+This often shows up as: "We don't know how to make it faster, but that's on
+our roadmap." No. Make the time now, or get rid of the slow thing until you
+can do it right.
 
 - DON'T: Lose sight of how long build and deploy workflows *will* inhibit fixes
   during an incident. Slow CI/CD is a security and availability risk to your
   project!
 
-  - See above.
+See above.
 
 - DON'T: Tolerate flaky tests in CI.
 
-  - Flaky tests in CI are even worse than a slow build because they add routine
-    toil for developers monitoring and re-running their builds.
-  - "That test is flaky, just re-run it!" No. Remove the flaky test, or
-    configure it to run locally only. If it can be re-engineered later to fix
-    the flakiness, *then* it can be restored to CI.
+Flaky tests in CI are even worse than a slow build because they add routine
+toil for developers monitoring and re-running their builds.
+
+"That test is flaky, just re-run it!" No. Remove the flaky test, or
+configure it to run locally only. If it can be re-engineered later to fix
+the flakiness, *then* it can be restored to CI.
 
 - DO: Get buy-in from product management on these points early.
 
@@ -97,38 +104,42 @@ front and then doggedly sticking to them.
 
 - DO: Parallelize as much as you can.
 
-  - Include parallelization as part of the acceptance criteria for planned
-    expansions to CI/CD workflows.
-  - Routinely revisit the overall architecture to look for what else could be
-    parallelized.
+Include parallelization as part of the acceptance criteria for planned
+expansions to CI/CD workflows.
+
+Routinely revisit the overall architecture to look for what else could be
+parallelized.
 
 - DON'T: Gate deploy steps on any kind of human intervention.
 
-  - A merge to the main branch should be the final human action required to
-    deploy to production.
-  - If you need blue/green deploys or such to avoid unplanned downtime with
-    this model, then you need blue/green deploys.
+A merge to the main branch should be the final human action required to
+deploy to production.
+
+If you need blue/green deploys or such to avoid unplanned downtime with
+this model, then you need blue/green deploys.
 
 - DON'T: Accept the introduction of manual testing.
 
-  - Manual tests are time consuming and tedious. They are a drag on the
-    development cycle like flaky or slow tests, except far worse.
-  - It is not temporary, no matter what anyone says. Our experience shows
-    clearly that once there are any manual tests, you are on a slippery slope.
+Manual tests are time consuming and tedious. They are a drag on the
+development cycle like flaky or slow tests, except far worse.
+
+It is not temporary, no matter what anyone says. Our experience shows
+clearly that once there are any manual tests, you are on a slippery slope.
 
 ## Runners
 
 - DO: Use self-hosted runners if CD can deploy into production.
 
-  - This avoids complex credential management solutions.
+This avoids complex credential management solutions.
 
 - DO: Have separate runners following the principle of least privilege.
 
-  - For example, a runner that only runs pre-commit doesn't need to have the
-    same access as a runner that deploys to a test environment, which doesn't
-    need the same access as a runner that deploys to production.
-  - If you are dealing with an ATO process, your security officer will
-    appreciate this. If you don't have one, it's still best practice.
+For example, a runner that only runs pre-commit doesn't need to have the
+same access as a runner that deploys to a test environment, which doesn't
+need the same access as a runner that deploys to production.
+
+If you are dealing with an ATO process, your security officer will
+appreciate this. If you don't have one, it's still best practice.
 
 ## Builds
 
@@ -142,29 +153,30 @@ front and then doggedly sticking to them.
 
 - DO: Get money for [artifact storage] into the budget ASAP.
 
-  - Budget amendments are hard, especially if they require contract
-    modifications. So get the paperwork in line well before you want artifact
-    storage (and you'll want artifact storage early).
-  - Artifact storage is extremely cheap compared to the engineering time you
-    will bill the client later trying to work around not having it.
+Budget amendments are hard, especially if they require contract
+modifications. So get the paperwork in line well before you want artifact
+storage (and you'll want artifact storage early).
+
+Artifact storage is extremely cheap compared to the engineering time you
+will bill the client later trying to work around not having it.
 
 - DO: Set up artifact storage for caching builds.
 
-  - Whether it's uploading a zip file to S3 or pushing a built image to ECR,
-    artifact caching and storage enables later optimizations for automated
-    vulnerability scanning, build promotion, sharing artifacts (e.g. docker
-    layers) between builds to accelerate build and deploy times, getting
-    visibility into failed builds, and more.
+Whether it's uploading a zip file to S3 or pushing a built image to ECR,
+artifact caching and storage enables later optimizations for automated
+vulnerability scanning, build promotion, sharing artifacts (e.g. docker
+layers) between builds to accelerate build and deploy times, getting
+visibility into failed builds, and more.
 
 - DON'T: Fragment your artifact storage repositories.
 
-  - For example, you need *one* ECR repo shared across AWS accounts. <!--  TODO: Explain why. -->
+For example, you need *one* ECR repo shared across AWS accounts. <!--  TODO: Explain why. -->
 
 ## Alerting
 
 - DO: Alert on build failures from the main branch.
 
-  - A broken main branch is a fire drill.
+A broken main branch is a fire drill.
 
 - DO: Control [alert fatigue].
 
@@ -172,8 +184,8 @@ front and then doggedly sticking to them.
 
 - DON'T: Put alerts in their own Slack channel.
 
-  - If there are so many alerts from CI/CD that you feel tempted to put them in
-    a separate channel, then you have too many alerts.
+If there are so many alerts from CI/CD that you feel tempted to put them in
+a separate channel, then you have too many alerts.
 
 ## Other
 
