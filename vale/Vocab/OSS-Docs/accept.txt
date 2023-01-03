@@ -67,3 +67,4 @@ callables
 (?i)enum
 (?i)subclassing
 (?i)changeset
+npm

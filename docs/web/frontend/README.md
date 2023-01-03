@@ -51,12 +51,12 @@ Various resources on React, Redux, etc, for a variety of learning styles.
 - _Watch_: [This video](https://www.youtube.com/watch?list=PLb0IAmt7-GS188xDYE-u1ShQmFFGbrk0v&v=nYkdrAPrdcw) from the introduction of Flux can be useful for some high-level background about the pattern (the MVC bashing is overdone, but otherwise this video is useful.)
 - _Do_: Roll your own React app! Make a little project of your own. This works well if you’re more hands-on. Here are some rough steps, but you’ll need to do a bit of filling-in-the-blanks:
   - Use [create-react-app](https://github.com/facebookincubator/create-react-app) to bootstrap a new React project.
-  - Figure out how to run the app live (hint: yarn start)
+  - Figure out how to run the app live (hint: npm run start)
   - Find and skim through some of the important files it made: `index.hmtl`, `index.js`, `App.js`. What do these look like they’re doing?
   - Change the page title to something of your choosing.
   - Create a new React [component](https://reactjs.org/docs/react-component.html) that has a `<button>` or something in it.
   - [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) that component into `App.js`, and make sure you can see it!
-  - Write a new test for your component. (Hint: `yarn test`). create-react-app gives you Jest for free, look at its manual.
+  - Write a new test for your component. (Hint: `npm run test`). create-react-app gives you Jest for free, look at its manual.
   - Make the thing in your component clickable, even if it just does `alert(‘hey there!’)`
   - Add [React Router](https://github.com/ReactTraining/react-router) to your project.
   - Make a new component like the first one, and add routes so that they display depending on the URL. E.g:

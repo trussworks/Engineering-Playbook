@@ -58,7 +58,6 @@ Choose one of the following methods to install the dependencies.
 ```
 brew update
 brew install nodenv
-brew install yarn
 brew install pre-commit
 pre-commit install
 ```
