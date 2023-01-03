@@ -56,7 +56,9 @@
   - What will you use to transpile JS (i.e., Babel)
   - Do you need additional polyfills or plugins for your target output?
   - Do you want static type checking? (TypeScript / flow / PropTypes)
-  - What will you use for running scripts and managing dependencies (npm or yarn)?
+  - What will you use for running scripts and managing dependencies?
+    - Yarn is discouraged as brought up in [ADR 05 - JavaScript dependency
+      management](../../practices/appeng/adrs/0005-javascript-dependency-management.mdx).
   - Will you use a JS framework (React, vue, etc.)?
 - For CSS:
   - How do you want to write CSS?

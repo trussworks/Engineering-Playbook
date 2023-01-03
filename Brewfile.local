@@ -1,3 +1,2 @@
 brew 'nodenv'
-brew 'yarn'
 brew 'pre-commit'
