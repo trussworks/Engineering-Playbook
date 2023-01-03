@@ -31,8 +31,5 @@ fi
 fancy_echo "Configuring Nodenv..."
 configure_shell_file_for_nodenv
 
-fancy_echo "Installing dependencies with Yarn..."
-yarn install
-
 fancy_echo "Launching the website..."
-yarn start
+npm run start
