@@ -21,13 +21,15 @@ in buildEnv {
       rev = "253aecf69ed7595aaefabde779aa6449195bebb7";
     }) {}).bash_5
 
-    (import (builtins.fetchGit {
-      # Descriptive name to make the store path easier to identify
-      name = "nodejs-14.17.5";
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/nixpkgs-unstable";
-      rev = "6a8e8b46152c13cd7ae8a072d36aaee943c2f795";
-    }) {}).nodejs-14_x
+    (import
+      (builtins.fetchGit {
+        # Descriptive name to make the store path easier to identify
+        name = "nodejs-16.16.0";
+        url = "https://github.com/NixOS/nixpkgs/";
+        ref = "refs/heads/nixpkgs-unstable";
+        rev = "6c6409e965a6c883677be7b9d87a95fab6c3472e";
+      })
+      { }).nodejs-16_x
 
     (import (builtins.fetchGit {
       # Descriptive name to make the store path easier to identify
