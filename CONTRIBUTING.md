@@ -27,7 +27,7 @@ channel 🔒 in Truss Slack][slack-reserve] to plan and prioritize the work.
 ## How
 
 If you are adding new content, please follow our
-[templates](./templates/README.md). If you are updating existing content, and
+[templates](./docs/templates/README.md). If you are updating existing content, and
 you notice that it does not adhere to our templates format, please update the
 format in a separate PR if you have time. If the work needs to be discussed,
 please reach out in the [#reserve channel 🔒 in Truss Slack][slack-reserve] to
