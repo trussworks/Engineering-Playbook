@@ -21,15 +21,16 @@ worse than no information. If we change our opinions or processes, we should
 strive to update the playbook shortly thereafter.
 
 If you feel important content is missing, please submit a PR if you have the
-time. Otherwise, please add a new backlog story to the
-[Company Wide Projects](https://www.pivotaltracker.com/n/projects/2120515)
-Pivotal board, which is managed by folks on Reserve.
+time. If the work needs to be discussed, please reach out in the [#reserve
+channel 🔒 in Truss Slack][slack-reserve] to plan and prioritize the work.
 
 ## How
 
 If you are adding new content, please follow our
 [templates](./templates/README.md). If you are updating existing content, and
 you notice that it does not adhere to our templates format, please update the
-format in a separate PR if you have time. Otherwise, please create a new backlog
-story in the [Company Wide Projects](https://www.pivotaltracker.com/n/projects/2120515)
-Pivotal board, which is managed by folks on Reserve.
+format in a separate PR if you have time. If the work needs to be discussed,
+please reach out in the [#reserve channel 🔒 in Truss Slack][slack-reserve] to
+plan and prioritize the work.
+
+[slack-reserve]: https://trussworks.slack.com/archives/C7KMHDJKW
