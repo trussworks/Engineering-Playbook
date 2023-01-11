@@ -69,7 +69,15 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    require.resolve('@cmfcmf/docusaurus-search-local'),
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        // `hashed` is recommended as long-team-cache of index file is possible.
+        hashed: true,
+        indexBlog: false,
+      })
+    ]
   ],
 };
