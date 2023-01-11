@@ -65,13 +65,13 @@ Where the name is scoped by the resource type and the region, e.g. lambda functi
 
 `${purpose}[-${application}]-${environment}` - is the general form
 
-- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-bug-tracker-bot", "webserver", "rds-log-cleaner"
 - `$application` - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 - `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
 
 e.g.
 
-- slack-pivotal-tracker-bot-test
+- slack-bug-tracker-bot-test
 - rds-log-cleaner-webapp-prod
 
 ### SNS topics
@@ -153,7 +153,7 @@ Typically when building resources and services in terraform, you will follow the
 `terraform-${provider}-${purpose}` - is the general form
 
 - `$provider` - the terraform provider, e.g. "aws", "pagerduty", "github"
-- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-pivotal-bot", "webserver", "rds-log-cleaner"
+- `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-bug-tracker-bot", "webserver", "rds-log-cleaner"
 
 e.g.
 
