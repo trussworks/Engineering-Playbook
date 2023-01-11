@@ -14,6 +14,5 @@ In order to implement these principles, we do a few things:
 - Planning and executing tasks in repeated cycles, called Sprints
 - At the end of each cycle, we review our work and whether or we accomplished what we set out to do.
 
-## Contents
-
-- [Pivotal Tracker](./tracker.md)
+Please check with your Practice lead to learn which bug tracking tool is used
+to track your work.
