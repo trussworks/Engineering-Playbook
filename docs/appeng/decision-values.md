@@ -33,7 +33,7 @@ decisions will affect the following groups:
    the AppEng practice.
    This is mentioned in the
    "What makes this decision generally applicable" section
-   of the [template](./adrs/template.md).
+   of the [template](../templates/adr-appeng.md).
 
 Here is an example drawing back to those groups
 in an ADR focused on picking a new database:
@@ -130,7 +130,7 @@ that may become obsolete.
 
 ### Shareable
 
-[Open source](../../developing/open-source)
+[Open source](../developing/open-source)
 strengthens the collective quality of our software.
 We seek to use and contribute to the open source community.
 
