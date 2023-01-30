@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # On-Call Best Practices
 
 ## Overview

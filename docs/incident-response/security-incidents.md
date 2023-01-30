@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Security Incidents
 
 While security incidents are similar to service-impacting incidents

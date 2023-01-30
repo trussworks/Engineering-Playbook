@@ -1,4 +1,8 @@
-# Incident Response
+---
+sidebar_position: 0
+---
+
+# Introduction
 
 ## Overview
 
@@ -10,9 +14,6 @@ with the post-incident retrospective (aka postmortem) process.
 
 ## Contents
 
-- [On-Call Best Practices](./on-call.md)
-- [Incident Response Overview](./overview.md)
-- [Security Incident Response](./security-incidents.md)
-- [Incident Analysis and Retrospectives](./analysis.md)
-- [Incident Retrospective Template](./retro-template.md)
-- [External Resources](./external-resources.md)
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
