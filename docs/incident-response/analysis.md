@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Incident Analysis and Retrospectives
 
 This documentation is not intended to be a complete guide to incident
@@ -183,7 +187,7 @@ involved in the incident or retrospective can learn from.
 We recommend using a collaborative method to write the template (Google
 Docs is the usual case), and then when complete and reviewed, it should
 be put in the central document archive for the project, wherever that
-may be. Other [guidance](../documentation/README.md) with regard to
+may be. Other [guidance](../documentation/intro-to-docs) with regard to
 documentation applies.
 
 While we provide a [template](./retro-template.md) for this document,

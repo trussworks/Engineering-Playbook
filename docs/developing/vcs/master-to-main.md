@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Master to Main branch rename
 
 These instructions will help moving repos from using the default branch name `master` and modify it to be

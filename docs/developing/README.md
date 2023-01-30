@@ -13,24 +13,3 @@ Generally, our approach should be "if there is a suggestion or answer in these p
 Where possible the documents here should refer to the Default Branch instead of using the word `master`. Where this
 is not possible try to use the default branch name `main`. In links to repos in GitHub please also attempt to get
 the reference to `main` and not to `master`.
-
-## Contents
-
-- [Command Line Tools](./command-line-tools/README.md)
-- [Editors, IDEs and Debuggers](./eid/README.md)
-- [Docker](./docker/README.md)
-- [direnv](./direnv/README.md)
-- [Programming Languages](./languages/README.md)
-- [Development Cycle](./cycle/README.md) aka Sprint
-- [Source Control](./vcs/README.md)
-- [CI/CD](./cicd/README.md)
-- [Defects/Bugs](./bugs/README.md)
-- [Technical Design](./technical-design/README.md)
-- [Code Reviews](./code-reviews/README.md)
-- [Slack Best Practices](./slack/README.md)
-- [Growth on Client](./growth/README.md)
-- [Learning Resources](./learning/README.md)
-- [Building and Releasing Go CLI tools with `goreleaser`](./command-line-tools/HOW2GORELEASER.md)
-- [Health Checks](./healthcheck/README.md)
-- [Pair Programming](./pairing/README.md)
-- [Open Source](./open-source/README.md)

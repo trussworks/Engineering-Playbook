@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Resources for Pairing
 
 - [On Pair Programming](https://martinfowler.com/articles/on-pair-programming.html)

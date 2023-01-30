@@ -47,7 +47,7 @@ along with initial examples that demonstrate it)
 
 More information around process
 and structure for ADRs can be found in the
-[Architecural Decision Records](../../documentation/adr.md)
+[Architecural Decision Records](../documentation/adr.md)
 section of the playbook.
 
 ## Domain Groups

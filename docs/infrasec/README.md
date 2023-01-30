@@ -1,6 +1,10 @@
-# InfraSec
+---
+sidebar_position: 3
+---
 
-Infrastructure and security engineering (infrasec) is the practice of
+# InfraSec Practice
+
+Infrastructure and security engineering (InfraSec) is the practice of
 building secure, robust systems that are foundational to having reliable
 applications and services. While infrastructure as code is a core area
 for this practice, it also involves system design, [incident

@@ -21,7 +21,7 @@ project or repository, review the mADR documentation and commit the most recent
 
 ```console
 mkdir --parents docs/adr
-curl -L -Ss https://raw.githubusercontent.com/adr/madr/master/template/template.md > docs/adr/0000-template.md
+curl -L -Ss https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md > docs/adr/0000-template.md
 ```
 
 ## Writing a new ADR

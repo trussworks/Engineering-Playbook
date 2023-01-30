@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # External Resources
 
 This is a collection of external resources that may be useful for learning

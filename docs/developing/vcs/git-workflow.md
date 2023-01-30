@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Git Workflow
 
 At Truss, we've tried to come up with some standardized workflows for

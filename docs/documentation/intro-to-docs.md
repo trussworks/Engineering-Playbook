@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Introduction to Documentation
 
 Documentation is a key part of any software project, but it's often

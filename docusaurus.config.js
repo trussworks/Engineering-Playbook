@@ -1,6 +1,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/duotoneLight');
 const darkCodeTheme = require('prism-react-renderer/themes/duotoneDark');
 
+const AppEngPages = require('./utils/redirect-appeng');
+const AdrsPages = require('./utils/redirect-adrs');
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Truss Engineering Playbook',
@@ -25,7 +28,19 @@ module.exports = {
           type: 'doc',
           docId: 'README',
           position: 'left',
-          label: 'Docs',
+          label: 'About',
+        },
+        {
+          type: 'doc',
+          docId: 'practices',
+          position: 'left',
+          label: 'Practices',
+        },
+        {
+          type: 'doc',
+          docId: 'incident-response/README',
+          position: 'left',
+          label: 'Incident Response',
         },
         {
           href: 'https://github.com/trussworks/Engineering-Playbook',
@@ -80,4 +95,17 @@ module.exports = {
       })
     ]
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: (() => {
+          let redirects = [];
+          redirects.push(AppEngPages);
+          redirects.push(AdrsPages);
+          return redirects.flat();
+        })(),
+      },
+    ]
+  ]
 };

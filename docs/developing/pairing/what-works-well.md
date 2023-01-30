@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # What Works Well
 
 - Sitting next to each other and talking through a task.

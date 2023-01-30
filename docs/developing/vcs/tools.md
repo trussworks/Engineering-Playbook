@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Tools
 
 This page provides a summary of tools we commonly use for source control
