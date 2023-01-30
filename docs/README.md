@@ -10,11 +10,11 @@ This collection of documents is intended to be simple and searchable, each one c
 
 ## Contents
 
-- [ATOs & Risk Management Framework](./compliance) - A high level overview of Federal compliance requirements.
+- [ATOs & Risk Management Framework](/docs/compliance) - A high level overview of Federal compliance requirements.
 - [Developer Tools & Practice](./developing/README.md) - Opinions and resources relating to the tools we use to do our work.
-- [Documentation](./documentation/intro-to-docs) - How to write effective documentation your users will read.
+- [Documentation](/docs/documentation/intro-to-docs) - How to write effective documentation your users will read.
 - [Web Development](./web/README.md) - Languages, frameworks and tools used to develop web applications
-- [Practices](./practices) - Resources on how the Truss Engineering practices organize.
+- [Practices](/docs/practices) - Resources on how the Truss Engineering practices organize.
   - [AppEng Practice](./appeng/README.md) - Application engineering is the
     practice area at Truss focused on building software applications.
   - [InfraSec Practice](./infrasec/README.md) - Infrastructure and security are foundational disciplines for building and maintaining stable systems.
