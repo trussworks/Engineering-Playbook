@@ -4,18 +4,6 @@
 
 Terraform is our tool of choice for automating our 'cloud infrastructure'. In particular, we expect all but the earliest of prototype [AWS](../aws/README.md) resources to be created/deployed using terraform rather than by hand.
 
-## Contents
-
-- [Semantic Versioning](#semantic-versioning)
-- [Splitting a git repo](#splitting-a-git-repo)
-- [Going public](#going-public)
-- [Publishing a release](#publishing-a-release)
-- [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
-- [Version not appearing in the registry](#version-not-appearing-in-the-registry)
-- [Terraform state mv](#terraform-state-mv)
-- [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
-- [How to test your Terraform code](#how-to-test-your-terraform-code)
-
 ### Semantic Versioning
 
 - When publishing a module for the first time, if you're uncertain what version to use, use `v1.0.0`
