@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Giving Feedback
 
 It’s important to check in with your partner from time to time to make sure

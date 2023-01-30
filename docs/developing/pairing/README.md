@@ -9,11 +9,6 @@ common pairing problems.
 
 ## Contents
 
-- [Why Pair?](./why-pair.md)
-- [What Works Well](./what-works-well.md)
-- [What Doesn't Work Well](./what-doesnt-work-well.md)
-- [Remote Pairing Etiquette](./etiquette.md)
-- [Giving Feedback](./giving-feedback.md)
-- [Meeting Attendance with a Pair](./meeting-attendance.md)
-- [A Framework for Pairing Sessions](./pairing-framework/README.md)
-- [Resources](./resources.md)
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

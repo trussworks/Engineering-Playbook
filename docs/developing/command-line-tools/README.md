@@ -7,8 +7,9 @@ developer happiness.
 
 You may also be interested in these other pages from the Truss Engineering Playbook:
 
-- [docker](https://github.com/trussworks/Engineering-Playbook/tree/master/developing/docker)
-- [direnv](https://github.com/trussworks/Engineering-Playbook/tree/master/developing/direnv)
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
 
 ## Terminal Emulators
 

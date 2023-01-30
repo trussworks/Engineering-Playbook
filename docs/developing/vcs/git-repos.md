@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Git Repos
 
 This page provides guidance on how to set up and manage your Git repos.

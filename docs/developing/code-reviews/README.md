@@ -17,8 +17,9 @@ or at a different stage.
 
 ## Contents
 
-- [Guide to Great Code Reviews](./great-code-reviews.md)
-- [Best Practices for Submitting a Pull Request](./pull-request-best-practices.md)
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
 
 ## Resources
 

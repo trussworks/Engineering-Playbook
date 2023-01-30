@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Meeting Attendance with a Pair
 
 Truss has a clear set of values and expectations when it comes to meetings (see

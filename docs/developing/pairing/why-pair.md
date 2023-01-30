@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Why Pair
 
 - Get to see the tools another person uses.

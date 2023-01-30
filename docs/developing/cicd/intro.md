@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Intro to CI/CD
 
 The goal of CI/CD practice is to provide a workflow that can support

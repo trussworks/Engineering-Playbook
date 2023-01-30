@@ -6,12 +6,9 @@ actually be used by anyone. What follows are resources for setting
 up a continuous integration and continuous delivery (CI/CD) pipeline
 according to Truss best practices to deliver software to customers.
 
-- [Intro to CI/CD](intro.md)
-- [Standard Delivery Pipeline](delivery-pipeline.md)
-- [CircleCI Config Patterns](circleci-patterns.md)
-- [CircleCI Orbs](circleci-orbs.md)
-- [CircleCI Utilities](circleci-utilities.md)
-- [Dependabot](dependabot.md)
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
 
 ## Resources
 
