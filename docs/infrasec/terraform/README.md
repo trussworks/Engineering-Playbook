@@ -4,17 +4,10 @@
 
 Terraform is our tool of choice for automating our 'cloud infrastructure'. In particular, we expect all but the earliest of prototype [AWS](../aws/README.md) resources to be created/deployed using terraform rather than by hand.
 
-## Contents
+If you're new to Terraform, you can find a very useful resource for beginners
+from HashiCorp's Learning platform.
 
-- [Semantic Versioning](#semantic-versioning)
-- [Splitting a git repo](#splitting-a-git-repo)
-- [Going public](#going-public)
-- [Publishing a release](#publishing-a-release)
-- [Updating a module for a new version of Terraform](#updating-a-module-for-a-new-version-of-terraform)
-- [Version not appearing in the registry](#version-not-appearing-in-the-registry)
-- [Terraform state mv](#terraform-state-mv)
-- [How to layout/structure a Terraform Project](#how-to-layoutstructure-a-terraform-project)
-- [How to test your Terraform code](#how-to-test-your-terraform-code)
+[➡️  Read **Get Started - AWS** HashiCorp Learning using Terraform.](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
 
 ### Semantic Versioning
 
