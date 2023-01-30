@@ -8,6 +8,7 @@ number prefix of four digits and name your ADR when adding it to
 export TWEP_NUM_ADR=$(($(find docs/appeng/adrs | grep -E '[0-9]+-.*\.mdx?' | wc -l)+1))
 export TWEP_NUM_PREFIX=$(printf '%04d' "$TWEP_NUM_ADR")
 cp docs/templates/adr-appeng.md ${#TWEP_NUM_PREFIX}-my-latest-adr.md
+unset TWEP_NUM_ADR
 unset TWEP_NUM_PREFIX
 ```
 
