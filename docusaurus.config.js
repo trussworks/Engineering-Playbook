@@ -28,7 +28,19 @@ module.exports = {
           type: 'doc',
           docId: 'README',
           position: 'left',
-          label: 'Docs',
+          label: 'About',
+        },
+        {
+          type: 'doc',
+          docId: 'practices',
+          position: 'left',
+          label: 'Practices',
+        },
+        {
+          type: 'doc',
+          docId: 'incident-response/README',
+          position: 'left',
+          label: 'Incident Response',
         },
         {
           href: 'https://github.com/trussworks/Engineering-Playbook',
