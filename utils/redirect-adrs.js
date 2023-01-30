@@ -10,14 +10,9 @@ module.exports = [
     ],
   },
   {
-    to: '/docs/infrasec/adrs/template',
+    to: '/docs/templates/adr-infrasec',
     from: [
       '/docs/infrasec/adr/template',
-    ],
-  },
-  {
-    to: '/docs/templates/adr-appeng',
-    from: [
       '/docs/infrasec/adrs/template',
     ],
   },
