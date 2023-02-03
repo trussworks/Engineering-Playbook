@@ -1,5 +1,15 @@
 # CI/CD
 
+:::tip This topic is under review
+
+Hi! This section is currently under review. Please read the InfraSec guidance on
+this topic titled [**CI/CD according to Truss**](../../infrasec/ci_cd.md). While
+some of the documentation contained here is relevant and expands on CI/CD
+topics, it currently is too focused on CircleCI and isn't generic enough. Expect
+this section to be changing frequently.
+
+:::
+
 The release process is one of the most important parts of development
 for obvious reasons: without a release, your code is never going to
 actually be used by anyone. What follows are resources for setting
