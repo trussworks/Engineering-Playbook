@@ -104,6 +104,7 @@ import DocCardList from '@theme/DocCardList';
 
 - [keychain](https://www.funtoo.org/Keychain) User-friendly front-end to `ssh-agent`
 - [mosh](https://mosh.org/) Mobile-friendly `ssh` replacement that performs better on unreliable network connections.
+- [1Password CLI](https://1password.com/downloads/command-line/) 1Password v8 supports `ssh`
 
 ## HTTP clients
 
