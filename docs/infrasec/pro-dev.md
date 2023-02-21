@@ -41,7 +41,7 @@ We would appreciate it if you would also share a summary and who you think that 
 
 Course taken: February, 23, 2022.
 
-Good for: folks that are considering managment or technical leadership and would like to have better 1:1 skills.
+Good for: folks that are considering management or technical leadership and would like to have better 1:1 skills.
 
 TL;DR: There are 5 things that your brain craves to be satisfied Certainty Autonomy Meaning Progress and Social inclusion.
 Learning to talk about satisfying those needs in 1:1s can help folks focus and address specific problems in satisfying those needs at work.
