@@ -727,11 +727,11 @@ It is possible that your YubiKey could be activated by malware on your machine, 
 
 If enabling touch-only mode, it is recommended to perform this step after you’ve confirmed that everything else is working.
 
-1. Enter the command: `ykman openpgp set-touch aut on`
+1. Enter the command: `ykman openpgp keys set-touch aut on`
+1. Enter the 8 digit Admin PIN
 1. Enter: `yes`
-1. Enter the 8 digit Admin PIN to confirm the setting change
 
-NOTE: When touch mode is enabled, operations will appear to stall. This is the only prompt that you will receive to touch your YubiKey. Failure to touch the YubiKey for authentication will result in failure of the operation. You can also disable touch-only mode with the following command: `ykman openpgp set-touch aut off`
+NOTE: When touch mode is enabled, operations will appear to stall. This is the only prompt that you will receive to touch your YubiKey. Failure to touch the YubiKey for authentication will result in failure of the operation. You can also disable touch-only mode with the following command: `ykman openpgp keys set-touch aut off`
 
 ### Disabling OTP (One Time Password)
 
