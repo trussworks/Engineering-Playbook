@@ -23,11 +23,6 @@ brew install goreleaser
 If you are splitting a tool from an existing project, you can follow the
 instructions in [here](../vcs/git-repos.md#splitting-out-code-to-a-new-repository).
 
-If you are adding your tool to the Trussworks GitHub org, please add the repo to
-our [Infra Management
-Repo](https://github.com/trussworks/legendary-waddle/tree/master/trussworks-prod/github-global).
-If you need help, please reach out to the #infrasec Slack channel.
-
 ## Get the project building binaries
 
 This assumes you are creating a binary from a Go project.
@@ -75,31 +70,26 @@ checking in changes to source control.
 ```yml
 repos:
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.21.0
+    rev: v1.51.2
     hooks:
       - id: golangci-lint
-
+        entry: golangci-lint run --fix --timeout 300s
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.4.0
+    rev: v4.4.0
     hooks:
-      - id: check-json
       - id: check-merge-conflict
       - id: check-yaml
       - id: detect-private-key
-      - id: pretty-format-json
-        args:
-          - --autofix
       - id: trailing-whitespace
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.21.0
+    rev: v0.33.0
     hooks:
       - id: markdownlint
 
   - repo: https://github.com/trussworks/pre-commit-hooks
-    rev: v0.0.4
+    rev: v1.1.1
     hooks:
-      - id: circleci-validate
       - id: goreleaser-check
 ```
 
@@ -158,9 +148,9 @@ access to that repo.
 ### Get an API key for pushing the docker image
 
 Use the `trussworksbot` user credentials in 1Password to log into [Docker Hub](https://hub.docker.com/) (you may have
-to log out of your personal user session).  In the [Security Settings](https://hub.docker.com/settings/security)
+to log out of your personal user session). In the [Security Settings](https://hub.docker.com/settings/security)
 for `trussworksbot` create a "New Access Token" named for the repository you just created. Save this access key to
-the `trussworksbot` 1Password as you will need it later for configuring CircleCI.
+the `trussworksbot` 1Password as you will need it later for configuring CircleCI or GitHub Actions.
 
 ## Create goreleaser configuration
 
@@ -183,14 +173,14 @@ before:
   hooks:
     - go mod download
 builds:
-- env:
-    - CGO_ENABLED=0
-  goos:
-    - darwin
-    - linux
-  goarch:
-    - amd64
-  main: main.go
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+    main: main.go
 brews:
   - description: "USE THE DESCRIPTION FROM THE GITHUB REPO"
     github:
@@ -201,20 +191,18 @@ brews:
       name: trussworks-infra
       email: infra+github@truss.works
 dockers:
-  -
-    binaries:
+  - binaries:
       - <BINARYNAME>
     image_templates:
       - "OWNER/NEWREPO:{{ .Tag }}"
     skip_push: true
 archives:
-  -
-    replacements:
+  - replacements:
       darwin: Darwin
       linux: Linux
       amd64: x86_64
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
   algorithm: sha256
 snapshot:
   name_template: "{{ .Tag }}-next"
@@ -222,8 +210,8 @@ changelog:
   sort: asc
   filters:
     exclude:
-    - '^docs:'
-    - '^test:'
+      - "^docs:"
+      - "^test:"
 ```
 
 ### Test goreleaser locally
@@ -237,7 +225,7 @@ goreleaser check
 Then try to build from this configuration using:
 
 ```sh
-goreleaser build --snapshot --rm-dist
+goreleaser build --snapshot --clean
 ```
 
 Now you should have build artifacts in the `dist/` directory in your repository. This is a good time to ensure
@@ -246,7 +234,7 @@ that `dist/` is in your `.gitignore` file.
 In your terminal from the root of your repo, try runing goreleaser without releasing with:
 
 ```sh
-goreleaser --snapshot --skip-publish --rm-dist
+goreleaser --snapshot --skip-publish --clean
 ```
 
 This goes beyond the build process and tests out the parts of the releaser related to pushing artifacts.
@@ -266,7 +254,7 @@ Configure the `GITHUB_TOKEN`, `DOCKER_USER`, and `DOCKER_PASS` environment varia
 `GITHUB_TOKEN` is used by goreleaser to update release notes and push binaries to the release on GitHub. It is also
 used to update the [trussworks/homebrew-tap](https://github.com/trussworks/homebrew-tap) with the new artifact
 locations and checksums. In the `infra+github@truss.works` 1Password you will find an API Key named
-`personal access token for releases` which can be used for this value.
+`gorelreaser-homebrew-tap-token` which can be used for this value.
 
 `DOCKER_USER` and `DOCKER_PASS` are configured from the `trussworksbot` in 1Password. Use the API Key you configured
 in an earlier step to fill out these values. This is how CircleCI will push to Docker Hub.
@@ -358,6 +346,10 @@ git push --tags
 
 This will create a tag and CircleCI will automatically run the `release` workflow. This will work even on
 a branch, meaning you can test the release process before merging this code into the mainline branch.
+
+You can also cut a release from the `https://github.com/trussworks/$REPO/releases` view.
+
+And if CLI is more your thing, you can cut a release with `gh release create v0.0.0 --title "My First Release" --notes "Notes go here"`.
 
 ## Verify the release
 
