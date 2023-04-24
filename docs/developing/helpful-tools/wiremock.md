@@ -16,4 +16,4 @@ It features an approachable JSON syntax for [stubbing API responses](https://wir
 ## When not to use it
 
 - If [Mock Service worker (MSW)](https://mswjs.io/) suits your needs (your project is likely heavily JS based), consider using that instead
-- If your project uses a framework that has baked-in API mocking that suits your needs.
+- If your project uses a framework that has baked-in API mocking that suits your needs
