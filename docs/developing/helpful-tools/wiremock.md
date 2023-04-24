@@ -11,6 +11,7 @@ It features an approachable JSON syntax for [stubbing API responses](https://wir
 ## When to use it
 
 - When your project interfaces with external APIs over which you have no control
+- When external APIs are not accessible from developer environments due to network or security constraints
 - When your project needs consistent API mocking agnostic to the part of the stack making the request
 
 ## When not to use it
