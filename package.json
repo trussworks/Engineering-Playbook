@@ -31,7 +31,7 @@
     "url-loader": "4.1.1"
   },
   "resolutions": {
-    "**/ua-parser-js": "1.0.33"
+    "**/ua-parser-js": "0.8.1"
   },
   "browserslist": {
     "production": [
