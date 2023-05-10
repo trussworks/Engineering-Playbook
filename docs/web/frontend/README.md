@@ -38,7 +38,8 @@ It is also important to keep in mind, especially as the ecosystem of front end d
 - \[ \] [DayJS](https://day.js.org/), [luxon](https://moment.github.io/luxon/index.html) (newer alternatives to Moment, working with dates and times)
   - Note: [MomentJS](https://momentjs.com/) has been deprecated, **do not use on new projects**
 - \[ \] [validateJS](https://validatejs.org/), [yup](https://github.com/jquense/yup) (validating form object models)
-- \[ \] [Formik](https://formik.org/), [React-hook-form](https://react-hook-form.com/) (building forms in React)
+- \[ \] [React-hook-form](https://react-hook-form.com/) (building forms in React)
+  - We used to recommend [Formik](https://formik.org/) while it was maintained. We now recommend migrating to React Hook Form if you're already using Formik. Check out our [migration guide](https://github.com/trussworks/formik-to-react-hook-form-migration-guide) for more information.
 - \[ \] [numeral.js](http://numeraljs.com/), [big.js](https://mikemcl.github.io/big.js/) (working with numbers and decimals)
 
 ### Learning
