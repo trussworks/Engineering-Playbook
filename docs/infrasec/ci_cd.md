@@ -14,7 +14,7 @@ for CI/CD? What needs to be handled first?
 
 If any of that feels familiar, this document is for you.
 
-### This document is *not* prescriptive
+### Embrace your constraints
 
 Working with constraints is a fact of life that we accept to deliver value to
 our clients. We expect you will make strategic compromises in engineering
