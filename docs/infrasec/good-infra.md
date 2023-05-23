@@ -82,7 +82,7 @@ Like other mechanisms, the automation must be run regularly to ensure it's funct
 
 ### Delivery pipeline
 
-_[:eyes: See the Intro to CI/CD](../developing/cicd/intro.md) for a deeper dive into this topic._
+_[:eyes: See the Intro to CI/CD](../../infrasec/ci_cd.md) for a deeper dive into this topic._
 
 An effective delivery pipeline is important for creating a successful — organization-wide — delivery culture. This mechanism brings code from development into production, ties together the (technical and non-technical) teams, and enables the company to iterate quickly.
 
