@@ -202,33 +202,35 @@ this. If you don't have one, it's still best practice.
 
 > See also: [ADR on CalVer tags][adr_calver]
 
-A combination of a calendar date plus the long git digest achieves the
-aims of a good tagging scheme:
+A combination of a calendar date plus the long git digest achieves the aims of
+a good tagging scheme:
 
-- Tags should be unique, immutable, and kept in a monotonically increasing sequence.
-- Humans reading the tag need to quickly and easily determine which builds are newer
-  or older than others.
-- Both humans and the build system need to be able to identify where in the source tree
-  the container was built from.
+- Tags should be unique, immutable, and kept in a monotonically increasing
+  sequence.
+- Humans reading the tag need to quickly and easily determine which builds are
+  newer or older than others.
+- Both humans and the build system need to be able to identify where in the
+  source tree the container was built from.
 
 The combined schema looks like this:
 
 `<%Y-%m-%d_%H.%M.%S>_<long git digest>`
 
-Finally, you can add a schema version prefix. This way, if you decide to add (or remove)
-information from the schema later, your parsing logic can be maintained to parse all tags
-since the beginning.
+Finally, you can add a schema version prefix. This way, if you decide to add
+(or remove) information from the schema later, your parsing logic can be
+maintained to parse all tags since the beginning.
 
 `v01_<%Y-%m-%d_%H.%M.%S>_<long git digest>`
 
-This yields human-readable, unique, monotonically increasing tags. A [regular expression](https://regex101.com/r/iP6tUn/2) can both validate and parse the
-tags.
+This yields human-readable, unique, monotonically increasing tags. A
+[regular expression](https://regex101.com/r/iP6tUn/2) can both validate and
+parse the tags.
 
 </details>
 
-If your images are dependencies for other applications, you may need to track which
-versions have new features or breaking changes. In that case, we recommend semantic
-versioning.
+If your images are dependencies for other applications, you may need to track
+which versions have new features or breaking changes. In that case, we
+recommend semantic versioning.
 
 ### Semantic Versioning
 
@@ -258,8 +260,8 @@ These are other versioning strategies we've seen. We do not recommend them.
 <details>
 
 - A commit hash is unique (with extremely few collisions) and is easily linked
-  back to history in code. However, how much has changed is opaque
-  and it is difficult to determine how old this version is in comparison to other
+  back to history in code. However, how much has changed is opaque and it is
+  difficult to determine how old this version is in comparison to other
   versions.
 - _Feature branch related names._ These should be short lived and maintained
   for no more than a few days. Most users will not find these useful.
