@@ -183,10 +183,18 @@ this. If you don't have one, it's still best practice.
   be rewritten or altered by subsequent builds. This allows you to distribute
   or redeploy from these unaltered artifacts for different points in code.
 
+- DO: Use distroless base images in docker, and build everything on top of
+  those.
+
+### Versioning the containers
+
 - DO: Pin the version of everything using deterministic, calculated tags, like
   the git commit digest, a Unix timestamp, or a combination.[^1]
 
-<details>
+- DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
+
+<details><summary>Version schema options</summary>
+
 ### Semantic Versioning
 
 Why semver? It tells you and your customer how much has changed since the last
@@ -204,14 +212,14 @@ PATCH version when you make backwards compatible bug fixes.
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 ```
 
-### Commit Hash
+#### Commit Hash
 
 A commit hash is unique (with extremely few collisions) and is easily linked
 back to history in code. However, how much has changed is opaque to your users
 and it is difficult to determine how old this version is in comparison to other
 versions.
 
-### Other versioning strategies
+#### Other versioning strategies
 
 These are other versioning strategies we've seen. We do not recommend them.
 
@@ -224,11 +232,6 @@ These are other versioning strategies we've seen. We do not recommend them.
   changes went in but are hard to tie to a commit in mainline.
 
 </details>
-
-- DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
-
-- DO: Use distroless base images in docker, and build everything on top of
-  those.
 
 ## Artifact storage
 
