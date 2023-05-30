@@ -40,7 +40,7 @@ disrupting the project's development.
 
 Key to ensuring that our CI workflow is safe is making sure we are doing
 unit testing of our code *prior* to merging in to the default branch. To do this,
-we use automated tools like CircleCI to run a battery of tests against
+we use CI to run a battery of tests against
 every branch we create a PR from. We want to run a variety of tests that
 cover a variety of things like:
 
@@ -56,20 +56,19 @@ pull request that this code does what we want and won't break things.
 Merging your code is just the first step to actually getting it in front
 of a real person to use it. The other component for this how your code
 gets from a Git repository into a live environment where someone can touch
-it. This workflow is orchestrated via an automated tool like CircleCI, and
-looks something like this:
+it. This workflow is orchestrated via CI, and looks something like this:
 
 1. New code is merged into the default branch.
-1. CircleCI detects that the default branch has been updated and deploys the code to
+1. CI detects that the default branch has been updated and deploys the code to
    our `development` environment.
-1. CircleCI checks to make sure the deploy was successful. Is our
+1. CI checks to make sure the deploy was successful. Is our
    environment running the right version of the code?
-1. CircleCI (or another tool fired by CircleCI) performs post-deployment
+1. CI performs post-deployment
    testing. Does it pass some functional tests to ensure user workflows
    are functional (eg, can someone log in, pull up a user record, put
    things in a shopping cart, etc)? Are logs filling up with error now
    that the new version is deployed?
-1. If the tests pass, CircleCI goes ahead and deploys to our `production`
+1. If the tests pass, CI goes ahead and deploys to our `production`
    environment, then runs the same sort of tests it ran in development.
    In some cases, there may be an additional manual approval step, or
    this may be a deployment to a `staging` environment as an additional

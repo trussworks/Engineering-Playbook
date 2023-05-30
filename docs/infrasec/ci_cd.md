@@ -1,5 +1,32 @@
 # CI/CD according to Truss
 
+## Basics
+
+Continuous integration (CI) is a software development practice that automates
+the integration of code changes from multiple contributors into a single
+project. This process involves frequently merging code changes into a central
+repository, followed by automated builds and tests to detect errors early in
+the development process.
+
+Continuous deployment (CD) is a software development approach that
+automatically deploys all code changes to production after passing automated
+tests, without requiring human intervention. By releasing code changes to
+production more frequently, continuous deployment enables developers to find
+and fix bugs more quickly, while also speeding up the feedback loop with
+customers.
+
+There are usually four conceptual steps in a delivery pipeline:
+
+1. `Build`: Where you build the code into a binary or other artifacts to
+   eventually distribute.
+1. `Test`: Where you validate or test the artifacts built in the previous step.
+1. `Deploy`: Where you configure and deploy the artifacts to an environment.
+   Could be a pre-prod or prod.
+1. `Release`: Where you finally allow users access to that version of code
+   you've configured and built.
+
+In many cases you can merge or swap the steps `Release` and `Deploy`.
+
 ## What is this? Is this for me?
 
 You just started on a brand-new project. It's day 1, and everything is
@@ -39,7 +66,7 @@ you.
 
 - DO: Use [Github Actions] (GHA).
 
-*Especially* on FedGov projects, due to the FedRAMP status (or lack thereof)
+_Especially_ on FedGov projects, due to the FedRAMP status (or lack thereof)
 for the alternatives.
 
 GHA has good documentation, and a rich ecosystem for shared Actions. Deployment
@@ -77,13 +104,13 @@ front and then doggedly sticking to them.
   developer effectiveness iterating on the app.
 
 If a workflow increases the overhead on developers trying to iterate on the
-software, it should be *removed* until it can be fixed.
+software, it should be _removed_ until it can be fixed.
 
 This often shows up as: "We don't know how to make it faster, but that's on our
 roadmap." No. Make the time now, or get rid of the slow thing until you can do
 it right.
 
-- DON'T: Lose sight of how long build and deploy workflows *will* inhibit fixes
+- DON'T: Lose sight of how long build and deploy workflows _will_ inhibit fixes
   during an incident. Slow CI/CD is a security and availability risk to your
   project!
 
@@ -96,12 +123,12 @@ toil for developers monitoring and re-running their builds.
 
 "That test is flaky, just re-run it!" No. Remove the flaky test, or configure
 it to run locally only. If it can be re-engineered later to fix the flakiness,
-*then* it can be restored to CI.
+_then_ it can be restored to CI.
 
 - DO: Get buy-in from product management on these points early.
 
 - DO: Norm early and often on what is an acceptable duration for builds and
-  deployments, and then *stick to the norm*.
+  deployments, and then _stick to the norm_.
 
 - DO: Parallelize as much as you can.
 
@@ -144,13 +171,101 @@ this. If you don't have one, it's still best practice.
 
 ## Builds
 
-- DO: Pin the version of everything using deterministic, calculated tags, like
-  the git commit digest, a unix timestamp, or a combination.[^1]
+- DO: Ensure builds are repeatable. This means you should be able to check out
+  the code from your project at that same commit hash and build it again and
+  get the same artifact(s).
 
-- DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
+- DO: Ensure builds are hermetic. This means that the build should be isolated
+  from other builds. In CI, the build shouldn't share the same workspace or
+  files from a previous build or from a build of a different project.
+
+- DO: Output immutable artifacts from your build. Artifact outputs should not
+  be rewritten or altered by subsequent builds. This allows you to distribute
+  or redeploy from these unaltered artifacts for different points in code.
 
 - DO: Use distroless base images in docker, and build everything on top of
   those.
+
+### Versioning the containers
+
+- DO: Pin the version of everything using deterministic, calculated tags, like
+  the git commit digest, a Unix timestamp, or a combination.[^1]
+
+- DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
+
+- DO: Combine CalVer and the git commit digest in your tags to get the best of
+  all worlds. (see below)
+
+<details><summary>CalVer plus git digest</summary>
+
+> See also: [ADR on CalVer tags][adr_calver]
+
+A combination of a calendar date plus the long git digest achieves the aims of
+a good tagging scheme:
+
+- Tags should be unique, immutable, and kept in a monotonically increasing
+  sequence.
+- Humans reading the tag need to quickly and easily determine which builds are
+  newer or older than others.
+- Both humans and the build system need to be able to identify where in the
+  source tree the container was built from.
+
+The combined schema looks like this:
+
+`<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+
+Finally, you can add a schema version prefix. This way, if you decide to add
+(or remove) information from the schema later, your parsing logic can be
+maintained to parse all tags since the beginning.
+
+`v01_<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+
+This yields human-readable, unique, monotonically increasing tags. A
+[regular expression](https://regex101.com/r/iP6tUn/2) can both validate and
+parse the tags.
+
+</details>
+
+If your images are dependencies for other applications, you may need to track
+which versions have new features or breaking changes. In that case, we
+recommend semantic versioning.
+
+<details><summary>Semantic versioning</summary>
+
+Why semver? It tells you and your customer how much has changed since the last
+released code and sets expectations accordingly. If you are tagging at mainline
+where you are building from, you can rebuild the artifact from the same point.
+
+From [semver.org](https://semver.org):
+
+```
+Given a version number MAJOR.MINOR.PATCH, increment the:
+
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards compatible manner, and
+PATCH version when you make backwards compatible bug fixes.
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+```
+
+</details>
+
+These are other versioning strategies we've seen. We do not recommend them.
+
+<details><summary>Don't do this</summary>
+
+- A _commit hash_ is unique (with extremely few collisions) and is easily linked
+  back to history in code. However, how much has changed is opaque and it is
+  difficult to determine how old this version is in comparison to other
+  versions.
+- _Feature branch related names._ These should be short lived and maintained
+  for no more than a few days. Most users will not find these useful.
+- _Build id related names._ These are opaque to a user and harder to dig up
+  history on when debugging.
+- _Build date related names._ These are also opaque to a user and difficult to
+  dig up history on when debugging. You at least get a sense of when these
+  changes went in but are hard to tie to a commit in mainline.
+
+</details>
 
 ## Artifact storage
 
@@ -173,7 +288,7 @@ failed builds, and more.
 
 - DON'T: Fragment your artifact storage repositories.
 
-For example, you need *one* ECR repo shared across AWS accounts.
+For example, you need _one_ ECR repo shared across AWS accounts.
     <!--  TODO: Explain why. -->
 
 ## Alerting
@@ -191,10 +306,34 @@ A broken main branch is a fire drill.
 If there are so many alerts from CI/CD that you feel tempted to put them in a
 separate channel, then you have too many alerts.
 
+## Running tests
+
+- DO: Keep test runs hermetic. Ideally, multiple CI runs should be able to run
+  at the same time without affecting each other.
+
+- DO: Require that tests be idempotent. Tests in CI should be able to run
+  several times over without producing inconsistent effects.
+
+- DO: Ensure tests can be reproduced locally, so developers can troubleshoot
+  and debug them more easily.
+
+- DON'T: Wait for tests to finish before reporting failures. In CI you will
+  want to give the waiting devloper signal on whether their work can be merged
+  or requires changes as quickly as possible.
+
+## Deployments
+
+- DO: Use the exact same deployment process for each environment. This allows
+  you to use dev and staging deployments as tests for the deployment process
+  itself.
+- DO: Keep deployments repeatable. The same code and configuration should be
+  deployable again and again.
+
 ## Other
 
 - DO: Apply the [steel cable] approach to building CI/CD.
 
+[adr_calver]: https://github.com/trussworks/template-tech-challenge/blob/main/docs/adr/0005-define-image-tag-schema.md
 [alert fatigue]: https://en.wikipedia.org/wiki/Alarm_fatigue
 [artifact storage]: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 [bitbucket pipelines]: https://bitbucket.org/product/features/pipelines
