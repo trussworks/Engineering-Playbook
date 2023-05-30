@@ -193,7 +193,41 @@ this. If you don't have one, it's still best practice.
 
 - DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
 
-<details><summary>Version schema options</summary>
+- DO: Combine CalVer and the git commit digest in your tags to get the best of all worlds.
+
+### CalVer plus git digest
+
+<details>
+
+> See also: [ADR on CalVer tags][adr_calver]
+
+A combination of a calendar date plus the long git digest achieves the
+aims of a good tagging scheme:
+
+- Tags should be unique, immutable, and kept in a monotonically increasing sequence.
+- Humans reading the tag need to quickly and easily determine which builds are newer
+  or older than others.
+- Both humans and the build system need to be able to identify where in the source tree
+  the container was built from.
+
+The combined schema looks like this:
+
+`<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+
+Finally, you can add a schema version prefix. This way, if you decide to add (or remove)
+information from the schema later, your parsing logic can be maintained to parse all tags
+since the beginning.
+
+`v01_<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+
+This yields human-readable, unique, monotonically increasing tags. A [regular expression](https://regex101.com/r/iP6tUn/2) can both validate and parse the
+tags.
+
+</details>
+
+If your images are dependencies for other applications, you may need to track which
+versions have new features or breaking changes. In that case, we recommend semantic
+versioning.
 
 ### Semantic Versioning
 
@@ -302,6 +336,7 @@ separate channel, then you have too many alerts.
 
 - DO: Apply the [steel cable] approach to building CI/CD.
 
+[adr_calver]: https://github.com/trussworks/template-tech-challenge/blob/main/docs/adr/0005-define-image-tag-schema.md
 [alert fatigue]: https://en.wikipedia.org/wiki/Alarm_fatigue
 [artifact storage]: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 [bitbucket pipelines]: https://bitbucket.org/product/features/pipelines
