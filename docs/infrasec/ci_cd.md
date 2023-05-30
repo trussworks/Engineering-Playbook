@@ -212,17 +212,14 @@ PATCH version when you make backwards compatible bug fixes.
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 ```
 
-#### Commit Hash
-
-A commit hash is unique (with extremely few collisions) and is easily linked
-back to history in code. However, how much has changed is opaque to your users
-and it is difficult to determine how old this version is in comparison to other
-versions.
-
 #### Other versioning strategies
 
 These are other versioning strategies we've seen. We do not recommend them.
 
+- A commit hash is unique (with extremely few collisions) and is easily linked
+  back to history in code. However, how much has changed is opaque
+  and it is difficult to determine how old this version is in comparison to other
+  versions.
 - _Feature branch related names._ These should be short lived and maintained
   for no more than a few days. Most users will not find these useful.
 - _Build id related names._ These are opaque to a user and harder to dig up
