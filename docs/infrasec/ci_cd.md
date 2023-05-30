@@ -193,7 +193,8 @@ this. If you don't have one, it's still best practice.
 
 - DON'T: Tag anything with \`:latest\`, \`:staging\` or anything of such.[^2]
 
-- DO: Combine CalVer and the git commit digest in your tags to get the best of all worlds.
+- DO: Combine CalVer and the git commit digest in your tags to get the best of
+  all worlds. (see below)
 
 ### CalVer plus git digest
 
