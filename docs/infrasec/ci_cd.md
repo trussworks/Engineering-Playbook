@@ -196,9 +196,7 @@ this. If you don't have one, it's still best practice.
 - DO: Combine CalVer and the git commit digest in your tags to get the best of
   all worlds. (see below)
 
-### CalVer plus git digest
-
-<details>
+<details><summary>CalVer plus git digest</summary>
 
 > See also: [ADR on CalVer tags][adr_calver]
 
@@ -232,9 +230,7 @@ If your images are dependencies for other applications, you may need to track
 which versions have new features or breaking changes. In that case, we
 recommend semantic versioning.
 
-### Semantic Versioning
-
-<details>
+<details><summary>Semantic versioning</summary>
 
 Why semver? It tells you and your customer how much has changed since the last
 released code and sets expectations accordingly. If you are tagging at mainline
@@ -253,13 +249,11 @@ Additional labels for pre-release and build metadata are available as extensions
 
 </details>
 
-#### Other versioning strategies
-
 These are other versioning strategies we've seen. We do not recommend them.
 
-<details>
+<details><summary>Don't do this</summary>
 
-- A commit hash is unique (with extremely few collisions) and is easily linked
+- A _commit hash_ is unique (with extremely few collisions) and is easily linked
   back to history in code. However, how much has changed is opaque and it is
   difficult to determine how old this version is in comparison to other
   versions.
