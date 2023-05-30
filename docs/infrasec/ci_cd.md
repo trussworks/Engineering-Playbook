@@ -197,6 +197,8 @@ this. If you don't have one, it's still best practice.
 
 ### Semantic Versioning
 
+<details>
+
 Why semver? It tells you and your customer how much has changed since the last
 released code and sets expectations accordingly. If you are tagging at mainline
 where you are building from, you can rebuild the artifact from the same point.
@@ -212,9 +214,13 @@ PATCH version when you make backwards compatible bug fixes.
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 ```
 
+</details>
+
 #### Other versioning strategies
 
 These are other versioning strategies we've seen. We do not recommend them.
+
+<details>
 
 - A commit hash is unique (with extremely few collisions) and is easily linked
   back to history in code. However, how much has changed is opaque
