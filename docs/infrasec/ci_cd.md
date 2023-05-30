@@ -184,7 +184,7 @@ this. If you don't have one, it's still best practice.
   or redeploy from these unaltered artifacts for different points in code.
 
 - DO: Pin the version of everything using deterministic, calculated tags, like
-  the git commit digest, a unix timestamp, or a combination.[^1]
+  the git commit digest, a Unix timestamp, or a combination.[^1]
 
 <details>
 ### Semantic Versioning
