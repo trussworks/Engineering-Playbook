@@ -1,5 +1,5 @@
-const lightCodeTheme = require('prism-react-renderer/themes/duotoneLight');
-const darkCodeTheme = require('prism-react-renderer/themes/duotoneDark');
+const lightCodeTheme = require("prism-react-renderer").themes.duotoneLight;
+const darkCodeTheme = require("prism-react-renderer").themes.duotoneDark;
 
 const AppEngPages = require('./utils/redirect-appeng');
 const AdrsPages = require('./utils/redirect-adrs');
