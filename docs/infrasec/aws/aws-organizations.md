@@ -33,7 +33,7 @@ description of the patterns we've adopted.
   be suffixed with `.org-root` in order to distinguish them from
   IAM users in other accounts (such as `alice.org-root`).
 - You can use the
-  [`terraform-aws-org-scp`](https://github.com/trussworks/terraform-aws-org-scp)
+  [`terraform-aws-ou-scp`](https://github.com/trussworks/terraform-aws-ou-scp)
   module to get a base set of [Service Control
   Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
   to apply to OUs created in this account.
