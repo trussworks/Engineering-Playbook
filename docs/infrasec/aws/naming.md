@@ -10,11 +10,13 @@ Things are further complicated in AWS because there are different uniqueness con
 | Per account                  | IAM resources (users, groups, roles, policies, …) |
 | Per region                   | Most everything else (ALB, ECS, RDS, …)           |
 
-As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard tend to use the following.
+As with all naming schemes (and other stylistic things such as casing and comments) where the client already has a functional naming scheme we should follow that - there are more important issues to deal with. However, for our own work and for projects where we are setting the standard we prefer to use the following.
 
 ## Globally unique
 
 ### S3 Buckets
+
+If the AWS account is a monolithic account, this can require more complex naming conventions for bucket.
 
 `${account.alias}-${application.name}[-${environment}][-${region}]` - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
 
@@ -25,7 +27,20 @@ As with all naming schemes (and other stylistic things such as casing and commen
 
 e.g.
 
-- truss-aws-logs-us-east-1
+- truss-aws-logs-staging-us-east-1
+
+If using AWS Organizations, ideally the `${account-alias}` will include the `${environment}`, which can result in more simple S3 naming convention.
+
+`${account.alias}-${application.name}` - these names begin with a consistent account/usage prefix as they are globally scoped across all of AWS.
+
+- `$account-alias` - is a prefix for the account, e.g. "truss-dev", "spacecats-prod"
+- `$application-name` - is application for which the resource is created, e.g. "aws-logs", "webserver", "terraform-state"
+- `[${region}]` - optionally add the region if there are multiple regions used
+
+e.g.
+
+- truss-dev-aws-logs
+- spacecats-prod-webserver
 
 ## Unique per account
 
@@ -33,12 +48,12 @@ e.g.
 
 IAM resource names are account unique (i.e., visible across all regions), e.g. for roles:
 
-`${service/realm}[-${role}]-${project/application}-${environment}` - is the general form
+`${service/realm}[-${role}]-${project/application}-[${environment}]` - is the general form
 
 - `$service/realm` - to what does this role pertain, e.g. "ecs", "lamda" or "circleci".
 - `$role` - where there may be multiple roles associated with a service, this can be used as a way of disambiguating, e.g "task-execution" or "rds-snapshot-cleaner"
 - `$project/application` - where there may be multiple applications/projects being managed with independent deploy cycles, this is used, e.g. "webapp", "honeycomb"
-- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `[$environment]` - optionally can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction in monolithic AWS accounts
 
 e.g.
 
@@ -63,11 +78,11 @@ When you create a new user, you should follow a first initial last name format (
 
 Where the name is scoped by the resource type and the region, e.g. lambda functions, then it is enough to give a meaningful name and qualify by environment. If the purpose is common, e.g. rds-log-cleaner, it may need an application.
 
-`${purpose}[-${application}]-${environment}` - is the general form
+`${purpose}[-${application}][-${environment}]` - is the general form
 
 - `$purpose` - a simple name describing the role/purpose of the resource, e.g. "slack-bug-tracker-bot", "webserver", "rds-log-cleaner"
 - `$application` - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
-- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `[$environment]` - optionally can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction in monolithic AWS accounts
 
 e.g.
 
@@ -76,9 +91,9 @@ e.g.
 
 ### SNS topics
 
-The main purpose of the SNS topics are for notifications to teams. The naming convention reflects that, closely followed by the AWS account type (Gov or Com) and action.
+The main purpose of the SNS topics are for notifications to teams. The naming convention reflects that, closely followed by the AWS account type (Gov or Com, if applicable) and action.
 
-`${team}-${account_type}-${action}` - is the general form
+`${team}[-${account_type}-]${action}` - is the general form
 
 Sample names:
 
@@ -100,15 +115,16 @@ e.g.
 
 VPCs are unique by region but they should indicate which application and environment level they contain.
 
-`[${application}-]${environment}` - is the general form
+`${application}-[${environment}]` - is the general form
 
-- `$application` - if needed, disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
+- `$application` - disambiguates between a similar purpose across applications, e.g. "webapp" vs "honeycomb"
 
-- `$environment` - can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction
+- `[$environment]` - optionally can be used to distinguish different versions of the resource/app that occur during the development lifecycle, e.g. `dev`, `perf_test`, `staging` and `prod`uction in monolithic AWS accounts
 
-- eec-prod
+e.g.
 
-- staging
+- eec
+- eec-staging
 
 ### Subnets
 
