@@ -31,3 +31,62 @@ A large portion of our work is focused on developing web apps in partnership wit
 Having a 'practice opinion' on these tools will also help support folks' professional development, as well as our hiring and on-boarding processes. As we hire and get folks up to speed, this decision may be able to help us tailor what we do toward 'what we're trying to be good at.' Similarly we could lean on this as we seek to provide resources for folks developing their professional development plans.
 
 ## Alternatives Considered
+
+### Django
+
+#### Pros
+
+- `+` Mature framework that's been around since 2005.
+- `+` Opinionated tooling for managing data migrations, potentially making the task more accessible for junior practitioners.
+- `+` Strong ORM allowing the abstraction of many database interactions.
+- `+` Features designed to make form creation and management easier.
+- `+` Strong templating tooling
+- `+` Possible to gain a portion of the features typically associated with single page applications, with less overhead by pairing the framework with something like [htmx](https://htmx.org/).
+- `+` Uses the python programming language which enjoys broad community support, and is useful across multiple subpractices like web development and data science.
+- `+` Provides batteries included tooling for authentication and authorization, caching, and an administrative console, among others.
+- `+` Uses Python, which is considered easy to learn and is now frequently taught in both college and bootcamp programs.
+
+#### Cons
+
+- `-` Uses Python, which means learning a new programming language for those who haven't been exposed to it yet.
+- `-` Different languages between backend and frontend if Javascript is needed for client interactions.
+- `-` May need to use additional tooling for asynchronous workload use cases (message queues and workers).
+- `-` Python's dynamic typing may lead to more effort spent on unit tests. But this can be mitigated some through [type hinting](https://docs.python.org/3/library/typing.html)
+
+### Spring
+
+#### Pros
+
+- `+` Mature framework that's been around since 2002.
+- `+` Reactive programming model could be useful for a variety of use cases.
+- `+` Spring boot is good for microservices where use cases call for that.
+- `+` Batteries included tooling for things like authentication and authorization and caching, among others.
+- `+` Java tooling is popular in enterprise spaces
+- `+` Uses Java, which is commonly taught in college programs.
+- `+` Java is statically typed which can give safety that would otherwise be gained through additional unit tests.
+
+#### Cons
+
+- `-` Big complex framework with a lot of capabilities, but may be less suited for rapid prototyping use cases.
+- `-` Different languages between backend and frontend if Javascript is needed for client interactions.
+- `-` Potentially too many features, need solid understanding of the framework to know what's most useful. Effort needed to keep team(s) in alignment on practices.
+- `-` Potentially verbose configuration
+- `-` Might have a steep learning curve for some, making it potentially more difficult to onboard junior practitioners.
+
+### Express.js
+
+#### Pros
+
+- `+` Strong performance for event driven workloads
+- `+` Strong community support
+- `+` Uses Javascript, which is commonly taught in bootcamp programs
+- `+` Flexibility in how applications are structured (not opinionated).
+- `+` Mature framework that's been around since 2010.
+- `+` Can use typescript with this framework, allowing us to keep with [ADR 0001](https://playbook.truss.dev/docs/appeng/adrs/use-typescript)
+
+#### Cons
+
+- `-` Not opinionated, this lack of structure can make it more difficult to keep team(s) on the same page around specific practices and approaches.
+- `-` Middleware(s) can grow to become unwiedly
+- `-` Minimialist framework, so lacking in some batteries included features, leaving projects to choose other tools to add on with it.
+- `-` If we're abdiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
