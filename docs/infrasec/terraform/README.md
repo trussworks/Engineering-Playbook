@@ -34,7 +34,6 @@ Before going public, consider sourcing the module from github as described in th
 
 When you're ready to turn the prototype module into a published one, there are a few things you'll need to do if you haven't already:
 
-1. 🔒 Add your repo to the [list of repos](https://github.com/trussworks/legendary-waddle/blob/master/trussworks-prod/github-global/main.tf) managed by our GitHub repo management module.
 1. 🔒 Add a subscription to your repo in our [#infra-feed](https://trussworks.slack.com/messages/C91SHMKFV/) channel:
    - `/github subscribe trussworks/your-repo-here`
    - `/github unsubscribe trussworks/your-repo-here commits deployments releases`
