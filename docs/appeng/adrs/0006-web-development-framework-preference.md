@@ -43,15 +43,20 @@ Having a 'practice opinion' on these tools will also help support folks' profess
 - `+` Strong templating tooling
 - `+` Possible to gain a portion of the features typically associated with single page applications, with less overhead by pairing the framework with something like [htmx](https://htmx.org/).
 - `+` Uses the python programming language which enjoys broad community support, and is useful across multiple subpractices like web development and data science.
-- `+` Provides batteries included tooling for authentication and authorization, caching, and an administrative console, among others.
+- `+` Provides batteries included tooling for authentication and authorization, caching, and an administrative console, among others. These make it easy to create a secure REST API quickly, making it a great option for rapid prototyping.
 - `+` Uses Python, which is considered easy to learn and is now frequently taught in both college and bootcamp programs.
+- `+` Strong community support
+- `+` Built-in Admin interface is useful for having a UI to interact with project database
 
 #### Cons
 
-- `-` Uses Python, which means learning a new programming language for those who haven't been exposed to it yet.
 - `-` Different languages between backend and frontend if Javascript is needed for client interactions.
 - `-` May need to use additional tooling for asynchronous workload use cases (message queues and workers).
 - `-` Python's dynamic typing may lead to more effort spent on unit tests. But this can be mitigated some through [type hinting](https://docs.python.org/3/library/typing.html)
+- `-` Since Django is highly opinionated, if you're new to it it'll seem like there's a lot of "magic" under the hood. Compared to smaller frameworks like Flask the learning curve is can be steep.
+- `-` Django is a REST framework, so it doesn't have great websocket support.
+- `-` Limitations around async support, with potential performance implications. More on this in the [Django async documentation](https://docs.djangoproject.com/en/4.2/topics/async/).
+- `-` Opinionated toward monolithic apps, may not be a good choice for microservices use cases.
 
 ### Spring
 
@@ -82,11 +87,10 @@ Having a 'practice opinion' on these tools will also help support folks' profess
 - `+` Uses Javascript, which is commonly taught in bootcamp programs
 - `+` Flexibility in how applications are structured (not opinionated).
 - `+` Mature framework that's been around since 2010.
-- `+` Can use typescript with this framework, allowing us to keep with [ADR 0001](https://playbook.truss.dev/docs/appeng/adrs/use-typescript)
+- `+` Can use typescript with this framework, allowing us to keep with [ADR 0001](https://playbook.truss.dev/docs/appeng/adrs/use-typescript).
 
 #### Cons
 
 - `-` Not opinionated, this lack of structure can make it more difficult to keep team(s) on the same page around specific practices and approaches.
-- `-` Middleware(s) can grow to become unwiedly
 - `-` Minimialist framework, so lacking in some batteries included features, leaving projects to choose other tools to add on with it.
 - `-` If we're abdiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
