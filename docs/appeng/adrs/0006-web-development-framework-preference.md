@@ -94,3 +94,37 @@ Having a 'practice opinion' on these tools will also help support folks' profess
 - `-` Not opinionated, this lack of structure can make it more difficult to keep team(s) on the same page around specific practices and approaches.
 - `-` Minimialist framework, so lacking in some batteries included features, leaving projects to choose other tools to add on with it.
 - `-` If we're abdiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
+
+### Vue.js with Node.js
+
+#### Pros
+
+- `+` One programming language for both frontend and backend.
+- `+` Node.js can be strong on concurrent request handling.
+- `+` Considerable library/tooling support
+- `+` Modular architecture can be useful for microservices
+- `+` Strong community support
+
+#### Cons
+
+- `-` Projects have to figure out security implementation, which could introduce additional risk.
+- `-` Server side rendering is possible but may be complex to set up and use
+- `-` The flexibility this combination allows for may also allow for complexity creep.
+- `-` Dependency management and keeping both parts of the stack in sync may introduct additional overhead.
+
+### React with Node.js
+
+#### Pros
+
+- `+` One programming language for both frontend and backend.
+- `+` Node.js can be strong on concurrent request handling.
+- `+` Considerable library/tooling support
+- `+` Strong community support
+
+#### Cons
+
+- `-` Projects have to figure out security implementation, which could introduce additional risk.
+- `-` React can have a steep learning curve when coming from other frameworks.
+- `-` Server side rendering is possible but may be complex to set up and use
+- `-` The flexibility this combination allows for may also allow for complexity creep.
+- `-` Dependency management and keeping both parts of the stack in sync may introduct additional overhead.
