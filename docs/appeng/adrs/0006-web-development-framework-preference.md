@@ -53,7 +53,7 @@ Having a 'practice opinion' on these tools will also help support folks' profess
 - `-` Different languages between backend and frontend if Javascript is needed for client interactions.
 - `-` May need to use additional tooling for asynchronous workload use cases (message queues and workers).
 - `-` Python's dynamic typing may lead to more effort spent on unit tests. But this can be mitigated some through [type hinting](https://docs.python.org/3/library/typing.html)
-- `-` Since Django is highly opinionated, if you're new to it it'll seem like there's a lot of "magic" under the hood. Compared to smaller frameworks like Flask the learning curve is can be steep.
+- `-` Since Django is highly opinionated, if you're new to it it'll seem like there's a lot of "magic" under the hood. Compared to smaller frameworks like Flask the learning curve can be steep.
 - `-` Django is a REST framework, so it doesn't have great websocket support.
 - `-` Limitations around async support, with potential performance implications. More on this in the [Django async documentation](https://docs.djangoproject.com/en/4.2/topics/async/).
 - `-` Opinionated toward monolithic apps, may not be a good choice for microservices use cases.
