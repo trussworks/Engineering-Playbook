@@ -93,7 +93,7 @@ Having a 'practice opinion' on these tools will also help support folks' profess
 
 - `-` Not opinionated, this lack of structure can make it more difficult to keep team(s) on the same page around specific practices and approaches.
 - `-` Minimialist framework, so lacking in some batteries included features, leaving projects to choose other tools to add on with it.
-- `-` If we're abdiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
+- `-` If we're abiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
 
 ### Vue.js with Node.js
 
