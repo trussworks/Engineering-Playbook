@@ -8,7 +8,7 @@
 
 Our partners look to us for our expertise and our opinions on a variety of topics, including the tools we use to build software together. As we continue to seek new business it is beneficial for us to have an organizational opinion on what web development framework to use (when we have a choice in the matter).
 
-In making a choice we're seeking to match up the tradeoffs that the tools provide with projected partnership needs. The technical ecosystems we operate in tend to change often, so this is a decision we should seek to re-evaluate at least annually. Some topics to consider in the decision include:
+In making a choice we're seeking to match up the tradeoffs that the tools provide with projected partnership needs. The technical ecosystems we operate in tend to change often, so this is a decision we should seek to re-evaluate at least annually. Some topics to consider in the decision include (but not limited to):
 
 - Accessibility for junior engineers.
 - Support for rapid prototyping.
@@ -16,13 +16,7 @@ In making a choice we're seeking to match up the tradeoffs that the tools provid
 - Batteries included vs. things we have to roll ourselves.
   - e.g authentication and authorization tooling, data model management, caching, etc
 
-(this list is likely not complete, feel free to modify or add to it as we put this draft together)
-
 The decision outcome does not need to be a single framework. Ideally we'll choose 2-3 that we would ask folks to choose from in most scenarios.
-
-## Decision
-
-Put a decision outcome here when ready.
 
 ## Why is this applicable to the Practice as a whole?
 
@@ -30,101 +24,64 @@ A large portion of our work is focused on developing web apps in partnership wit
 
 Having a 'practice opinion' on these tools will also help support folks' professional development, as well as our hiring and on-boarding processes. As we hire and get folks up to speed, this decision may be able to help us tailor what we do toward 'what we're trying to be good at.' Similarly we could lean on this as we seek to provide resources for folks developing their professional development plans.
 
-## Alternatives Considered
+## Framework Evaluation
 
-### Django
+### Back-End Frameworks
 
-#### Pros
+#### Django (Python)
 
-- `+` Mature framework that's been around since 2005.
-- `+` Opinionated tooling for managing data migrations, potentially making the task more accessible for junior practitioners.
-- `+` Strong ORM allowing the abstraction of many database interactions.
-- `+` Features designed to make form creation and management easier.
-- `+` Strong templating tooling
-- `+` Possible to gain a portion of the features typically associated with single page applications, with less overhead by pairing the framework with something like [htmx](https://htmx.org/).
-- `+` Uses the python programming language which enjoys broad community support, and is useful across multiple subpractices like web development and data science.
-- `+` Provides batteries included tooling for authentication and authorization, caching, and an administrative console, among others. These make it easy to create a secure REST API quickly, making it a great option for rapid prototyping.
-- `+` Uses Python, which is considered easy to learn and is now frequently taught in both college and bootcamp programs.
-- `+` Strong community support
-- `+` Built-in Admin interface is useful for having a UI to interact with project database
+- **Pros**: Mature, “batteries included,” excellent for rapid development, robust ORM, strong security features.
+- **Cons**: Monolithic, less flexible for non-standard requirements, limitations around async support, high learning curve compared to smaller frameworks, dynamic typing is prone to more errors.
+- **Accessibility**: Uses Python which is considered easy to learn and suitable for juniors, strong community support, robust documentation.
 
-#### Cons
+#### Spring Boot (Java)
 
-- `-` Different languages between backend and frontend if Javascript is needed for client interactions.
-- `-` May need to use additional tooling for asynchronous workload use cases (message queues and workers).
-- `-` Python's dynamic typing may lead to more effort spent on unit tests. But this can be mitigated some through [type hinting](https://docs.python.org/3/library/typing.html)
-- `-` Since Django is highly opinionated, if you're new to it it'll seem like there's a lot of "magic" under the hood. Compared to smaller frameworks like Flask the learning curve can be steep.
-- `-` Django is a REST framework, so it doesn't have great websocket support.
-- `-` Limitations around async support, with potential performance implications. More on this in the [Django async documentation](https://docs.djangoproject.com/en/4.2/topics/async/).
-- `-` Opinionated toward monolithic apps, may not be a good choice for microservices use cases.
+- **Pros**: Mature, enterprise-grade, scalable, good for microservices, static typing.
+- **Cons**: Steeper learning curve, more configuration required, less suitable for rapid prototyping.
+- **Accessibility**: Uses Java which is commonly taught in college programs, although notably more verbose than Python and Javascript.
 
-### Spring
+#### Node + Express.js (Typescript)
 
-#### Pros
+- **Pros**: Mature, high flexibility, large ecosystem, strong community support, suitable for real-time applications.
+- **Cons**: Requires more boilerplate, less guidance on structure.
+- **Accessibility**: If we're abiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
 
-- `+` Mature framework that's been around since 2002.
-- `+` Reactive programming model could be useful for a variety of use cases.
-- `+` Spring boot is good for microservices where use cases call for that.
-- `+` Batteries included tooling for things like authentication and authorization and caching, among others.
-- `+` Java tooling is popular in enterprise spaces
-- `+` Uses Java, which is commonly taught in college programs.
-- `+` Java is statically typed which can give safety that would otherwise be gained through additional unit tests.
+### Front-End Frameworks
 
-#### Cons
+#### React.js
 
-- `-` Big complex framework with a lot of capabilities, but may be less suited for rapid prototyping use cases.
-- `-` Different languages between backend and frontend if Javascript is needed for client interactions.
-- `-` Potentially too many features, need solid understanding of the framework to know what's most useful. Effort needed to keep team(s) in alignment on practices.
-- `-` Potentially verbose configuration
-- `-` Might have a steep learning curve for some, making it potentially more difficult to onboard junior practitioners.
+- **Pros**: Industry standard, high flexibility, strong community, large ecosystem, easily build cross-platform apps with React Native.
+- **Cons**: JSX learning curve, more choices for state management, constant updates require developers to relearn newer concepts to keep up.
+- **Accessibility**: Good for juniors with Javascript basics.
 
-### Express.js
+#### Angular
 
-#### Pros
+- **Pros**: Lots of tools provided out of the box, strong community, long-term maintainability since it’s backed by Google.
+- **Cons**: No strong support for cross-platform apps.
+- **Accessibility**: Requires skill in Typescript, which may have some learning curve for folks coming in without that background.
 
-- `+` Strong performance for event driven workloads
-- `+` Strong community support
-- `+` Uses Javascript, which is commonly taught in bootcamp programs
-- `+` Flexibility in how applications are structured (not opinionated).
-- `+` Mature framework that's been around since 2010.
-- `+` Can use typescript with this framework, allowing us to keep with [ADR 0001](https://playbook.truss.dev/docs/appeng/adrs/use-typescript).
+#### Vue.js
 
-#### Cons
+- **Pros**: Focuses on helping beginner developers create dynamic web apps without prior tedious learning.
+- **Cons**: Smaller community, no strong support for cross-platform apps, doesn’t render in older versions of web browsers.
+- **Accessibility**: Known for easy learning curve.
 
-- `-` Not opinionated, this lack of structure can make it more difficult to keep team(s) on the same page around specific practices and approaches.
-- `-` Minimialist framework, so lacking in some batteries included features, leaving projects to choose other tools to add on with it.
-- `-` If we're abiding by prior ADRs it would mean using Typescript, which may have some learning curve for folks coming in without that background.
+### Cloud Infrastructure Providers
 
-### Vue.js with Node.js
+#### Amazon Web Services (AWS)
 
-#### Pros
+- **Pros**: Market leader in cloud services, suitable for small and enterprise scale, extensive documentation, large community and support, has the largest number of data centers.
+- **Cons**: High learning curve, naming conventions tend to be confusing, user interface is not good.
+- **Accessibility**: Amazon provides excellent online training resources for all levels.
 
-- `+` One programming language for both frontend and backend.
-- `+` Node.js can be strong on concurrent request handling.
-- `+` Considerable library/tooling support
-- `+` Modular architecture can be useful for microservices
-- `+` Strong community support
+#### Google Cloud Platform (GCP)
 
-#### Cons
+- **Pros**: Excels in big data processing and ML, leading in Kubernetes and open-source integrations, focuses on high-performance networking and low-latency connections.
+- **Cons**: Fewer resources and community support compared to AWS.
+- **Accessibility**: Slightly more accessible due to focus on open-source and user-friendly interfaces.
 
-- `-` Projects have to figure out security implementation, which could introduce additional risk.
-- `-` Server side rendering is possible but may be complex to set up and use
-- `-` The flexibility this combination allows for may also allow for complexity creep.
-- `-` Dependency management and keeping both parts of the stack in sync may introduct additional overhead.
+#### Microsoft Azure
 
-### React with Node.js
-
-#### Pros
-
-- `+` One programming language for both frontend and backend.
-- `+` Node.js can be strong on concurrent request handling.
-- `+` Considerable library/tooling support
-- `+` Strong community support
-
-#### Cons
-
-- `-` Projects have to figure out security implementation, which could introduce additional risk.
-- `-` React can have a steep learning curve when coming from other frameworks.
-- `-` Server side rendering is possible but may be complex to set up and use
-- `-` The flexibility this combination allows for may also allow for complexity creep.
-- `-` Dependency management and keeping both parts of the stack in sync may introduct additional overhead.
+- **Pros**: Robust offerings in AI and ML due to Microsoft’s partnership with OpenAI, integrates with Microsoft ecosystem.
+- **Cons**: High learning curve, not as good customer service.
+- **Accessibility**: High learning curve.
