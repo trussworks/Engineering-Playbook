@@ -80,4 +80,4 @@ one-off certificates. Their documentation is
 
 ## External resources
 
-- How an SSL/TLS handshake works: <https://www.ssl.com/article/ssl-tls-handshake-overview/>
+- How an SSL/TLS handshake works: [https://www.ssl.com/article/ssl-tls-handshake-overview/](https://www.ssl.com/article/ssl-tls-handshake-overview/)

@@ -68,7 +68,7 @@ project. This will allow you to store things like passwords and MFA codes
 for AWS accounts, GitHub "robot" users, and anything else that you need
 to give members of the team access to.
 
-You can create a new account by going to <https://1password.com> and
+You can create a new account by going to [https://1password.com](https://1password.com) and
 clicking on "sign in" in the upper right hand corner, and then instead
 of clicking on an existing account, click on "create a new account" at
 the bottom of the page, then click on "for my team" on the next page,
@@ -93,10 +93,10 @@ application to stand up yet, you should get this bootstrapped so that
 things are ready to go.
 
 If you are starting from scratch, you will need to open a new AWS account
-by going to <https://aws.amazon.com> and creating an AWS account, using
+by going to [https://aws.amazon.com](https://aws.amazon.com) and creating an AWS account, using
 the Truss admin card as the billing information. This account will be your
 `org-root` account that will start your
-[AWS Organization](./aws/aws-organizations.md). Once that is created, you
+[AWS Organization](aws-organizations.md). Once that is created, you
 should bootstrap Terraform in it and set up the `admin-global` namespace.
 Things you will want to set up in the `org-root` account:
 
