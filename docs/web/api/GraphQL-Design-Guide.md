@@ -25,7 +25,7 @@ See also [GraphQL Rules](https://graphql-rules.com) for additional recommendatio
 #### Schema First
 
 Prefer schema first tooling that allows producers and consumers agree
-upon a data shape prior to implementation.  This allows a discussion
+upon a data shape prior to implementation. This allows a discussion
 about the problem domain that is independent of the technology being
 used on either side of the API.
 
@@ -48,13 +48,13 @@ so think carefully about which fields to require.
 #### Mutations Communicate Intent
 
 GraphQL mutations should be specific enough to communicate the intent
-of the change.  Avoid [anemic
+of the change. Avoid [anemic
 mutations](https://medium.com/@__xuorig__/graphql-mutation-design-anemic-mutations-dd107ba70496)
 
 #### Errors and Nullability
 
 GraphQL is designed for returning as much data as possible, even if an
-error occurs.  That can be [surprising](https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8), and surprisingly powerful.
+error occurs. That can be [surprising](https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8), and surprisingly powerful.
 
 That means both data and errors can be returned.
 
@@ -63,7 +63,7 @@ That means both data and errors can be returned.
 [Pagination](https://graphql.org/learn/pagination/) can heavily
 influence schema design. The concept of [GraphQL
 Connections](https://relay.dev/graphql/connections.htm) is yet another
-new and powerful concept to grasp when designing a schema.  By
+new and powerful concept to grasp when designing a schema. By
 thinking about this early, you can avoid having to make breaking
 changes to your schema.
 

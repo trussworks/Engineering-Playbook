@@ -13,7 +13,7 @@ speeding up tests) and the client getting the benefit of learning that
 happened elsewhere. Allowing time for growth ensures consistent, high
 quality work which benefits everyone.
 
-Mentoring is an important part of growth.  Truss has [shared some
+Mentoring is an important part of growth. Truss has [shared some
 techniques for
 mentoring](https://truss.works/blog/2016/8/12/theres-a-method-to-the-mentoring-advice-from-a-teacher-turned-developer).
 
@@ -23,6 +23,6 @@ restrict exploration and "just get the ticket done", but that should
 happen infrequently.
 
 If someone is interested in a topic that is not related to their
-client work, a separate plan will need to be made.  That might involve
+client work, a separate plan will need to be made. That might involve
 changing client teams, changing client projects, or joining Truss
 Reserve.

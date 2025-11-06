@@ -491,7 +491,7 @@ and flaky tests.
 
 #### Service Resources
 
-There  are three patterns worth understanding are:
+There are three patterns worth understanding are:
 
 1. [Service Objects in Go](https://www.calhoun.io/using-the-service-object-pattern-in-go/).
    This demonstrates the origin of the pattern,

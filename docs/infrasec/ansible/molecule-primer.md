@@ -22,8 +22,8 @@ anyway. Using Python 3 as the Python binary is also highly recommended. In addit
 will need these Python modules as well:
 
 - molecule
-- molecule\[docker\] - For testing with docker containers (the default)
-- molecule\[ec2\] - For testing on ec2 instances
+- molecule[docker] - For testing with docker containers (the default)
+- molecule[ec2] - For testing on ec2 instances
 - docker-py
 - boto
 

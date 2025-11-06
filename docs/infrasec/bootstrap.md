@@ -120,7 +120,7 @@ but these are probably the ones you want as soon as possible.
 
 If you will need to be using GovCloud for this project, you should set
 up the parallel organization in GovCloud as well. See the (GovCloud
-Organization)\[./aws/govcloud/gov-orgs.md\] docs for an explanation of how
+Organization)[./aws/govcloud/gov-orgs.md] docs for an explanation of how
 to set this up.
 
 If you will be working entirely in GovCloud, you will not need the `-dev`
