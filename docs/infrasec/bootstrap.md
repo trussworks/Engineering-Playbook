@@ -11,13 +11,14 @@ need to set up your own.
 
 <!-- toc -->
 
-- [GitHub and Git Repos](#github-and-git-repos)
-- [1Password](#1password)
-- [AWS Organization and Accounts](#aws-organization-and-accounts)
-  - [GovCloud](#govcloud)
-  - [Atlantis](#atlantis)
-  - [Placeholder service modules](#placeholder-service-modules)
-- [CI/CD Pipeline](#cicd-pipeline)
+- [Project Bootstrap Guide](#project-bootstrap-guide)
+  - [GitHub and Git Repos](#github-and-git-repos)
+  - [1Password](#1password)
+  - [AWS Organization and Accounts](#aws-organization-and-accounts)
+    - [GovCloud](#govcloud)
+    - [Atlantis](#atlantis)
+    - [Placeholder service modules](#placeholder-service-modules)
+  - [CI/CD Pipeline](#cicd-pipeline)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
@@ -96,7 +97,7 @@ If you are starting from scratch, you will need to open a new AWS account
 by going to [https://aws.amazon.com](https://aws.amazon.com) and creating an AWS account, using
 the Truss admin card as the billing information. This account will be your
 `org-root` account that will start your
-[AWS Organization](aws-organizations.md). Once that is created, you
+[AWS Organization](aws/aws-organizations.md). Once that is created, you
 should bootstrap Terraform in it and set up the `admin-global` namespace.
 Things you will want to set up in the `org-root` account:
 
