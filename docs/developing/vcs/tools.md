@@ -48,7 +48,7 @@ for merge conflicts or mistakenly adding secret keys in our code. See
 pre-commit config file from one of our projects.
 
 Since git does not distribute hooks when a repository is cloned, you will
-have to install pre-commit in each cloned repo manually using `pre-commit install --install-hooks` or pre-commit will not run in that repo.  To assist
+have to install pre-commit in each cloned repo manually using `pre-commit install --install-hooks` or pre-commit will not run in that repo. To assist
 with automating this step, pre-commit has a [feature] to exploit the
 [template directory] setting in git:
 

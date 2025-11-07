@@ -170,7 +170,7 @@ Finally, if you are using USWDS, it _does_ expose some [utility classes](https:/
 
   - TODO: Add a diagram that illustrates collapsing margins
 
-- Compare the implementation side-by-side with the design at mobile size (\< 600px wide)
+- Compare the implementation side-by-side with the design at mobile size (< 600px wide)
 
   - Spacing inside of elements (padding inside of a box, margins between child elements)
   - Vertical spacing between elements

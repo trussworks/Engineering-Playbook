@@ -98,7 +98,7 @@ Either Jasmine on its own, or Karma. Here’s why:
 A little on [React’s test utilities](https://facebook.github.io/react/docs/test-utils.html)
 
 - They still require a testing framework to use, but they can provide the data needed to perform the tests.
-- Lets you simulate clicks, enter and submit text in an input field, find components that have particular class names, tags,  types,
+- Lets you simulate clicks, enter and submit text in an input field, find components that have particular class names, tags, types,
 - Shallow rendering lets you render components one level deep without worrying about child components.
 
 ## [Jasmine](http://jasmine.github.io/)

@@ -11,13 +11,14 @@ need to set up your own.
 
 <!-- toc -->
 
-- [GitHub and Git Repos](#github-and-git-repos)
-- [1Password](#1password)
-- [AWS Organization and Accounts](#aws-organization-and-accounts)
-  - [GovCloud](#govcloud)
-  - [Atlantis](#atlantis)
-  - [Placeholder service modules](#placeholder-service-modules)
-- [CI/CD Pipeline](#cicd-pipeline)
+- [Project Bootstrap Guide](#project-bootstrap-guide)
+  - [GitHub and Git Repos](#github-and-git-repos)
+  - [1Password](#1password)
+  - [AWS Organization and Accounts](#aws-organization-and-accounts)
+    - [GovCloud](#govcloud)
+    - [Atlantis](#atlantis)
+    - [Placeholder service modules](#placeholder-service-modules)
+  - [CI/CD Pipeline](#cicd-pipeline)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
@@ -68,7 +69,7 @@ project. This will allow you to store things like passwords and MFA codes
 for AWS accounts, GitHub "robot" users, and anything else that you need
 to give members of the team access to.
 
-You can create a new account by going to <https://1password.com> and
+You can create a new account by going to [https://1password.com](https://1password.com) and
 clicking on "sign in" in the upper right hand corner, and then instead
 of clicking on an existing account, click on "create a new account" at
 the bottom of the page, then click on "for my team" on the next page,
@@ -93,10 +94,10 @@ application to stand up yet, you should get this bootstrapped so that
 things are ready to go.
 
 If you are starting from scratch, you will need to open a new AWS account
-by going to <https://aws.amazon.com> and creating an AWS account, using
+by going to [https://aws.amazon.com](https://aws.amazon.com) and creating an AWS account, using
 the Truss admin card as the billing information. This account will be your
 `org-root` account that will start your
-[AWS Organization](./aws/aws-organizations.md). Once that is created, you
+[AWS Organization](aws/aws-organizations.md). Once that is created, you
 should bootstrap Terraform in it and set up the `admin-global` namespace.
 Things you will want to set up in the `org-root` account:
 
@@ -120,7 +121,7 @@ but these are probably the ones you want as soon as possible.
 
 If you will need to be using GovCloud for this project, you should set
 up the parallel organization in GovCloud as well. See the (GovCloud
-Organization)\[./aws/govcloud/gov-orgs.md\] docs for an explanation of how
+Organization)[./aws/govcloud/gov-orgs.md] docs for an explanation of how
 to set this up.
 
 If you will be working entirely in GovCloud, you will not need the `-dev`

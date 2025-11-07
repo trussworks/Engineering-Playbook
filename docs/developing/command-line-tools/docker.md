@@ -3,7 +3,7 @@
 ## Overview
 
 Docker is useful because it allows you to both package and run
-software with all its dependencies and configuration in isolation.  It
+software with all its dependencies and configuration in isolation. It
 also allows you (in theory) to have the same environment in
 development as in CI and production.
 
@@ -18,9 +18,9 @@ brew cask install docker
 ### Configuration of Shared Folders
 
 Anecdata suggests that removing some of the default shared folders can
-decrease CPU usage.  Usually you only need to share volumes under your
-home directory.  Open the docker for mac preferences, then select
-"File Sharing" and then remove `/Volumes` and `/private`.  You may
+decrease CPU usage. Usually you only need to share volumes under your
+home directory. Open the docker for mac preferences, then select
+"File Sharing" and then remove `/Volumes` and `/private`. You may
 also find improvements removing `/Users` and replacing it with
 `/Users/YOUR_USERNAME_GOES_HERE`.
 
@@ -36,13 +36,13 @@ Storage Driver: overlay2
 
 If you don't see overlay2, upgrading to the latest version will add
 that support, but you would need to recreate all of your docker data
-to utilize it.  The `Reset` bomb should do it.
+to utilize it. The `Reset` bomb should do it.
 
 ### Configuration of Disk Image
 
 If you've been running Docker for Mac for some time, make sure you are
-using the `raw` disk image format and not `qcow2`.  Open Docker for
-Mac preferences and select `Disk`.  Make sure the image ends with
+using the `raw` disk image format and not `qcow2`. Open Docker for
+Mac preferences and select `Disk`. Make sure the image ends with
 `Docker.raw`.
 
 ### Configuration of Resources
@@ -59,7 +59,7 @@ by the docker developers.
 ## Volume Mount Performance
 
 Synchronizing the data between the host (your Mac) and the container
-can be resource intensive and/or slow.  Read about the [performance
+can be resource intensive and/or slow. Read about the [performance
 tuning options](https://docs.docker.com/docker-for-mac/osxfs-caching/)
 to see if they might apply to the conditions in your project.
 

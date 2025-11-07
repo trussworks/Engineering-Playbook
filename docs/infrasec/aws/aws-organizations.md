@@ -1,7 +1,7 @@
 # AWS Organizations
 
 [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-provide a native way to manage multiple AWS accounts.  They provide
+provide a native way to manage multiple AWS accounts. They provide
 consolidated billing, APIs (e.g., via Terraform) for automating account
 creation, and the ability to apply account-wide IAM like policies.
 

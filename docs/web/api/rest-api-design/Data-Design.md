@@ -25,7 +25,7 @@ Body:
 }
 ```
 
-## Types of  Parameters
+## Types of Parameters
 
 ### Path Parameter
 

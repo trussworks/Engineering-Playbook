@@ -87,7 +87,7 @@ you are expected to fulfill.
   have this covered.
 - If you know you will be away for an extended period during an on-call
   shift, it is *your* responsibility to find someone to cover your shift.
-  If you are unable to, talk to your lead and see if they can help.  If
+  If you are unable to, talk to your lead and see if they can help. If
   you will be gone for more than a day or two, it may be easiest to swap
   the entire shift with someone. PagerDuty allows you to schedule these
   with [overrides](https://community.pagerduty.com/t/creating-a-schedule-override/850).
