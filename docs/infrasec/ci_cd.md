@@ -197,33 +197,34 @@ this. If you don't have one, it's still best practice.
   all worlds. (see below)
 
 <details>
-  <summary>CalVer plus git digest</summary>
+<summary>CalVer plus git digest</summary>
 
-  > See also: [ADR on CalVer tags][adr_calver]
+> See also: [ADR on CalVer tags][adr_calver]
 
-  A combination of a calendar date plus the long git digest achieves the aims of
-  a good tagging scheme:
+A combination of a calendar date plus the long git digest achieves the aims of
+a good tagging scheme:
 
-  - Tags should be unique, immutable, and kept in a monotonically increasing
-    sequence.
-  - Humans reading the tag need to quickly and easily determine which builds are
-    newer or older than others.
-  - Both humans and the build system need to be able to identify where in the
-    source tree the container was built from.
+- Tags should be unique, immutable, and kept in a monotonically increasing
+  sequence.
+- Humans reading the tag need to quickly and easily determine which builds are
+  newer or older than others.
+- Both humans and the build system need to be able to identify where in the
+  source tree the container was built from.
 
-  The combined schema looks like this:
+The combined schema looks like this:
 
-  `<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+`<%Y-%m-%d_%H.%M.%S>_<long git digest>`
 
-  Finally, you can add a schema version prefix. This way, if you decide to add
-  (or remove) information from the schema later, your parsing logic can be
-  maintained to parse all tags since the beginning.
+Finally, you can add a schema version prefix. This way, if you decide to add
+(or remove) information from the schema later, your parsing logic can be
+maintained to parse all tags since the beginning.
 
-  `v01_<%Y-%m-%d_%H.%M.%S>_<long git digest>`
+`v01_<%Y-%m-%d_%H.%M.%S>_<long git digest>`
 
-  This yields human-readable, unique, monotonically increasing tags. A
-  [regular expression](https://regex101.com/r/iP6tUn/2) can both validate and
-  parse the tags.
+This yields human-readable, unique, monotonically increasing tags. A
+[regular expression](https://regex101.com/r/iP6tUn/2) can both validate and
+parse the tags.
+
 </details>
 
 If your images are dependencies for other applications, you may need to track
@@ -231,40 +232,42 @@ which versions have new features or breaking changes. In that case, we
 recommend semantic versioning.
 
 <details>
-  <summary>Semantic versioning</summary>
+<summary>Semantic versioning</summary>
 
-  Why semver? It tells you and your customer how much has changed since the last
-  released code and sets expectations accordingly. If you are tagging at mainline
-  where you are building from, you can rebuild the artifact from the same point.
+Why semver? It tells you and your customer how much has changed since the last
+released code and sets expectations accordingly. If you are tagging at mainline
+where you are building from, you can rebuild the artifact from the same point.
 
-  From [semver.org](https://semver.org):
+From [semver.org](https://semver.org):
 
-  ```
-  Given a version number MAJOR.MINOR.PATCH, increment the:
+```
+Given a version number MAJOR.MINOR.PATCH, increment the:
 
-  MAJOR version when you make incompatible API changes,
-  MINOR version when you add functionality in a backwards compatible manner, and
-  PATCH version when you make backwards compatible bug fixes.
-  Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-  ```
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards compatible manner, and
+PATCH version when you make backwards compatible bug fixes.
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+```
+
 </details>
 
 These are other versioning strategies we've seen. We do not recommend them.
 
 <details>
-  <summary>Don't do this</summary>
+<summary>Don't do this</summary>
 
-  - A _commit hash_ is unique (with extremely few collisions) and is easily linked
-    back to history in code. However, how much has changed is opaque and it is
-    difficult to determine how old this version is in comparison to other
-    versions.
-  - _Feature branch related names._ These should be short lived and maintained
-    for no more than a few days. Most users will not find these useful.
-  - _Build id related names._ These are opaque to a user and harder to dig up
-    history on when debugging.
-  - _Build date related names._ These are also opaque to a user and difficult to
-    dig up history on when debugging. You at least get a sense of when these
-    changes went in but are hard to tie to a commit in mainline.
+- A _commit hash_ is unique (with extremely few collisions) and is easily linked
+  back to history in code. However, how much has changed is opaque and it is
+  difficult to determine how old this version is in comparison to other
+  versions.
+- _Feature branch related names._ These should be short lived and maintained
+  for no more than a few days. Most users will not find these useful.
+- _Build id related names._ These are opaque to a user and harder to dig up
+  history on when debugging.
+- _Build date related names._ These are also opaque to a user and difficult to
+  dig up history on when debugging. You at least get a sense of when these
+  changes went in but are hard to tie to a commit in mainline.
+
 </details>
 
 ## Artifact storage
