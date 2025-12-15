@@ -76,7 +76,6 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/trussworks/Engineering-Playbook/edit/main/',
-          remarkPlugins: [require('mdx-mermaid')],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
