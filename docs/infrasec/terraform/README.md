@@ -7,7 +7,7 @@ Terraform is our tool of choice for automating our 'cloud infrastructure'. In pa
 If you're new to Terraform, you can find a very useful resource for beginners
 from HashiCorp's Learning platform.
 
-[➡️  Read **Get Started - AWS** HashiCorp Learning using Terraform.](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
+[➡️ Read **Get Started - AWS** HashiCorp Learning using Terraform.](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
 
 ### Semantic Versioning
 

@@ -19,7 +19,7 @@ account. The purpose of this account is to handle root-level service
 control policies [(SCPs)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
 and encompass the the organizational units (OUs) underneath. If you
 need to know how to create an AWS account, please see
-<https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/>.
+[https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
 You should set the alias for this account to your project's name and
 the `org-root` suffix, like `spacecats-org-root`.
 
@@ -43,7 +43,7 @@ This needs to be done as the root user, so now is a good time.
 
 ## Bootstrap Terraform for org-root Account
 
-Following the pattern in <https://github.com/trussworks/terraform-layout-example>,
+Following the pattern in [https://github.com/trussworks/terraform-layout-example](https://github.com/trussworks/terraform-layout-example),
 set up your infra Git repo that we created earlier. Name the directory for this
 account after the account alias as usual. Then, `cd` into this directory and
 checkout the bootstrap repo like so:

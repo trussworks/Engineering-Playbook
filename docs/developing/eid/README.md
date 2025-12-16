@@ -38,14 +38,14 @@ List of editors that Truss engineers use (sorted alphabetically):
 
 ##### Plugins
 
-- [vim-ale](https://github.com:w0rp/ale) - Asynchronous code linter
+- [vim-ale](https://github.com/w0rp/ale) - Asynchronous code linter
 - [editorconfig](https://github.com/editorconfig/editorconfig-vim)
-- [vim-fugitive](https://github.com:tpope/vim-fugitive) - A Git wrapper so awesome, it should be illegal
-- [vim-go](https://github:fatih/vim-go) - golang development plugin for vim
+- [vim-fugitive](https://github.com/tpope/vim-fugitive) - A Git wrapper so awesome, it should be illegal
+- [vim-go](https://github.com/fatih/vim-go) - golang development plugin for vim
 - [vim-javascript](https://github.com/pangloss/vim-javascript)
-- [vim-plug](https://github.com:junegunn/vim-plug) - Minimalist plugin manager
-- [vim-prettier](https://github.com:prettier/vim-prettier)
-- [Recover](https://github.com:chrisbra/Recover.vim) - Displays a diff before recovering a swap file
+- [vim-plug](https://github.com/junegunn/vim-plug) - Minimalist plugin manager
+- [vim-prettier](https://github.com/prettier/vim-prettier)
+- [Recover](https://github.com/chrisbra/Recover.vim) - Displays a diff before recovering a swap file
 
 #### VS Code
 

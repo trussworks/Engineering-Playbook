@@ -13,10 +13,10 @@ Just like an HTML error page shows a useful error message to a visitor, an API s
 
 ## Terms
 
-**Error Code**        — A unique, machine readable, identifier for the error.\
+**Error Code** — A unique, machine readable, identifier for the error.\
 **Status Code** — The status code on the HTTP response. \
-**Message**           — A brief human-readable message.\
-**Detail**            — A lengthier explanation of the error.\
+**Message** — A brief human-readable message.\
+**Detail** — A lengthier explanation of the error.\
 **Parameters / Path** — a description of which part of the request triggered the error.
 
 ### Use a consistent error format across the API

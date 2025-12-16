@@ -68,7 +68,7 @@ These are good to read for folks working with a client that is learning how to b
 - [The Data Behind DevOps: Becoming a High Performer](https://www.youtube.com/watch?v=-OiOUwaRsXk), Dr. Nicole Forsgren
   This is the talk I recommended to Mariesa that's basically a half hour tl;dr of Accelerate from Nicole Forsgren. (Chas)
 - [One Year after the Launch of the US Digital Service: What's Changed?](https://www.usenix.org/conference/lisa15/conference-program/presentation/dickerson), Mikey Dickerson
-  This is a long talk, but it's a good one if you've never seen Mikey Dickerson talk about the Healthcare.gov rescue in 2013/2014, which I suspect will  be instructive for us (and is a good talk in general). (Chas)
+  This is a long talk, but it's a good one if you've never seen Mikey Dickerson talk about the Healthcare.gov rescue in 2013/2014, which I suspect will be instructive for us (and is a good talk in general). (Chas)
 - [The 2019 Accelerate State of DevOps: Elite performance, productivity, and scaling](https://cloud.google.com/blog/products/devops-sre/the-2019-accelerate-state-of-devops-elite-performance-productivity-and-scaling), Nicole Forsgren
   2019 State of DevOps Report (RD)
 - [How to Improve a Service by Roasting It](https://www.usenix.org/conference/srecon16/program/presentation/dickson), Caskey L. Dickson & Jake Welch

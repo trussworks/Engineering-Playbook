@@ -52,16 +52,16 @@ This guide is **not meant to be comprehensive**. Rather it outlines what we have
 
   - Path, Query, Body and Header Parameters
   - Security considerations related to parameter location
-  - Batching, filtering and pagination \[content needed\]
+  - Batching, filtering and pagination [content needed]
 
 - [Error Response Strategy](Error-Response-Strategy.md)
 
-- Versioning \[Open Questions\]
+- Versioning [Open Questions]
 
   - How are we versioning the api and how does that effect work on any one endpoint?
-  - When is it ok to make a breaking API change?  How is that communicated?
+  - When is it ok to make a breaking API change? How is that communicated?
 
-- Security \[Open Questions\]
+- Security [Open Questions]
 
   - What security considerations should I be aware of
   - What is/are valid authentication strategies for contacting the API?
@@ -69,13 +69,13 @@ This guide is **not meant to be comprehensive**. Rather it outlines what we have
   - Is MTLS supported or required, how is authorization and revocation handled
   - How are permissions handled? What if there are different levels of permissions?
 
-- Data coherence strategies \[Open Questions\]
+- Data coherence strategies [Open Questions]
 
   - [Concurrency Control](Concurrency-Control.md)
     - Optimistic Locking
   - Is the API data cached? Should the client cache it? When should it be refreshed?
 
-- Documentation \[Open Questions\]
+- Documentation [Open Questions]
 
   - How are we documenting the API for the end-user?
   - What level of documentation is expected?
