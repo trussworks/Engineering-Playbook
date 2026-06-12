@@ -51,16 +51,30 @@ Setup is fast, and the knowledge transfers between engagements instead of resett
 - `-` It's shim-based, and the indirection breaks `which` and can confuse IDEs, leading to potential developer swirl.
 - `-` Everything it does for us, mise also does, including running its plugins.
 
-### Language-specific managers ([nvm](https://www.nvmnode.com/), [pyenv](https://github.com/pyenv/pyenv), [sdkman](https://sdkman.io/), etc.)
+### Language-specific managers ([nvm](https://github.com/nvm-sh/nvm), [pyenv](https://github.com/pyenv/pyenv), [sdkman](https://sdkman.io/), et al.)
 
 #### Pros
 
-- `+` Native support for the specific language/framework likely means unparralled support for that narrow ecosystem
+- `+` Native support for the specific language/framework likely means unparalleled support for that narrow ecosystem
 
 #### Cons
 
-- `-` Contractors don't typicall stick to one language.
+- `-` Contractors don't typically stick to one language.
 - `-` N stacks means N tools per machine, reinstalled per engagement, with no single manifest to declare them.
+
+### [Homebrew](https://brew.sh/)
+
+Brew answers a different question: it installs tools, it doesn't pin them per project.
+We'll keep using it for what it's good at, including installing mise itself.
+
+#### Pros
+
+- `+` Ubiquitous on most macOS machines, with an enormous package catalog.
+
+#### Cons
+
+- `-` Manages one version of each tool globally. Two engagements wanting different tool versions collide causing issues for practitioners splitting their time.
+- `-` A `Brewfile` declares version-agnostic packages. Reproducibility isn't the tool's goal.
 
 ### [Nix](https://nixos.org/)
 
