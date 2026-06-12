@@ -8,7 +8,7 @@ title: Default to mise for tool dependency management
 
 **Date Accepted:** TODO
 
-**Reviewers:** @felipe-lee
+**Reviewers:** @felipe-lee, @ieffendi-twks
 
 ## Context
 
