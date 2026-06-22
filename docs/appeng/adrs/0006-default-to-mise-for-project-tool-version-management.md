@@ -21,7 +21,7 @@ Default to [mise](https://mise.jdx.dev/) to manage tool dependencies on our proj
 
 Mise covers every runtime we'll meet and respects whatever a client repo already uses: `.tool-versions`, `.nvmrc`, asdf plugins.
 Tools are pinned in one `mise.toml`, installed the same way locally and in CI, with no shims in the way.
-`which node` tells the truth and IDEs behave.
+Because mise does not rely on shims, comamnds like `which {tool}` points to real binaries, meaning IDEs and other tools that don't typically run inside interactive shells resolve binaries consistently.
 
 Its task runner and env management are bonuses (and near drop-in replacements for Makefile and direnv), but they're not the basis for _this_ decision.
 
