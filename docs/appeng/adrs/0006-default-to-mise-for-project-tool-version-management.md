@@ -75,6 +75,7 @@ We'll keep using it for what it's good at, including installing mise itself.
 
 - `-` Manages one version of each tool globally. Two engagements wanting different tool versions collide causing issues for practitioners splitting their time.
 - `-` A `Brewfile` declares version-agnostic packages. Reproducibility isn't the tool's goal.
+- `-` Mac (and Linux) only, which does not suit projects where Windows support (often for GFEs) is required.
 
 ### [Nix](https://nixos.org/)
 
