@@ -11,5 +11,7 @@ jobs:
 
       - name: Vale linter
         uses: vale-cli/vale-action@v2
+        with:
+          reporter: github-check
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
