@@ -20,7 +20,7 @@ We need one tool we can bring to any project that pins every runtime it needs, i
 Default to [mise](https://mise.jdx.dev/) to manage tool dependencies on our projects.
 
 Mise covers every runtime we'll meet and respects whatever a client repo already uses: `.tool-versions`, `.nvmrc`, asdf plugins.
-Tools are pinned in one `mise.toml`, installed the same way locally and in CI, with no shims in the way.
+Tools are pinned in one `mise.toml`, installed the same way locally and in CI, with no [shims](#what-are-shims) in the way.
 Because mise does not rely on shims, comamnds like `which {tool}` points to real binaries, meaning IDEs and other tools that don't typically run inside interactive shells resolve binaries consistently.
 
 Its task runner and env management are bonuses (and near drop-in replacements for Makefile and direnv), but they're not the basis for _this_ decision.
@@ -45,7 +45,7 @@ Setup is fast, and the knowledge transfers between engagements instead of resett
 
 - `+` Language and framework agnostic.
 - `+` Seamless interoperability with other popular tool version manager conventions for easy migration or even individual adoption if a project already uses a different tool version manager.
-- `+` Points to real binaries by rewriting `PATH`, as opposed to the shim approach.
+- `+` Points to real binaries by rewriting `PATH`, as opposed to the [shim](#what-are-shims) approach.
 - `+` Includes additional useful, well-documented features beyond tool management (e.g. [tasks](https://mise.jdx.dev/tasks/), [environments](https://mise.jdx.dev/environments/)).
 
 #### Cons
@@ -63,7 +63,7 @@ Setup is fast, and the knowledge transfers between engagements instead of resett
 
 #### Cons
 
-- `-` It's shim-based, and the indirection breaks `which` and can confuse IDEs, leading to potential developer swirl.
+- `-` It's [shim-based](#what-are-shims), and the indirection breaks `which` and can confuse IDEs, leading to potential developer swirl.
 - `-` Everything it does for us, mise also does, including running its plugins.
 
 ### Language-specific managers ([nvm](https://github.com/nvm-sh/nvm), [pyenv](https://github.com/pyenv/pyenv), [sdkman](https://sdkman.io/), et al.)
@@ -105,3 +105,14 @@ While not selected for this specific decision, we're fond of Nix, so it stays on
 - `-` Where we've used Nix in the past, clear information on the availability of tools within the Nix ecosystem was not strightforward.
 - `-` New tools and tool versions don't land in the Nix ecosystem on a predictable cadence, making version management challenging.
 - `--` _Steep_ learning curve.
+
+## Appendix
+
+### What are shims?
+
+A [shim](<https://en.wikipedia.org/wiki/Shim_(computing)>) is a small wrapper script that stands in for a real executable.
+Shim-based managers put a single directory of these wrappers on your `PATH` — one named `node`, one named `python`, and so on.
+When you run `node`, you're actually running the shim, which determines the correct version at runtime and then hands off to the real binary.
+
+The tradeoff is indirection.
+`which {tool}` reports the shim's path rather than the actual binary, and tools that don't run inside an interactive shell — IDEs, debuggers, and language servers — can resolve or cache the wrong thing when the shim's environment isn't fully set up.
