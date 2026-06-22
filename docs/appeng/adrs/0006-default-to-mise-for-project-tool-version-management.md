@@ -37,12 +37,27 @@ Setup is fast, and the knowledge transfers between engagements instead of resett
 - We're not touching dev setup at all on the engagement. Don't introduce tooling that we won't help demonstrate the advantages of.
 - The project needs hermetic, fully reproducible environments. That falls into Nix territory (See [nix README](../../developing/nix/README.md)).
 
-## Alternatives Considered
+## Options Considered
+
+### [mise](https://mise.jdx.dev/)
+
+#### Pros
+
+- `+` Language and framework agnostic.
+- `+` Seamless interoperability with other popular tool version manager conventions for easy migration or even individual adoption if a project already uses a different tool version manager.
+- `+` Points to real binaries by rewriting `PATH`, as opposed to the shim approach.
+- `+` Includes additional useful, well-documented features beyond tool management (e.g. [tasks](https://mise.jdx.dev/tasks/), [environments](https://mise.jdx.dev/environments/)).
+
+#### Cons
+
+- `-` mise is a relatively newer tool at the time of writing. While Trussels have used it with success for several years, it is not as battle-tested as other options.
+- `-` At the time of writing, mise has one primary maintainer which presents a potential for bottlenecks despite strong community engagement.
 
 ### [asdf](https://asdf-vm.com/)
 
 #### Pros
 
+- `+` Language and framework agnostic.
 - `+` Mature, and its plugin ecosystem set the standard.
 - `+` The Go rewrite (0.16+) fixed the old performance complaints.
 
