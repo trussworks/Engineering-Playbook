@@ -8,7 +8,7 @@ title: Default to mise for tool version management
 
 **Date Accepted:** TODO
 
-**Reviewers:** @felipe-lee, @ieffendi-twks
+**Reviewers:** @felipe-lee, @ieffendi-twks, @ronaktruss
 
 ## Context
 
