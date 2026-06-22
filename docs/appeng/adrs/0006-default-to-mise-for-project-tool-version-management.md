@@ -88,5 +88,5 @@ While not selected for this specific decision, we're fond of Nix, so it stays on
 #### Cons
 
 - `-` Where we've used Nix in the past, clear information on the availability of tools within the Nix ecosystem was not strightforward.
-- `-` New tools and tool versions don't land in the Nix ecosystem on a predictable cadence, making version management challenging
+- `-` New tools and tool versions don't land in the Nix ecosystem on a predictable cadence, making version management challenging.
 - `--` _Steep_ learning curve.
