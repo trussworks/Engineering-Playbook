@@ -1,6 +1,6 @@
 name: Use Vale to test markdown for spelling and prose styles
 
-on: [push]
+on: [pull_request]
 
 jobs:
   prose:
@@ -12,6 +12,6 @@ jobs:
       - name: Vale linter
         uses: vale-cli/vale-action@v2
         with:
-          reporter: github-check
+          reporter: github-pr-check
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
