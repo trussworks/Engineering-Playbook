@@ -34,8 +34,8 @@ Setup is fast, and the knowledge transfers between engagements instead of resett
 ## When to Not Implement This Decision
 
 - The client mandates their own dev tooling accepting no alternatives. We work with what they have.
-- The project needs hermetic, fully reproducible environments. That falls into Nix territory (See [nix README](../../developing/nix/README.md)).
 - We're not touching dev setup at all on the engagement. Don't introduce tooling that we won't help demonstrate the advantages of.
+- The project needs hermetic, fully reproducible environments. That falls into Nix territory (See [nix README](../../developing/nix/README.md)).
 
 ## Alternatives Considered
 
