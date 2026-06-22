@@ -1,8 +1,8 @@
 ---
-title: Default to mise for tool dependency management
+title: Default to mise for tool version management
 ---
 
-# 0006 - Default to mise for tool dependency management
+# 0006 - Default to mise for tool version management
 
 **Status:** Proposed TODO
 
