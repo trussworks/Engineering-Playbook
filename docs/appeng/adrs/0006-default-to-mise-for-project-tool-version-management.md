@@ -30,7 +30,7 @@ Default to [mise](https://mise.jdx.dev/) for tool version management, because on
 
 This is a default, not a mandate. It does not apply when:
 
-- A client mandates its own tooling with no alternatives. We work with what they have.
+- A client mandates their own tooling with no alternatives. We work with what they have.
 - The engagement does not touch dev setup. Do not introduce tooling we will not help demonstrate.
 - The project needs hermetic, fully reproducible environments. That is [Nix](#nix) territory (see [nix README](../../developing/nix/README.md)).
 
