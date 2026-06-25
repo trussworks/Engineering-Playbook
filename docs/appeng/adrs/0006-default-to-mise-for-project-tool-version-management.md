@@ -1,9 +1,10 @@
----
-status: proposed
-deciders: "@brandonlenz, @felipe-lee, @ieffendi-twks, @ronaktruss"
----
+# 0006 – Default to mise for project tool version management
 
-# Default to mise for project tool version management
+**Status:** Proposed TODO
+
+**Date Accepted:** TODO
+
+**Reviewers:** @felipe-lee, @ieffendi-twks, @ronaktruss
 
 ## Context and Problem Statement
 
