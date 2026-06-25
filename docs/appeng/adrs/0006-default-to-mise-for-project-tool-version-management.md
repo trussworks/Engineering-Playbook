@@ -1,118 +1,85 @@
 ---
-title: Default to mise for tool version management
+status: proposed
+deciders: "@brandonlenz, @felipe-lee, @ieffendi-twks, @ronaktruss"
 ---
 
-# 0006 - Default to mise for tool version management
+# Default to mise for project tool version management
 
-**Status:** Proposed TODO
+## Context and Problem Statement
 
-**Date Accepted:** TODO
+As consultants, we work on projects of a variety of maturity levels and differing tech stacks.
+Developer setup with predictable tool versioning is critical and pays dividends when we onboard or transition work, beyond the day-to-day efficiency gains.
 
-**Reviewers:** @felipe-lee, @ieffendi-twks, @ronaktruss
+### Decision Drivers
 
-## Context
+- Each engagement brings a different stack and toolchain.
+- A consistent default lowers the friction of practitioners moving between projects
+- A recommended default lowers decision energy at the start of engagements when a team is trying to build momentum.
 
-As consultants, every engagement means a new codebase, a new stack, and a new pile of tools to install before we can run anything.
-We need one tool we can bring to any project that pins every runtime it needs, in one file, the same way on every machine.
+## Decision Outcome
 
-## Decision
+Default to [mise](https://mise.jdx.dev/) for tool version management, because one configuration file pins versions across tech stacks while staying compatible with other version managers' file conventions for flexibility.
 
-Default to [mise](https://mise.jdx.dev/) to manage tool dependencies on our projects.
+### Consequences
 
-Mise covers every runtime we'll meet and respects whatever a client repo already uses: `.tool-versions`, `.nvmrc`, asdf plugins.
-Tools are pinned in one `mise.toml`, installed the same way locally and in CI, with no [shims](#what-are-shims) in the way.
-Because mise does not rely on shims, comamnds like `which {tool}` points to real binaries, meaning IDEs and other tools that don't typically run inside interactive shells resolve binaries consistently.
+- Projects start with a recommended default solution for simple, opinionated tool version management.
+- Projects can (and should) [choose another option](#when-not-to-apply-this-default) if Mise is not the best fit for project-specific circumstances.
 
-Its task runner and env management are bonuses (and near drop-in replacements for Makefile and direnv), but they're not the basis for _this_ decision.
+## When Not to Apply This Default
 
-## Why is this Applicable to the Practice as a Whole
+This is a default, not a mandate. It does not apply when:
 
-Because it doesn't care what the stack is. One tool works on a Node project, a Python project, a JVM project, or all three at once.
-It slots in to new and existing repos alike, and we can be as opinionated (or not) as we want about its use.
-Setup is fast, and the knowledge transfers between engagements instead of resetting with each one.
-
-## When to Not Implement This Decision
-
-- The client mandates their own dev tooling accepting no alternatives. We work with what they have.
-- We're not touching dev setup at all on the engagement. Don't introduce tooling that we won't help demonstrate the advantages of.
-- The project needs hermetic, fully reproducible environments. That falls into Nix territory (See [nix README](../../developing/nix/README.md)).
+- A client mandates its own tooling with no alternatives. We work with what they have.
+- The engagement does not touch dev setup. Do not introduce tooling we will not help demonstrate.
+- The project needs hermetic, fully reproducible environments. That is [Nix](#nix) territory (see [nix README](../../developing/nix/README.md)).
 
 ## Options Considered
 
 ### [mise](https://mise.jdx.dev/)
 
-#### Pros
-
 - `+` Language and framework agnostic.
-- `+` Seamless interoperability with other popular tool version manager conventions for easy migration or even individual adoption if a project already uses a different tool version manager.
-- `+` Points to real binaries by rewriting `PATH`, as opposed to the [shim](#what-are-shims) approach.
-- `+` Includes additional useful, well-documented features beyond tool management (e.g. [tasks](https://mise.jdx.dev/tasks/), [environments](https://mise.jdx.dev/environments/)).
-
-#### Cons
-
-- `-` mise is a relatively newer tool at the time of writing. While Trussels have used it with success for several years, it is not as battle-tested as other options.
-- `-` At the time of writing, mise has one primary maintainer which presents a potential for bottlenecks despite strong community engagement.
+- `+` Reads existing `.tool-versions`, `.nvmrc`, and asdf plugins, easing migration and per-project adoption.
+- `+` Rewrites `PATH` to point at real binaries, avoiding the [shim](#what-are-shims) approach.
+- `+` Bundles documented extras beyond tool management ([tasks](https://mise.jdx.dev/tasks/), [environments](https://mise.jdx.dev/environments/)).
+- `-` Newer than the alternatives and less battle-tested, though Trussels have used it for several years.
+- `-` One primary maintainer, a potential bottleneck despite strong community engagement.
 
 ### [asdf](https://asdf-vm.com/)
 
-#### Pros
-
 - `+` Language and framework agnostic.
-- `+` Mature, and its plugin ecosystem set the standard.
-- `+` The Go rewrite (0.16+) fixed the old performance complaints.
-
-#### Cons
-
-- `-` It's [shim-based](#what-are-shims), and the indirection breaks `which` and can confuse IDEs, leading to potential developer swirl.
-- `-` Everything it does for us, mise also does, including running its plugins.
+- `+` Mature, with the plugin ecosystem that set the standard.
+- `-` [Shim-based](#what-are-shims); the indirection breaks `which` and can confuse IDEs.
 
 ### Language-specific managers ([nvm](https://github.com/nvm-sh/nvm), [pyenv](https://github.com/pyenv/pyenv), [sdkman](https://sdkman.io/), et al.)
 
-#### Pros
-
-- `+` Native support for the specific language/framework likely means unparalleled support for that narrow ecosystem
-
-#### Cons
-
-- `-` Contractors don't typically stick to one language.
+- `+` Strong support for their one ecosystem.
+- `-` Contractors rarely stay in one language.
 - `-` N stacks means N tools per machine, reinstalled per engagement, with no single manifest to declare them.
 
 ### [Homebrew](https://brew.sh/)
 
-Brew answers a different question: it installs tools, it doesn't pin them per project.
-We'll keep using it for what it's good at, including installing mise itself.
+Homebrew installs tools; it does not pin them per project. We keep using it for that (including to install mise itself).
 
-#### Pros
-
-- `+` Ubiquitous on most macOS machines, with an enormous package catalog.
-
-#### Cons
-
-- `-` Manages one version of each tool globally. Two engagements wanting different tool versions collide causing issues for practitioners splitting their time.
-- `-` A `Brewfile` declares version-agnostic packages. Reproducibility isn't the tool's goal.
-- `-` Mac (and Linux) only, which does not suit projects where Windows support (often for GFEs) is required.
+- `+` Ubiquitous on macOS, with a large package catalog.
+- `-` Manages one global version per tool. Two engagements needing different versions collide.
+- `-` A `Brewfile` pins packages, not versions; reproducibility is not its goal.
+- `-` macOS and Linux only, so it does not cover projects that require Windows (often for GFEs).
 
 ### [Nix](https://nixos.org/)
 
-While not selected for this specific decision, we're fond of Nix, so it stays on the table if reproducibility needs outgrow basic version pinning and ease of use.
+Not selected here, but kept on the table if reproducibility needs outgrow version pinning.
 
-#### Pros
-
-- `+` Reproduces entire environments, not just tool versions.
-
-#### Cons
-
-- `-` Where we've used Nix in the past, clear information on the availability of tools within the Nix ecosystem was not strightforward.
-- `-` New tools and tool versions don't land in the Nix ecosystem on a predictable cadence, making version management challenging.
-- `--` _Steep_ learning curve.
+- `+` Reproduces whole environments, not just tool versions.
+- `-` Tool availability within the Nix ecosystem has been hard to determine in past use.
+- `-` New tools and versions land on an unpredictable cadence, which complicates version management.
+- `--` Steep learning curve.
 
 ## Appendix
 
 ### What are shims?
 
 A [shim](<https://en.wikipedia.org/wiki/Shim_(computing)>) is a small wrapper script that stands in for a real executable.
-Shim-based managers put a single directory of these wrappers on your `PATH` — one named `node`, one named `python`, and so on.
-When you run `node`, you're actually running the shim, which determines the correct version at runtime and then hands off to the real binary.
+Shim-based managers put a directory of these wrappers on the `PATH`, one per tool. Running `node` runs the shim, which selects the version and calls the real binary.
 
-The tradeoff is indirection.
-`which {tool}` reports the shim's path rather than the actual binary, and tools that don't run inside an interactive shell — IDEs, debuggers, and language servers — can resolve or cache the wrong thing when the shim's environment isn't fully set up.
+This adds a layer of indirection. `which node` returns the shim's path, not the real binary.
+Tools that run outside an interactive shell, such as IDEs, debuggers, and language servers, can resolve or cache the wrong version when the shim's environment is not fully set up.
