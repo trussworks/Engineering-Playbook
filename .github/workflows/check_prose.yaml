@@ -10,6 +10,6 @@ jobs:
         uses: actions/checkout@master
 
       - name: Vale linter
-        uses: vale-cli/vale-action@v2
+        uses: vale-cli/vale-action@v3
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
